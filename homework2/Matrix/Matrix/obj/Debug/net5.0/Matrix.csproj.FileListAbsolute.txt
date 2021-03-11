@@ -1,0 +1,16 @@
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\obj\Debug\net5.0\Matrix.csprojAssemblyReference.cache
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\obj\Debug\net5.0\Matrix.GeneratedMSBuildEditorConfig.editorconfig
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\obj\Debug\net5.0\Matrix.AssemblyInfoInputs.cache
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\obj\Debug\net5.0\Matrix.AssemblyInfo.cs
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\obj\Debug\net5.0\Matrix.csproj.CoreCompileInputs.cache
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\bin\Debug\net5.0\Matrix.exe
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\bin\Debug\net5.0\Matrix.deps.json
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\bin\Debug\net5.0\Matrix.runtimeconfig.json
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\bin\Debug\net5.0\Matrix.runtimeconfig.dev.json
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\bin\Debug\net5.0\Matrix.dll
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\bin\Debug\net5.0\ref\Matrix.dll
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\bin\Debug\net5.0\Matrix.pdb
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\obj\Debug\net5.0\Matrix.dll
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\obj\Debug\net5.0\ref\Matrix.dll
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\obj\Debug\net5.0\Matrix.pdb
+D:\code\C#\RJGZJC_homework\homework2\Matrix\Matrix\obj\Debug\net5.0\Matrix.genruntimeconfig.cache

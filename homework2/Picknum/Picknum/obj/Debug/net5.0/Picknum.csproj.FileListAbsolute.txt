@@ -1,0 +1,16 @@
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\obj\Debug\net5.0\Picknum.csprojAssemblyReference.cache
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\obj\Debug\net5.0\Picknum.GeneratedMSBuildEditorConfig.editorconfig
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\obj\Debug\net5.0\Picknum.AssemblyInfoInputs.cache
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\obj\Debug\net5.0\Picknum.AssemblyInfo.cs
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\obj\Debug\net5.0\Picknum.csproj.CoreCompileInputs.cache
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\bin\Debug\net5.0\Picknum.exe
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\bin\Debug\net5.0\Picknum.deps.json
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\bin\Debug\net5.0\Picknum.runtimeconfig.json
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\bin\Debug\net5.0\Picknum.runtimeconfig.dev.json
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\bin\Debug\net5.0\Picknum.dll
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\bin\Debug\net5.0\ref\Picknum.dll
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\bin\Debug\net5.0\Picknum.pdb
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\obj\Debug\net5.0\Picknum.dll
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\obj\Debug\net5.0\ref\Picknum.dll
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\obj\Debug\net5.0\Picknum.pdb
+D:\code\C#\RJGZJC_homework\homework2\Picknum\Picknum\obj\Debug\net5.0\Picknum.genruntimeconfig.cache

@@ -1,0 +1,16 @@
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\obj\Debug\net5.0\IntArray.csprojAssemblyReference.cache
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\obj\Debug\net5.0\IntArray.GeneratedMSBuildEditorConfig.editorconfig
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\obj\Debug\net5.0\IntArray.AssemblyInfoInputs.cache
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\obj\Debug\net5.0\IntArray.AssemblyInfo.cs
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\obj\Debug\net5.0\IntArray.csproj.CoreCompileInputs.cache
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\bin\Debug\net5.0\IntArray.exe
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\bin\Debug\net5.0\IntArray.deps.json
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\bin\Debug\net5.0\IntArray.runtimeconfig.json
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\bin\Debug\net5.0\IntArray.runtimeconfig.dev.json
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\bin\Debug\net5.0\IntArray.dll
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\bin\Debug\net5.0\ref\IntArray.dll
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\bin\Debug\net5.0\IntArray.pdb
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\obj\Debug\net5.0\IntArray.dll
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\obj\Debug\net5.0\ref\IntArray.dll
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\obj\Debug\net5.0\IntArray.pdb
+D:\code\C#\RJGZJC_homework\homework2\IntArray\IntArray\obj\Debug\net5.0\IntArray.genruntimeconfig.cache
