@@ -32,6 +32,8 @@ namespace PrimeNumber
 
         int[] Divide(int num)
         {
+            if (num < 1) throw new ArgumentException("num必须大于1");
+
             int index = 0;
 
             int[] numbers = new int[num / 2];
