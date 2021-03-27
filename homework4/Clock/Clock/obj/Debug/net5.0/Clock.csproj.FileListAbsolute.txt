@@ -1,0 +1,16 @@
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\obj\Debug\net5.0\Clock.csprojAssemblyReference.cache
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\obj\Debug\net5.0\Clock.GeneratedMSBuildEditorConfig.editorconfig
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\obj\Debug\net5.0\Clock.AssemblyInfoInputs.cache
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\obj\Debug\net5.0\Clock.AssemblyInfo.cs
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\obj\Debug\net5.0\Clock.csproj.CoreCompileInputs.cache
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\bin\Debug\net5.0\Clock.exe
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\bin\Debug\net5.0\Clock.deps.json
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\bin\Debug\net5.0\Clock.runtimeconfig.json
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\bin\Debug\net5.0\Clock.runtimeconfig.dev.json
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\bin\Debug\net5.0\Clock.dll
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\bin\Debug\net5.0\ref\Clock.dll
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\bin\Debug\net5.0\Clock.pdb
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\obj\Debug\net5.0\Clock.dll
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\obj\Debug\net5.0\ref\Clock.dll
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\obj\Debug\net5.0\Clock.pdb
+D:\code\C#\RJGZJC_homework\homework4\Clock\Clock\obj\Debug\net5.0\Clock.genruntimeconfig.cache

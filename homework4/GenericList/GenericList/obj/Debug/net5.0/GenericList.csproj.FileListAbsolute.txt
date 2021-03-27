@@ -1,0 +1,16 @@
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\bin\Debug\net5.0\GenericList.exe
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\bin\Debug\net5.0\GenericList.deps.json
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\bin\Debug\net5.0\GenericList.runtimeconfig.json
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\bin\Debug\net5.0\GenericList.runtimeconfig.dev.json
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\bin\Debug\net5.0\GenericList.dll
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\bin\Debug\net5.0\ref\GenericList.dll
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\bin\Debug\net5.0\GenericList.pdb
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\obj\Debug\net5.0\GenericList.csprojAssemblyReference.cache
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\obj\Debug\net5.0\GenericList.GeneratedMSBuildEditorConfig.editorconfig
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\obj\Debug\net5.0\GenericList.AssemblyInfoInputs.cache
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\obj\Debug\net5.0\GenericList.AssemblyInfo.cs
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\obj\Debug\net5.0\GenericList.csproj.CoreCompileInputs.cache
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\obj\Debug\net5.0\GenericList.dll
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\obj\Debug\net5.0\ref\GenericList.dll
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\obj\Debug\net5.0\GenericList.pdb
+D:\code\C#\RJGZJC_homework\homework4\GenericList\GenericList\obj\Debug\net5.0\GenericList.genruntimeconfig.cache
