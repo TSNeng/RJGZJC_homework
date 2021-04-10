@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Order>
+    <receiver>
+      <name>wang</name>
+      <PhoneNum>123</PhoneNum>
+    </receiver>
+    <id>1</id>
+    <orderDetails>
+      <OrderDetails>
+        <goods>
+          <itemName>apple</itemName>
+          <price>3.5</price>
+        </goods>
+        <itemNum>3</itemNum>
+        <sum_cost>10.5</sum_cost>
+      </OrderDetails>
+      <OrderDetails>
+        <goods>
+          <itemName>banana</itemName>
+          <price>6.8</price>
+        </goods>
+        <itemNum>2</itemNum>
+        <sum_cost>13.6</sum_cost>
+      </OrderDetails>
+    </orderDetails>
+    <sender>Li</sender>
+    <address>wuhan</address>
+    <final_count>24.1</final_count>
+  </Order>
+  <Order>
+    <receiver>
+      <name>Li</name>
+      <PhoneNum>234</PhoneNum>
+    </receiver>
+    <id>2</id>
+    <orderDetails />
+    <sender>hu</sender>
+    <address>WHU</address>
+    <final_count>0</final_count>
+  </Order>
+</ArrayOfOrder>
