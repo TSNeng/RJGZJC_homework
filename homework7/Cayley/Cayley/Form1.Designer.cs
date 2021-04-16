@@ -51,6 +51,7 @@ namespace Cayley
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -58,7 +59,6 @@ namespace Cayley
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +87,7 @@ namespace Cayley
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.5188F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.4812F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 197F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
@@ -128,11 +128,11 @@ namespace Cayley
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 18);
+            this.label1.Location = new System.Drawing.Point(21, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 42);
+            this.label1.Size = new System.Drawing.Size(90, 42);
             this.label1.TabIndex = 0;
-            this.label1.Text = "递归深度（n）";
+            this.label1.Text = "递归深度（1~20）";
             // 
             // label2
             // 
@@ -142,7 +142,7 @@ namespace Cayley
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 42);
             this.label2.TabIndex = 1;
-            this.label2.Text = "主干长度（leng)";
+            this.label2.Text = "主干长度（80~170)";
             // 
             // label3
             // 
@@ -152,7 +152,7 @@ namespace Cayley
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 42);
             this.label3.TabIndex = 2;
-            this.label3.Text = "右分支长度比（per1）";
+            this.label3.Text = "右分支长度比（0.1~0.9）";
             // 
             // label4
             // 
@@ -162,7 +162,7 @@ namespace Cayley
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 42);
             this.label4.TabIndex = 3;
-            this.label4.Text = "左分支长度比（per2）";
+            this.label4.Text = "左分支长度比（0.1~0.9）";
             // 
             // label5
             // 
@@ -172,7 +172,7 @@ namespace Cayley
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(106, 42);
             this.label5.TabIndex = 4;
-            this.label5.Text = "右分支角度（th1）";
+            this.label5.Text = "右分支角度（10~90）";
             // 
             // label6
             // 
@@ -182,7 +182,7 @@ namespace Cayley
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 42);
             this.label6.TabIndex = 5;
-            this.label6.Text = "左分支角度（th2）";
+            this.label6.Text = "左分支角度（10~90）";
             // 
             // label7
             // 
@@ -199,18 +199,18 @@ namespace Cayley
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(117, 25);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(232, 28);
+            this.textBox1.Size = new System.Drawing.Size(231, 28);
             this.textBox1.TabIndex = 7;
             this.textBox1.MouseLeave += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // hScrollBar2
             // 
             this.hScrollBar2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.hScrollBar2.Location = new System.Drawing.Point(352, 28);
+            this.hScrollBar2.Location = new System.Drawing.Point(351, 28);
             this.hScrollBar2.Maximum = 29;
             this.hScrollBar2.Minimum = 1;
             this.hScrollBar2.Name = "hScrollBar2";
-            this.hScrollBar2.Size = new System.Drawing.Size(198, 22);
+            this.hScrollBar2.Size = new System.Drawing.Size(199, 22);
             this.hScrollBar2.TabIndex = 10;
             this.hScrollBar2.Value = 10;
             this.hScrollBar2.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar2_Scroll);
@@ -218,11 +218,11 @@ namespace Cayley
             // hScrollBar3
             // 
             this.hScrollBar3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.hScrollBar3.Location = new System.Drawing.Point(352, 107);
+            this.hScrollBar3.Location = new System.Drawing.Point(351, 107);
             this.hScrollBar3.Maximum = 179;
             this.hScrollBar3.Minimum = 80;
             this.hScrollBar3.Name = "hScrollBar3";
-            this.hScrollBar3.Size = new System.Drawing.Size(198, 22);
+            this.hScrollBar3.Size = new System.Drawing.Size(199, 22);
             this.hScrollBar3.TabIndex = 12;
             this.hScrollBar3.Value = 100;
             this.hScrollBar3.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar3_Scroll);
@@ -231,11 +231,11 @@ namespace Cayley
             // 
             this.hScrollBar4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.hScrollBar4.LargeChange = 9;
-            this.hScrollBar4.Location = new System.Drawing.Point(352, 186);
+            this.hScrollBar4.Location = new System.Drawing.Point(351, 186);
             this.hScrollBar4.Maximum = 17;
             this.hScrollBar4.Minimum = 1;
             this.hScrollBar4.Name = "hScrollBar4";
-            this.hScrollBar4.Size = new System.Drawing.Size(198, 22);
+            this.hScrollBar4.Size = new System.Drawing.Size(199, 22);
             this.hScrollBar4.TabIndex = 15;
             this.hScrollBar4.Value = 1;
             this.hScrollBar4.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar4_Scroll);
@@ -244,11 +244,11 @@ namespace Cayley
             // 
             this.hScrollBar5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.hScrollBar5.LargeChange = 9;
-            this.hScrollBar5.Location = new System.Drawing.Point(352, 265);
+            this.hScrollBar5.Location = new System.Drawing.Point(351, 265);
             this.hScrollBar5.Maximum = 18;
             this.hScrollBar5.Minimum = 1;
             this.hScrollBar5.Name = "hScrollBar5";
-            this.hScrollBar5.Size = new System.Drawing.Size(198, 22);
+            this.hScrollBar5.Size = new System.Drawing.Size(199, 22);
             this.hScrollBar5.TabIndex = 15;
             this.hScrollBar5.Value = 1;
             this.hScrollBar5.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar5_Scroll);
@@ -256,19 +256,25 @@ namespace Cayley
             // hScrollBar6
             // 
             this.hScrollBar6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.hScrollBar6.Location = new System.Drawing.Point(352, 344);
+            this.hScrollBar6.Location = new System.Drawing.Point(351, 344);
+            this.hScrollBar6.Maximum = 99;
+            this.hScrollBar6.Minimum = 10;
             this.hScrollBar6.Name = "hScrollBar6";
-            this.hScrollBar6.Size = new System.Drawing.Size(198, 22);
+            this.hScrollBar6.Size = new System.Drawing.Size(199, 22);
             this.hScrollBar6.TabIndex = 17;
+            this.hScrollBar6.Value = 10;
             this.hScrollBar6.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar6_Scroll);
             // 
             // hScrollBar1
             // 
             this.hScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.hScrollBar1.Location = new System.Drawing.Point(352, 423);
+            this.hScrollBar1.Location = new System.Drawing.Point(351, 423);
+            this.hScrollBar1.Maximum = 90;
+            this.hScrollBar1.Minimum = 10;
             this.hScrollBar1.Name = "hScrollBar1";
-            this.hScrollBar1.Size = new System.Drawing.Size(198, 22);
+            this.hScrollBar1.Size = new System.Drawing.Size(199, 22);
             this.hScrollBar1.TabIndex = 8;
+            this.hScrollBar1.Value = 10;
             this.hScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar1_Scroll);
             // 
             // textBox2
@@ -276,7 +282,7 @@ namespace Cayley
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Location = new System.Drawing.Point(117, 104);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(232, 28);
+            this.textBox2.Size = new System.Drawing.Size(231, 28);
             this.textBox2.TabIndex = 19;
             this.textBox2.MouseLeave += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -285,7 +291,7 @@ namespace Cayley
             this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox9.Location = new System.Drawing.Point(117, 183);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(232, 28);
+            this.textBox9.Size = new System.Drawing.Size(231, 28);
             this.textBox9.TabIndex = 20;
             this.textBox9.MouseLeave += new System.EventHandler(this.textBox9_TextChanged);
             // 
@@ -294,7 +300,7 @@ namespace Cayley
             this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox10.Location = new System.Drawing.Point(117, 262);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(232, 28);
+            this.textBox10.Size = new System.Drawing.Size(231, 28);
             this.textBox10.TabIndex = 21;
             this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
             // 
@@ -303,7 +309,7 @@ namespace Cayley
             this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox11.Location = new System.Drawing.Point(117, 341);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(232, 28);
+            this.textBox11.Size = new System.Drawing.Size(231, 28);
             this.textBox11.TabIndex = 22;
             this.textBox11.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
             // 
@@ -312,9 +318,20 @@ namespace Cayley
             this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox12.Location = new System.Drawing.Point(117, 420);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(232, 28);
+            this.textBox12.Size = new System.Drawing.Size(231, 28);
             this.textBox12.TabIndex = 23;
             this.textBox12.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.Location = new System.Drawing.Point(354, 477);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(193, 80);
+            this.button2.TabIndex = 25;
+            this.button2.Text = "选择颜色";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox3
             // 
@@ -357,17 +374,6 @@ namespace Cayley
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(100, 28);
             this.textBox8.TabIndex = 21;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(355, 477);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(192, 80);
-            this.button2.TabIndex = 25;
-            this.button2.Text = "选择颜色";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
