@@ -1,0 +1,16 @@
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\obj\Debug\OrderForm.csprojAssemblyReference.cache
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\obj\Debug\OrderForm.Form1.resources
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\obj\Debug\OrderForm.Properties.Resources.resources
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\obj\Debug\OrderForm.csproj.GenerateResource.cache
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\obj\Debug\OrderForm.csproj.CoreCompileInputs.cache
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\bin\Debug\OrderForm.exe.config
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\bin\Debug\OrderForm.exe
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\bin\Debug\OrderForm.pdb
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\obj\Debug\OrderForm.csproj.CopyComplete
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\obj\Debug\OrderForm.exe
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\obj\Debug\OrderForm.pdb
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\bin\Debug\Order.exe
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\bin\Debug\Order.pdb
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\bin\Debug\Order.exe.config
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\obj\Debug\OrderForm.Form2.resources
+D:\code\C#\RJGZJC_homework\homework8\OrderForm\OrderForm\obj\Debug\OrderForm.Form3.resources
