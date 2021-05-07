@@ -1,0 +1,429 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    <meta name="description" content="在kubernetes上运行WASM负载 WASM一般用在前端业务中，但目前有扩展到后端服务的趋势。本文使用Krustlet 将WASM服务部署到kubernetes。 简介 Krustlet 是一个" />
+    <meta property="og:description" content="在kubernetes上运行WASM负载 WASM一般用在前端业务中，但目前有扩展到后端服务的趋势。本文使用Krustlet 将WASM服务部署到kubernetes。 简介 Krustlet 是一个" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>在kubernetes上运行WASM负载 - charlieroro - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    <link id="MainCss" rel="stylesheet" href="/skins/coffee/bundle-coffee.min.css?v=BgguPR_JbmA1HKLJOLqLtHq5pt8a1UlO6ibCA_xgwdI" />
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/coffee/bundle-coffee-mobile.min.css?v=gcYNuAuJkNMICFERxhZCtKHGitYmBYNTxm9W97H2O2g" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/charlieroro/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/charlieroro/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/charlieroro/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 412196;
+        var currentBlogApp = 'charlieroro';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'coffee';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2021-05-07 08:00';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    
+    
+    
+</head>
+<body class="has-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a href="https://www.cnblogs.com/charlieroro/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/charlieroro/">charlieroro</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="navigator">
+			
+<ul id="navList">
+	<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+	<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/charlieroro/">
+首页</a>
+</li>
+	<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+	<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/charlieroro">
+联系</a></li>
+	<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+	<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/charlieroro/rss/">
+订阅</a>
+	
+<a id="blog_nav_rss_image" href="https://www.cnblogs.com/charlieroro/rss/">
+    <img src="/skins/coffee/images/xml.gif" alt="订阅" />
+</a></li>
+</ul>
+
+
+
+			<div class="blogStats">
+				
+				<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+				
+			</div><!--end: blogStats -->
+		</div><!--end: navigator 博客导航栏 -->
+		<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class = "postTitle">
+			
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/charlieroro/p/14737418.html">
+    <span>在kubernetes上运行WASM负载</span>
+    
+
+
+
+</a>
+
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<h2 id="在kubernetes上运行wasm负载">在kubernetes上运行WASM负载</h2>
+<p>WASM一般用在前端业务中，但目前有扩展到后端服务的趋势。本文使用Krustlet 将WASM服务部署到kubernetes。</p>
+<h3 id="简介">简介</h3>
+<p>Krustlet 是一个可以在kubernetes本地运行WebAssembly负载的工具。Krustlet作为kubernetes集群中的节点。当用户使用特定node tolerations来调度Pod时，kubernetes API会将该负载调度到一个Krustlet节点，Krustlet会拉取并运行模块。</p>
+<p>为了在Krustlet 节点上运行一个应用，首先必须将该应用编译为WebAssembly 格式，并推送到镜像仓库中。</p>
+<h3 id="准备">准备</h3>
+<p>首先使用kind<a href="https://www.cnblogs.com/charlieroro/p/13711589.html" target="_blank">安装</a>一个kubernetes集群(<em>minikube要求使用virtualBox驱动</em>)。</p>
+<h3 id="安装krustlet">安装Krustlet</h3>
+<p><strong>安装二进制文件</strong></p>
+<p>首先从官网<a href="https://github.com/deislabs/krustlet/releases" target="_blank">下载</a>并<a href="https://github.com/deislabs/krustlet/blob/main/docs/intro/install.md#from-the-binary-releases" target="_blank">安装</a>Krustlet，拷贝到一个系统可识别的路径即可(如<code>/usr/local/bin</code>)</p>
+<p><strong>生成bootstrap文件</strong></p>
+<p>Krustlet和kubelet的<a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/#initialization-process" target="_blank">初始化流程</a>类似，执行如下命令生成Krustlet的<code>bootstrap.conf</code>文件，默认路径为<code>/root/.krustlet/config</code>。</p>
+<pre><code class="language-shell">$ bash &lt;(curl https://raw.githubusercontent.com/deislabs/krustlet/master/docs/howto/assets/bootstrap.sh)
+</code></pre>
+<p><strong>运行Krustlet</strong></p>
+<p>找到kind使用的默认网关地址：</p>
+<pre><code class="language-shell"># docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+...
+b48010373347   kind      bridge    local
+
+# docker network inspect b48010373347|grep "Gateway"
+                    "Gateway": "172.18.0.1"
+</code></pre>
+<p>运行Krustlet：</p>
+<pre><code class="language-shell">$ export KUBECONFIG=~/.krustlet/config/kubeconfig
+$ krustlet-wasi --node-ip 172.18.0.1 --bootstrap-file=/root/.krustlet/config/bootstrap.conf
+</code></pre>
+<p>运行界面如下，提示需要审批CSR：</p>
+<pre><code class="language-shell"># krustlet-wasi --node-ip 172.18.0.1 --bootstrap-file=~/.krustlet/config/bootstrap.conf
+BOOTSTRAP: TLS certificate requires manual approval. Run kubectl certificate approve ubuntu-tls
+</code></pre>
+<p><strong>审批CSR</strong></p>
+<pre><code class="language-shell">$ kubectl certificate approve &lt;hostname&gt;-tls
+</code></pre>
+<p><strong>校验</strong></p>
+<p>运行<code>kubectl get nodes -o wide</code>，可以看到新增了一个节点<code>ubuntu</code>，在该节点上可以运行WebAssembly负载：</p>
+<pre><code class="language-shell"># kubectl get node -owide
+NAME                 STATUS   ROLES    AGE     VERSION   INTERNAL-IP   EXTERNAL-IP  
+kind-control-plane   Ready    master   16m     v1.19.1   172.18.0.2    &lt;none&gt;       
+ubuntu               Ready    &lt;none&gt;   8m37s   0.7.0     172.18.0.1    &lt;none&gt;       
+</code></pre>
+<h3 id="部署应用">部署应用</h3>
+<p>下面安装官方的一个例子<code>/demos/wasi/simpleserver/</code>。运行如下命令即可：</p>
+<pre><code class="language-shell"># kubectl apply -f simpleserver.yaml
+</code></pre>
+<p>该pod会启动一个伪服务，代码如下：</p>
+<pre><code class="language-rust">use std::thread::sleep;
+use std::time::Duration;
+
+fn main() {
+    loop {
+        println!("Hello, World!");
+        sleep(Duration::from_secs(5));
+    }
+}
+</code></pre>
+<p>需要注意的是，在k8s.yaml中镜像字段为<code>webassembly.azurecr.io/simpleserver:v1.0.0</code>，但它并不是一个标准的容器镜像，而是WASM的module，默认会放到<code>/root/.krustlet/.oci/modules</code>目录下。在<code>/root/.krustlet/.oci/modules/webassembly.azurecr.io/simpleserver/v1.0.0</code>目录下查看拉取到的module</p>
+<pre><code class="language-shell"># ll
+-rw-r--r-- 1 root root      71 May  6 22:34 digest.txt
+-rw-r--r-- 1 root root 1998989 May  6 22:34 module.wasm
+</code></pre>
+<p>可以看到<code>module.wasm</code>的大小只有约2M，是一个支持跨平台运行的二进制文件，由此可以看出WASM和容器的区别：容器是需要基础镜像的，而WASM则不需要，它是一个可以跨平台运行的二进制文件，且需要特定的runtime工具运行。</p>
+<pre><code class="language-shell"># file module.wasm
+module.wasm: WebAssembly (wasm) binary module version 0x1 (MVP)
+</code></pre>
+<blockquote>
+<p>可以使用wasmtime运行.wasm文件，wasmtime的下载方式如下：</p>
+<pre><code class="language-shell">curl https://wasmtime.dev/install.sh -sSf | bash
+</code></pre>
+<p>运行如下：</p>
+<pre><code># wasmtime module.wasm
+Hello, World!
+Hello, World!
+Hello, World!
+...
+</code></pre>
+</blockquote>
+<p><strong>WASM POD分析</strong></p>
+<p>查看该Pod，可以看到它就是一个正常运行的pod</p>
+<pre><code class="language-shell"># kubectl get pod
+NAME           READY   STATUS    RESTARTS   AGE
+simpleserver   1/1     Running   0          7m59s
+</code></pre>
+<p>运行<code>kubectl describe pod simpleserver</code>查看该pod信息</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: simpleserver
+  labels:
+    app: simpleserver
+spec:
+  containers:
+    - image: webassembly.azurecr.io/simpleserver:v1.0.0
+      imagePullPolicy: Always
+      name: simpleserver
+  tolerations:
+    - key: "node.kubernetes.io/network-unavailable"
+      operator: "Exists"
+      effect: "NoSchedule"
+    - key: "kubernetes.io/arch"
+      operator: "Equal"
+      value: "wasm32-wasi"
+      effect: "NoExecute"
+    - key: "kubernetes.io/arch"
+      operator: "Equal"
+      value: "wasm32-wasi"
+      effect: "NoSchedule"
+</code></pre>
+<h3 id="源代码编译运行">源代码编译运行</h3>
+<p><strong>编译</strong></p>
+<p>由于上例的代码是rust编写的，因此需要安装rust套件：</p>
+<pre><code class="language-shell">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</code></pre>
+<p>在rust工具链中添加wasm：</p>
+<pre><code class="language-shell">$ rustup target add wasm32-wasi
+</code></pre>
+<p>生成可执行文件：</p>
+<pre><code class="language-shell">$ cargo build --target wasm32-wasi --release
+</code></pre>
+<p><strong>推送module</strong></p>
+<p>由于生成的二进制并不是标准的镜像，因此无法直接推送到OCI仓库中，可以使用<a href="https://github.com/engineerd/wasm-to-oci" target="_blank">wasm-to-oci</a>将module推送到OCI 仓库。</p>
+<p>但需要注意的是，并不是所有的镜像仓库都支持推送WASM module，目前支持的镜像仓库为：</p>
+<ul>
+<li><a href="https://github.com/docker/distribution" target="_blank">Distribution (open source, version 2.7+)</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/container-registry/" target="_blank">Azure Container Registry</a></li>
+<li><a href="https://cloud.google.com/container-registry/" target="_blank">Google Container Registry</a></li>
+<li><a href="https://cloud.google.com/artifact-registry" target="_blank">Google Artifact Registry</a></li>
+<li><a href="https://github.com/goharbor/harbor/releases/tag/v2.0.0" target="_blank">Harbor Container Registry v2.0</a></li>
+<li><a href="https://bundle.bar/docs/supported-clients/wasm-to-oci/" target="_blank">Bundle Bar</a></li>
+</ul>
+<blockquote>
+<p><em>PS: 我使用了harbor镜像库，但无论使用http(报token无法解析)还是https(ca issuer无法识别)，krustlet-wasi都无法成功拉取镜像。因此，建议有条件的话使用Azure或Google的镜像仓库</em></p>
+</blockquote>
+<p>参考<a href="https://blog.csdn.net/networken/article/details/107502461" target="_blank">这篇文章</a>搭建harbor镜像仓库(使用https方式)。搭建成功后，登录仓库，并执行如下命令，将WASM module推送到仓库中：</p>
+<pre><code class="language-shell"># wasm-to-oci push simpleserver.wasm registry.harbor.com/library/wasm-hello-world:v1 --use-http
+</code></pre>
+<p>在harbor仓库中可以看到刚上传的module。</p>
+<img src="https://img2020.cnblogs.com/blog/1334952/202105/1334952-20210506232120946-295054388.png" alt="image" style="zoom: 80%">
+<p><strong>运行自己的module</strong></p>
+<p>将k8s.yml中的<code>image</code>修改为自己的module地址：</p>
+<pre><code class="language-yaml">image: registry.harbor.com/library/simpleserver:v1
+</code></pre>
+<h3 id="总结">总结</h3>
+<p>WASM本身支持多种语言，因此可以方便地将市面上已有的服务转换为WASM格式。后续WebAssemble有可能成为一种新的容器类型，类似Linux容器或Windows容器。<br>
+WASM由WASM虚拟机实现隔离性，但目前的隔离程度有限(如CPU、mem、network、共享存储等)，且WASM虚拟机实现各异。<a href="https://github.com/appcypher/awesome-wasm-runtimes" target="_blank">这里</a>给出了一系列WebAssembly Runtimes。</p>
+<p>可以参考一下这篇文章<a href="https://www.alibabacloud.com/blog/using-webassembly-and-kubernetes-in-combination_596177" target="_blank">Using WebAssembly and Kubernetes in Combination</a>，里面详细讲解了WASM的现状。WASM目前还处于早期，<a href="https://wasi.dev/" target="_blank">WASI</a>标准后续也需要进行迭代更新。但由于其本身具有的轻量级以及可移植的优点，相信前途会一片光明。</p>
+<p>PS：对服务端的WASM支持最多最好的语言是RUST，是否是时候捡起来了？</p>
+
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+		</div>
+		<div class="postDesc">posted @ 
+<span id="post-date">2021-05-07 20:00</span>&nbsp;
+<a href="https://www.cnblogs.com/charlieroro/">charlieroro</a>&nbsp;
+阅读(<span id="post_view_count">19</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14737418" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(14737418);return false;">收藏</a></div>
+	</div>
+	
+	
+</div><!--end: topics 文章、评论容器-->
+<script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 412196, cb_blogApp = 'charlieroro', cb_blogUserGuid = '06daae99-82ab-46fb-482e-08d54dbac325';
+    var cb_entryId = 14737418, cb_entryCreatedDate = '2021-05-07 20:00', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_card1"></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+			<div id="calendar"><div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script></div>
+			
+			<DIV id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</DIV>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 charlieroro
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAju_cNy6ky78AzEVZedjvCD_vt5E-70W9u7j4gvx_hcuYI1W00_-6lJp-idYF7IIVKLLPEil_ROQIKWE-yUG2zKNV3-S-mSSMNwZTSO0x3ELnPzzh6Egkajw9TZwD5b6ZD8" />
+</body>
+</html>

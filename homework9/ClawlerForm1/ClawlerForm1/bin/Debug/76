@@ -1,0 +1,952 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>余月七 - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/yuyueq/custom.css?v=DSs&#x2B;/HZA61E2xF4Eh7jOLpLi9zU=" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/SimpleMemory/bundle-SimpleMemory-mobile.min.css" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/yuyueq/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/yuyueq/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/yuyueq/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 602096;
+        var currentBlogApp = 'yuyueq';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'SimpleMemory';
+        var visitorUserId = '';
+    </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    
+    
+    
+</head>
+<body class="no-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc navbar-custom">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="page_begin_html">
+        <!---->
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://at.alicdn.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="dns-prefetch" href="https://static.cnblogs.com/">
+<link rel="dns-prefetch" href="https://images2018.cnblogs.com/">
+<link rel="dns-prefetch" href="https://v2.jinrishici.com/">
+
+<link rel="preload" href="https://cdn.jsdelivr.net/gh/BNDong/Cnblogs-Theme-SimpleMemory@v1.3.3/src/script/simpleMemory.min.js" as="script">
+
+    </div>
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/yuyueq/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/yuyueq/"><font size="6">纸上得来终觉浅，绝知此事要躬行</font></a>
+</h1>
+<h2>
+
+</h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/yuyueq/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E4%BD%99%E6%9C%88%E4%B8%83">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/yuyueq/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+
+
+
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/yuyueq/archive/2021/05/07.html">2021年5月7日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14742942.html">
+    <span>
+        做个简单的一年小结
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：写博客一年小结 2020年5月7号 开通注册博客！ 记得一年前的这时候，我开通了博客园，注册了自己的账号。当时还是比较兴奋的，所以就抓紧利用当时学的《计算机网络》这门课的知识写了一篇网络排错的博文，当时觉得自己写的还不错，就放上面了，哈哈，对自己太有信心了。现在回头看的话，其实有很多很多不足的地方，        <a href="https://www.cnblogs.com/yuyueq/p/14742942.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-05-07 22:25
+余月七
+<span data-post-id="14742942" class="post-view-count">阅读(0)</span> 
+<span data-post-id="14742942" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14742942" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14742942" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/yuyueq/archive/2021/04/27.html">2021年4月27日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14711086.html">
+    <span>
+        Apache HTTP Server与Tomcat整合学习记录
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：Apache HTTP Server与Tomcat整合 个人环境：Windows10，JDK8，Tomcat8.5，Apache2.4，JK模块1.2.4 前言 ​	其实网上有很多教程，但问题是得每次找个正确率很高的却很难。所以在此做个简单的记录，方便快速查找。 注意： 关于JDK环境配置在此不多赘        <a href="https://www.cnblogs.com/yuyueq/p/14711086.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-27 22:08
+余月七
+<span data-post-id="14711086" class="post-view-count">阅读(55)</span> 
+<span data-post-id="14711086" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14711086" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14711086" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/yuyueq/archive/2021/04/25.html">2021年4月25日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14699535.html">
+    <span>
+        SpringBoot启动后直接退出 控制台显示Process finished with exit code 1
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：问题描述： 出现这个问题时，控制台没有任何输出，进程直接退出Process finished with exit code 1 问题解决： 使用 try catch 捕捉异常查看，发现还是没有任何日志 public static void main(String[] args) { try { Sp        <a href="https://www.cnblogs.com/yuyueq/p/14699535.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-25 11:05
+余月七
+<span data-post-id="14699535" class="post-view-count">阅读(14)</span> 
+<span data-post-id="14699535" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14699535" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14699535" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/yuyueq/archive/2021/04/23.html">2021年4月23日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14692820.html">
+    <span>
+        使用vue时出现的一个小问题
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：使用vue时出现的一些小问题 个人问题基于在用springboot框架时所发生的，所以问题解决方式可能每个人都不一样。 NetWork Error 1.第一种情况 是常见的跨域请求错误，此时只需要在controller类上加上“@CrossOrigin”注解就可以 2.第二种情况 是跨域请求注解已加        <a href="https://www.cnblogs.com/yuyueq/p/14692820.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-23 10:55
+余月七
+<span data-post-id="14692820" class="post-view-count">阅读(11)</span> 
+<span data-post-id="14692820" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14692820" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14692820" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/yuyueq/archive/2021/04/19.html">2021年4月19日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14678814.html">
+    <span>
+        关于Maven中&lt;packaging&gt;产生的一些问题
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：关于Maven中产生的一些问题 一、项目的打包类型 jar 默认的打包格式 war 打包成需要部署的项目 pom 父类型为pom类型 二、 pom 简单来说，一个多模块项目通过一个父POM 引用一个或多个子模块来定义。 项目中一般使用maven进行模块管理，每个模块下对应都有一个pom文件，pom文        <a href="https://www.cnblogs.com/yuyueq/p/14678814.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-19 21:41
+余月七
+<span data-post-id="14678814" class="post-view-count">阅读(18)</span> 
+<span data-post-id="14678814" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14678814" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14678814" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+            <div class="postSeparator"></div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14675740.html">
+    <span>
+        Spring Boot:The field file exceeds its maximum permitted size of 1048576 bytes
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：Spring Boot:The field file exceeds its maximum permitted size of 1048576 bytes. 解决方法一： 根据spring boot 版本不同在application文件添加不同的配置 Spring Boot 1.3 或之前的版本:        <a href="https://www.cnblogs.com/yuyueq/p/14675740.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-19 10:19
+余月七
+<span data-post-id="14675740" class="post-view-count">阅读(17)</span> 
+<span data-post-id="14675740" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14675740" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14675740" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/yuyueq/archive/2021/04/16.html">2021年4月16日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14669100.html">
+    <span>
+        Npm管理命令
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：NPM一些相关操作 我们可以通过npm 可以很方便地下载js库，管理前端工程。 Node.js默认安装的npm包和工具的位置：Node.js目录\node_modules 一、项目初始化 #建立一个空文件夹，在命令提示符进入该文件夹 执行命令初始化 npm init #按照提示输入相关信息，如果是用        <a href="https://www.cnblogs.com/yuyueq/p/14669100.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-16 22:58
+余月七
+<span data-post-id="14669100" class="post-view-count">阅读(29)</span> 
+<span data-post-id="14669100" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14669100" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14669100" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+            <div class="postSeparator"></div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14669056.html">
+    <span>
+        ES6转ES5（Babel转码器）
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：ES6转ES5（Babel转码器） 前提：必须在VScode中已经安装了Node.js 官网：https://nodejs.org/en/ 一、安装命令行转码工具 npm install --global babel-cli #查看是否安装成功 babel --version 二、初始化项目 npm        <a href="https://www.cnblogs.com/yuyueq/p/14669056.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-16 22:41
+余月七
+<span data-post-id="14669056" class="post-view-count">阅读(32)</span> 
+<span data-post-id="14669056" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14669056" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14669056" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/yuyueq/archive/2021/04/14.html">2021年4月14日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14660335.html">
+    <span>
+        IOC容器中的依赖注入(一)
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：基于Spring官网总结 IOC文档：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans 一、配置元数据 org.springframework.context.Application        <a href="https://www.cnblogs.com/yuyueq/p/14660335.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-14 22:49
+余月七
+<span data-post-id="14660335" class="post-view-count">阅读(29)</span> 
+<span data-post-id="14660335" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14660335" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14660335" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/yuyueq/archive/2021/04/10.html">2021年4月10日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14641718.html">
+    <span>
+        Nginx常用部分命令
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：Nginx一些命令 Windows 查看帮助信息 nginx -h 查看 nginx 版本 (小写字母 v) nginx -v 除版本信息外还显示配置参数信息 (大写字母 V) nginx -V 启动 nginx start nginx 指定配置文件启动 nginx start nginx -c f        <a href="https://www.cnblogs.com/yuyueq/p/14641718.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-10 18:16
+余月七
+<span data-post-id="14641718" class="post-view-count">阅读(73)</span> 
+<span data-post-id="14641718" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14641718" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14641718" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/yuyueq/archive/2021/04/09.html">2021年4月9日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14639016.html">
+    <span>
+        Myabtis-Plus之QueryWrapper常用方法
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：AbstractWrapper 下的方法及使用 方法名 说明 使用 allEq(Map&amp;lt;R, V&amp;gt; params) 全部 =(或个别 isNull) allEq(params,true) eq = eq(“real_name”,“王昭君”) ne &amp;lt;&amp;gt; ne(“nick_name”,“空想 4”)         <a href="https://www.cnblogs.com/yuyueq/p/14639016.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-09 22:13
+余月七
+<span data-post-id="14639016" class="post-view-count">阅读(48)</span> 
+<span data-post-id="14639016" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14639016" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14639016" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/yuyueq/archive/2021/04/07.html">2021年4月7日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14627067.html">
+    <span>
+        SSM配置文件记录(一)
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：ssm配置记录 一、个人环境 Jdk8，Maven3.8，Tomcat9，IDEA 二、pom.xml 依赖包： Junit4.12	mybatis3.5.6	mysql-connector-java5.1.47	c3p0 0.9.5.4	servlet 2.5	jsp 2.2	jstl 1.2 s        <a href="https://www.cnblogs.com/yuyueq/p/14627067.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-07 11:50
+余月七
+<span data-post-id="14627067" class="post-view-count">阅读(13)</span> 
+<span data-post-id="14627067" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14627067" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14627067" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+            <div class="postSeparator"></div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14626255.html">
+    <span>
+        MySQL巩固学习记录（一）
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：mysql下载安装 一、采用图形化界面安装 （初期只安装server服务端就可以了，别的不多赘述） 二、采用压缩版安装 1、将文件解压缩到自己想要的路径 2、 添加环境变量，即mysql的bin目录 3、 编辑“my.ini”文件，注意要替换路径位置 [mysqld] basedir=D:\Prog        <a href="https://www.cnblogs.com/yuyueq/p/14626255.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-07 09:23
+余月七
+<span data-post-id="14626255" class="post-view-count">阅读(161)</span> 
+<span data-post-id="14626255" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14626255" class="post-digg-count">推荐(2)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14626255" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/yuyueq/archive/2021/04/04.html">2021年4月4日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14617259.html">
+    <span>
+        SpringMVC执行流程
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：SpringMVC执行流程 简单原理 Spring MVC 框架像许多其他 MVC 框架一样, 以请求为驱动 , 围绕一个中心 Servlet 分派请求及提供其他功能，DispatcherServlet 是一个实际的 Servlet (它继承自 HttpServlet 基类) 当发起请求时被前置的控        <a href="https://www.cnblogs.com/yuyueq/p/14617259.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-04 22:11
+余月七
+<span data-post-id="14617259" class="post-view-count">阅读(244)</span> 
+<span data-post-id="14617259" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14617259" class="post-digg-count">推荐(2)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14617259" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/yuyueq/archive/2021/04/02.html">2021年4月2日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/yuyueq/p/14612757.html">
+    <span>
+        com.sun.org.apache.xerces.internal.impl.io.MalformedByteSequenceException: 1 字节的 UTF-8 序列的字节 1 无效。
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：由于一些原因的疏忽，所以导致犯了第二次这样的错误，在此做个记录，希望不要再犯 尝试去修改mapper注册方式 一、具体到xml文件 &amp;lt;mappers&amp;gt; &amp;lt;mapper resource=&amp;quot;code/dwx/mapper/UserMapper.xml&amp;quot;/&amp;gt; &amp;lt;/mappers&amp;gt; 二、使用类名 &amp;lt;map        <a href="https://www.cnblogs.com/yuyueq/p/14612757.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-02 23:01
+余月七
+<span data-post-id="14612757" class="post-view-count">阅读(12)</span> 
+<span data-post-id="14612757" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14612757" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14612757" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+
+<div class="topicListFooter">
+    <div id="nav_next_page">
+        
+    <a href="https://www.cnblogs.com/yuyueq/default.html?page=2">
+        下一页
+    </a>
+
+    </div>    
+</div>
+
+
+
+
+
+
+<script>
+    updatePostStats(
+        $(".post-view-count").map(function () { return this.dataset.postId }).get(),
+        function(id, count) { $(".post-view-count[data-post-id=" + id + "]").text("阅读(" + count + ")") },
+        function(id, count) { $(".post-comment-count[data-post-id=" + id + "]").text("评论(" + count + ")") },
+        function(id, count) { $(".post-digg-count[data-post-id=" + id + "]").text("推荐(" + count + ")") });
+</script>
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 余月七
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    <div id="page_end_html">
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Title</title>
+</head>
+<body>
+<!--网格动态背景开始-->
+<script type="text/javascript">
+
+    !function () {
+        //封装方法，压缩之后减少文件大小
+        function get_attribute(node, attr, default_value) {
+            return node.getAttribute(attr) || default_value;
+        }
+
+        //封装方法，压缩之后减少文件大小
+        function get_by_tagname(name) {
+            return document.getElementsByTagName(name);
+        }
+
+        //获取配置参数
+        function get_config_option() {
+            var scripts = get_by_tagname("script"),
+                script_len = scripts.length,
+                script = scripts[script_len - 1]; //当前加载的script
+            return {
+                l: script_len, //长度，用于生成id用
+                z: get_attribute(script, "zIndex", -1), //z-index
+                o: get_attribute(script, "opacity", 0.8), //opacity
+                c: get_attribute(script, "color", "255,255,255"), //color
+                n: get_attribute(script, "count", 350) //count
+            };
+        }
+
+        //设置canvas的高宽
+        function set_canvas_size() {
+            canvas_width = the_canvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                canvas_height = the_canvas.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        }
+
+        //绘制过程
+        function draw_canvas() {
+            context.clearRect(0, 0, canvas_width, canvas_height);
+            //随机的线条和当前位置联合数组
+            var e, i, d, x_dist, y_dist, dist; //临时节点
+            //遍历处理每一个点
+            random_points.forEach(function (r, idx) {
+                r.x += r.xa,
+                    r.y += r.ya, //移动
+                    r.xa *= r.x > canvas_width || r.x < 0 ? -1 : 1,
+                    r.ya *= r.y > canvas_height || r.y < 0 ? -1 : 1, //碰到边界，反向反弹
+                    context.fillRect(r.x - 0.5, r.y - 0.5, 1, 1); //绘制一个宽高为1的点
+                //从下一个点开始
+                for (i = idx + 1; i < all_array.length; i++) {
+                    e = all_array[i];
+                    // 当前点存在
+                    if (null !== e.x && null !== e.y) {
+                        x_dist = r.x - e.x; //x轴距离 l
+                        y_dist = r.y - e.y; //y轴距离 n
+                        dist = x_dist * x_dist + y_dist * y_dist; //总距离, m
+
+                        dist < e.max && (e === current_point && dist >= e.max / 2 && (r.x -= 0.03 * x_dist, r.y -= 0.03 * y_dist), //靠近的时候加速
+                            d = (e.max - dist) / e.max,
+                            context.beginPath(),
+                            context.lineWidth = d / 2,
+                            context.strokeStyle = "#555555",//这里是线条的颜色
+                            context.moveTo(r.x, r.y),
+                            context.lineTo(e.x, e.y),
+                            context.stroke());
+                    }
+                }
+            }), frame_func(draw_canvas);
+        }
+
+        //创建画布，并添加到body中
+        var the_canvas = document.createElement("canvas"), //画布
+            config = get_config_option(), //配置
+            canvas_id = "c_n" + config.l, //canvas id
+            context = the_canvas.getContext("2d-disabled"), canvas_width, canvas_height,
+            frame_func = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (func) {
+                window.setTimeout(func, 1000 / 40);
+            }, random = Math.random,
+            current_point = {
+                x: null, //当前鼠标x
+                y: null, //当前鼠标y
+                max: 20000 // 圈半径的平方
+            },
+            all_array;
+        the_canvas.id = canvas_id;
+        the_canvas.style.cssText = "position:fixed;top:0;left:0;z-index:" + config.z + ";opacity:" + config.o;
+        get_by_tagname("body")[0].appendChild(the_canvas);
+
+        //初始化画布大小
+        set_canvas_size();
+        window.onresize = set_canvas_size;
+        //当时鼠标位置存储，离开的时候，释放当前位置信息
+        window.onmousemove = function (e) {
+            e = e || window.event;
+            current_point.x = e.clientX;
+            current_point.y = e.clientY;
+        }, window.onmouseout = function () {
+            current_point.x = null;
+            current_point.y = null;
+        };
+        //随机生成config.n条线位置信息
+        for (var random_points = [], i = 0; config.n > i; i++) {
+            var x = random() * canvas_width, //随机位置
+                y = random() * canvas_height,
+                xa = 2 * random() - 1, //随机运动方向
+                ya = 2 * random() - 1;
+            // 随机点
+            random_points.push({
+                x: x,
+                y: y,
+                xa: xa,
+                ya: ya,
+                max: 6000 //沾附距离
+            });
+        }
+        all_array = random_points.concat([current_point]);
+        //0.1秒后绘制
+        setTimeout(function () {
+            draw_canvas();
+        }, 100);
+    }();
+</script>
+</body>
+</html>
+
+    </div>
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjtClRMAi1HCICEcTO0XZ8KJ3-6j4pxgpcskbgxGjZlkGFaE9KJAxXy3MRp4UiaS3o2SQ0P3-LMYuZdDuUaNs_l3_da3Y9i11lb8QcCiMy7laR7fWUso9ME_KaKVuwKFV4o" />
+</body>
+</html>

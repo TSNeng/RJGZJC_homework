@@ -1,0 +1,762 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    <meta name="description" content="redux和mobx入门使用 项目涉及技术 公共插件 create-react-app react-dom react-router react-router-dom react-hook redux" />
+    <meta property="og:description" content="redux和mobx入门使用 项目涉及技术 公共插件 create-react-app react-dom react-router react-router-dom react-hook redux" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>redux和mobx入门使用 - adouwt - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    <link id="MainCss" rel="stylesheet" href="/skins/codinglife/bundle-codinglife.min.css?v=2uJkpdACLVfstRQ7zeCFK19brTwKuDEaNBLgKz9nm3A" />
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/adouwt/custom.css?v=lo8brJo0eAoWnc4XkfxhUwCxJeQ=" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/codinglife/bundle-codinglife-mobile.min.css?v=DwDRKMd1bmjnJZ4iQqrTCO9QLlYb6OZaUAzHoHIIihg" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/adouwt/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/adouwt/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/adouwt/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 331017;
+        var currentBlogApp = 'adouwt';
+        var cb_enable_mathjax = true;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'CodingLife';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2021-05-07 08:24';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processClass: 'math', processEscapes: true },
+        TeX: {
+        equationNumbers: { autoNumber: ['AMS'], useLabelIds: true },
+        extensions: ['extpfeil.js', 'mediawiki-texvc.js'],
+        Macros: {bm: "\\boldsymbol"}
+        },
+        'HTML-CSS': { linebreaks: { automatic: true } },
+        SVG: { linebreaks: { automatic: true } }
+        });
+    </script>
+    <script src="https://mathjax.cnblogs.com/2_7_5/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;v=20200504"></script>
+    
+</head>
+<body class="has-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/adouwt/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/adouwt/">🈚️派散人</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/adouwt/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/adouwt">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/adouwt/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class = "postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/adouwt/p/14742503.html">
+    <span>redux和mobx入门使用</span>
+    
+
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<h2 id="redux和mobx入门使用">redux和mobx入门使用</h2>
+<h3 id="项目涉及技术">项目涉及技术</h3>
+<h4 id="公共插件">公共插件</h4>
+<ul>
+<li>create-react-app</li>
+<li>react-dom</li>
+<li>react-router</li>
+<li>react-router-dom</li>
+<li>react-hook</li>
+</ul>
+<ul>
+<li>redux</li>
+<li>react-redux</li>
+</ul>
+<h3 id="大概实现功能">大概实现功能</h3>
+<ul>
+<li>组件调用</li>
+<li>路由跳转</li>
+<li>接口调用</li>
+<li>状态管理</li>
+</ul>
+<h3 id="代码示例说明">代码示例说明</h3>
+<h4 id="redux-和-mobx-的层级结构如下">redux 和 mobx 的层级结构如下</h4>
+<p>redux-mobx<br>
+├── README.md<br>
+├── mobx-demo<br>
+│   ├── README.md<br>
+│   ├── config-overrides.js<br>
+│   ├── package-lock.json<br>
+│   ├── package.json<br>
+│   ├── public<br>
+│   │   ├── favicon.ico<br>
+│   │   ├── index.html<br>
+│   │   ├── logo192.png<br>
+│   │   ├── logo512.png<br>
+│   │   ├── manifest.json<br>
+│   │   └── robots.txt<br>
+│   └── src<br>
+│       ├── App.css<br>
+│       ├── App.js<br>
+│       ├── App.test.js<br>
+│       ├── compments<br>
+│       │   ├── compnentA.js<br>
+│       │   └── compnentB.js<br>
+│       ├── index.css<br>
+│       ├── index.js<br>
+│       ├── logo.svg<br>
+│       ├── pages<br>
+│       │   ├── bar.js<br>
+│       │   └── foo.js<br>
+│       ├── reportWebVitals.js<br>
+│       ├── setupTests.js<br>
+│       └── store<br>
+│           ├── index.js<br>
+│           └── storeone.js<br>
+├── package-lock.json<br>
+└── redux-demo<br>
+├── README.md<br>
+├── package-lock.json<br>
+├── package.json<br>
+├── public<br>
+│   ├── favicon.ico<br>
+│   ├── index.html<br>
+│   ├── logo192.png<br>
+│   ├── logo512.png<br>
+│   ├── manifest.json<br>
+│   └── robots.txt<br>
+└── src<br>
+├── App.css<br>
+├── App.js<br>
+├── App.test.js<br>
+├── compments<br>
+│   ├── compnentA.js<br>
+│   └── compnentB.js<br>
+├── index.css<br>
+├── index.js<br>
+├── logo.svg<br>
+├── pages<br>
+│   ├── bar.js<br>
+│   └── foo.js<br>
+├── reportWebVitals.js<br>
+├── setupTests.js<br>
+└── store<br>
+├── index.js<br>
+└── reducer.js</p>
+<h3 id="项目基础脚手架使用-create-react-app-生成，新建三个文件夹，组件集components-页面集-pages，-以及状态管理集-store。">项目基础脚手架使用 create-react-app 生成，新建三个文件夹，组件集components, 页面集 pages， 以及状态管理集 store。</h3>
+<h4 id="1appjs">1.App.js</h4>
+<pre><code class="language-javascript">    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import './index.css';
+    import reportWebVitals from './reportWebVitals';
+    import App from './App';
+    // 添加代码如下
+    import Foo from './pages/foo';
+    import Bar from './pages/bar';
+    import {HashRouter, Route, Switch } from 'react-router-dom'
+    import {Provider} from 'react-redux';
+    import store from './store/index'
+    ReactDOM.render(
+    &lt;Provider store = {store}&gt;
+        &lt;React.StrictMode&gt;
+            &lt;h1&gt;redux-demo&lt;/h1&gt;
+            &lt;HashRouter&gt;
+                &lt;Switch&gt;
+                    &lt;Route exact path="/foo" component={Foo}/&gt;
+                    &lt;Route exact path="/bar" component={Bar}/&gt;
+                    &lt;Route exact path="/" component={App} /&gt;
+                &lt;/Switch&gt;
+            &lt;/HashRouter&gt;
+        &lt;/React.StrictMode&gt;
+    &lt;/Provider&gt;,
+    document.getElementById('root')
+    );
+    reportWebVitals();
+
+</code></pre>
+<p>引入页面Foo， Bar，路由 react-router-dom插件，以及状态管理 react-redux。状态统一管理 store/index.js，这里统一管理store。<br>
+通过Provider 传入 store，包裹所有组件，这样组件内部能拿到store数据。</p>
+<p><strong>注意</strong><br>
+这里的 Switch组件，当匹配到一个路由的时候，就不用往下匹配，这个也是项目优化的一个部分。</p>
+<h3 id="2store-处理">2.store 处理</h3>
+<p>store<br>
+├── index.js<br>
+└── reducer.js</p>
+<p>index.js<br>
+我这里演示的是一个reducer，如果是多个reducer 可以用 combineReducers 进行合并</p>
+<pre><code class="language-javascript">    import { createStore } from 'redux';
+    import reducer from './reducer';
+    export default createStore(reducer)
+
+</code></pre>
+<p>定义简单的action<br>
+reducer.js</p>
+<pre><code class="language-javascript">    const defaultState = {
+        count: 1,
+        pageName: "default page"
+    }
+
+    const Store = (state = defaultState, action) =&gt; {
+        switch(action.type) {
+            case 'COUNT_ADD':
+                state.count += action.value;
+                break;
+            case 'COUNT_SUB':
+                state.count -= action.value;
+                break;
+            case 'COUNT_MUTIL':
+                state.count *= action.value;
+                break;
+            default:
+                state.count = defaultState.count;
+        }
+
+        return {
+            ...state
+        }
+    }
+
+    export default  Store
+
+</code></pre>
+<h3 id="3页面路由-barjs">3.页面路由 bar.js</h3>
+<pre><code class="language-javascript">    import React from 'react';
+    import { connect } from 'react-redux';
+
+    // 组件B中获取count的值 
+    function Bar(props) {
+        const { count, pageName} = props
+        return &lt;div&gt;
+            &lt;h2&gt;Bar&lt;/h2&gt;
+            &lt;p&gt;count: {count}&lt;/p&gt;
+            &lt;p&gt;pageName: {pageName}&lt;/p&gt;
+        &lt;/div&gt;
+    }
+
+    const BarPage = connect(state =&gt; (
+        state
+    ))(Bar)
+
+    export default BarPage;
+
+</code></pre>
+<p>使用redux中 connect 将组件和store链接起来。connect 一共四个参数，可以看这个文章<a href="https://www.jianshu.com/p/4af924709b35" target="_blank">connect</a>，这个组件里 我们只用里第一个参数，将store 中的值 传递给组件，这样 Bar 函数组件props里面就有我们传进来的数据。</p>
+<h3 id="4页面路由-foojs">4.页面路由 foo.js</h3>
+<pre><code class="language-javascript">    import React, {useState, useEffect} from 'react';
+    import { connect } from 'react-redux'
+    // 组件B中获取count的值 
+    // http://localhost:4000/get/alluser 接口地址
+    const Foo =  (props) =&gt; {
+        const { count } = props
+        const [ allData, setAllData ] = useState([]);
+        useEffect(()=&gt;{
+            fetch("http://localhost:4000/get/alluser").then(res =&gt; {
+                res.json().then(data =&gt; {
+                    setAllData(data.users)
+                })
+            })
+        },[])
+        
+        return &lt;div&gt;
+            &lt;h2&gt;Foo&lt;/h2&gt;
+            &lt;p&gt;count: {count}&lt;/p&gt;
+            &lt;ul&gt;
+                {allData.map((item,index)=&gt;{
+                    return &lt;li key={index}&gt;
+                        &lt;p&gt;{item.name}&lt;/p&gt;
+                        &lt;img src={item.avatar_url} width="180"/&gt;
+                    &lt;/li&gt;
+                })}
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    }
+
+    const FooPage = connect(state =&gt; (
+        {
+            count: state.count
+        }
+    ))(Foo)
+
+    export default  FooPage
+</code></pre>
+<p><strong>注意</strong></p>
+<ol>
+<li>这里的connect 第一个参数，跟上面的例子差不多，返回的是state 里面一个具体的值，这样可以控制页面组件里的具体数据。</li>
+<li>HOOK 组件 使用useEffect 调用接口，获取数据，渲染页面。对于HOOK的使用 不是我们这节的重点，具体学习可以查看<a href="https://reactjs.bootcss.com/docs/hooks-intro.html" target="_blank">react-hook</a></li>
+</ol>
+<h3 id="5组件-commentajs">5.组件 commentA.js</h3>
+<p><strong>注意，重点</strong></p>
+<pre><code class="language-javascript">    import React from 'react';
+    import { connect } from 'react-redux'
+    import { Link } from 'react-router-dom'
+
+    const CompnentA = (props) =&gt; {
+        // const [count, SetCount] = useState(props.count)
+        const addCount = () =&gt; {
+            const  { changeCount } = props;
+            changeCount({
+                type: "COUNT_ADD",
+                value: 3,
+            })
+        }
+        const subCount = () =&gt; {
+            const  { changeCount } = props;
+            changeCount({
+                type: "COUNT_SUB",
+                value: 1,
+            })
+        }
+        const mutilCountfun = () =&gt; {
+            const {mutilCount} = props;
+            mutilCount({
+                type: 'COUNT_MUTIL',
+                value: 10
+            })
+        }
+        return &lt;div&gt;
+            &lt;h2&gt;组件A&lt;/h2&gt;
+            &lt;p&gt;&lt;button onClick={addCount}&gt;count +3&lt;/button&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;button onClick={subCount}&gt;count -1&lt;/button&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;button onClick={mutilCountfun}&gt;count * 10&lt;/button&gt;&lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;Link to="/foo"&gt;Foo 页面&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link to="/bar"&gt;Bar 页面&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link to="/"&gt;APP 主页面&lt;/Link&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    }
+
+    const Compnent = connect(null, dispatch =&gt; ({
+        changeCount: ({type, value}) =&gt; dispatch({
+            type,
+            value, 
+        }),
+        mutilCount: ({type, value}) =&gt; dispatch({
+            type,
+            value
+        })
+    }))(CompnentA)
+
+    export default Compnent
+</code></pre>
+<p>connect 第一个参数，因为不需要，我们没有传store进组件，第二个函数参数mapDispatchToProps，我们传递了一些action方法进去，这些方法会绑定到组件当中。<br>
+我们知道我们不能直接修改store 里面的数据，我们需要通过派发器（dispatch）派发一个动作（action），这也是唯一修改state的方法，<br>
+这个action方法会触发我们的reducer方法 ，根据对应的action，返回对应的state。</p>
+<h3 id="6组件-comnentbjs">6.组件 comnentB.js</h3>
+<p>通过上面 componentA的操作，我们已经修改了state 值，在componentB 中就体现出来了，代码如下</p>
+<pre><code class="language-javascript">    import React  from 'react';
+    import { connect } from 'react-redux'
+
+    // 组件B中获取count的值 
+    function CompnentB(props) {
+        const { count } = props
+        return &lt;div&gt;
+            &lt;h2&gt;组件B&lt;/h2&gt;
+            &lt;p&gt;count: {count}&lt;/p&gt;
+        &lt;/div&gt;
+    }
+
+    const CompnentBB = connect(state =&gt; (
+        {
+            count: state.count
+        }
+    ))(CompnentB)
+
+    export default CompnentBB
+
+</code></pre>
+<p>整体效果，图片如下<br>
+<img src="https://img2020.cnblogs.com/blog/1102860/202105/1102860-20210507200453625-1015577982.gif" alt="redux-demo" loading="lazy"></p>
+<h3 id="以上是redux-部分的demo，我们继续使用mobx，整个项目复制一遍，我们修改下数据管理部分和页面使用状态数据部分，其他层级不变，开始的项目结构可以看出。">以上是redux 部分的demo，我们继续使用mobx，整个项目复制一遍，我们修改下数据管理部分和页面使用状态数据部分，其他层级不变，开始的项目结构可以看出。</h3>
+<h2 id="mobx-demo">mobx-demo</h2>
+<h3 id="1-indexjs">1. index.js</h3>
+<pre><code class="language-javascript">    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import './index.css';
+    import reportWebVitals from './reportWebVitals';
+
+    import App from './App';
+    import Foo from './pages/foo';
+    import Bar from './pages/bar';
+    import { configure } from "mobx";
+    import { Provider } from "mobx-react";
+    import store from './store/index'
+    import {HashRouter, Route, Switch } from 'react-router-dom'
+    configure({ enforceActions: "observed" });
+    ReactDOM.render(
+    &lt;Provider store = {store}&gt;
+        &lt;React.StrictMode&gt;
+        &lt;h1&gt;mobx-demo&lt;/h1&gt;
+        &lt;HashRouter&gt;
+            &lt;Switch&gt;
+                &lt;Route exact path="/foo" component={Foo}/&gt;
+                &lt;Route exact path="/bar" component={Bar}/&gt;
+                &lt;Route exact path="/" component={App} /&gt;
+            &lt;/Switch&gt;
+        &lt;/HashRouter&gt;
+        &lt;/React.StrictMode&gt;
+    &lt;/Provider&gt;,
+    document.getElementById('root')
+    );
+
+    reportWebVitals();
+
+</code></pre>
+<p>这里主要是将redux 的Provider 替换成 mobx的Provider</p>
+<h3 id="2-storeindex">2. store/index</h3>
+<p>store<br>
+├── index.js<br>
+└── storeone.js</p>
+<ol>
+<li>
+<h2 id="indexjs">index.js</h2>
+<pre><code class="language-javascript">    import StoreOne from "./storeone";
+    class Store {
+        constructor() {
+        this.storeOne = StoreOne;
+        }
+    }
+    export default new Store();
+</code></pre>
+</li>
+<li>
+<h2 id="storeonejs">storeone.js</h2>
+<pre><code class="language-javascript">    import { observable, action, makeObservable } from 'mobx';
+    class appStore {
+        constructor() {
+            // 添加makeObservable mobx6.0 状态数据已经修改，但是页面没有更新，需要通过这个方法来强制更新数据
+            makeObservable(this)
+        }
+        // state
+        @observable count = 1;
+        @observable pageName = "default pageName";
+
+        // getter
+        get skinWindow() {
+            return {
+            };
+        }
+
+        // action
+        @action
+        addCount(payload) {
+            this.count += payload;
+        }
+        @action
+        subCount(payload) {
+            this.count -= payload;
+        }
+
+        @action
+        mutilCountfun(payload) {
+            this.count *= payload;
+        }
+    }
+    const as = new appStore();
+    export default as
+</code></pre>
+</li>
+</ol>
+<h3 id="3componenta-组件使用">3.componentA 组件使用</h3>
+<pre><code class="language-javascript">    import React from 'react';
+    import { Link } from 'react-router-dom'
+    import { observer, inject } from 'mobx-react';
+
+    const CompnentA = (props) =&gt; {
+        const {storeOne} =  props.store
+        const addCount = () =&gt; {
+            storeOne.addCount(3)
+        }
+        const subCount = () =&gt; {
+            storeOne.subCount(1)
+        }
+        const mutilCountfun = () =&gt; {
+            storeOne.mutilCountfun(10)
+        }
+        return &lt;div&gt;
+            &lt;h2&gt;组件A&lt;/h2&gt;
+            &lt;p&gt;&lt;button onClick={addCount}&gt;count +3&lt;/button&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;button onClick={subCount}&gt;count -1&lt;/button&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;button onClick={mutilCountfun}&gt;count * 10&lt;/button&gt;&lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;Link to="/foo"&gt;Foo 页面&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link to="/bar"&gt;Bar 页面&lt;/Link&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;Link to="/"&gt;APP 主页面&lt;/Link&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    }
+
+    export default inject('store')(observer(CompnentA));
+
+</code></pre>
+<p>inject('store')(observer(CompnentA)) =&gt; 可以理解为将store 注入 可监测的 CompnentA 中。</p>
+<p>点击事件方法 addCount 它会触发 store 里面的 action 方法，</p>
+<pre><code class="language-javascript">    addCount(payload) {
+        this.count += payload;
+    }
+</code></pre>
+<p>action 方法 修改 state上的数据，页面上的数据会及时刷新。</p>
+<p>从这里我们就可以明显看出与redux的不同，不需要通过reducer 去根据不同的type 来修改state 上的数据，而是直接通过action方法直接修改。</p>
+<h3 id="4其他页面使用mobx的姿势">4.其他页面使用mobx的姿势</h3>
+<p>export default inject('store')(observer(Bar)); =&gt; 可以理解为将store 注入 可监测的 页面 Bar 中。</p>
+<pre><code class="language-javascript">    import React  from 'react';
+    import { inject, observer } from 'mobx-react';
+
+    // 组件B中获取count的值 
+    function Bar(props) {
+        const { count, pageName} = props.store.storeOne
+        return &lt;div&gt;
+            &lt;h2&gt;Bar&lt;/h2&gt;
+            &lt;p&gt;count: {count}&lt;/p&gt;
+            &lt;p&gt;pageName: {pageName}&lt;/p&gt;
+        &lt;/div&gt;
+    }
+
+    export default inject('store')(observer(Bar));
+
+</code></pre>
+<h3 id="5-create-react-app--生成的脚手架不支持-装饰器语法的方案。">5. create-react-app  生成的脚手架不支持@ 装饰器语法的方案。</h3>
+<ol>
+<li>package.json 修改启动命令</li>
+</ol>
+<pre><code class="language-javascript">"scripts": {
+    "start": "PORT=8000 react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
+  },
+</code></pre>
+<ol start="2">
+<li>安装插件，</li>
+</ol>
+<pre><code>npm install customize-cra react-app-rewired @babel/plugin-proposal-decorators --save
+
+</code></pre>
+<ol start="3">
+<li>在src下 新建文件 config-overrides.js</li>
+</ol>
+<pre><code class="language-javascript">    const{override,addDecoratorsLegacy}=require('customize-cra');
+    module.exports=override(addDecoratorsLegacy());
+</code></pre>
+<p>整体效果图片，如下<br>
+<img src="https://img2020.cnblogs.com/blog/1102860/202105/1102860-20210507200625157-875032370.gif" alt="mobx-demo" loading="lazy"></p>
+<p>上面的演示代码已上传 [github] (<a href="https://github.com/adouwt/redux-mobx" target="_blank">https://github.com/adouwt/redux-mobx</a>), 如有错误，敬请指出，如需转载清说明出处。感谢阅读🙏</p>
+
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2021-05-07 20:24</span>&nbsp;
+<a href="https://www.cnblogs.com/adouwt/">adouwt</a>&nbsp;
+阅读(<span id="post_view_count">0</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14742503" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(14742503);return false;">收藏</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 331017, cb_blogApp = 'adouwt', cb_blogUserGuid = '70054808-a5ed-e611-845c-ac853d9f53ac';
+    var cb_entryId = 14742503, cb_entryCreatedDate = '2021-05-07 20:24', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_card1"></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 adouwt
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjtq430LDVMZpkz2FVqbS7EeeK5Lm3KqvUpgaRcYhhmdK3rp82y2oMLfRO1TmLuvlp8drcEn9F3_MgmdLHBlJP42GwQ5dXOKCOd3dKFTYWCQWaqgD_mO7zxTIAsL4wkh0HQ" />
+</body>
+</html>

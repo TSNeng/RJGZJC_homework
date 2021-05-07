@@ -1,0 +1,494 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="never" />
+    <meta name="description" content="运行时数据区域 总览 JDK. 1.7 之后版本略有不同 Java 虚拟机在执行 Java 程序的过程中会把它管理的内存划分成若干个不同的数据区域。 有必要深入了解这块的内容，因为它将决定服务器性能，" />
+    <meta property="og:description" content="运行时数据区域 总览 JDK. 1.7 之后版本略有不同 Java 虚拟机在执行 Java 程序的过程中会把它管理的内存划分成若干个不同的数据区域。 有必要深入了解这块的内容，因为它将决定服务器性能，" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>JVM虚拟机-运行时数据区概述 - 阿dun - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/aduner/custom.css?v=y81hMwV6gi7luEyB9LGZ6f3eje4=" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/SimpleMemory/bundle-SimpleMemory-mobile.min.css" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/aduner/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/aduner/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/aduner/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 547654;
+        var currentBlogApp = 'aduner';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'SimpleMemory';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2021-05-07 06:18';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    
+    
+    
+</head>
+<body class="no-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc navbar-custom">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="page_begin_html">
+        <script>loadPageBeginHtml();</script>
+    </div>
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/aduner/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/aduner/">阿dun</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/aduner/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+</li>
+<li>
+
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class = "postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/aduner/p/14742148.html">
+    <span>JVM虚拟机-运行时数据区概述</span>
+    
+
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<p></p><div class="toc"><div class="toc-container-header">目录</div><ul><li><a href="#运行时数据区域">运行时数据区域</a><ul><li><a href="#总览">总览</a></li><li><a href="#概念扫盲">概念扫盲</a><ul><li><a href="#什么是栈帧stack-frame">什么是栈帧(Stack Frame)</a></li><li><a href="#jvm常见出现两种错误">JVM常见出现两种错误</a></li></ul></li></ul></li><li><a href="#程序计数器">程序计数器</a></li><li><a href="#虚拟机栈">虚拟机栈</a><ul><li><a href="#结构">结构</a></li><li><a href="#局部变量表">局部变量表</a></li><li><a href="#方法是如何调用的">方法是如何调用的</a></li></ul></li><li><a href="#本地方法栈">本地方法栈</a></li><li><a href="#堆">堆</a><ul><li><a href="#浅堆和深堆">浅堆和深堆</a></li><li><a href="#堆的细分">堆的细分</a></li></ul></li><li><a href="#方法区">方法区</a><ul><li><a href="#方法区和永久代的关系">方法区和永久代的关系</a></li><li><a href="#为什么要将永久代替换为元空间-">为什么要将永久代替换为元空间 ?</a></li><li><a href="#运行时常量池">运行时常量池</a></li></ul></li><li><a href="#直接内存">直接内存</a></li><li><a href="#总结">总结</a></li></ul></div><p></p>
+<h1 id="运行时数据区域">运行时数据区域</h1>
+<h2 id="总览">总览</h2>
+<blockquote>
+<p>JDK. 1.7 之后版本略有不同</p>
+</blockquote>
+<p>Java 虚拟机在执行 Java 程序的过程中会把它管理的内存划分成若干个不同的数据区域。</p>
+<p>有必要深入了解这块的内容，因为它将决定服务器性能，除此之外还有助于快速定位虚拟机的相关Error。</p>
+<p>首先来对整个运行时区域有一个整体的认识。</p>
+<p>如下图</p>
+<p><strong>JDK 1.7 之前：</strong></p>
+<img src="https://tva1.sinaimg.cn/large/008i3skNly1gq9l6dltnaj30zp0u0n0v.jpg" alt="image-20210507090340086" style="zoom: 50%">
+<p><strong>JDK 1.7 以及之后（1.8正式使用，1.7还需要手动设置一下） ：</strong></p>
+<img src="https://tva1.sinaimg.cn/large/008i3skNly1gq9lhw6rkfj30uo0u0q67.jpg" alt="image-20210507091500982" style="zoom: 50%">
+<ul>
+<li>
+<p><strong>线程私有的（图中红色）</strong></p>
+</li>
+<li>
+<p><strong>线程共享的（图中绿色、蓝色）</strong></p>
+</li>
+</ul>
+<h2 id="概念扫盲">概念扫盲</h2>
+<h3 id="什么是栈帧stack-frame">什么是栈帧(Stack Frame)</h3>
+<p>每一次函数的调用，都会在调用栈上维护一个独立的栈帧，每个独立的栈帧一般包括:</p>
+<ul>
+<li>函数的返回地址和参数</li>
+<li>临时变量</li>
+<li>函数调用的上下文</li>
+</ul>
+<p>栈是从高地址向低地址延伸，一个函数的栈帧用<strong>ebp</strong> 和 <strong>esp</strong> 这两个寄存器来划定范围。</p>
+<p>ebp 指向当前的栈帧的底部，esp 始终指向栈帧的顶部。</p>
+<ul>
+<li>ebp 寄存器又被称为帧指针(Frame Pointer)</li>
+<li>esp 寄存器又被称为栈指针(Stack Pointer)</li>
+</ul>
+<h3 id="jvm常见出现两种错误">JVM常见出现两种错误</h3>
+<ul>
+<li><strong><code>StackOverFlowError</code>：</strong> 若 Java 虚拟机栈的内存大小不允许动态扩展，那么当线程请求栈的深度超过当前 Java 虚拟机栈的最大深度的时候，就抛出 <code>StackOverFlowError</code> 错误。</li>
+<li><strong><code>OutOfMemoryError</code>：</strong> Java 虚拟机栈的内存大小可以动态扩展， 如果虚拟机在动态扩展栈时无法申请到足够的内存空间，则抛出<code>OutOfMemoryError</code>异常异常。</li>
+</ul>
+<h1 id="程序计数器">程序计数器</h1>
+<p>程序计数器占用较小的一块内存空间，每条线程都需要有一个独立的程序计数器，程序计数器用于记录<strong>当前线程</strong>执行的位置，从而当线程被来回切换的时候，能够知道该线程上次运行到哪儿了。</p>
+<p><strong>字节码解释器工作时通过改变这个计数器的值，来选取下一条需要执行的字节码指令</strong>，从而实现代码的流程控制，如：顺序执行、选择、循环、异常处理。</p>
+<p>它的生命周期随着线程的创建而创建，随着线程的结束而死亡。</p>
+<blockquote>
+<p>程序计数器是<strong>唯一</strong>一个不会出现 <code>OutOfMemoryError</code> 的内存区域。</p>
+</blockquote>
+<h1 id="虚拟机栈">虚拟机栈</h1>
+<h2 id="结构">结构</h2>
+<p>虚拟机栈也是线程私有，而且生命周期与线程相同。</p>
+<p>每个Java方法在执行的时候都会创建一个栈帧，用于<strong>存储局部变量表、操作数栈、动态链接、方法出口等信息</strong>。</p>
+<img src="https://tva1.sinaimg.cn/large/008i3skNly1gq9v2qkb1zj314a0leacp.jpg" alt="image-20210507144625064" style="zoom: 50%"> 
+<h2 id="局部变量表">局部变量表</h2>
+<ul>
+<li>存放编译器可知的<strong>各种基本数据类型</strong>（boolean、byte等）</li>
+<li><strong>对象引用</strong>（reference类型，它不等同于对象本身）
+<ul>
+<li>可能是<strong>一个指向对象起始地址的引用指针</strong></li>
+<li>也可能是指向另一个<strong>代表对象的句柄</strong></li>
+<li>其他次对象相关的位置</li>
+</ul>
+</li>
+<li><strong>returnAddress类型</strong>，指向了一条字节码指令的地址</li>
+</ul>
+<h2 id="方法是如何调用的">方法是如何调用的</h2>
+<p>每一次函数调用都会有一个对应的栈帧被压入 Java 栈，每一个函数调用结束后，都会有一个栈帧被弹出。</p>
+<p>Java 方法有两种返回方式：</p>
+<ol>
+<li>return 语句。</li>
+<li>抛出异常。</li>
+</ol>
+<p>不管哪种返回方式都会导致栈帧被弹出。</p>
+<h1 id="本地方法栈">本地方法栈</h1>
+<p>主要为虚拟机使用到的<strong>Native方法服务</strong>，作用其实类似虚拟机栈，其结构也和虚拟机栈一样</p>
+<p>二者的区别是虚拟机栈为虚拟机<strong>执行字节码服务</strong>。</p>
+<p>本地方法被执行的时候，在本地方法栈也会创建一个栈帧，用于存放该本地方法的局部变量表、操作数栈、动态链接、出口信息。</p>
+<p>方法执行完毕后相应的栈帧也会出栈并释放内存空间。</p>
+<blockquote>
+<p>在 HotSpot 虚拟机中和虚拟机栈合二为一</p>
+</blockquote>
+<h1 id="堆">堆</h1>
+<p>Java 堆是<strong>所有线程共享</strong>的一块内存区域，在<strong>虚拟机启动时创建</strong>。</p>
+<p>此内存区域的目的是<strong>存放对象实例</strong>，<strong>几乎所有</strong>的对象实例以及数组都在这里分配内存。</p>
+<p>说是几乎是因为由于多项技术的进步与成熟，如：逃逸分析技术逐渐成熟，栈上分配、标量替换优化技术，一些对象也可能在栈上分配内存。</p>
+<p>Java 堆是JVM中最大的一块内存区域，也是是垃圾回收（Garbage Collected）管理的主要区域，故又叫做<strong>GC堆</strong>。</p>
+<h2 id="浅堆和深堆">浅堆和深堆</h2>
+<p>浅堆和深堆是两个非常重要的概念，理解他们之前需要先了解什么是保留集。</p>
+<p><strong>保留集</strong>，即为<strong>只</strong>被<strong>单一对象</strong>所持有的<strong>对象的集合</strong>，如图：</p>
+<img src="https://tva1.sinaimg.cn/large/008i3skNly1gq9wmet2qtj30v00iaju5.jpg" alt="image-20210507154003916" style="zoom: 50%">
+<ul>
+<li>浅堆是指一个对象所消耗的内存。如上图</li>
+<li>深堆是指对象的<strong>保留集中所有的对象</strong>的<strong>浅堆大小之和</strong>。</li>
+</ul>
+<h2 id="堆的细分">堆的细分</h2>
+<blockquote>
+<p>HotSpot中还有永久代的概念，不过已经是历史了。</p>
+<p>JDK 8 HotSpot 的永久代被彻底移除，取而代之是元空间，元空间使用的是直接内存。</p>
+</blockquote>
+<p>现在垃圾收集器基本都采用分代垃圾收集算法，所以 Java 堆还可以细分，堆分为新生代（占堆1/3），老生代(占堆2/3)</p>
+<ul>
+<li>新生代（内部比例8:1:1）
+<ul>
+<li>Eden 空间</li>
+<li>From Survivor 空间</li>
+<li>To Survivor 空间</li>
+</ul>
+</li>
+<li>老年代</li>
+</ul>
+<p><strong>进一步划分的目的是更好地回收内存，或者更快地分配内存。</strong></p>
+<p><strong>流程：</strong></p>
+<ul>
+<li>大多数情况，对象都会首先在 Eden 区域分配</li>
+<li>在一次新生代垃圾回收后，如果对象还存活，则会进入两个Survivor中的一个，然后对象的年龄加 1</li>
+<li>它的年龄增加到年龄阈值（默认为 15 ），就会被晋升到老年代中</li>
+</ul>
+<blockquote>
+<p>对象晋升到老年代的年龄阈值，可以通过参数 <code>-XX:MaxTenuringThreshold</code> 设置</p>
+</blockquote>
+<h1 id="方法区">方法区</h1>
+<p>方法区与 Java 堆一样，也是所有线程共享的。</p>
+<p>主要用于存储类的信息、常量池、方法数据、方法代码等。</p>
+<p>方法区<strong>逻辑上属于堆的一部分</strong>，但是为了与堆进行区分，有一个别名叫做 <strong>Non-Heap（非堆）</strong></p>
+<p>该区域的<strong>内存回收目标</strong>主要针对<strong>常量池的回收</strong>和<strong>类型的卸载</strong>。</p>
+<p>在HotSpot虚拟机中，用永久代来实现方法区，但是这样容易遇到内存溢出的问题，所以在Java 8之后就取消了方法区。</p>
+<h2 id="方法区和永久代的关系">方法区和永久代的关系</h2>
+<p>摘自<strong>《深入理解Java虚拟机》</strong>第三版</p>
+<blockquote>
+<p>《Java 虚拟机规范》只是规定了有方法区这么个概念和它的作用，并没有规定如何去实现它。那么，在不同的 JVM 上方法区的实现肯定是不同的了。 <strong>方法区和永久代的关系很像 Java 中接口和类的关系，类实现了接口，而永久代就是 HotSpot 虚拟机对虚拟机规范中方法区的一种实现方式。</strong> 也就是说，永久代是 HotSpot 的概念，方法区是 Java 虚拟机规范中的定义，是一种规范，而永久代是一种实现，一个是标准一个是实现，其他的虚拟机实现并没有永久代这一说法。</p>
+</blockquote>
+<h2 id="为什么要将永久代替换为元空间-">为什么要将永久代替换为元空间 ?</h2>
+<ul>
+<li>永久代内存有一个JVM固定的上限，经常会出现<code>OutOfMemoryError</code>。</li>
+<li>元空间使用的是直接内存，受本机可用内存的限制，虽然元空间仍旧可能溢出，但是比原来出现的几率会更小。</li>
+<li>元空间里面存放的是类的元数据，由系统的实际可用空间来控制，这样能加载的类就变多了。</li>
+<li>在 JDK8，合并 HotSpot 和 JRockit 的代码时，JRockit 没有永久代，如果强行保留实现起来困难重重。</li>
+</ul>
+<blockquote>
+<p>当元空间溢出时会得到如下错误： <code>java.lang.OutOfMemoryError: MetaSpace</code></p>
+</blockquote>
+<h2 id="运行时常量池">运行时常量池</h2>
+<p>运行时常量池用于存放<strong>编译期间</strong>生成的<strong>各种字面量</strong>和<strong>符号引用</strong>，是方法区的一部分。</p>
+<p>运行时常量池用来<strong>动态获取类信息</strong>，包括：</p>
+<ul>
+<li>Class文件元信息描述</li>
+<li>编译后的代码数据</li>
+<li>引用类型数据</li>
+<li>类文件常量池</li>
+</ul>
+<p>运行时常量池是在类加载完成之后，将每个Class常量池中的符号引用值转存到运行时常量池中。</p>
+<p>每个Class都有一个运行时常量池，类在解析之后将<strong>符号引用替换成直接引用</strong>，与<strong>全局常量池中的引用值保持一致</strong>。</p>
+<p>运行时常量池相的另外一个重要特性是<strong>具备动态性</strong>，Java语言并不要求常量一定只有编译器才能产生，也就是并非预置入Class文件中的常量池的内容才能进入方法区运行时常量池，运行期间也可能将新的常量放入池中。</p>
+<h1 id="直接内存">直接内存</h1>
+<p>直接内存并<strong>不是虚拟机运行时数据区的一部分</strong>，也不是虚拟机规范中定义的内存区域，但是这部分内存也被频繁地使用。</p>
+<p>使用的方式是通过 JDK1.4 中加入的<code>NIO(New Input/Output)</code>类，它可以直接使用 Native 函数库<strong>直接分配堆外内存</strong>。</p>
+<p>通过一个存储在 Java 堆中的 <code>DirectByteBuffer</code> 对象作为这块内存的<strong>引用</strong>进行操作。</p>
+<p>避免了在 <strong>Java 堆</strong>和 <strong>Native 堆</strong>之间来回复制数据，在一些场景中显著提高了性能，</p>
+<p>本机直接内存的分配不受 Java 堆的限制，但受到<strong>本机总内存大小</strong>，以及<strong>处理器寻址空间的限制</strong>，因此也可能导致 <code>OutOfMemoryError</code> 错误出现。</p>
+<h1 id="总结">总结</h1>
+<p>以上的各个分区，各司其职，是了解Java虚拟机的基础。</p>
+<p>理解各区域的指责和作用，对JVM后续的学习有非常大的帮助，如果这些没搞懂，后面学起来是真头大😮‍💨。</p>
+<p>结合图例，相信可以较为清晰了理解各分区的架构和指责，觉得有用欢迎点个推荐、点个赞。</p>
+<blockquote>
+<p>参考：</p>
+<p>《深入理解Java虚拟机》第三版 ——周志明  （吹爆）</p>
+</blockquote>
+
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2021-05-07 18:18</span>&nbsp;
+<a href="https://www.cnblogs.com/aduner/">阿dun</a>&nbsp;
+阅读(<span id="post_view_count">26</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14742148" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(14742148);return false;">收藏</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 547654, cb_blogApp = 'aduner', cb_blogUserGuid = '0739fb85-9a2b-4a04-efdf-08d7065d5605';
+    var cb_entryId = 14742148, cb_entryCreatedDate = '2021-05-07 18:18', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_card1"></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 阿dun
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    <div id="page_end_html">
+        <script src="https://blog-static.cnblogs.com/files/aduner/line.js" color="52, 152, 219" opacity="0.5" count="50" zindex="-3">
+</script>
+<script type="text/javascript">
+$(function(){
+    $('#blogTitle h1').addClass('bounceInLeft animated');
+    $('#blogTitle h2').addClass('bounceInRight animated');
+    // 删除反对按钮
+    $('.buryit').remove();
+    initCommentData();
+});
+function initCommentData() {
+    $('.feedbackItem').each(function() {
+        var text = $(this).find('.feedbackListSubtitle .layer').text();
+        // 将楼层信息放到data里面
+        // $(this).find('.blog_comment_body').attr('data-louceng', text.replace(/^#/g, ''));
+        if($(this).find('.feedbackListSubtitle .louzhu').length>0) $(this).addClass('myself');
+        var avatar = $(this).find('> .feedbackCon > span').html() || 'http://pic.cnitblog.com/face/sample_face.gif';
+        $(this).find('> .feedbackCon > .blog_comment_body').append('<img class="user-avatar" src="'+avatar+'"/>')
+    });
+}
+$(document).ajaxComplete(function(event, xhr, settings) {
+  // 监听获取评论ajax事件
+  if(settings.url.indexOf('/mvc/blog/GetComments.aspx') >= 0) {
+    initCommentData();
+  }
+});
+</script>
+
+<script src="https://files.cnblogs.com/files/hafiz/jquery-migrate-1.2.1.js"></script>
+<div id="scrollTop" style="display:none;">
+      <div class="level-2"></div>
+      <div class="level-3"></div>
+</div>
+<script src="https://files.cnblogs.com/files/hafiz/scroll2top.js"></script>
+<script type="text/javascript">
+    UI.global_search();
+    var uvOptions = {};
+    // !important
+    (function() {
+        initScrollTop();
+    })();
+</script>
+
+<script src="https://files.cnblogs.com/files/miangao/bootstrap.min.js"></script>
+
+<!--图片放大功能-->
+<script type="text/javascript" src="https://blog-static.cnblogs.com/files/jajian/img.enlarge.js"></script>
+<div id="outerdiv" style="text-align: center;position: fixed;z-index: 1000;top: 0;left: 0;
+    width: 100%;height: 100%;background-color: rgba(255,255,255,.9);">
+    <img id="bigimg" style="height: auto;width: 65%;border: 5px solid #7e8c8d; 
+        margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;" src="" />
+</div>
+
+<script type="text/javascript" language="javascript">
+　　//Setting ico for cnblogs
+　　var linkObject = document.createElement('link');
+　　linkObject.rel = "shortcut icon";
+　　linkObject.href = "https://blog-static.cnblogs.com/files/aduner/%E7%88%AC%E8%99%AB.ico";
+　　document.getElementsByTagName("head")[0].appendChild(linkObject);
+</script>
+    </div>
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjsAj0DilNR8IPd2GacDf1-5Vu-uC17Y1l1odyTCYUi-VFdFH-AlBilNgK60l3KsPNcWcZxtUFXCMaANeJh8mhrvYN0OihTe-Guvyl0vT5QUJSFQcGs4joiTeh610ZpX0u0" />
+</body>
+</html>

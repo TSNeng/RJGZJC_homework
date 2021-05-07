@@ -1,0 +1,832 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <title>首页 - 班级博客 - 博客园</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="shortcut icon" href="//common.cnblogs.com/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/bundles/site.overwrite.min.css?v=WkwYmip9JFY4zyIR01J9aR31HiheUNHQX7HH-IJKhLo" />
+    
+    <link rel="stylesheet" href="/bundles/site.square.min.css?v=U1m2qKZjys7lCKX28NQY12orGaGWAE6dA_O_GOpuGso" />
+    
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/amazeui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.AMUI.progress.start();
+        });
+
+        $(window).load(function () {
+            $.AMUI.progress.done();
+        });
+
+        function login(anchor) {
+            var returnUri = location.href;
+            if (anchor && returnUri.indexOf("#" + anchor) < 0) {
+                returnUri += "#" + anchor;
+            }
+            location.href = "https://account.cnblogs.com/signin?returnUrl=" + encodeURIComponent(returnUri);
+            return false;
+        }
+
+        function logout() {
+            if (confirm("确认退出吗？")) {
+                $.ajax({
+                    type: "POST",
+                    url: "https://account.cnblogs.com/signout",
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    complete: function (xhr) {
+                        if (xhr.status == 200) {
+                            location.reload(true);
+                        }
+                    },
+                });
+            }
+            return false;
+        }
+
+    </script>
+</head>
+<body>
+    
+    <header class="am-topbar am-topbar-fixed-top">
+        <div class="am-container">
+            <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only" data-am-collapse="{target: '#collapse-head'}">
+                <span class="am-sr-only">导航切换</span><span class="iconfont">&#xe61e;</span>
+            </button>
+            <div class="am-collapse am-topbar-collapse" id="collapse-head">
+                <ul class="am-nav am-nav-pills am-topbar-nav" id="navigation-bar">
+                    <li class="am-active">
+                        <a href="/">首页</a>
+                    </li>
+                    <li class="">
+                        <a href="/campus">校区</a>
+                    </li>
+                    <li class="">
+                        <a href="/schoolclass">班级</a>
+                    </li>
+                    <li class="">
+                        <a href="/posts">博文</a>
+                    </li>
+                    <li class="">
+                        <a href="/comment">评论</a>
+                    </li>
+                    <li class="">
+                        <a href="/homework">作业</a>
+                    </li>
+                    <li class="new-entry">
+                        <a href="//academy.cnblogs.com">学习计划</a>
+                    </li>
+                </ul>
+                <div class="am-topbar-right">
+        <button onclick="window.location.href='//www.cnblogs.com'" class="am-btn am-btn-success am-topbar-btn am-btn-sm"><span class="iconfont">&#xe63e;</span> 博客园</button>
+    <button onclick="login()" class="am-btn am-btn-primary am-topbar-btn am-btn-sm"><span class="iconfont">&#xe60b;</span> 登录</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+
+
+<div class="am-g am-container wrapper">
+    <div class="am-u-md-12">
+            <div id="schoolclass">
+                <h1 class="titlebar am-margin-top-sm">
+                    活跃班级<span class="iconfont titlebar-icon">&#xe610;</span>
+                    <span class="titlebar-line"></span>
+                    <a href="/schoolclass?sort=active" title="更多班级" class="titlebar-more">
+                        更多 &gt;
+                    </a>
+                </h1>
+                <ul class="am-avg-lg-3 am-margin-top-xl am-margin-bottom-lg">
+                        <li>
+                            <div class="am-gallery-item square-class-list">
+                                <div class="list-avatar">
+                                    <a href="/campus/syhgky/MyClass" target="_blank">
+                                        <img class="am-circle" src="//common.cnblogs.com/images/icons/edu-class2.png">
+                                    </a>
+                                </div>
+                                <ul>
+                                    <li class="of-hidden">
+                                        <strong>
+                                            <a href="/campus/syhgky/MyClass" title="计算机191-5" target="_blank">计算机191-5</a>
+                                        </strong>
+                                    </li>
+                                    <li>
+                                        <a class="am-badge am-badge-success am-round" href="/campus/syhgky">沈阳化工大学科亚学院</a>
+                                    </li>
+                                    <li>
+                                        <a class="am-badge am-badge-success am-round" href="/campus/syhgky">信息与控制工程系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="am-gallery-item square-class-list">
+                                <div class="list-avatar">
+                                    <a href="/campus/gzcc/se1802" target="_blank">
+                                        <img class="am-circle" src="//common.cnblogs.com/images/icons/edu-class4.png">
+                                    </a>
+                                </div>
+                                <ul>
+                                    <li class="of-hidden">
+                                        <strong>
+                                            <a href="/campus/gzcc/se1802" title="软件1802" target="_blank">软件1802</a>
+                                        </strong>
+                                    </li>
+                                    <li>
+                                        <a class="am-badge am-badge-success am-round" href="/campus/gzcc">广州商学院</a>
+                                    </li>
+                                    <li>
+                                        <a class="am-badge am-badge-success am-round" href="/campus/gzcc"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="am-gallery-item square-class-list">
+                                <div class="list-avatar">
+                                    <a href="/campus/zswxy/computer-science-class1-2018" target="_blank">
+                                        <img class="am-circle" src="//common.cnblogs.com/images/icons/edu-class1.png">
+                                    </a>
+                                </div>
+                                <ul>
+                                    <li class="of-hidden">
+                                        <strong>
+                                            <a href="/campus/zswxy/computer-science-class1-2018" title="软工-2018级计算机1班" target="_blank">软工-2018级计算机1班</a>
+                                        </strong>
+                                    </li>
+                                    <li>
+                                        <a class="am-badge am-badge-success am-round" href="/campus/zswxy">中南林业科技大学涉外学院</a>
+                                    </li>
+                                    <li>
+                                        <a class="am-badge am-badge-success am-round" href="/campus/zswxy">信息与工程学院</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="am-gallery-item square-class-list">
+                                <div class="list-avatar">
+                                    <a href="/campus/zswxy/CST2020-1" target="_blank">
+                                        <img class="am-circle" src="//common.cnblogs.com/images/icons/edu-class2.png">
+                                    </a>
+                                </div>
+                                <ul>
+                                    <li class="of-hidden">
+                                        <strong>
+                                            <a href="/campus/zswxy/CST2020-1" title="2020级计算机1班" target="_blank">2020级计算机1班</a>
+                                        </strong>
+                                    </li>
+                                    <li>
+                                        <a class="am-badge am-badge-success am-round" href="/campus/zswxy">中南林业科技大学涉外学院</a>
+                                    </li>
+                                    <li>
+                                        <a class="am-badge am-badge-success am-round" href="/campus/zswxy">信息与工程学院</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="am-gallery-item square-class-list">
+                                <div class="list-avatar">
+                                    <a href="/campus/zswxy/computer-science-class2-2018" target="_blank">
+                                        <img class="am-circle" src="//common.cnblogs.com/images/icons/edu-class1.png">
+                                    </a>
+                                </div>
+                                <ul>
+                                    <li class="of-hidden">
+                                        <strong>
+                                            <a href="/campus/zswxy/computer-science-class2-2018" title="软工-2018级计算机2班" target="_blank">软工-2018级计算机2班</a>
+                                        </strong>
+                                    </li>
+                                    <li>
+                                        <a class="am-badge am-badge-success am-round" href="/campus/zswxy">中南林业科技大学涉外学院</a>
+                                    </li>
+                                    <li>
+                                        <a class="am-badge am-badge-success am-round" href="/campus/zswxy">信息与工程学院</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="am-gallery-item square-class-list">
+                                <div class="list-avatar">
+                                    <a href="/campus/zswxy/computer-science-class4-2018" target="_blank">
+                                        <img class="am-circle" src="//common.cnblogs.com/images/icons/edu-class1.png">
+                                    </a>
+                                </div>
+                                <ul>
+                                    <li class="of-hidden">
+                                        <strong>
+                                            <a href="/campus/zswxy/computer-science-class4-2018" title="软工-2018级计算机4班" target="_blank">软工-2018级计算机4班</a>
+                                        </strong>
+                                    </li>
+                                    <li>
+                                        <a class="am-badge am-badge-success am-round" href="/campus/zswxy">中南林业科技大学涉外学院</a>
+                                    </li>
+                                    <li>
+                                        <a class="am-badge am-badge-success am-round" href="/campus/zswxy">信息与工程学院</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                </ul>
+            </div>
+            <div id="blogpost">
+                <h1 class="titlebar">
+                    作业博文<span class="iconfont titlebar-icon">&#xe60c;</span>
+                    <span class="titlebar-line"></span>
+                    <a href="/posts?filter=quality" title="更多博文" class="titlebar-more">
+                        更多 &gt;
+                    </a>
+                </h1>
+                <div class="am-u-md-12">
+                    <ul class="am-list">
+                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                    <h3 class="am-list-item-hd">
+                                        <a href="https://www.cnblogs.com/peg-henhen/p/14741581.html" target="_blank">java第九次作业</a>
+                                    </h3>
+                                        <div class="am-u-sm-12 am-padding-left-0 am-list-main">
+                                            <div class="am-list-item-text description">1.编写一个方法，实现冒泡排序（由小到大），并调用该方法 import java.util.Scanner; public class px { // 编写一个方法，实现冒泡排序（由小到大），并调用该方法 public static void sort() { Scanner input = new </div>
+                                        </div>
+                                    <div class="am-u-sm-12 am-text-sm">
+                                        <div class="am-fr">
+                                            <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/syhgky/MyClass" target="_blank"> 计算机191-5(沈阳化工大学科亚学院 - 信息与控制工程系)</a>&nbsp;
+                                            <i class="iconfont">&#xe614;</i><a title="发布人" href="https://www.cnblogs.com/peg-henhen/" target="_blank"> 小猪哏哏</a>&nbsp;
+                                            <span title="发布时间">
+                                                <i class="iconfont">&#xe616;</i> 2021-05-07 22:27
+                                            </span>&nbsp;
+                                            <span title="评论">
+                                                <i class="iconfont">&#xe606;</i> 0
+                                            </span>&nbsp;
+                                            <span title="阅读">
+                                                <i class="iconfont">&#xe641;</i> 3
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                    <h3 class="am-list-item-hd">
+                                        <a href="https://www.cnblogs.com/Frank05/p/14742948.html" target="_blank">06 Spark SQL 及其DataFrame的基本操作</a>
+                                    </h3>
+                                        <div class="am-u-sm-12 am-padding-left-0 am-list-main">
+                                            <div class="am-list-item-text description">1.Spark SQL出现的 原因是什么? Spark SQL是Spark用来处理结构化数据的一个模块，它提供了一个叫作Data Frame的编程抽象结构数据模型(即带有Schema信息的RDD)，Spark SQL作为分布式SQL查询引擎，让用户可以通过SQL、DataFrame API和Data </div>
+                                        </div>
+                                    <div class="am-u-sm-12 am-text-sm">
+                                        <div class="am-fr">
+                                            <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/gzcc/se1802" target="_blank"> 软件1802(广州商学院)</a>&nbsp;
+                                            <i class="iconfont">&#xe614;</i><a title="发布人" href="https://www.cnblogs.com/Frank05/" target="_blank"> Frank05</a>&nbsp;
+                                            <span title="发布时间">
+                                                <i class="iconfont">&#xe616;</i> 2021-05-07 22:27
+                                            </span>&nbsp;
+                                            <span title="评论">
+                                                <i class="iconfont">&#xe606;</i> 0
+                                            </span>&nbsp;
+                                            <span title="阅读">
+                                                <i class="iconfont">&#xe641;</i> 3
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                    <h3 class="am-list-item-hd">
+                                        <a href="https://www.cnblogs.com/QQ70/p/14742891.html" target="_blank">第十周作业</a>
+                                    </h3>
+                                        <div class="am-u-sm-12 am-padding-left-0 am-list-main">
+                                            <div class="am-list-item-text description">1.编写一个方法，实现冒泡排序（由小到大），并调用该方法 package School.Day10; public class Test01 { public static void main(String[] args) { int[] x = {9,1,2,7,6,3,4,10,8,5}; ma </div>
+                                        </div>
+                                    <div class="am-u-sm-12 am-text-sm">
+                                        <div class="am-fr">
+                                            <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/syhgky/MyClass" target="_blank"> 计算机191-5(沈阳化工大学科亚学院 - 信息与控制工程系)</a>&nbsp;
+                                            <i class="iconfont">&#xe614;</i><a title="发布人" href="https://www.cnblogs.com/QQ70/" target="_blank"> 李芊</a>&nbsp;
+                                            <span title="发布时间">
+                                                <i class="iconfont">&#xe616;</i> 2021-05-07 22:15
+                                            </span>&nbsp;
+                                            <span title="评论">
+                                                <i class="iconfont">&#xe606;</i> 0
+                                            </span>&nbsp;
+                                            <span title="阅读">
+                                                <i class="iconfont">&#xe641;</i> 3
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                    <h3 class="am-list-item-hd">
+                                        <a href="https://www.cnblogs.com/qmt529/p/14742865.html" target="_blank">Java第十次作业</a>
+                                    </h3>
+                                        <div class="am-u-sm-12 am-padding-left-0 am-list-main">
+                                            <div class="am-list-item-text description">1.编写一个方法，实现冒泡排序（由小到大），并调用该方法 package Homework; import java.util.Scanner; public class H1 { public static void mppx() { Scanner input=new Scanner(Syste </div>
+                                        </div>
+                                    <div class="am-u-sm-12 am-text-sm">
+                                        <div class="am-fr">
+                                            <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/syhgky/MyClass" target="_blank"> 计算机191-5(沈阳化工大学科亚学院 - 信息与控制工程系)</a>&nbsp;
+                                            <i class="iconfont">&#xe614;</i><a title="发布人" href="https://www.cnblogs.com/qmt529/" target="_blank"> 曲蔓特</a>&nbsp;
+                                            <span title="发布时间">
+                                                <i class="iconfont">&#xe616;</i> 2021-05-07 22:07
+                                            </span>&nbsp;
+                                            <span title="评论">
+                                                <i class="iconfont">&#xe606;</i> 0
+                                            </span>&nbsp;
+                                            <span title="阅读">
+                                                <i class="iconfont">&#xe641;</i> 0
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                    <h3 class="am-list-item-hd">
+                                        <a href="https://www.cnblogs.com/jkafhdhdb/p/14742817.html" target="_blank">Java第十周作业</a>
+                                    </h3>
+                                        <div class="am-u-sm-12 am-padding-left-0 am-list-main">
+                                            <div class="am-list-item-text description">1.编写一个方法，实现冒泡排序（由小到大），并调用该方法 package MianXiang; import java.util.Scanner; public class M1 { public static void mp() { Scanner input = new Scanner(Syst </div>
+                                        </div>
+                                    <div class="am-u-sm-12 am-text-sm">
+                                        <div class="am-fr">
+                                            <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/syhgky/MyClass" target="_blank"> 计算机191-5(沈阳化工大学科亚学院 - 信息与控制工程系)</a>&nbsp;
+                                            <i class="iconfont">&#xe614;</i><a title="发布人" href="https://www.cnblogs.com/jkafhdhdb/" target="_blank"> 张秋菊</a>&nbsp;
+                                            <span title="发布时间">
+                                                <i class="iconfont">&#xe616;</i> 2021-05-07 21:56
+                                            </span>&nbsp;
+                                            <span title="评论">
+                                                <i class="iconfont">&#xe606;</i> 0
+                                            </span>&nbsp;
+                                            <span title="阅读">
+                                                <i class="iconfont">&#xe641;</i> 3
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                    <h3 class="am-list-item-hd">
+                                        <a href="https://www.cnblogs.com/duobleLi/p/14742796.html" target="_blank">6 20210427-1 团队作业2—需求分析</a>
+                                    </h3>
+                                        <div class="am-u-sm-12 am-padding-left-0 am-list-main">
+                                            <div class="am-list-item-text description">这个作业属于哪个课程 软工2018级计算机 这个作业要求在哪里 6 20210427-1 团队作业2—需求分析 这个作业的目标 分析模型 小组的组号和队名 7 doubleLi 小组的队长姓名 李斯宇 ####名称：《知语》项目需求分析模型 ####一、非功能性需求 可靠性 ：成熟性，容错性，易恢复 </div>
+                                        </div>
+                                    <div class="am-u-sm-12 am-text-sm">
+                                        <div class="am-fr">
+                                            <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/zswxy/computer-science-class1-2018" target="_blank"> 软工-2018级计算机1班(中南林业科技大学涉外学院 - 信息与工程学院)</a>&nbsp;
+                                            <i class="iconfont">&#xe614;</i><a title="发布人" href="https://www.cnblogs.com/duobleLi/" target="_blank"> double李</a>&nbsp;
+                                            <span title="发布时间">
+                                                <i class="iconfont">&#xe616;</i> 2021-05-07 21:51
+                                            </span>&nbsp;
+                                            <span title="评论">
+                                                <i class="iconfont">&#xe606;</i> 0
+                                            </span>&nbsp;
+                                            <span title="阅读">
+                                                <i class="iconfont">&#xe641;</i> 0
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                    <h3 class="am-list-item-hd">
+                                        <a href="https://www.cnblogs.com/sr0614/p/14742778.html" target="_blank">第十周作业</a>
+                                    </h3>
+                                        <div class="am-u-sm-12 am-padding-left-0 am-list-main">
+                                            <div class="am-list-item-text description">1.编写一个方法，实现冒泡排序（由小到大），并调用该方法 public class mymethod { public static void mppx(int a[]) { for (int i = 0; i &lt; a.length - 1; i&#x2B;&#x2B;) { for (int j = 0; j &lt; a </div>
+                                        </div>
+                                    <div class="am-u-sm-12 am-text-sm">
+                                        <div class="am-fr">
+                                            <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/syhgky/MyClass" target="_blank"> 计算机191-5(沈阳化工大学科亚学院 - 信息与控制工程系)</a>&nbsp;
+                                            <i class="iconfont">&#xe614;</i><a title="发布人" href="https://www.cnblogs.com/sr0614/" target="_blank"> sr0614</a>&nbsp;
+                                            <span title="发布时间">
+                                                <i class="iconfont">&#xe616;</i> 2021-05-07 21:46
+                                            </span>&nbsp;
+                                            <span title="评论">
+                                                <i class="iconfont">&#xe606;</i> 0
+                                            </span>&nbsp;
+                                            <span title="阅读">
+                                                <i class="iconfont">&#xe641;</i> 0
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                    <h3 class="am-list-item-hd">
+                                        <a href="https://www.cnblogs.com/luckyjie/p/14742722.html" target="_blank">06 Spark SQL 及其DataFrame的基本操作</a>
+                                    </h3>
+                                        <div class="am-u-sm-12 am-padding-left-0 am-list-main">
+                                            <div class="am-list-item-text description">1.Spark SQL出现的 原因是什么? Spark SQL是Spark用来处理结构化数据的一个模块，它提供了一个叫作Data Frame的编程抽象结构数据模型(即带有Schema信息的RDD)，Spark SQL作为分布式SQL查询引擎，让用户可以通过SQL、DataFrame API和Data </div>
+                                        </div>
+                                    <div class="am-u-sm-12 am-text-sm">
+                                        <div class="am-fr">
+                                            <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/gzcc/se1802" target="_blank"> 软件1802(广州商学院)</a>&nbsp;
+                                            <i class="iconfont">&#xe614;</i><a title="发布人" href="https://www.cnblogs.com/luckyjie/" target="_blank"> Jay杰</a>&nbsp;
+                                            <span title="发布时间">
+                                                <i class="iconfont">&#xe616;</i> 2021-05-07 21:33
+                                            </span>&nbsp;
+                                            <span title="评论">
+                                                <i class="iconfont">&#xe606;</i> 0
+                                            </span>&nbsp;
+                                            <span title="阅读">
+                                                <i class="iconfont">&#xe641;</i> 1
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                    <h3 class="am-list-item-hd">
+                                        <a href="https://www.cnblogs.com/diaobingshanbian13/p/14742686.html" target="_blank">第十周作业</a>
+                                    </h3>
+                                        <div class="am-u-sm-12 am-padding-left-0 am-list-main">
+                                            <div class="am-list-item-text description">1.编写一个方法，实现冒泡排序（由小到大），并调用该方法 import java.util.Scanner; public class maopao { public static void maopao() { Scanner input = new Scanner(System.in); Sys </div>
+                                        </div>
+                                    <div class="am-u-sm-12 am-text-sm">
+                                        <div class="am-fr">
+                                            <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/syhgky/MyClass" target="_blank"> 计算机191-5(沈阳化工大学科亚学院 - 信息与控制工程系)</a>&nbsp;
+                                            <i class="iconfont">&#xe614;</i><a title="发布人" href="https://www.cnblogs.com/diaobingshanbian13/" target="_blank"> 卞十三</a>&nbsp;
+                                            <span title="发布时间">
+                                                <i class="iconfont">&#xe616;</i> 2021-05-07 21:21
+                                            </span>&nbsp;
+                                            <span title="评论">
+                                                <i class="iconfont">&#xe606;</i> 0
+                                            </span>&nbsp;
+                                            <span title="阅读">
+                                                <i class="iconfont">&#xe641;</i> 0
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                    <h3 class="am-list-item-hd">
+                                        <a href="https://www.cnblogs.com/ghn52446/p/14742665.html" target="_blank">C语言II博客作业04</a>
+                                    </h3>
+                                        <div class="am-u-sm-12 am-padding-left-0 am-list-main">
+                                            <div class="am-list-item-text description">| 这个作业属于哪个课程 | https://edu.cnblogs.com/campus/zswxy/CST2020-1 | | | | | 这个作业要求在哪里 | https://edu.cnblogs.com/campus/zswxy/CST2020-1/homework/11990 | | </div>
+                                        </div>
+                                    <div class="am-u-sm-12 am-text-sm">
+                                        <div class="am-fr">
+                                            <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/zswxy/CST2020-1" target="_blank"> 2020级计算机1班(中南林业科技大学涉外学院 - 信息与工程学院)</a>&nbsp;
+                                            <i class="iconfont">&#xe614;</i><a title="发布人" href="https://www.cnblogs.com/ghn52446/" target="_blank"> 高慧娜</a>&nbsp;
+                                            <span title="发布时间">
+                                                <i class="iconfont">&#xe616;</i> 2021-05-07 21:18
+                                            </span>&nbsp;
+                                            <span title="评论">
+                                                <i class="iconfont">&#xe606;</i> 0
+                                            </span>&nbsp;
+                                            <span title="阅读">
+                                                <i class="iconfont">&#xe641;</i> 0
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="homework">
+                <h1 class="titlebar">
+                    作业动态<span class="iconfont titlebar-icon">&#xe603;</span>
+                    <span class="titlebar-line"></span>
+                    <a href="/homework" title="更多作业" class="titlebar-more">
+                        更多 &gt;
+                    </a>
+                </h1>
+                <div class="am-u-md-12">
+                    <ul class="am-list">
+                            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                <h3 class="am-list-item-hd">
+                                    <a href="/campus/gzcc/se1802/homework/12000" target="_blank">06 Spark SQL 及其DataFrame的基本操作</a>
+                                </h3>
+                                    <div class="feed-avatar">
+                                        <a href="//www.cnblogs.com/MissDu/" target="_blank">
+                                            <img class="am-img-thumbnail" src="//pic.cnblogs.com/avatar/732808/20150402093952.png">
+                                        </a>
+                                    </div>
+                                    <div class="avatar-item-text">
+                                        <div class="am-list-item-text description">1.Spark SQL出现的 原因是什么? 2.用spark.read 创建DataFrame 3.观察从不同类型文件创建DataFrame有什么异同? 4.观察Spark的DataFrame与Python pandas的DataFrame有什么异同？ Spark SQL DataFrame的基本操</div>
+                                    </div>
+                                <div class="am-u-sm-12 am-text-sm">
+                                    <div class="am-fr">
+                                        <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/gzcc/se1802" target="_blank"> 软件1802(广州商学院)</a>&nbsp;
+                                        <i class="iconfont">&#xe614;</i><a title="发布人" href="//www.cnblogs.com/MissDu/" target="_blank"> MissDu</a>&nbsp;
+                                        <span title="发布时间">
+                                            <i class="iconfont">&#xe616;</i> 2021-05-07 16:00
+                                        </span>&nbsp;
+                                        <span title="提交">
+                                            <i class="iconfont">&#xe600;</i> 11
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                <h3 class="am-list-item-hd">
+                                    <a href="/campus/gzcc/SE1801/homework/11999" target="_blank">06 Spark SQL 及其DataFrame的基本操作</a>
+                                </h3>
+                                    <div class="feed-avatar">
+                                        <a href="//www.cnblogs.com/MissDu/" target="_blank">
+                                            <img class="am-img-thumbnail" src="//pic.cnblogs.com/avatar/732808/20150402093952.png">
+                                        </a>
+                                    </div>
+                                    <div class="avatar-item-text">
+                                        <div class="am-list-item-text description">1.Spark SQL出现的 原因是什么? 2.用spark.read 创建DataFrame 3.观察从不同类型文件创建DataFrame有什么异同? 4.观察Spark的DataFrame与Python pandas的DataFrame有什么异同？ Spark SQL DataFrame的基本操</div>
+                                    </div>
+                                <div class="am-u-sm-12 am-text-sm">
+                                    <div class="am-fr">
+                                        <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/gzcc/SE1801" target="_blank"> 软件1801(广州商学院)</a>&nbsp;
+                                        <i class="iconfont">&#xe614;</i><a title="发布人" href="//www.cnblogs.com/MissDu/" target="_blank"> MissDu</a>&nbsp;
+                                        <span title="发布时间">
+                                            <i class="iconfont">&#xe616;</i> 2021-05-07 15:00
+                                        </span>&nbsp;
+                                        <span title="提交">
+                                            <i class="iconfont">&#xe600;</i> 4
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                <h3 class="am-list-item-hd">
+                                    <a href="/campus/jxlysm/wuyi/homework/11996" target="_blank">gdgdg</a>
+                                </h3>
+                                    <div class="feed-avatar">
+                                        <a href="//www.cnblogs.com/zouxing/" target="_blank">
+                                            <img class="am-img-thumbnail" src="//pic.cnblogs.com/avatar/1837357/20210506140136.png">
+                                        </a>
+                                    </div>
+                                    <div class="avatar-item-text">
+                                        <div class="am-list-item-text description">bhhkh 14:15:05</div>
+                                    </div>
+                                <div class="am-u-sm-12 am-text-sm">
+                                    <div class="am-fr">
+                                        <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/jxlysm/wuyi" target="_blank"> 21(江西旅游商贸职业学院)</a>&nbsp;
+                                        <i class="iconfont">&#xe614;</i><a title="发布人" href="//www.cnblogs.com/zouxing/" target="_blank"> 旅游学校</a>&nbsp;
+                                        <span title="发布时间">
+                                            <i class="iconfont">&#xe616;</i> 2021-05-07 14:13
+                                        </span>&nbsp;
+                                        <span title="提交">
+                                            <i class="iconfont">&#xe600;</i> 0
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                <h3 class="am-list-item-hd">
+                                    <a href="/campus/syhgky/MyClass/homework/11998" target="_blank">第十周作业</a>
+                                </h3>
+                                    <div class="feed-avatar">
+                                        <a href="//www.cnblogs.com/teacherguo/" target="_blank">
+                                            <img class="am-img-thumbnail" src="//pic.cnblogs.com/avatar/1700511/20190918184431.png">
+                                        </a>
+                                    </div>
+                                    <div class="avatar-item-text">
+                                        <div class="am-list-item-text description">1.编写一个方法，实现冒泡排序（由小到大），并调用该方法2.编写一个方法，求整数n的阶乘，例如5的阶乘是1*2*3*4*5。 [必做题]3.编写一个方法，判断该年份是平年还是闰年。[必做题]4.课堂没完成的menu菜单，实现幸运抽奖功能</div>
+                                    </div>
+                                <div class="am-u-sm-12 am-text-sm">
+                                    <div class="am-fr">
+                                        <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/syhgky/MyClass" target="_blank"> 计算机191-5(沈阳化工大学科亚学院 - 信息与控制工程系)</a>&nbsp;
+                                        <i class="iconfont">&#xe614;</i><a title="发布人" href="//www.cnblogs.com/teacherguo/" target="_blank"> Teacher丹丹</a>&nbsp;
+                                        <span title="发布时间">
+                                            <i class="iconfont">&#xe616;</i> 2021-05-07 10:00
+                                        </span>&nbsp;
+                                        <span title="提交">
+                                            <i class="iconfont">&#xe600;</i> 21
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                <h3 class="am-list-item-hd">
+                                    <a href="/campus/gdgy/2021Softwarecodedevelopmenttechnology/homework/11997" target="_blank">需求改进&amp;系统设计</a>
+                                </h3>
+                                    <div class="feed-avatar">
+                                        <a href="//www.cnblogs.com/zhangrongyue/" target="_blank">
+                                            <img class="am-img-thumbnail" src="//pic.cnblogs.com/avatar/simple_avatar.gif">
+                                        </a>
+                                    </div>
+                                    <div class="avatar-item-text">
+                                        <div class="am-list-item-text description">根据以下要求，写一篇随笔 1、评分基准: 按时交 - 有分，检查的项目包括后文的四个方面 需求改进 - 20分 系统设计 - 50分 开发任务计划 - 20分 测试计划 - 10分 晚交 - 0分 迟交两周以上 - 倒扣本次作业分数 抄袭 - 倒扣本次作业分数 2、需求改进： 运用面向领域建模的方法</div>
+                                    </div>
+                                <div class="am-u-sm-12 am-text-sm">
+                                    <div class="am-fr">
+                                        <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/gdgy/2021Softwarecodedevelopmenttechnology" target="_blank"> 2021软件代码开发技术(广东工业大学 - 计算机学院)</a>&nbsp;
+                                        <i class="iconfont">&#xe614;</i><a title="发布人" href="//www.cnblogs.com/zhangrongyue/" target="_blank"> flowet</a>&nbsp;
+                                        <span title="发布时间">
+                                            <i class="iconfont">&#xe616;</i> 2021-05-06 17:00
+                                        </span>&nbsp;
+                                        <span title="提交">
+                                            <i class="iconfont">&#xe600;</i> 0
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                <h3 class="am-list-item-hd">
+                                    <a href="/campus/xbsf/2018CST/homework/11993" target="_blank">实验八 团队作业4—团队项目需求建模与系统设计（1）</a>
+                                </h3>
+                                    <div class="feed-avatar">
+                                        <a href="//www.cnblogs.com/nwnu-daizh/" target="_blank">
+                                            <img class="am-img-thumbnail" src="//pic.cnblogs.com/avatar/simple_avatar.gif">
+                                        </a>
+                                    </div>
+                                    <div class="avatar-item-text">
+                                        <div class="am-list-item-text description">任务内容参见：https://www.cnblogs.com/nwnu-daizh/p/14733878.html</div>
+                                    </div>
+                                <div class="am-u-sm-12 am-text-sm">
+                                    <div class="am-fr">
+                                        <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/xbsf/2018CST" target="_blank"> 2021年春软件工程课程班（2018级计算机科学与技术）(西北师范大学 - 计算机科学与工程学院)</a>&nbsp;
+                                        <i class="iconfont">&#xe614;</i><a title="发布人" href="//www.cnblogs.com/nwnu-daizh/" target="_blank"> 代祖华</a>&nbsp;
+                                        <span title="发布时间">
+                                            <i class="iconfont">&#xe616;</i> 2021-05-06 10:00
+                                        </span>&nbsp;
+                                        <span title="提交">
+                                            <i class="iconfont">&#xe600;</i> 0
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                <h3 class="am-list-item-hd">
+                                        <span class="am-badge am-badge-success am-radius" title="已完成">✓</span>
+                                    <a href="/campus/zswxy/SE2020-3/homework/11992" target="_blank">C语言II博客作业0</a>
+                                </h3>
+                                    <div class="feed-avatar">
+                                        <a href="//www.cnblogs.com/rendaitong/" target="_blank">
+                                            <img class="am-img-thumbnail" src="//pic.cnblogs.com/avatar/simple_avatar.gif">
+                                        </a>
+                                    </div>
+                                    <div class="avatar-item-text">
+                                        <div class="am-list-item-text description">本次作业统一标题：C语言II博客作业04 作业头 这个作业属于哪个课程 &lt;班级的链接&gt; 这个作业要求在哪里 &lt;作业要求的链接&gt; 这个作业的目标 &lt;你理解的作业目标具体内容&gt; 学号 &lt;你的学号&gt; 代码如下： | 这个作业属于哪个课程 | &lt;班级的链接&gt; | | | | | 这个作业要求在哪里| &lt;作业</div>
+                                    </div>
+                                <div class="am-u-sm-12 am-text-sm">
+                                    <div class="am-fr">
+                                        <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/zswxy/SE2020-3" target="_blank"> 2020级软件工程3班(中南林业科技大学涉外学院 - 信息与工程学院)</a>&nbsp;
+                                        <i class="iconfont">&#xe614;</i><a title="发布人" href="//www.cnblogs.com/rendaitong/" target="_blank"> rendaitong(黄杰)</a>&nbsp;
+                                        <span title="发布时间">
+                                            <i class="iconfont">&#xe616;</i> 2021-05-01 21:00
+                                        </span>&nbsp;
+                                        <span title="提交">
+                                            <i class="iconfont">&#xe600;</i> 34
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                <h3 class="am-list-item-hd">
+                                        <span class="am-badge am-badge-success am-radius" title="已完成">✓</span>
+                                    <a href="/campus/zswxy/SE2020-2/homework/11991" target="_blank">C语言II—作业04</a>
+                                </h3>
+                                    <div class="feed-avatar">
+                                        <a href="//www.cnblogs.com/hewenhui/" target="_blank">
+                                            <img class="am-img-thumbnail" src="//pic.cnblogs.com/avatar/2178106/20201029183814.png">
+                                        </a>
+                                    </div>
+                                    <div class="avatar-item-text">
+                                        <div class="am-list-item-text description">C语言II—作业04 本次作业统一标题：C语言II博客作业04 作业头 这个作业属于哪个课程 &lt;班级的链接&gt; 这个作业要求在哪里 &lt;作业要求的链接&gt; 这个作业的目标 &lt;你理解的作业目标具体内容&gt; 学号 &lt;你的学号&gt; 代码如下： | 这个作业属于哪个课程 | &lt;班级的链接&gt; || | | | 这个作业</div>
+                                    </div>
+                                <div class="am-u-sm-12 am-text-sm">
+                                    <div class="am-fr">
+                                        <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/zswxy/SE2020-2" target="_blank"> 2020软件工程2班(中南林业科技大学涉外学院 - 信息与工程学院)</a>&nbsp;
+                                        <i class="iconfont">&#xe614;</i><a title="发布人" href="//www.cnblogs.com/hewenhui/" target="_blank"> 浮生若梦☆(贺文惠)</a>&nbsp;
+                                        <span title="发布时间">
+                                            <i class="iconfont">&#xe616;</i> 2021-05-01 20:00
+                                        </span>&nbsp;
+                                        <span title="提交">
+                                            <i class="iconfont">&#xe600;</i> 33
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                <h3 class="am-list-item-hd">
+                                        <span class="am-badge am-badge-success am-radius" title="已完成">✓</span>
+                                    <a href="/campus/zswxy/CST2020-1/homework/11990" target="_blank">C语言||博客作业04</a>
+                                </h3>
+                                    <div class="feed-avatar">
+                                        <a href="//www.cnblogs.com/yingxiong236/" target="_blank">
+                                            <img class="am-img-thumbnail" src="//pic.cnblogs.com/avatar/simple_avatar.gif">
+                                        </a>
+                                    </div>
+                                    <div class="avatar-item-text">
+                                        <div class="am-list-item-text description">C语言II—作业04 本次作业统一标题：C语言II博客作业04 作业头 这个作业属于哪个课程 &lt;班级的链接&gt; 这个作业要求在哪里 &lt;作业要求的链接&gt; 这个作业的目标 &lt;你理解的作业目标具体内容&gt; 学号 &lt;你的学号&gt; 代码如下： | 这个作业属于哪个课程 | &lt;班级的链接&gt; | | | | | 这个作</div>
+                                    </div>
+                                <div class="am-u-sm-12 am-text-sm">
+                                    <div class="am-fr">
+                                        <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/zswxy/CST2020-1" target="_blank"> 2020级计算机1班(中南林业科技大学涉外学院 - 信息与工程学院)</a>&nbsp;
+                                        <i class="iconfont">&#xe614;</i><a title="发布人" href="//www.cnblogs.com/yingxiong236/" target="_blank"> 英雄236(陈盼)</a>&nbsp;
+                                        <span title="发布时间">
+                                            <i class="iconfont">&#xe616;</i> 2021-05-01 01:00
+                                        </span>&nbsp;
+                                        <span title="提交">
+                                            <i class="iconfont">&#xe600;</i> 39
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-bottom-right">
+                                <h3 class="am-list-item-hd">
+                                        <span class="am-badge am-badge-success am-radius" title="已完成">✓</span>
+                                    <a href="/campus/jsu/sds/homework/11989" target="_blank">第三方</a>
+                                </h3>
+                                    <div class="feed-avatar">
+                                        <a href="//www.cnblogs.com/vozrr/" target="_blank">
+                                            <img class="am-img-thumbnail" src="//pic.cnblogs.com/avatar/simple_avatar.gif">
+                                        </a>
+                                    </div>
+                                    <div class="avatar-item-text">
+                                        <div class="am-list-item-text description">士大夫撒旦法发</div>
+                                    </div>
+                                <div class="am-u-sm-12 am-text-sm">
+                                    <div class="am-fr">
+                                        <i class="iconfont">&#xe61f;</i><a title="班级" href="/campus/jsu/sds" target="_blank"> 闪动(吉首大学 - 但是v闪动)</a>&nbsp;
+                                        <i class="iconfont">&#xe614;</i><a title="发布人" href="//www.cnblogs.com/vozrr/" target="_blank"> vozrr</a>&nbsp;
+                                        <span title="发布时间">
+                                            <i class="iconfont">&#xe616;</i> 2021-04-29 23:00
+                                        </span>&nbsp;
+                                        <span title="提交">
+                                            <i class="iconfont">&#xe600;</i> 0
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="overview">
+                <h1 class="titlebar">
+                    统计概览<span class="iconfont titlebar-icon">&#xe637;</span>
+                    <span class="titlebar-line"></span>
+                </h1>
+                <ul class="am-avg-lg-3 am-margin-top-xl am-margin-bottom-lg">
+                    <li>
+                        <div class="am-gallery-item square-over-view">
+                            <h3 class="title">112</h3>
+                            <small>校区</small>
+                            <div class="iconfont">&#xe610;</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="am-gallery-item square-over-view">
+                            <h3 class="title">598</h3>
+                            <small>班级</small>
+                            <div class="iconfont">&#xe639;</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="am-gallery-item square-over-view">
+                            <h3 class="title">30588</h3>
+                            <small>成员</small>
+                            <div class="iconfont">&#xe6bf;</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="am-gallery-item square-over-view">
+                            <h3 class="title">4770</h3>
+                            <small>作业</small>
+                            <div class="iconfont">&#xe603;</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="am-gallery-item square-over-view">
+                            <h3 class="title">159628</h3>
+                            <small>博文</small>
+                            <div class="iconfont">&#xe60c;</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="am-gallery-item square-over-view">
+                            <h3 class="title">124806</h3>
+                            <small>评论</small>
+                            <div class="iconfont">&#xe62b;</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    </div>
+</div>
+    <footer class="footer">
+        <p>
+            Copyright &copy;2021
+            <a href="//www.cnblogs.com" target="_blank">Cnblogs, Inc.</a>
+            <span id="powered_by">Powered by .NET Core on Kubernetes</span>.
+            <a href="https://github.com/cnblogs/edu/issues" target="_blank">
+                <span class="iconfont">&#xe620;问题反馈</span>
+            </a>&nbsp;
+            <a href="https://edu.cnblogs.com/lib/document/document.html" target="_blank">帮助文档</a>&nbsp;
+            <a href="https://beian.miit.gov.cn/" target="_blank">沪ICP备09004260号-1</a>
+        </p>
+    </footer>
+    <script type="text/javascript" src="/bundles/common.min.js?v=tFfg4O1b9_4B2ulTPlKZmunn2Z_gJBvOgSYnbWgDDIA"></script>
+    
+    <script type="text/javascript">
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments);
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-48445196-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+</html>

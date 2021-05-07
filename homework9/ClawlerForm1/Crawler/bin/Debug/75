@@ -1,0 +1,742 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    <meta name="description" content="#docker-compose搭建nacos1.4.0集群 有关Nacos之前写过四篇文章。 Spring Cloud Alibaba(3) Nacos概述 Spring Cloud Alibaba(" />
+    <meta property="og:description" content="#docker-compose搭建nacos1.4.0集群 有关Nacos之前写过四篇文章。 Spring Cloud Alibaba(3) Nacos概述 Spring Cloud Alibaba(" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Spring Cloud Alibaba(7)---docker-compose搭建nacos1.4.0集群 - 雨点的名字 - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    <link id="MainCss" rel="stylesheet" href="/skins/sea/bundle-sea.min.css?v=oF2SvRIFQNTLcLgn66nPy-bOeZ-5NDS8tPrc0Kt42ys" />
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/qdhxhz/custom.css?v=Bolzv6XSKMsp3nHS960tjJVuNq0=" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/sea/bundle-sea-mobile.min.css?v=t5pWHm7Zavhfg65859uF8OmEaotpCjyYSbKN5RbMv6E" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/qdhxhz/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/qdhxhz/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/qdhxhz/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 326226;
+        var currentBlogApp = 'qdhxhz';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'sea';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2021-05-07 09:56';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    
+    
+    
+</head>
+<body class="no-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc navbar-custom">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="page_begin_html">
+        <a href="https://github.com/dunwu" class="github-corner"></a><style>.github-corner:hover .octo-arm { }</style>
+
+
+
+<link rel="stylesheet" href="https://files.cnblogs.com/files/jingmoxukong/cnblog.min.css">
+<style>
+#sideBarTab h2{
+height:100px;
+padding:0;
+}
+ h2 {
+    background: #2B6695;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5);
+    color: #FFFFFF;
+    font-family:"微软雅黑", "宋体", "黑体", Arial;
+    font-size: 18px;
+    font-weight: bold;
+    height: 25px;
+    line-height: 25px;
+    margin: 18px 0 !important;
+    padding: 8px 0 5px 5px;
+    text-shadow: 2px 2px 3px #222222;
+}
+h3 {
+    background: #5B9600;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5);
+    color: #FFFFFF;
+    font-family:"微软雅黑", "宋体", "黑体", Arial;
+    font-size: 13px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 20px;
+    margin: 12px 0 !important;
+    padding: 5px 0 5px 10px;
+    text-shadow: 2px 2px 3px #222222;
+}
+
+/*生成博客目录的CSS*/
+#uprightsideBar{
+    font-size:12px;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align:left;
+    position:fixed;/*将div的位置固定到距离top:50px，right:0px的位置，这样div就会处在最右边的位置，距离顶部50px*/
+    top:50px;
+    right:0px;
+    width: auto;
+    height: auto; 
+}
+#sideBarTab{
+    float:left;
+    width:30px; 
+    border:1px solid #e5e5e5;
+    border-right:none;
+    text-align:center;
+    background:#ffffff;
+}
+
+#sideBarContents{
+    float:left;
+    overflow:auto; 
+    overflow-x:hidden;!important;
+    width:200px;
+    min-height:108px;
+    max-height:460px;
+    border:1px solid #e5e5e5;
+    border-right:none; 
+    background:#ffffff;
+}
+#sideBarContents dl{
+    margin:0;
+    padding:0;
+}
+
+#sideBarContents dt{
+    margin-top:5px;
+    margin-left:5px;
+}
+
+#sideBarContents dd, dt {
+    cursor: pointer;
+}
+
+#sideBarContents dd:hover, dt:hover {
+    color:#A7995A;
+}
+#sideBarContents dd{
+    margin-left:20px;
+}
+</style>
+    </div>
+    <!--done-->
+<div id="header">
+	
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/qdhxhz/">雨点的名字</a>
+<br>
+		
+	</div>
+</div>
+
+
+</div>
+
+<div id="mytopmenu">
+	
+		<div id="mylinks">
+
+ &nbsp;
+
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/qdhxhz/">
+首页</a>
+ &nbsp;
+
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+ &nbsp;
+
+ &nbsp;
+
+
+&nbsp;
+
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+
+
+</div>
+		<DIV id="mystats"><div id="blog_stats_place_holder"><script>loadBlogStats();</script></div></DIV>
+	
+</div>
+<div id="centercontent">
+	<div id="post_detail">
+<div class="post">
+	<h1 class = "postTitle">
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/14705388.html">
+    <span>Spring Cloud Alibaba(7)---docker-compose搭建nacos1.4.0集群</span>
+    
+
+
+
+</a>
+</h1>
+	<div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<h1 id="docker-compose搭建nacos140集群"><center>docker-compose搭建nacos1.4.0集群</center></h1>
+<p>有关Nacos之前写过四篇文章。</p>
+<p><a href="https://www.cnblogs.com/qdhxhz/p/14659586.html" target="_blank">Spring Cloud Alibaba(3)---Nacos概述</a></p>
+<p><a href="https://www.cnblogs.com/qdhxhz/p/14650407.html" target="_blank">Spring Cloud Alibaba(4)---Nacos(注册中心）</a></p>
+<p><a href="https://www.cnblogs.com/qdhxhz/p/14658922.html" target="_blank">Spring Cloud Alibaba(5)---Nacos(配置中心）</a></p>
+<p><a href="https://www.cnblogs.com/qdhxhz/p/14701077.html" target="_blank">Spring Cloud Alibaba(6)---Nacos持久化Mysql8.0版本</a></p>
+<h2 id="一、项目概述"><font color="#FFD700">  一、项目概述</font></h2>
+<h4 id="1、技术选型">1、技术选型</h4>
+<p>项目总体技术选型</p>
+<pre><code>CentOS 7.6 + Nacos 1.4.0 + MYSQL 8.0.22 + docker-compose 1.24.1 + docker 1.13.1
+</code></pre>
+<h4 id="2、服务器配置">2、服务器配置</h4>
+<img src="https://img2020.cnblogs.com/blog/1090617/202104/1090617-20210426163907506-98021780.jpg" style="border: 1px dashed rgba(255, 0, 0, 1)" width="700" height="120">
+<p>因为自己只有两台阿里云服务器，所以这里Nacos集群数就两个。Mysql主从之前就搭建好了，这里就不描述搭建的过程。</p>
+<h4 id="3、流程图">3、流程图</h4>
+<img src="https://img2020.cnblogs.com/blog/1090617/202104/1090617-20210426163918905-1947530710.jpg" style="border: 1px dashed rgba(255, 0, 0, 1)" width="700" height="220">
+<p>有关 <strong>微服务和Nginx集群</strong> 也不再这篇讲述。这篇就是搭建好Nacos集群。</p>
+<h4 id="4、集群方式">4、集群方式</h4>
+<p>其实集群的方式有两种,一种是单机集群，一种是多机集群</p>
+<pre><code>单机集群: 在同一台服务器上，启动多个Nacos,组成集群。他们的Ip地址是一样的，只是端口号不一样(192.168.1.1:8848,192.168.1.1:8849,192.168.1.1:8850)
+多机集群: 在不同服务器上，每台服务器启动一个nacos，组成集群。他们的Ip地址是不一样的，但端口号可以一样(192.168.1.1:8848,192.168.1.2:8848,192.168.1.3:8848)
+</code></pre>
+<p>我们这边采用的是第二种方式(多机集群),其实第一种可以理解成伪集群，第二种才是真集群。</p>
+<h4 id="5、和官方docker-compose搭建nacos集群差异">5、和官方docker-compose搭建nacos集群差异</h4>
+<p>其实官方对 docker-compose搭建nacos集群 有提供项目拿来即用。官方地址:<a href="https://github.com/nacos-group/nacos-docker" target="_blank">Nacos Docker</a></p>
+<p>如果你只想在一台服务器上部署集群，那么跟着上面的教程，非常方便的就可以搭建单机集群，甚至mysql和nginx 官方提供的 docker-compose.yaml 都一并构建好了。</p>
+<p><strong>我这边和官方提供的主要区别在于</strong></p>
+<pre><code>1、我们这边是多机集群，所以每台服务器上都需要一个 docker-compose.yaml，而且每台服务器只会启动一个nacos。
+2、有关mysql和nginx 我这边是不需要通过 docker-compose.yaml生成对于容器，而是独立出来重新搭建，在docker-compose.yaml配置中只是添加连接Mysql配置数据就可以了。
+</code></pre>
+<h4 id="5、项目目录">5、项目目录</h4>
+<p>因为是通过docker-compose搭建nacos集群，所以这里只需要我们编写好docker-compose.yml 文件就好。它其实就相当于一个脚本，下面是项目目录，具体文件我会放在</p>
+<p>Github上，文章下方会提供地址。</p>
+<pre><code>nacos-docker
+├── init.d
+│   └── custom.properties
+├── nacos-1
+│   └── docker-compose-nacos-1.yml
+└── nacos-2
+    └── docker-compose-nacos-2.yml
+</code></pre>
+<p><code>目录说明</code></p>
+<pre><code>init.d/custom.properties - 官方提供的自选功能配置文件，Nacos节点均包含此目录
+nacos-1/docker-compose-nacos-1.yml - 第一个Nacos节点的Docker-compose配置文件
+nacos-2/docker-compose-nacos-2.yml - 第二个Nacos节点的Docker-compose配置文件
+</code></pre>
+<br>
+<h2 id="二、配置文件详解"><font color="#FFD700"> 二、配置文件详解</font></h2>
+<p>通过三面目录可以看出，一共就三个文件，这里详解展示下文件具体配置</p>
+<h4 id="1、customproperties">1、custom.properties</h4>
+<p>这个是每个nacos公用的，跟官方保持一致即可</p>
+<pre><code class="language-yml">#spring.security.enabled=false
+#management.security=false
+#security.basic.enabled=false
+#nacos.security.ignore.urls=/**
+#management.metrics.export.elastic.host=http://localhost:9200
+# metrics for prometheus
+management.endpoints.web.exposure.include=*
+
+# metrics for elastic search
+#management.metrics.export.elastic.enabled=false
+#management.metrics.export.elastic.host=http://localhost:9200
+
+# metrics for influx
+#management.metrics.export.influx.enabled=false
+#management.metrics.export.influx.db=springboot
+#management.metrics.export.influx.uri=http://localhost:8086
+#management.metrics.export.influx.auto-create-db=true
+#management.metrics.export.influx.consistency=one
+#management.metrics.export.influx.compressed=true
+</code></pre>
+<h4 id="2、docker-compose-nacos-1yml">2、docker-compose-nacos-1.yml</h4>
+<p>这里将docker-compose-nacos-1.yml在 47.19.203.55上启动。</p>
+<pre><code class="language-yml">version: '3' 
+services:
+  # nacos-server服务注册与发现，配置中心服务    
+  docker-nacos-server:
+    image: nacos/nacos-server:1.4.0
+    container_name: nacos-server-1
+    ports:
+      - "8848:8848"
+      - "9555:9555"
+    networks: 
+      - nacos_net
+    restart: on-failure
+    privileged: true
+    environment:
+      PREFER_HOST_MODE: ip #如果支持主机名可以使用hostname,否则使用ip，默认也是ip
+      SPRING_DATASOURCE_PLATFORM: mysql #数据源平台 仅支持mysql或不保存empty
+      NACOS_SERVER_IP: 47.19.203.55 #多网卡情况下，指定ip或网卡
+      NACOS_SERVERS: 47.19.203.55:8848 118.11.224.65:8848 #集群中其它节点[ip1:port ip2:port ip3:port]
+      MYSQL_SERVICE_HOST: 47.19.203.55
+      MYSQL_SERVICE_PORT: 3306
+      MYSQL_SERVICE_USER: root
+      MYSQL_SERVICE_PASSWORD: root
+      MYSQL_SERVICE_DB_NAME: nacos
+      MYSQL_SERVICE_DB_PARAM: characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=GMT%2B8
+      #JVM调优参数
+      JVM_XMS:  128m
+      JVM_XMX:  128m
+      JVM_XMN:  128m
+      #JVM_MS:   #-XX:MetaspaceSize default :128m
+      #JVM_MMS:  #-XX:MaxMetaspaceSize default :320m
+      #NACOS_DEBUG: n #是否开启远程debug，y/n，默认n
+      #TOMCAT_ACCESSLOG_ENABLED: true #是否开始tomcat访问日志的记录，默认false
+    volumes:
+      - ./cluster-logs/nacos1:/home/nacos/logs #日志输出目录
+      - ../init.d/custom.properties:/home/nacos/init.d/custom.properties #../init.d/custom.properties内包含很多自定义配置，可按需配置
+
+networks:
+  nacos_net:
+    driver: bridge
+</code></pre>
+<h4 id="3、docker-compose-nacos-2yml">3、docker-compose-nacos-2.yml</h4>
+<p>这里将docker-compose-nacos-2.yml在 118.11.224.65上启动。</p>
+<pre><code class="language-yml">version: '3' 
+services:
+  # nacos-server服务注册与发现，配置中心服务    
+  docker-nacos-server:
+    image: nacos/nacos-server:1.4.0
+    container_name: nacos-server-1
+    ports:
+      - "8848:8848"
+      - "9555:9555"
+    networks: 
+      - nacos_net
+    restart: on-failure
+    privileged: true
+    environment:
+      PREFER_HOST_MODE: ip #如果支持主机名可以使用hostname,否则使用ip，默认也是ip
+      SPRING_DATASOURCE_PLATFORM: mysql #数据源平台 仅支持mysql或不保存empty
+      NACOS_SERVER_IP: 118.11.224.65 #多网卡情况下，指定ip或网卡
+      NACOS_SERVERS: 47.19.203.55:8848 118.11.224.65:8848 #集群中其它节点[ip1:port ip2:port ip3:port]
+      MYSQL_SERVICE_HOST: 47.19.203.55
+      MYSQL_SERVICE_PORT: 3306
+      MYSQL_SERVICE_USER: root
+      MYSQL_SERVICE_PASSWORD: root
+      MYSQL_SERVICE_DB_NAME: nacos
+      MYSQL_SERVICE_DB_PARAM: characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=GMT%2B8
+      #JVM调优参数
+      JVM_XMS:  128m
+      JVM_XMX:  128m
+      JVM_XMN:  128m
+      #JVM_MS:   #-XX:MetaspaceSize default :128m
+      #JVM_MMS:  #-XX:MaxMetaspaceSize default :320m
+      #NACOS_DEBUG: n #是否开启远程debug，y/n，默认n
+      #TOMCAT_ACCESSLOG_ENABLED: true #是否开始tomcat访问日志的记录，默认false
+    volumes:
+      - ./cluster-logs/nacos1:/home/nacos/logs #日志输出目录
+      - ../init.d/custom.properties:/home/nacos/init.d/custom.properties #../init.d/custom.properties内包含很多自定义配置，可按需配置
+
+networks:
+  nacos_net:
+    driver: bridge
+</code></pre>
+<h4 id="4、总结配置">4、总结配置</h4>
+<p>1、这里需要注意的是,默认 <strong>JVM_XMS</strong> 和 <strong>JVM_XMX</strong> 需要 <strong>2g</strong>，对我来讲太大了，所以这里改了小点，这样就不会内存溢出。</p>
+<p>2、从Nacos 1.3.1版本开始,数据库存储已经升级到8.0,并且它向下兼容，所以我们不需要对于mysql8配置做特别处理了。</p>
+<p>3、这里只需要配置master的mysql,不需要配置slave的mysql。这个官方也做了很好的解释。<a href="https://github.com/nacos-group/nacos-docker/wiki/%E7%A7%BB%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%BB%E4%BB%8E%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE" target="_blank">移除数据库主从镜像配置</a></p>
+<p>后续所有镜像都会移除主从镜像相关属性,具体移除和替换属性如下:</p>
+<img src="https://img2020.cnblogs.com/blog/1090617/202104/1090617-20210426163940369-154162015.jpg" style="border: 1px dashed rgba(255, 0, 0, 1)" width="700" height="280">
+<br>
+<h2 id="三、部署到服务器"><font color="#FFD700"> 三、部署到服务器 </font></h2>
+<h4 id="1、上传文件服务器">1、上传文件服务器</h4>
+<p>我先在本地把上面文件创建好并压缩，然后将压缩打包到服务器中</p>
+<pre><code>scp  nacos-docker.zip root@47.19.203.55:
+</code></pre>
+<pre><code>scp  nacos-docker.zip root@118.11.224.65:
+</code></pre>
+<p>两台服务器，都上传同一份文件，只是启动的docker-compose.yml不是同一个</p>
+<pre><code>#解压
+unzip nacos-docker.zip
+#移动到指定位置
+cp -r nacos-docker /usr/local/nacos
+</code></pre>
+<h4 id="2、启动容器">2、启动容器</h4>
+<p>分别在各主机上进入各自对应的nacos目录中，启动容器，命令如下：</p>
+<p><code>47.19.203.55服务器</code></p>
+<pre><code>$ cd nacos-docker/nacos-1
+$ docker-compose -f docker-compose-nacos-1.yml up -d
+</code></pre>
+<p><code>118.11.224.65服务器</code></p>
+<pre><code>$ cd nacos-docker/nacos-2
+$ docker-compose -f docker-compose-nacos-2.yml up -d
+</code></pre>
+<p>启动后访问（记得放开8848端口）</p>
+<pre><code>47.19.203.55:8848/nacos
+118.11.224.65:8848/nacos
+</code></pre>
+<p>如果访问失败，那么对日志中查看错误日志</p>
+<pre><code>tail -f cluster-logs/nacos*/nacos.log
+</code></pre>
+<br>
+<h2 id="四、测试"><font color="#FFD700"> 四、测试</font></h2>
+<h4 id="1、访问客户端">1、访问客户端</h4>
+<p>访问 下面 任意一个。</p>
+<pre><code>47.19.203.55:8848/nacos
+118.11.224.65:8848/nacos
+</code></pre>
+<img src="https://img2020.cnblogs.com/blog/1090617/202104/1090617-20210426165213494-1687836401.jpg" style="border: 1px dashed rgba(255, 0, 0, 1)" width="700" height="325">
+<p>从图中看出，集群已经配置成功。而这个47.19.203.55:8848其实是主节点。</p>
+<h4 id="2、微服务配置">2、微服务配置</h4>
+<p>这里微服务配置也需要稍微改动下</p>
+<pre><code class="language-yml">spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 47.19.203.55:8848,118.11.224.65:8848 #Nacos配置中心地址
+        file-extension: yaml #文件拓展格式
+</code></pre>
+<br>
+<p><code>Github地址</code>:<a href="https://github.com/yudiandemingzi/nacos-docker" target="_blank">nacos-docker</a></p>
+<br>
+<h3 id="参考"><font color="#FFD700"> 参考</font></h3>
+<p><a href="https://github.com/nacos-group/nacos-docker" target="_blank">1、官方Nacos Docker</a></p>
+<p><a href="https://www.cnblogs.com/hellxz/p/nacos-cluster-docker.html" target="_blank">2、Nacos高可用集群解决方案-Docker版本，基于Nacos 1.0.1</a></p>
+<p><a href="https://gitee.com/ysdxhsw/docker-compose-nacos-mysql/tree/master" target="_blank">3、docker搭建nacos server集群</a></p>
+<br>
+<br>
+<pre><code>少说多做,句句都会得到别人的重视；多说少做,句句都会受到别人的忽视。(7)
+</code></pre>
+
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+	<div class="postDesc">posted on 
+<span id="post-date">2021-05-07 21:56</span>&nbsp;
+<a href="https://www.cnblogs.com/qdhxhz/">雨点的名字</a>&nbsp;
+阅读(<span id="post_view_count">0</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14705388" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(14705388);return false;">收藏</a></div>
+</div>
+
+
+<script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 326226, cb_blogApp = 'qdhxhz', cb_blogUserGuid = 'ba888294-2bd2-e611-845c-ac853d9f53ac';
+    var cb_entryId = 14705388, cb_entryCreatedDate = '2021-05-07 21:56', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_card1"></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+</div>
+
+
+</div>
+<div id="leftcontent">
+	
+		<DIV id="leftcontentcontainer">
+			
+<div id="sidebar_c3"></div>
+			<div id="calendar"><div id="blog-calendar" style="display:none"></div></div>                
+                    <script>loadBlogDefaultCalendar();</script><br>
+			<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script></DIV>
+	
+</div>
+<!--done-->
+<div class="footer">
+	Powered by: <a href="http://www.cnblogs.com">博客园</a>
+	Copyright &copy; 2021 雨点的名字
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+</div>
+
+
+
+
+
+
+    <div id="page_end_html">
+        <script type="text/javascript">
+/*
+    功能：生成博客目录的JS工具
+    测试：IE8，火狐，google测试通过
+*/
+var BlogDirectory = {
+    /*
+        获取元素位置，距浏览器左边界的距离（left）和距浏览器上边界的距离（top）
+    */
+    getElementPosition:function (ele) {        
+        var topPosition = 0;
+        var leftPosition = 0;
+        while (ele){              
+            topPosition += ele.offsetTop;
+            leftPosition += ele.offsetLeft;        
+            ele = ele.offsetParent;     
+        }  
+        return {top:topPosition, left:leftPosition}; 
+    },
+
+    /*
+    获取滚动条当前位置
+    */
+    getScrollBarPosition:function () {
+        var scrollBarPosition = document.body.scrollTop || document.documentElement.scrollTop;
+        return  scrollBarPosition;
+    },
+    
+    /*
+    移动滚动条，finalPos 为目的位置，internal 为移动速度
+    */
+    moveScrollBar:function(finalpos, interval) {
+
+        //若不支持此方法，则退出
+        if(!window.scrollTo) {
+            return false;
+        }
+
+        //窗体滚动时，禁用鼠标滚轮
+        window.onmousewheel = function(){
+            return false;
+        };
+          
+        //清除计时
+        if (document.body.movement) { 
+            clearTimeout(document.body.movement); 
+        } 
+
+        var currentpos =BlogDirectory.getScrollBarPosition();//获取滚动条当前位置
+
+        var dist = 0; 
+        if (currentpos == finalpos) {//到达预定位置，则解禁鼠标滚轮，并退出
+            window.onmousewheel = function(){
+                return true;
+            }
+            return true; 
+        } 
+        if (currentpos < finalpos) {//未到达，则计算下一步所要移动的距离
+            dist = Math.ceil((finalpos - currentpos)/10); 
+            currentpos += dist; 
+        } 
+        if (currentpos > finalpos) { 
+            dist = Math.ceil((currentpos - finalpos)/10); 
+            currentpos -= dist; 
+        }
+        
+        var scrTop = BlogDirectory.getScrollBarPosition();//获取滚动条当前位置
+        window.scrollTo(0, currentpos);//移动窗口
+        if(BlogDirectory.getScrollBarPosition() == scrTop)//若已到底部，则解禁鼠标滚轮，并退出
+        {
+            window.onmousewheel = function(){
+                return true;
+            }
+            return true;
+        }
+        
+        //进行下一步移动
+        var repeat = "BlogDirectory.moveScrollBar(" + finalpos + "," + interval + ")"; 
+        document.body.movement = setTimeout(repeat, interval); 
+    },
+    
+    htmlDecode:function (text){
+        var temp = document.createElement("div");
+        temp.innerHTML = text;
+        var output = temp.innerText || temp.textContent;
+        temp = null;
+        return output;
+    },
+
+    /*
+    创建博客目录，
+    id表示包含博文正文的 div 容器的 id，
+    mt 和 st 分别表示主标题和次级标题的标签名称（如 H2、H3，大写或小写都可以！），
+    interval 表示移动的速度
+    */
+    createBlogDirectory:function (id, mt, st, interval){
+         //获取博文正文div容器
+        var elem = document.getElementById(id);
+        if(!elem) return false;
+        //获取div中所有元素结点
+        var nodes = elem.getElementsByTagName("*");
+        //创建博客目录的div容器
+        var divSideBar = document.createElement('DIV');
+        divSideBar.className = 'uprightsideBar';
+        divSideBar.setAttribute('id', 'uprightsideBar');
+        var divSideBarTab = document.createElement('DIV');
+        divSideBarTab.setAttribute('id', 'sideBarTab');
+        divSideBar.appendChild(divSideBarTab);
+        var h2 = document.createElement('H2');
+        divSideBarTab.appendChild(h2);
+        var txt = document.createTextNode('目录导航');
+        h2.appendChild(txt);
+        var divSideBarContents = document.createElement('DIV');
+        divSideBarContents.style.display = 'none';
+        divSideBarContents.setAttribute('id', 'sideBarContents');
+        divSideBar.appendChild(divSideBarContents);
+        //创建自定义列表
+        var dlist = document.createElement("dl");
+        divSideBarContents.appendChild(dlist);
+        var num = 0;//统计找到的mt和st
+        mt = mt.toUpperCase();//转化成大写
+        st = st.toUpperCase();//转化成大写
+        //遍历所有元素结点
+        for(var i=0; i<nodes.length; i++)
+        {
+            if(nodes[i].nodeName == mt|| nodes[i].nodeName == st)    
+            {
+                //获取标题文本
+                var nodetext = nodes[i].innerHTML.replace(/<\/?[^>]+>/g,"");//innerHTML里面的内容可能有HTML标签，所以用正则表达式去除HTML的标签
+                nodetext = nodetext.replace(/ /ig, "");//替换掉所有的 
+                nodetext = BlogDirectory.htmlDecode(nodetext);
+                //插入锚        
+                nodes[i].setAttribute("id", "blogTitle" + num);
+                var item;
+                switch(nodes[i].nodeName)
+                {
+                    case mt:    //若为主标题 
+                        item = document.createElement("dt");
+                        break;
+                    case st:    //若为子标题
+                        item = document.createElement("dd");
+                        break;
+                }
+                
+                //创建锚链接
+                var itemtext = document.createTextNode(nodetext);
+                item.appendChild(itemtext);
+                item.setAttribute("name", num);
+                item.onclick = function(){        //添加鼠标点击触发函数
+                    var pos = BlogDirectory.getElementPosition(document.getElementById("blogTitle" + this.getAttribute("name")));
+                    if(!BlogDirectory.moveScrollBar(pos.top, interval)) return false;
+                };            
+                
+                //将自定义表项加入自定义列表中
+                dlist.appendChild(item);
+                num++;
+            }
+        }
+        
+        if(num == 0) return false; 
+        /*鼠标进入时的事件处理*/
+        divSideBarTab.onmouseenter = function(){
+            divSideBarContents.style.display = 'block';
+        }
+        /*鼠标离开时的事件处理*/
+        divSideBar.onmouseleave = function() {
+            divSideBarContents.style.display = 'none';
+        }
+
+        document.body.appendChild(divSideBar);
+    }
+    
+};
+
+window.onload=function(){
+    /*页面加载完成之后生成博客目录*/
+    BlogDirectory.createBlogDirectory("cnblogs_post_body","h2","h4",20);
+}
+</script>
+    </div>
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjtSQNtfIEsClBDNtLknTSk_cNFvoGKykLJJM0xfV7guOCpIFIV3OZlDPnA5Qd_L9JycZX-3UgGHq1Y7WDH2E7T21uKszQoxBlsapHyWzcUsjBpEHumcj4QVc0VqiSRHm8Y" />
+</body>
+</html>

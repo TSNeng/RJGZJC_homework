@@ -1,0 +1,457 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    <meta name="description" content="生成函数入门 普通型生成函数 定义 将序列$A$表示为形式幂级数$A(x)=\sum\limits_na_ixi$ ,则称形式幂级数$A(x)$为序列$A$ 的普通型生成函数,形式幂级数的第$i$ 项" />
+    <meta property="og:description" content="生成函数入门 普通型生成函数 定义 将序列$A$表示为形式幂级数$A(x)=\sum\limits_na_ixi$ ,则称形式幂级数$A(x)$为序列$A$ 的普通型生成函数,形式幂级数的第$i$ 项" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>生成函数入门 - explorerxx - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/mikuo/custom.css?v=yWKdwvhghJXjwJqEpyZWq1e84c0=" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/SimpleMemory/bundle-SimpleMemory-mobile.min.css" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/mikuo/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/mikuo/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/mikuo/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 567908;
+        var currentBlogApp = 'mikuo';
+        var cb_enable_mathjax = true;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'SimpleMemory';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2021-05-07 09:48';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processClass: 'math', processEscapes: true },
+        TeX: {
+        equationNumbers: { autoNumber: ['AMS'], useLabelIds: true },
+        extensions: ['extpfeil.js', 'mediawiki-texvc.js'],
+        Macros: {bm: "\\boldsymbol"}
+        },
+        'HTML-CSS': { linebreaks: { automatic: true } },
+        SVG: { linebreaks: { automatic: true } }
+        });
+    </script>
+    <script src="https://mathjax.cnblogs.com/2_7_5/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;v=20200504"></script>
+    
+</head>
+<body class="no-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc navbar-custom">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/mikuo/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/mikuo/">explorerxx</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/mikuo/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/explorerxx">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/mikuo/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class = "postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/mikuo/p/14742786.html">
+    <span>生成函数入门</span>
+    
+
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<h1 id="生成函数入门">生成函数入门</h1>
+<h2 id="普通型生成函数">普通型生成函数</h2>
+<h3 id="定义">定义</h3>
+<p>将序列<span class="math inline">\(A\)</span>表示为形式幂级数<span class="math inline">\(A(x)=\sum\limits_{i=0}^na_ix^i\)</span> ,则称形式幂级数<span class="math inline">\(A(x)\)</span>为序列<span class="math inline">\(A\)</span> 的普通型生成函数,形式幂级数的第<span class="math inline">\(i\)</span> 项系数就是序列A的第<span class="math inline">\(i\)</span>项。</p>
+<p>初学会有一个疑问,什么是形式幂级数？顾名思义,这个幂级数中的<span class="math inline">\(x\)</span>只是一个形式而已,<span class="math inline">\(x\)</span>可以取任意值而不影响我们需要得到的系数的值(因为我们用生成函数需要的只是系数<span class="math inline">\(a\)</span>,而和<span class="math inline">\(x\)</span>无关)所以为了化简形式幂级数的表达,我们常常定义<span class="math inline">\(|x|&lt;1\)</span>，这样我们的和式就是收敛的。</p>
+<p>比如序列<span class="math inline">\(&lt;1,1,1,1,1,...&gt;\)</span> 的普通型生成函数就是<span class="math inline">\(\sum\limits_{i=0}^{\infty}x^i=1+x+x^2+x^3+x^4+...\)</span> ，如果<span class="math inline">\(|x|&lt;1\)</span> ，那么我们会得到和式的值<span class="math inline">\(\sum\limits_{i=0}^{\infty}x^i=\frac{1}{1-x}\)</span>，可以用右边的值来简单的表达一个序列的生成函数。</p>
+<h3 id="应用">应用</h3>
+<p>使用普通型生成函数主要是为了解决通过两个序列得到一个新序列的问题。</p>
+<p>经典的例子:</p>
+<p>有n种不同的球,现在任意选择k个球,问有多少个方案？</p>
+<p>初看这个问题,接触过的人容易联想到将问题转换为不定方程的形式,即问:</p>
+<p><span class="math inline">\(x_1+x_2+...+x_n=k,0\le x\)</span> 的解的个数</p>
+<p>考虑将<span class="math inline">\(x\)</span> 映射到<span class="math inline">\(y=x+1\)</span> 上,把方程转换为<span class="math inline">\(y_1+y_2+y_3+...+y_n=k+n,1\le y\)</span> ,然后就是一个<span class="math inline">\(k+n\)</span>个小球插<span class="math inline">\(n-1\)</span> 个板子有多少种插法的问题了,答案就是 <span class="math inline">\(\binom{k+n-1}{n-1}\)</span> 。</p>
+<p>而这个问题也可以通过生成函数来求解。每一种球的生成函数是<span class="math inline">\(\sum\limits_{i=0}^{\infty}x^i=\frac{1}{1-x}\)</span>,我们考虑只有两种球,从中挑出3个球的方案。</p>
+<p>它的挑选方式是(0,3) ,(1,2),(2,1),(3,0)共四种,假设两个球的生成函数序列是A(x),B(x),那么我们认为这里边的第一种方案是A(x)的第0项和B(x)的第4项组合来的,同理,第二种方案是A(x)的第1项和B(x)的第3项组合来的,形式化的,如果我们设最终选k个球的方案序列是C,那么C的生成函数是<span class="math inline">\(\sum\limits_{i=0}c_ix^i\)</span>,而我们刚刚的例子可以表示为<span class="math inline">\(c_3=\sum\limits_{i=0}^{3}a_ib_{3-i}\)</span> ,(A ,B都是全1序列),也就是说我们C的生成函数应该是我们A的生成函数和B的生成函数的卷积,即A(x)B(x)=C(x),表达式即：</p>
+<p><span class="math inline">\(C(x)=\sum\limits_{i=0}^{\infty}x^i\sum\limits_{j=0}^{i}a_jb_{i-j}\)</span> , 每一项系数<span class="math inline">\(c_i\)</span>都是两个生成函数在<span class="math inline">\(i\)</span>的卷积。</p>
+<p>那如果是3种球呢？就得三个一起卷? 4种呢？太麻烦了吧。</p>
+<p>对于这道题来说似乎确实是这样,单纯考虑生成函数是困难的,或者说复杂度是较高的,但是,这道题指明了普通型生成函数的一个应用,那就是对于知n求一的这种问题,可以考虑把序列生成函数卷积,然后就可以在第n次项的系数找到问题的解。</p>
+<p>且这个例子指明了一个事实:考虑把A(x)表示为<span class="math inline">\(\frac{1}{1-x}\)</span>,B(x)同理,那它们的卷积是<span class="math inline">\(\frac{1}{(1-x)^2}\)</span>,即<span class="math inline">\(C_2(x)=\frac{1}{(1-x)^2}\)</span>,而我们也知道<span class="math inline">\(C_n(x)=\sum\limits_{i=0}^{\infty}\binom{n+i-1}{i-1}x^i\)</span>,(C的下标表示我们球的种类数量),所以我们可以发现<span class="math inline">\(\frac{1}{(1-x)^n}=\sum\limits_{i=0}^{\infty}\binom{n+i-1}{i-1}x^i\)</span>,即<span class="math inline">\(n\)</span>种球,选任意个球的方案的序列的生成函数和它的和我们能够将其对应起来了,方便我们对生成函数的应用。</p>
+<p>以上,我们介绍了普通型生成函数如何处理简单的组合问题。</p>
+<h2 id="指数型生成函数">指数型生成函数</h2>
+<h2 id="定义-1">定义</h2>
+<p>同样定义序列A的生成函数,但是这次我们换了个方式,我们定义A的生成函数为<span class="math inline">\(A(x)=\sum\limits_{i=0}^{\infty}a_i\frac{x^i}{i!}\)</span>,并称这样定义的生成函数为指数型生成函数。</p>
+<h2 id="应用-1">应用</h2>
+<p>指数型生成函数用来解决排列问题。</p>
+<p>问,从n种球中依次拿出<span class="math inline">\(k_1,k_2,k_3...k_n\)</span>共N个球形成排列,有多少种方案？</p>
+<p>(即可以认为一种球代表一个数字,这样有序的取N个数字有多少给排列,这种问题也叫多重集的排列问题)</p>
+<p>这个问题从排列组合的角度也比较好解决,考虑总序列的排列方式<span class="math inline">\(N!\)</span>，然后除去所有的相同数字的内部排列</p>
+<p>最终的方案就是 <span class="math inline">\(\frac{N!}{k_1!k_2!k_3!...k_n!}\)</span>，如果只是问从n组数中得到N个球的排列方案,就要把下边的k进行组合,然后把所有的方案加起来,也就是</p>
+<p><span class="math inline">\(\sum\limits_{k_1=0}^{N}\sum\limits_{k_2=0}^{N-k_1}\sum\limits_{k_3=0}^{N-k_1-k_2}...\sum\limits_{k_{n-1}=0}^{N-\sum_1^{n-2}k_i}\frac{N!}{k_1!k_2!...(N-\sum_1^{n-1}k_i)!} \ \ \ (1)\)</span> 这样的一个式子。</p>
+<p>我们尝试用生成函数来解决这个问题,设每一个数字的生成函数都为<span class="math inline">\(\sum\limits_{i=0}^{\infty}\frac{x^i}{i!}\)</span>。</p>
+<p>测试一组小数据 n=3,N=3,我们看看<span class="math inline">\(A_1(x)* A_2(x) *A_3(x)\)</span>,在第3项的系数。</p>
+<p></p><div class="math display">\[\begin{aligned}
+&amp;(1+\frac{x^1}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!})*(1+\frac{x^1}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!})*(1+\frac{x^1}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!})\\&amp;={{x^9}\over{216}}+{{x^8}\over{24}}+{{5\,x^7}\over{24}}+{{17\,x^6 }\over{24}}+{{7\,x^5}\over{4}}+{{13\,x^4}\over{4}}+{{9\,x^3}\over{2 }}+{{9\,x^2}\over{2}}+3\,x+1
+\end{aligned}
+\]</div><p></p><p>第3项的系数为<span class="math inline">\(\frac{9}{2}\)</span>我们把它乘上一个<span class="math inline">\(3!\)</span>,那么我们就会得到值<span class="math inline">\(27\)</span>,即在3种数里选择3个的排列方案了。</p>
+<p>不信?我们暴力算一遍,选择为<span class="math inline">\((3,0,0)\)</span> (即第一种选3个,第二种选0个,第三种选0个,后同),排列为1</p>
+<p><span class="math inline">\((0,3,0)=1,(0,0,3)=1,(2,1,0)=3,(2,0,1)=3,(1,2,0)=3,(1,1,1)=6,(1,0,2)=3,(0,2,1)=3,(0,1,2)=3\)</span></p>
+<p>他们的和<span class="math inline">\(1+1+1+3+3+3+6+3+3+3=27\)</span> ,正是27！（<s>是27不是27!</s>）</p>
+<p>我们考虑为什么我们的生成函数卷积得到的系数乘上一个<span class="math inline">\(N!\)</span>就是我们想要的选N个数的答案,观察我们的(1)式,它需要的就是所有情况的组合阶乘作为每个情况的分母,而我们的生成函数卷积,<span class="math inline">\(x\)</span>的指数就意味着选择的数的数量,我们知道,为了产生第n项的系数(x的指数为n),我们会进行所有可能的组合相乘,卷积后的系数正是所有的选择产生的和,分母刚好就是我们(1)式中<span class="math inline">\((k_1!k_2!...k_n!)\)</span>，所以我们距离正确答案就差乘上一个分子N！,因此我们得到的卷积后得到的系数只要乘N！,就是我们想要的答案。</p>
+<p>同样,我们如果把指数型生成函数的<span class="math inline">\(x\)</span>划定在<span class="math inline">\(|x|&lt;1\)</span>的范围内，也会得到一个漂亮的收敛值<span class="math inline">\(e^x=\sum\limits_{i=0}^{\infty}\frac{x^i}{i!}\)</span>(泰勒展开),它也可以方便我们的应用。</p>
+<p>上边说过的两个式子<span class="math inline">\(\frac{1}{(1-x)^n}=\sum\limits_{i=0}^{\infty}\binom{n+i-1}{i-1}x^i\)</span>  ,<span class="math inline">\(e^x=\sum\limits_{i=0}^{\infty}\frac{x^i}{i!}\)</span>确实非常有用,但这里只是入门的理解，所以就不在这个博客里展开了（<s>其实我现在也不大会用,但能用的地方确实多！！</s>）,下边会做题用的。</p>
+<p>写这个博客主要为了自己复习以及加深对生成函数的理解,如有不当,请不吝赐教。</p>
+<h3 id="参考资料">参考资料</h3>
+<p><a href="https://blog.csdn.net/weixin_45697774/article/details/113584284?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522162038994816780262518691%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&amp;request_id=162038994816780262518691&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~rank_v29-1-113584284.nonecase&amp;utm_term=%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0&amp;spm=1018.2226.3001.4450" target="_blank">《小学生都能看懂的生成函数从入门到升天教程》《生成函数全家桶》</a><br>
+<a href="https://zhuanlan.zhihu.com/p/63003976" target="_blank">[算法｜小学生都能看懂的生成函数入门教程 - 知乎 (zhihu.com)]</a></p>
+
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2021-05-07 21:48</span>&nbsp;
+<a href="https://www.cnblogs.com/mikuo/">explorerxx</a>&nbsp;
+阅读(<span id="post_view_count">2</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14742786" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(14742786);return false;">收藏</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 567908, cb_blogApp = 'mikuo', cb_blogUserGuid = '4a091243-6aff-43fb-d76c-08d7804a3aa0';
+    var cb_entryId = 14742786, cb_entryCreatedDate = '2021-05-07 21:48', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_card1"></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 explorerxx
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    <div id="page_end_html">
+        <script type="text/javascript">
+/* 鼠标特效 */
+var a_idx = 0;
+jQuery(document).ready(function($) {
+    $("body").click(function(e) {
+        var a = new Array("❤神仙","❤TQL","❤消遣~","❤飘落的雪花，","❤用手接住就会融化","❤Miku","❤orz","❤欢迎光临");
+        var $i = $("<span></span>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        $i.css({
+            "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove();
+        });
+    });
+});
+</script>
+
+<!--代码放置于</body>上方-->
+
+<script>
+
+
+!function(){
+
+function n(n,e,t){
+
+return n.getAttribute(e)||t
+
+}
+
+function e(n){
+
+return document.getElementsByTagName(n)
+
+}
+
+function t(){
+
+var t=e("script"),o=t.length,i=t[o-1];
+
+return{
+
+l:o,z:n(i,"zIndex",-1),o:n(i,"opacity",.5),c:n(i,"color","0,0,0"),n:n(i,"count",99)
+
+}
+
+}
+function o(){
+
+a=m.width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth,
+
+c=m.height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight
+
+}
+
+function i(){
+
+r.clearRect(0,0,a,c);
+
+var n,e,t,o,m,l;
+
+s.forEach(function(i,x){
+
+for(i.x+=i.xa,i.y+=i.ya,i.xa*=i.x>a||i.x<0?-1:1,i.ya*=i.y>c||i.y<0?-1:1,r.fillRect(i.x-.5,i.y-.5,1,1),e=x+1;e<u.length;e++)n=u[e],
+
+null!==n.x&&null!==n.y&&(o=i.x-n.x,m=i.y-n.y,
+
+l=o*o+m*m,l<n.max&&(n===y&&l>=n.max/2&&(i.x-=.03*o,i.y-=.03*m),
+
+t=(n.max-l)/n.max,r.beginPath(),r.lineWidth=t/2,r.strokeStyle="rgba("+d.c+","+(t+.2)+")",r.moveTo(i.x,i.y),r.lineTo(n.x,n.y),r.stroke()))
+
+}),
+
+x(i)
+
+}
+
+var a,c,u,m=document.createElement("canvas"),
+
+d=t(),l="c_n"+d.l,r=m.getContext("2d-disabled"),
+
+x=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||
+
+function(n){
+
+window.setTimeout(n,1e3/45)
+
+},
+
+w=Math.random,y={x:null,y:null,max:2e4};m.id=l,m.style.cssText="position:fixed;top:0;left:0;z-index:"+d.z+";opacity:"+d.o,e("body")[0].appendChild(m),o(),window.onresize=o,
+
+window.onmousemove=function(n){
+
+n=n||window.event,y.x=n.clientX,y.y=n.clientY
+
+},
+
+window.onmouseout=function(){
+
+y.x=null,y.y=null
+
+};
+
+for(var s=[],f=0;d.n>f;f++){
+
+var h=w()*a,g=w()*c,v=2*w()-1,p=2*w()-1;s.push({x:h,y:g,xa:v,ya:p,max:6e3})
+
+}
+
+u=s.concat([y]),
+
+setTimeout(function(){i()},100)
+
+}();
+</script>
+
+
+    </div>
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjsYV4_Vjfum-kwNYE5N00tNWxzECLecWJGjPqZnRnBj7OD4pwk-rXz2ffj7hbpygILryF0vMBXXwZZhPAfe-G1sfpzfkYQPDebay3qhzvGMcjHTyjcX6S6EKyoUN3fFfT4" />
+</body>
+</html>

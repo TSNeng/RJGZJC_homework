@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="never" />
+    <meta name="description" content="大家好，我是痞子衡，是正经搞技术的痞子。今天痞子衡给大家介绍的是实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形。 上一篇文章 《实抓Flash信号波形来看i.MXRT的F" />
+    <meta property="og:description" content="大家好，我是痞子衡，是正经搞技术的痞子。今天痞子衡给大家介绍的是实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形。 上一篇文章 《实抓Flash信号波形来看i.MXRT的F" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>痞子衡嵌入式：实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形（有预取）   - 痞子衡 - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    <link id="MainCss" rel="stylesheet" href="/skins/lessismoreright/bundle-lessismoreright.min.css?v=00nt3ajQUVX0gvFynxRY-4TOqQaW32yFChuBOrvOqLk" />
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/henjay724/custom.css?v=dcz1NrV0qkygJAUlNIRttJ2No08=" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/lessismoreright/bundle-lessismoreright-mobile.min.css?v=cSBXSFXCBG9KdnF2sdUs-Rwu75GHG2_Gs50OCy_ecGg" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/henjay724/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/henjay724/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/henjay724/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 182601;
+        var currentBlogApp = 'henjay724';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'LessIsMoreRight';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2021-05-07 08:37';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    
+    
+    
+</head>
+<body class="has-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <div id="home">
+    <div id="header">
+        <div id="blogTitle">
+            <div class="title"><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/henjay724/"><font>痞子衡嵌入式</font></a>
+</div>
+<div class="subtitle"><p style="font-size: 15px; padding: 10px; margin-bottom: 10px; text-align: left">
+定期分享程序设计、嵌入式开发、应用方案解析、嵌入式前沿热点新闻等相关文章
+<br>版权声明： 所有文章均为痞子衡原创，转载必须标明出处
+</p></div>
+
+        </div>
+        <div id="navigator">
+            
+<ul id="navList">
+    <li id="nav_sitehome"><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+    <li id="nav_myhome">
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/henjay724/">
+首页</a>
+</li>
+    <li id="nav_newpost">
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+    <li id="nav_contact">
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E7%97%9E%E5%AD%90%E8%A1%A1">
+联系</a></li>
+    <li id="nav_rss">
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/henjay724/rss/">
+订阅</a></li>
+    <li id="nav_admin">
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+            <div class="blogStats">
+                <div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div id="mainContent">
+            <div class="forFlow">
+                <div id="post_detail">
+    <div id="topics">
+        <div class="post">
+            <h1 class="postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14742519.html">
+    <span>痞子衡嵌入式：实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形（有预取）  </span>
+    
+
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<hr>
+<p>　　大家好，我是痞子衡，是正经搞技术的痞子。今天痞子衡给大家介绍的是<strong>实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形</strong>。</p>
+<p>　　上一篇文章 <a href="https://www.cnblogs.com/henjay724/p/14723615.html" target="_blank">《实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形（无缓存）》</a> 里痞子衡抓取了Cache和Prefetch全部关闭下的AHB读访问对应的Flash端时序波形图，相信大家对最基本的FlexSPI读访问支持有了感性认识。根据那篇文章我们知道，没有缓存加持的Flash访问，效率是相当低的。应用程序中对同一Flash地址空间的重复访问，FlexSPI底层每次都机械似的再读一次Flash，这就算了，甚至于代码中的大数据块的Flash读访问还会被拆分成多个不高于8byte的小数据块访问时序（每个CS有效期间前20个SCK周期都不是数据序列），这实在是浪费了太多时间（SCK周期）。</p>
+<p>　　针对这种低效情况，FlexSPI模块中集成了预取（Prefetch）技术，今天痞子衡就来继续测一测开启Prefetch功能下的Flash AHB读访问情形（注意本文不涉及内核的L1 Cache技术）：</p>
+<h3 id="一、flexspi的预取功能">一、FlexSPI的预取功能</h3>
+<p>　　FlexSPI模块内部一共有4个AHB RX Buffer，总大小是1KB（针对i.MXRT1050而言），用户可以自由配置这四个Buffer，这些AHB RX Buffer可以特殊指定给具体AHB master，并且还可以配置各自优先级，具体可以查阅芯片参考手册FlexSPI章节的 <strong>AHB RX Buffer Management</strong> 小节。</p>
+<p>　　这些AHB RX Buffer就是专门为Prefetch功能准备的，有了AHB RX Buffer，FlexSPI模块就可以在用户程序代码之上做些优化工作。比如代码中发生了Flash访问操作，在一次CS有效周期内FlexSPI直接按相应AHB RX Buffer长度来读取数据缓存下来，而不是按照代码中指定的读取长度，这样可以大大减少因AHB Burst Read策略导致的CS信号拆分情况，而且如果下次同一master要取的数据恰好在AHB RX Buffer里，FlexSPI就不用再重新去Flash里读取数据了。</p>
+<p>　　Prefetch功能说起来就上面那么简单的一段话，但是细细分析这段话，其实还是有如下一些小疑问在里面的，这些疑问痞子衡将用测试结果来给你解答。</p>
+<blockquote>
+<ul>
+<li>疑问1： 发生预取操作时，AHB RX Buffer是从哪里开始缓存？一定是代码里实际指定的Flash读取操作起始地址吗？</li>
+<li>疑问2： 一旦发生了预取操作，一定是持续到当前AHB RX Buffer满才会中止吗？有没有被打断的可能性？</li>
+</ul>
+</blockquote>
+<p>　　关于AHB RX Buffer的配置，有很多种不同的策略，痞子衡今天要测的主要是BootROM里启用的一种最简单直接的策略，即AHB RX Buffer 0 - 2全部关掉，仅启用AHB RX Buffer 3，总1KB RX Buffer空间全部给这个AHB RX Buffer 3，所有master均通过AHB RX Buffer 3来访问Flash，且访问优先级一致。</p>
+<h3 id="二、prefetch实验准备">二、Prefetch实验准备</h3>
+<p>　　参考文章 <a href="https://www.cnblogs.com/henjay724/p/14723615.html" target="_blank">《实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形（无缓存）》</a> 里的第一小节 <strong>实验准备</strong>，本次实验需要做一样的准备工作。</p>
+<h3 id="三、prefetch实验代码">三、Prefetch实验代码</h3>
+<p>　　参考文章 <a href="https://www.cnblogs.com/henjay724/p/14723615.html" target="_blank">《实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形（无缓存）》</a> 里的第二小节 <strong>实验代码</strong>，本次实验代码关于工程和链接文件方面是一样的设置，但是具体测试函数改成如下ramfunc型函数 test_prefetch_read()。关于Prefetch这次会有很多种不同测试，while(1)语句前的系统配置保持不变，while(1)里面的语句可根据实际测试情况去调整：</p>
+<pre><code class="language-C">#if (defined(__ICCARM__))
+#pragma optimize = none
+__ramfunc 
+#endif
+void test_prefetch_read(void)
+{
+    // 系统配置
+    /* Disable L1 I-Cache*/
+    SCB_DisableICache();
+
+    /* Disable L1 D-Cache*/
+    SCB_DisableDCache();
+
+    /* Enable FlexSPI AHB read prefetch */
+    FLEXSPI-&gt;AHBCR |= (FLEXSPI_AHBCR_PREFETCHEN_MASK | FLEXSPI_AHBCR_CACHABLEEN_MASK);
+    for (uint32_t index = 0; index &lt; FLEXSPI_AHBRXBUFCR0_COUNT; index++)
+    {
+        FLEXSPI-&gt;AHBRXBUFCR0[index] &amp;= ~(FLEXSPI_AHBRXBUFCR0_BUFSZ_MASK | FLEXSPI_AHBRXBUFCR0_MSTRID_MASK | FLEXSPI_AHBRXBUFCR0_PRIORITY_MASK);
+    }
+
+    while (1)
+    {
+        // 测试用例代码，可按情况调整
+    } 
+}
+</code></pre>
+<h3 id="四、prefetch实验结果">四、Prefetch实验结果</h3>
+<h4 id="41-循环读取同一数据块（1kb以内）">4.1 循环读取同一数据块（1KB以内）</h4>
+<p>　　本系列测试用例沿用上一篇文章中特殊const数据区.ahbRdBuffer设置，0x60002400 - 0x600027ff 空间的前16字节是指定的，后面区域就由IDE自由链接应用程序代码数据，我们暂不需要在IO[1:0]信号上具体观察这个区域的数据：</p>
+<pre><code class="language-text">const uint8_t ahbRdBlock[16] @ ".ahbRdBuffer" = {
+    0x00, 0x01, 0x02, 0x03, 0x10, 0x11, 0x12, 0x13,
+    0x20, 0x21, 0x22, 0x23, 0x30, 0x31, 0x32, 0x33,
+};
+// 在工程链接文件中
+keep{ section .ahbRdBuffer };
+place at address mem:0x60002400 { readonly section .ahbRdBuffer };
+</code></pre>
+<h5 id="411-访问首地址按八字节对齐">4.1.1 访问首地址按八字节对齐</h5>
+<p>　　先来看最典型的测试，从八字节对齐地址 PREFETCH_TEST_START 处读取 testLen 长度的数据，该函数里第一次memcpy语句的执行便会触发Prefetch机制，当 testLen 不大于 PREFETCH_TEST_MAX_LEN（1KB） 时，Flash端时序波形图都是同一个，即仅产生一次CS低有效周期（后续循环执行均从AHB RX Buffer直接取数据了），低有效持续时间约为65.2us，按SCK周期31.6ns来算，一共有2068个SCK周期，减去读时序里固定前20个命令地址周期，剩2048个数据SCK周期（一个SCK周期传输4bit数据），即读取1KB数据：</p>
+<pre><code class="language-C">#define PREFETCH_TEST_ALIGNMENT  (0) // 可取值 8*n
+#define PREFETCH_TEST_START      (0x60002400 + PREFETCH_TEST_ALIGNMENT)
+#define PREFETCH_TEST_MAX_LEN    (0x400)
+uint32_t testLen = 0x1;  // 可取值 1 - 0x400
+void test_prefetch_read(void)
+{
+    // 略去系统配置
+    testLen = (testLen &gt; PREFETCH_TEST_MAX_LEN) ? PREFETCH_TEST_MAX_LEN : testLen;
+    while (1)
+    {
+        memcpy((void *)0x20200000, (void *)PREFETCH_TEST_START, testLen);
+    } 
+}
+</code></pre>
+<p><img src="http://henjay724.com/image/cnblogs/i.MXRT_FlexSPI_PrefetchRead_Aligned_1KB.PNG" alt="" loading="lazy"></p>
+<h5 id="412-访问首地址非八字节对齐，长度小于1kb---对齐字节">4.1.2 访问首地址非八字节对齐，长度小于1KB - 对齐字节</h5>
+<p>　　第二个测试是 PREFETCH_TEST_START 地址并非八字节对齐，这种情况下如果 testLen 不大于1KB - PREFETCH_TEST_ALIGNMENT，那么Flash端时序波形图还是同一个，并且跟上一种测试情况结果是一样的，均是读取1KB数据。放大初始时序图来看，代码中实际Flash读取起始地址是0x60002407，但是FlexSPI的Prefetch机制会将其按八字节向前对齐到0x60002400来读取（实际传输时序里是0x002400三字节地址，输出数据是0x00、0x01、0x02...），这也意味着<font color="Blue">AHB RX Buffer存储的数据永远是从八字节地址对齐处开始的（回答了第一节里的疑问1）</font>。</p>
+<pre><code class="language-C">#define PREFETCH_TEST_ALIGNMENT  (7) // 可取值 1 - 7
+#define PREFETCH_TEST_START      (0x60002400 + PREFETCH_TEST_ALIGNMENT)
+#define PREFETCH_TEST_MAX_LEN    (0x400 - PREFETCH_TEST_ALIGNMENT)
+uint32_t testLen = 0x1;  // 可取值 1 - PREFETCH_TEST_MAX_LEN
+void test_prefetch_read(void)
+{
+    // 略去系统配置
+    testLen = (testLen &gt; PREFETCH_TEST_MAX_LEN) ? PREFETCH_TEST_MAX_LEN : testLen;
+    while (1)
+    {
+        memcpy((void *)0x20200000, (void *)PREFETCH_TEST_START, testLen);
+    } 
+}
+</code></pre>
+<p><img src="http://henjay724.com/image/cnblogs/i.MXRT_FlexSPI_PrefetchRead_Unaligned_less_1KB.PNG" alt="" loading="lazy"></p>
+<h4 id="42-循环读取同一数据块（大于1kb）">4.2 循环读取同一数据块（大于1KB）</h4>
+<p>　　为了便于分辨IO[1:0]上的数据去帮助分析本系列测试用例结果，此处我们需要拓展下特殊const数据区.ahbRdBuffer设置如下：</p>
+<pre><code class="language-text">const uint8_t ahbRdBlock1[1024] @ ".ahbRdBuffer1" = {
+    // 正顺序
+    0x00, 0x01, 0x02, 0x03, 0x10, 0x11, 0x12, 0x13,
+    0x20, 0x21, 0x22, 0x23, 0x30, 0x31, 0x32, 0x33,
+    // 倒顺序
+    0x33, 0x32, 0x31, 0x30, 0x23, 0x22, 0x21, 0x20,
+    0x13, 0x12, 0x11, 0x10, 0x03, 0x02, 0x01, 0x00,
+};
+const uint8_t ahbRdBlock2[1024] @ ".ahbRdBuffer2" = {
+    // 正插序
+    0x01, 0x00, 0x03, 0x02, 0x11, 0x10, 0x13, 0x12, 
+    0x21, 0x20, 0x23, 0x22, 0x31, 0x30, 0x33, 0x32, 
+    // 倒插序
+    0x32, 0x33, 0x30, 0x31, 0x22, 0x23, 0x20, 0x21, 
+    0x12, 0x13, 0x10, 0x11, 0x02, 0x03, 0x00, 0x01, 
+};
+// 在工程链接文件中
+keep{ section .ahbRdBuffer1, section .ahbRdBuffer2 };
+place at address mem:0x60002400 { readonly section .ahbRdBuffer1 };
+place at address mem:0x60002800 { readonly section .ahbRdBuffer2 };
+</code></pre>
+<h5 id="421-访问首地址按八字节对齐">4.2.1 访问首地址按八字节对齐</h5>
+<p>　　第三个测试是从八字节对齐地址 PREFETCH_TEST_START 处读取 testLen 长度的数据，testLen大于1KB，这种情况下我们在Flash端看到了周期性的波形图，这说明1KB的AHB RX Buffer不足以缓存此时代码里的数据访问需求，因此AHB RX Buffer被不断地清除和重新缓存。放大时序图来看，一个完整周期内，第一个CS有效期间读取了0x60002400开始的1KB数据，第二个CS有效期间读取了0x60002800开始的15个字节数据（总有效时间1.55us），痞子衡知道你肯定觉得奇怪，测试testLen设的是0x401，为何第二个CS期间Prefetch机制缓存的是15个字节？既不是1KB，也不是1byte。这其实是因为第二次CS有效期间的Prefetch操作被下一次while(1)回来的数据访问需求打断了，所以这意味着<font color="Blue">一旦Prefetch操作被使能，Prefetch机制会尝试缓存到填满AHB RX Buffer，但如果在Buffer满之前有全新的数据访问需求发生，当前Prefetch操作会被中止，Buffer清空，重新开始下一次Prefetch操作（这里回答了第一节里的疑问2）。</font></p>
+<pre><code class="language-C">#define PREFETCH_TEST_ALIGNMENT  (0) // 可取值 8*n
+#define PREFETCH_TEST_START      (0x60002400 + PREFETCH_TEST_ALIGNMENT)
+#define PREFETCH_TEST_MIN_LEN    (0x400)
+uint32_t testLen = 0x401;  // 可取值 0x401 - 0x800
+void test_prefetch_read(void)
+{
+    // 略去系统配置
+    testLen = (testLen &lt;= PREFETCH_TEST_MIN_LEN) ? (PREFETCH_TEST_MIN_LEN + testLen) : testLen;
+    while (1)
+    {
+        memcpy((void *)0x20200000, (void *)PREFETCH_TEST_START, testLen);
+    } 
+}
+</code></pre>
+<p><img src="http://henjay724.com/image/cnblogs/i.MXRT_FlexSPI_PrefetchRead_Aligned_1KB+1.PNG" alt="" loading="lazy"></p>
+<p>　　基于上面的分析，我们追加一个实验，在memcpy语句后面加一点软延时，保证第二次CS有效期间Prefetch操作有足够的时间去将AHB RX Buffer填满，我们知道1KB的Flash数据读取约耗时65.2us，我们就延时70us以上试试看，果然这次看到第二个CS也同样持续了65.2us。</p>
+<pre><code class="language-C">void test_prefetch_read(void)
+{
+    // 略去系统配置
+    while (1)
+    {
+        memcpy((void *)0x20200000, (void *)0x60002400, 0x401);
+        SDK_DelayAtLeastUs(70, SystemCoreClock);
+    } 
+}
+</code></pre>
+<p><img src="http://henjay724.com/image/cnblogs/i.MXRT_FlexSPI_PrefetchRead_Aligned_1KB+1_delay.PNG" alt="" loading="lazy"></p>
+<h5 id="422-访问首地址非八字节对齐">4.2.2 访问首地址非八字节对齐</h5>
+<p>　　第四个测试是从非八字节对齐地址处读取超过 1KB 长度的数据，结合4.1节的测试结果，我们可以将代码中的实际语句 memcpy((void *)0x20200001, (void *)0x60002401, 0x401); 做等效转换为 memcpy((void *)0x20200000, (void *)0x60002400, 0x402);，这里就不多贴结果图了。</p>
+<pre><code class="language-C">void test_prefetch_read(void)
+{
+    // 略去系统配置
+    while (1)
+    {
+        memcpy((void *)0x20200001, (void *)0x60002401, 0x401);
+        // 从Flash端信号传输来看，几乎等效于如下语句
+        //memcpy((void *)0x20200000, (void *)0x60002400, 0x402);
+    } 
+}
+</code></pre>
+<h4 id="43-循环读取两个不同数据块（1kb以内）">4.3 循环读取两个不同数据块（1KB以内）</h4>
+<p>　　最后一个实验是循环读取两个不连续数据块，有了前面的测试结果，这个测试的结果也在意料之中了，每个CS持续时间约17us（大约537个SCK周期），实际传输略多于256个byte的数据，这也是符合Prefetch操作会被中止的分析的。如果想看到完整的1KB缓存，memcpy后需要插入至少48.2us以上的软延时。</p>
+<pre><code class="language-C">void test_prefetch_read(void)
+{
+    // 略去系统配置
+    while (1)
+    {
+        memcpy((void *)0x20200000, (void *)0x60002400, 0x100);
+        memcpy((void *)0x20200400, (void *)0x60002800, 0x100);
+    } 
+}
+</code></pre>
+<p><img src="http://henjay724.com/image/cnblogs/i.MXRT_FlexSPI_PrefetchRead_two_blocks.PNG" alt="" loading="lazy"></p>
+<p>　　至此，实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形痞子衡便介绍完毕了，掌声在哪里~~~</p>
+<h3 id="欢迎订阅">欢迎订阅</h3>
+<p>文章会同时发布到我的 <a href="https://www.cnblogs.com/henjay724/" target="_blank">博客园主页</a>、<a href="https://blog.csdn.net/henjay724" target="_blank">CSDN主页</a>、<a href="https://www.zhihu.com/people/henjay724" target="_blank">知乎主页</a>、<a href="http://weixin.sogou.com/weixin?type=1&amp;query=%E7%97%9E%E5%AD%90%E8%A1%A1%E5%B5%8C%E5%85%A5%E5%BC%8F" target="_blank">微信公众号</a> 平台上。</p>
+<p>微信搜索"<strong>痞子衡嵌入式</strong>"或者扫描下面二维码，就可以在手机上第一时间看了哦。</p>
+<p><img src="http://henjay724.com/image/github/pzhMcu_qrcode_258x258.jpg" alt="" loading="lazy"></p>
+
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2021-05-07 20:37</span>&nbsp;
+<a href="https://www.cnblogs.com/henjay724/">痞子衡</a>&nbsp;
+阅读(<span id="post_view_count">0</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14742519" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(14742519);return false;">收藏</a></div>
+        </div>
+        <script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 182601, cb_blogApp = 'henjay724', cb_blogUserGuid = '2ecc7293-a4c3-e311-8d02-90b11c0b17d6';
+    var cb_entryId = 14742519, cb_entryCreatedDate = '2021-05-07 20:37', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+        <a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_card1"></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+    </div>
+</div>
+            </div>
+        </div>
+
+        <div id="sideBar">
+            <div id="sideBarMain">
+                <div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+                <div id="calendar"><div id="blog-calendar" style="display:none"></div></div>                
+                <script>loadBlogDefaultCalendar();</script>
+                <div id="leftcontentcontainer">
+                    <!-- begin:SingleColumn -->
+                    <div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+                    <!-- end:  SingleColumn -->
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div id="footer">
+        <!--done-->
+Copyright &copy; 2021 痞子衡
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+    </div>
+</div>
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjuwA71jKwIuFbgQKLs7H7ZCi8gETzNSXZlwPapIVwNuT4zJgwvAQYhP2j4dVKpvHSfQVdDG__ektPsg7kN8NpHYs1wut00BysqXj5HVmR0E7MWqQVzSOPE0QZHrcdhrumI" />
+</body>
+</html>

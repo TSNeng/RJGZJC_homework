@@ -1,0 +1,437 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    <meta name="description" content="postgresql高级应用之合并单元格 转载请注明出处https://www.cnblogs.com/funnyzpc/p/14732172.html 1.写在前面✍ 继上一篇postgresql高" />
+    <meta property="og:description" content="postgresql高级应用之合并单元格 转载请注明出处https://www.cnblogs.com/funnyzpc/p/14732172.html 1.写在前面✍ 继上一篇postgresql高" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>postgresql高级应用之合并单元格 - funnyZpC - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    <link id="MainCss" rel="stylesheet" href="/skins/imetro/bundle-imetro.min.css?v=GrIRT_0_o8nIVMcJ3tk4a5qGy_BHZcH0zcKJuZjwNcI" />
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/funnyzpc/custom.css?v=rxy//r&#x2B;/zW86L9x&#x2B;MzGUvv1QyXc=" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/imetro/bundle-imetro-mobile.min.css?v=y3TtHeZMWJqA3RqhdU02N5r_A086WB872wP23r3v7aQ" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/funnyzpc/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/funnyzpc/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/funnyzpc/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 363604;
+        var currentBlogApp = 'funnyzpc';
+        var cb_enable_mathjax = true;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'iMetro';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2021-05-07 08:31';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processClass: 'math', processEscapes: true },
+        TeX: {
+        equationNumbers: { autoNumber: ['AMS'], useLabelIds: true },
+        extensions: ['extpfeil.js', 'mediawiki-texvc.js'],
+        Macros: {bm: "\\boldsymbol"}
+        },
+        'HTML-CSS': { linebreaks: { automatic: true } },
+        SVG: { linebreaks: { automatic: true } }
+        });
+    </script>
+    <script src="https://mathjax.cnblogs.com/2_7_5/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;v=20200504"></script>
+    
+</head>
+<body class="has-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/funnyzpc/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/funnyzpc/">funnyZpC</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/funnyzpc/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/funnyZpC">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/funnyzpc/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class = "postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/14732172.html">
+    <span>postgresql高级应用之合并单元格</span>
+    
+
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<h2 id="postgresql高级应用之合并单元格">postgresql高级应用之合并单元格</h2>
+<blockquote>
+<p>转载请注明出处<a href="https://www.cnblogs.com/funnyzpc/p/14732172.html" target="_blank">https://www.cnblogs.com/funnyzpc/p/14732172.html</a></p>
+</blockquote>
+<h3 id="1写在前面">1.写在前面✍</h3>
+<p>继上一篇<a href="https://www.cnblogs.com/funnyzpc/p/14732165.html" target="_blank">postgresql高级应用之行转列&amp;汇总求和</a>之后想更进一步做点儿复杂的(圖表暫且不論哈😂)，当然作为報表，出現最多的無非就是合并單元格了，是的，我已經迫不及待啦😎~</p>
+<h3 id="2思考">2.思考</h3>
+<p>首先，我們的腦海中應該有一個對前端<code>table</code>有一個大致的了解， 當然這對非前端的同學十分的不友好，如果您嘗試閲讀以下内容存在困難的話(前端<code>html</code>、<code>javascript</code>) 可就此打住哈。。。<br>
+enn...,讓我先稍稍解釋下前端 <code>html</code> 的表格格式吧😀</p>
+<h4 id="21-前端html-table基本結構">2.1 前端<code>html</code>-&gt;<code>table</code>基本結構</h4>
+<p>先給出一個十分base的html <code>demo.html</code></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset="utf-8" /&gt;
+	&lt;title&gt;demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- 這裏定義了兩個屬性 border:定義表格邊框 cellpadding:定義單元格大小 --&gt;
+  &lt;table border="3"  cellpadding="8"&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;表頭1&lt;/th&gt;&lt;th&gt;表頭2&lt;/th&gt;&lt;th&gt;表頭3&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td&gt;第一行第1個&lt;/td&gt;&lt;td&gt;第一行第2個&lt;/td&gt;&lt;td&gt;第一行第3個&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;!-- 使用colspan屬性進行橫向合并，橫向被合并的單元格位置需要騰出來 --&gt;
+			&lt;!-- 以下橫向合并兩個單元格，所以第二個td標簽就不要寫了，否則會溢出哦~ --&gt;
+			&lt;td colspan="2"&gt;橫向合并了兩個單元格&lt;/td&gt;&lt;td&gt;第二行第3個&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;第三行第1個&lt;/td&gt;&lt;td&gt;第三行第2個&lt;/td&gt;&lt;td&gt;第三行第3個&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;!-- 使用rowspan屬性進行縱向合并，縱向合并的(跨越的)單元格位置需要騰出來 --&gt;
+			&lt;!-- 以下縱向合并三個個單元格(在本行最後一個標簽)，所以下兩行的最後兩個td標簽就不要寫啦~，否則同樣會溢出哦~ --&gt;
+			&lt;td&gt;第四行第1個&lt;/td&gt;&lt;td&gt;第四行第2個&lt;/td&gt;&lt;td rowspan="3"&gt;縱向合并了三個單元格&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;第五行第1個&lt;/td&gt;&lt;td&gt;第五行第2個&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;第六行第1個&lt;/td&gt;&lt;td&gt;第六行第2個&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>瀏覽器渲染出來(使用瀏覽器打開html文件)的樣子是這樣的~<br>
+<img src="https://img2020.cnblogs.com/blog/1161789/202105/1161789-20210506211341644-1403370995.png" alt="" loading="lazy"></p>
+<p>以上總結就是<code>colspan</code>實現橫向合并單元格，<code>rowspan</code>實現縱向合并單元格~</p>
+<p>呃嗯，既然我們知道了<code>html</code>需要這兩個屬性值(也就是合并的行數或合并的列數),那麽<sub>就是要在sql中生成這兩個參數值然後提供給前端的同學使用哈</sub>，這是淺層意思，那麽深層意思是什麽呢？？？容我想想看。。。</p>
+<ul>
+<li>
+<p>對於橫向合并單元格</p>
+<p>需要使用 <code>case</code>+<code>when</code>+<code>then</code> 語句判斷是否需要橫向合并(重要的是要給出橫向合并的數值)，這樣想是合理的，可能造成的困擾可能是這樣做會造成<code>sql</code>冗餘<sub>（當然也是不得已而爲之），當然本節就不再講橫向合并單元格啦</sub></p>
+</li>
+<li>
+<p>對於縱向合并單元格</p>
+<p><em>step1</em>.👉 如果使用<code>聚合</code>+<code>窗口函數</code>來計算需要合并的相同的列數，可能造成的問題是生成的<code>rowspan</code>對於相同列來説數值是一樣的（如下圖），這樣不可以欸~<br>
+<img src="https://img2020.cnblogs.com/blog/1161789/202105/1161789-20210507194918702-290790692.png" alt="" loading="lazy"></p>
+<p><em>step2</em>.👉 。。。既然可以通過<code>step1</code>生成窗口内合并總數的數值，當然也可以通過窗口函數來生成一個<code>倒排序列</code>的列,哈哈😊，你似乎發現了什麽~~~，對，將窗口合并總數的列與窗口内倒排序的列做等值判斷，相等的不就是第一個合并數字列了。。。bingo<br>
+倒排序的窗口列<br>
+<img src="https://img2020.cnblogs.com/blog/1161789/202105/1161789-20210507195641307-641755826.png" alt="" loading="lazy"><br>
+求總的列+倒排序的列<br>
+<img src="https://img2020.cnblogs.com/blog/1161789/202105/1161789-20210507195823150-347201277.png" alt="" loading="lazy"></p>
+<p><em>step3</em>.👉 既然我們能做一個數據列的合并，也能做兩個列的合并(也可以是一個二級列，注意 <code>order by</code> 對合并行的影響哦<sub>），這裏簡單各一個經過層層包裝後的合并數值列生成，注意下圖的綠色部分哦😉</sub><br>
+<img src="https://img2020.cnblogs.com/blog/1161789/202105/1161789-20210507200338681-913195170.png" alt="" loading="lazy"></p>
+<p>光説不練假把式，通過一下測試脚本試試囖😎~</p>
+</li>
+</ul>
+<h4 id="22表结构">2.2表结构</h4>
+<pre><code>drop table if EXISTS  report2 ;
+CREATE TABLE report2 (
+  "id" varchar(10) primary key,
+  "name" varchar(50),
+  "price" numeric,
+  "level2" varchar(50) ,
+  "level1" varchar(50)
+);
+</code></pre>
+<h4 id="23表字段注释">2.3表字段注释</h4>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>name</td>
+<td>商品名称</td>
+</tr>
+<tr>
+<td>price</td>
+<td>价格</td>
+</tr>
+<tr>
+<td>level2</td>
+<td>二级分类</td>
+</tr>
+<tr>
+<td>level1</td>
+<td>一级分类</td>
+</tr>
+</tbody>
+</table>
+<h4 id="24表数据">2.4表数据</h4>
+<pre><code>INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0015', '洗发露', '36', '洗护', '日用品');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0008', '香皂', '17.5', '洗护', '日用品');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0007', '薯条', '7.5', '垃圾食品', '零食');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0009', '方便面', '3.5', '垃圾食品', '零食');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0004', '辣条', '5.6', '垃圾食品', '零食');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0006', 'iPhone X', '9600', '小电器', '电器');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0003', '手表', '1237.55', '小电器', '电器');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0012', '电视', '3299', '大电器', '电器');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0016', '洗衣机', '4999', '大电器', '电器');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0013', '围巾', '93', '配饰', '服装配饰');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0017', '特步凉鞋', '499', '鞋子', '服装配饰');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0001', 'NIKE新款鞋', '900', '鞋子', '服装配饰');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0002', '外套', '110.9', '上衣', '服装配饰');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0014', '作业本', '1', '纸张', '文具');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0005', '铅笔', '7', '笔', '文具');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0010', '水杯', '27', '餐饮', '日用品');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0011', '毛巾', '15', '洗护', '日用品');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0018', '绘图笔', '15', '笔', '文具');
+INSERT INTO "report2"("id", "name", "price", "level2", "level1") VALUES ('0019', '汽水', '3.5', '其它', '零食');
+</code></pre>
+<h3 id="3結果集最終求解">3.🎉結果集最終求解</h3>
+<pre><code>select 
+  t1.*,
+  case when  t_rank=t_count then t_count else null end as level1_row,
+  case when  tu_rank=tu_count then tu_count else null end as level2_row
+from 
+(
+    select 
+      *,
+      row_number() over(PARTITION by level1 order by level1 asc) t_rank,
+      count(1) over (partition by level1) t_count,
+      row_number() over(PARTITION by level1,level2 order by level1,level2 asc) tu_rank,
+      count(1) over (partition by level1,level2) tu_count
+    from report2 order by level1
+) t1 order by t1.level1,t_rank desc,t_count desc,tu_rank desc,tu_count desc;
+</code></pre>
+<p>_紅色_部分即為前端童鞋需要的合并數值哈🥰~</p>
+<p><img src="https://img2020.cnblogs.com/blog/1161789/202105/1161789-20210507200941925-126376582.png" alt="" loading="lazy"></p>
+<p>如果你能看懂以上問題及求解的 <code>sql</code> ,恭喜你又升級啦😂</p>
+<p>總結下::對問題的<code>分析✨</code>以及對問題求解的<code>思考🤔</code>很重要嘛，當然還包含對<code>postgresql</code>所提供工具的靈活使用 👉 總會產生意想不到的驚喜，哈哈😘~</p>
+
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2021-05-07 20:31</span>&nbsp;
+<a href="https://www.cnblogs.com/funnyzpc/">funnyZpC</a>&nbsp;
+阅读(<span id="post_view_count">1</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14732172" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(14732172);return false;">收藏</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 363604, cb_blogApp = 'funnyzpc', cb_blogUserGuid = '373be9e5-a033-e711-9fc1-ac853d9f53cc';
+    var cb_entryId = 14732172, cb_entryCreatedDate = '2021-05-07 20:31', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_card1"></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 funnyZpC
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjvCiWYAC_PeneAbBVy_WE8sYs4pXVX86mUQaYS2brszPK3Rzb2e-0kmEaSaeqhnV8Meg--VVwf0ukiCK1SLrdEHQMTKkGKxUJShi9bB6lGdcJC2ZDWDLgwuhRl_5J-Rsos" />
+</body>
+</html>

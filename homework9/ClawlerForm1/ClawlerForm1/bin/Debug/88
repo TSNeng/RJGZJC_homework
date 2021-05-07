@@ -1,0 +1,1206 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>痞子衡 - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    <link id="MainCss" rel="stylesheet" href="/skins/lessismoreright/bundle-lessismoreright.min.css?v=00nt3ajQUVX0gvFynxRY-4TOqQaW32yFChuBOrvOqLk" />
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/henjay724/custom.css?v=dcz1NrV0qkygJAUlNIRttJ2No08=" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/lessismoreright/bundle-lessismoreright-mobile.min.css?v=cSBXSFXCBG9KdnF2sdUs-Rwu75GHG2_Gs50OCy_ecGg" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/henjay724/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/henjay724/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/henjay724/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 182601;
+        var currentBlogApp = 'henjay724';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'LessIsMoreRight';
+        var visitorUserId = '';
+    </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    
+    
+    
+</head>
+<body class="has-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <div id="home">
+    <div id="header">
+        <div id="blogTitle">
+            <div class="title"><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/henjay724/"><font>痞子衡嵌入式</font></a>
+</div>
+<div class="subtitle"><p style="font-size: 15px; padding: 10px; margin-bottom: 10px; text-align: left">
+定期分享程序设计、嵌入式开发、应用方案解析、嵌入式前沿热点新闻等相关文章
+<br>版权声明： 所有文章均为痞子衡原创，转载必须标明出处
+</p></div>
+
+        </div>
+        <div id="navigator">
+            
+<ul id="navList">
+    <li id="nav_sitehome"><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+    <li id="nav_myhome">
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/henjay724/">
+首页</a>
+</li>
+    <li id="nav_newpost">
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+    <li id="nav_contact">
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E7%97%9E%E5%AD%90%E8%A1%A1">
+联系</a></li>
+    <li id="nav_rss">
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/henjay724/rss/">
+订阅</a></li>
+    <li id="nav_admin">
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+            <div class="blogStats">
+                <div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div id="mainContent">
+            <div class="forFlow">
+                
+
+
+
+
+
+
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2020/09/15.html">2020年9月15日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/13676169.html">
+    <span>
+            <span>[置顶]</span>
+        痞子衡职场经验与见闻感悟分享 - 索引
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="cnblogs-post-body" id="postlist_postbody_13676169">
+        正文内容加载中...
+    </div>
+    <script type="text/javascript">getBlogPostBody(13676169);</script>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2020-09-15 22:51
+痞子衡
+<span data-post-id="13676169" class="post-view-count">阅读(241)</span> 
+<span data-post-id="13676169" class="post-comment-count">评论(0)</span> 
+<span data-post-id="13676169" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13676169" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2020/08/25.html">2020年8月25日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/13874876.html">
+    <span>
+            <span>[置顶]</span>
+        《痞子衡嵌入式半月刊》 索引
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="cnblogs-post-body" id="postlist_postbody_13874876">
+        正文内容加载中...
+    </div>
+    <script type="text/javascript">getBlogPostBody(13874876);</script>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2020-08-25 20:25
+痞子衡
+<span data-post-id="13874876" class="post-view-count">阅读(100)</span> 
+<span data-post-id="13874876" class="post-comment-count">评论(0)</span> 
+<span data-post-id="13874876" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13874876" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2019/11/26.html">2019年11月26日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/13866516.html">
+    <span>
+            <span>[置顶]</span>
+        痞子衡嵌入式：恩智浦MCU集成开发环境与开发工具教程 - 索引 
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="cnblogs-post-body" id="postlist_postbody_13866516">
+        正文内容加载中...
+    </div>
+    <script type="text/javascript">getBlogPostBody(13866516);</script>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2019-11-26 22:11
+痞子衡
+<span data-post-id="13866516" class="post-view-count">阅读(202)</span> 
+<span data-post-id="13866516" class="post-comment-count">评论(0)</span> 
+<span data-post-id="13866516" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13866516" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2019/05/18.html">2019年5月18日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/12253550.html">
+    <span>
+            <span>[置顶]</span>
+        痞子衡嵌入式：嵌入式从业者应知应会知识点 - 索引
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="cnblogs-post-body" id="postlist_postbody_12253550">
+        正文内容加载中...
+    </div>
+    <script type="text/javascript">getBlogPostBody(12253550);</script>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2019-05-18 20:28
+痞子衡
+<span data-post-id="12253550" class="post-view-count">阅读(528)</span> 
+<span data-post-id="12253550" class="post-comment-count">评论(0)</span> 
+<span data-post-id="12253550" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12253550" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2019/05/09.html">2019年5月9日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/10836471.html">
+    <span>
+            <span>[置顶]</span>
+        痞子衡嵌入式：恩智浦i.MX RTxxx系列MCU开发那些事 - 索引
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="cnblogs-post-body" id="postlist_postbody_10836471">
+        正文内容加载中...
+    </div>
+    <script type="text/javascript">getBlogPostBody(10836471);</script>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2019-05-09 09:00
+痞子衡
+<span data-post-id="10836471" class="post-view-count">阅读(1132)</span> 
+<span data-post-id="10836471" class="post-comment-count">评论(0)</span> 
+<span data-post-id="10836471" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=10836471" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2018/09/28.html">2018年9月28日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/9716608.html">
+    <span>
+            <span>[置顶]</span>
+        痞子衡嵌入式：高性能MCU之音视频应用开发那些事 - 索引
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="cnblogs-post-body" id="postlist_postbody_9716608">
+        正文内容加载中...
+    </div>
+    <script type="text/javascript">getBlogPostBody(9716608);</script>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2018-09-28 07:30
+痞子衡
+<span data-post-id="9716608" class="post-view-count">阅读(989)</span> 
+<span data-post-id="9716608" class="post-comment-count">评论(0)</span> 
+<span data-post-id="9716608" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=9716608" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2018/03/01.html">2018年3月1日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/8761059.html">
+    <span>
+            <span>[置顶]</span>
+        痞子衡嵌入式：恩智浦i.MX RT1xxx系列MCU开发那些事 - 索引
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="cnblogs-post-body" id="postlist_postbody_8761059">
+        正文内容加载中...
+    </div>
+    <script type="text/javascript">getBlogPostBody(8761059);</script>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2018-03-01 21:49
+痞子衡
+<span data-post-id="8761059" class="post-view-count">阅读(2910)</span> 
+<span data-post-id="8761059" class="post-comment-count">评论(11)</span> 
+<span data-post-id="8761059" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=8761059" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2017/11/01.html">2017年11月1日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/8426744.html">
+    <span>
+            <span>[置顶]</span>
+        痞子衡嵌入式：ARM Cortex-M内核MCU开发那些事 - 索引
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="cnblogs-post-body" id="postlist_postbody_8426744">
+        正文内容加载中...
+    </div>
+    <script type="text/javascript">getBlogPostBody(8426744);</script>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2017-11-01 15:10
+痞子衡
+<span data-post-id="8426744" class="post-view-count">阅读(1315)</span> 
+<span data-post-id="8426744" class="post-comment-count">评论(2)</span> 
+<span data-post-id="8426744" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=8426744" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/05/07.html">2021年5月7日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14742519.html">
+    <span>
+        痞子衡嵌入式：实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形（有预取）  
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：大家好，我是痞子衡，是正经搞技术的痞子。今天痞子衡给大家介绍的是实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形。 上一篇文章 《实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形（无缓存）》 里痞子衡抓取了Cache和Prefetch全部关闭下        <a href="https://www.cnblogs.com/henjay724/p/14742519.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-05-07 20:37
+痞子衡
+<span data-post-id="14742519" class="post-view-count">阅读(0)</span> 
+<span data-post-id="14742519" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14742519" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14742519" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/04/30.html">2021年4月30日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14723615.html">
+    <span>
+        痞子衡嵌入式：实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形（无缓存）
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：大家好，我是痞子衡，是正经搞技术的痞子。今天痞子衡给大家介绍的是实抓Flash信号波形来看i.MXRT的FlexSPI外设下AHB读访问情形。 上一篇文章 《i.MXRT中FlexSPI外设对AHB Burst Read特性的支持》 里痞子衡介绍了FlexSPI外设在不开启Prefetch功能下响应        <a href="https://www.cnblogs.com/henjay724/p/14723615.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-04-30 23:40
+痞子衡
+<span data-post-id="14723615" class="post-view-count">阅读(118)</span> 
+<span data-post-id="14723615" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14723615" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14723615" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/04/27.html">2021年4月27日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14709872.html">
+    <span>
+        痞子衡嵌入式：利用i.MXRT1xxx系列内部DCP引擎计算Hash值时需特别处理L1 D-Cache
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：大家好，我是痞子衡，是正经搞技术的痞子。今天痞子衡给大家介绍的是利用i.MXRT1xxx系列内部DCP引擎计算Hash值时需特别处理L1 D-Cache。 关于i.MXRT1xxx系列内部通用数据协处理器DCP模块，痞子衡之前写过一篇文章 《SNVS Master Key仅在i.MXRT10xx H        <a href="https://www.cnblogs.com/henjay724/p/14709872.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-04-27 17:15
+痞子衡
+<span data-post-id="14709872" class="post-view-count">阅读(78)</span> 
+<span data-post-id="14709872" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14709872" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14709872" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/04/25.html">2021年4月25日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14702657.html">
+    <span>
+        《痞子衡嵌入式半月刊》 第 30 期
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：这里分享嵌入式领域有用有趣的项目/工具以及一些热点新闻，农历年分二十四节气，希望在每个交节之日准时发布一期。        <a href="https://www.cnblogs.com/henjay724/p/14702657.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-04-25 23:25
+痞子衡
+<span data-post-id="14702657" class="post-view-count">阅读(85)</span> 
+<span data-post-id="14702657" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14702657" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14702657" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/04/23.html">2021年4月23日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14695411.html">
+    <span>
+        痞子衡嵌入式：i.MXRT中FlexSPI外设对AHB Burst Read特性的支持
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：大家好，我是痞子衡，是正经搞技术的痞子。今天痞子衡给大家介绍的是FlexSPI外设对AHB Burst Read特性的支持。 痞子衡之前写过一篇关于FlexSPI LUT的文章 《从头开始认识i.MXRT启动头FDCB里的lookupTable》，这个LUT机制是i.MXRT上能够实现对串行NOR         <a href="https://www.cnblogs.com/henjay724/p/14695411.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-04-23 20:00
+痞子衡
+<span data-post-id="14695411" class="post-view-count">阅读(111)</span> 
+<span data-post-id="14695411" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14695411" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14695411" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/04/20.html">2021年4月20日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14682888.html">
+    <span>
+        痞子衡嵌入式：在i.MXRT启动头FDCB里使能串行NOR Flash的DTR模式
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：大家好，我是痞子衡，是正经搞技术的痞子。今天痞子衡给大家介绍的是在FDCB里使能串行NOR Flash的DTR模式。 前两篇文章 《IS25WP系列Dummy Cycle设置》 与 《IS25LP系列Dummy Cycle设置》， 痞子衡均是设置Flash的Fast Read Quad I/O SD        <a href="https://www.cnblogs.com/henjay724/p/14682888.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-04-20 21:11
+痞子衡
+<span data-post-id="14682888" class="post-view-count">阅读(93)</span> 
+<span data-post-id="14682888" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14682888" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14682888" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/04/18.html">2021年4月18日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14672992.html">
+    <span>
+        痞子衡嵌入式：我的博客园积分排名终于挤进了前3000名榜单
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：继今年2月解锁了写技术博客第一个目标 《我的博文总量终于追平了中文Kinetis博客第一人jicheng0622》 之后，时隔两个月，痞子衡又达成了第二个小目标，博客首次进入博客园榜单（该榜单会收录博客园前3000名博主）。 博客园博主排行榜： https://www.cnblogs.com/All        <a href="https://www.cnblogs.com/henjay724/p/14672992.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-04-18 10:53
+痞子衡
+<span data-post-id="14672992" class="post-view-count">阅读(292)</span> 
+<span data-post-id="14672992" class="post-comment-count">评论(9)</span> 
+<span data-post-id="14672992" class="post-digg-count">推荐(4)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14672992" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/04/17.html">2021年4月17日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14672501.html">
+    <span>
+        痞子衡嵌入式：同一厂商不同系列Flash型号下Dummy Cycle设置方法可能有差异 (以IS25LP064A为例)
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：大家好，我是痞子衡，是正经搞技术的痞子。今天痞子衡给大家介绍的是同一厂商不同系列Flash型号下Dummy Cycle设置方法的差异。 上一篇文章 《在i.MXRT启动头FDCB里调整Flash工作频率也需同步设Dummy Cycle》， 痞子衡是以i.MXRT1170-EVK上板载Flash型号I        <a href="https://www.cnblogs.com/henjay724/p/14672501.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-04-17 23:22
+痞子衡
+<span data-post-id="14672501" class="post-view-count">阅读(130)</span> 
+<span data-post-id="14672501" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14672501" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14672501" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/04/15.html">2021年4月15日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14664911.html">
+    <span>
+        痞子衡嵌入式：在i.MXRT启动头FDCB里调整Flash工作频率也需同步设Dummy Cycle (以IS25WP128为例)
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：大家好，我是痞子衡，是正经搞技术的痞子。今天痞子衡给大家介绍的是Flash工作频率与Dummy Cycle的联系。 上一篇文章 《从头开始认识i.MXRT启动头FDCB里的lookupTable》，痞子衡带大家从头梳理了下i.MXRT下启动头FDCB里lookupTable的设计与实现细节，在这个过        <a href="https://www.cnblogs.com/henjay724/p/14664911.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-04-15 22:55
+痞子衡
+<span data-post-id="14664911" class="post-view-count">阅读(123)</span> 
+<span data-post-id="14664911" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14664911" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14664911" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/04/11.html">2021年4月11日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14645915.html">
+    <span>
+        《痞子衡嵌入式半月刊》 第 29 期
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：这里分享嵌入式领域有用有趣的项目/工具以及一些热点新闻，农历年分二十四节气，希望在每个交节之日准时发布一期。        <a href="https://www.cnblogs.com/henjay724/p/14645915.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-04-11 22:28
+痞子衡
+<span data-post-id="14645915" class="post-view-count">阅读(323)</span> 
+<span data-post-id="14645915" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14645915" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14645915" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/04/09.html">2021年4月9日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14639057.html">
+    <span>
+        痞子衡嵌入式：从头开始认识i.MXRT启动头FDCB里的lookupTable
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：大家好，我是痞子衡，是正经搞技术的痞子。今天痞子衡给大家介绍的是i.MXRT启动头FDCB里的lookupTable。 一个MCU内部通常有很多外设模块，这些外设模块是各MCU厂商做差异化产品的本质，也是各厂商核心竞争力所在（这里特指那些生产ARM Cortex-M内核MCU的厂商）。在做MCU开发        <a href="https://www.cnblogs.com/henjay724/p/14639057.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-04-09 22:28
+痞子衡
+<span data-post-id="14639057" class="post-view-count">阅读(153)</span> 
+<span data-post-id="14639057" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14639057" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14639057" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/04/07.html">2021年4月7日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14629910.html">
+    <span>
+        痞子衡嵌入式：MCUXpresso IDE下在线调试时使用不同复位策略的现象总结
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：大家好，我是痞子衡，是正经搞技术的痞子。今天痞子衡给大家分享的是MCUXpresso IDE下在线调试时使用不同复位策略的现象总结。 本篇实际上是《IAR在线调试时设不同复位类型可能会导致i.MXRT下调试现象不一致》的同系列篇，计划中痞子衡是要把几大经典IDE（IAR EWARM、Keil MDK        <a href="https://www.cnblogs.com/henjay724/p/14629910.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-04-07 22:21
+痞子衡
+<span data-post-id="14629910" class="post-view-count">阅读(237)</span> 
+<span data-post-id="14629910" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14629910" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14629910" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/04/05.html">2021年4月5日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14619816.html">
+    <span>
+        痞子衡嵌入式：关于恩智浦入驻B站的一些思考
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：故事起源于上周五的一封公司邮件，标题是“恩智浦B站首支原创视频播放量破万”，公司Marcom部门特地群发了这个邮件给全体员工，并鼓励大家积极DIY工作相关的有趣视频，为公司这个萌新up主提供素材。 于是痞子衡点开了公司在B站的官方主页，可以看到目前一共有13支视频了，最早的视频发布于2021年1月1        <a href="https://www.cnblogs.com/henjay724/p/14619816.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-04-05 22:37
+痞子衡
+<span data-post-id="14619816" class="post-view-count">阅读(461)</span> 
+<span data-post-id="14619816" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14619816" class="post-digg-count">推荐(2)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14619816" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/03/28.html">2021年3月28日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14590445.html">
+    <span>
+        《痞子衡嵌入式半月刊》 第 28 期
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：这里分享嵌入式领域有用有趣的项目/工具以及一些热点新闻，农历年分二十四节气，希望在每个交节之日准时发布一期。        <a href="https://www.cnblogs.com/henjay724/p/14590445.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-03-28 22:50
+痞子衡
+<span data-post-id="14590445" class="post-view-count">阅读(123)</span> 
+<span data-post-id="14590445" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14590445" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14590445" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+    
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/henjay724/archive/2021/03/26.html">2021年3月26日</a>
+    </div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/henjay724/p/14580257.html">
+    <span>
+        痞子衡嵌入式：分享一个i.MXRT系列配套DRAM压力测试上位机工具(i.MXRT DRAM Tester)
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+            
+
+    <div class="c_b_p_desc">
+摘要：大家好，我是痞子衡，是正经搞技术的痞子。今天痞子衡给大家介绍的是恩智浦SE团队制作的i.MXRT配套DRAM压力测试上位机工具。 事情源于痞子衡的技术交流群里的提问，有群友在恩智浦官方技术公众号 [恩智浦MCU加油站] 里看到的一篇文章 《i.MX RT的DRAM测试工具使用指南》，这个文章介绍了一        <a href="https://www.cnblogs.com/henjay724/p/14580257.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+        <div class="postDesc">
+            posted @ 2021-03-26 08:51
+痞子衡
+<span data-post-id="14580257" class="post-view-count">阅读(55)</span> 
+<span data-post-id="14580257" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14580257" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14580257" rel="nofollow">
+    编辑
+</a>
+
+        </div>
+        <div class="clear"></div>
+</div>
+
+<div class="topicListFooter">
+    <div id="nav_next_page">
+        
+    <a href="https://www.cnblogs.com/henjay724/default.html?page=2">
+        下一页
+    </a>
+
+    </div>    
+</div>
+
+
+
+
+<script>
+    updatePostStats(
+        $(".post-view-count").map(function () { return this.dataset.postId }).get(),
+        function(id, count) { $(".post-view-count[data-post-id=" + id + "]").text("阅读(" + count + ")") },
+        function(id, count) { $(".post-comment-count[data-post-id=" + id + "]").text("评论(" + count + ")") },
+        function(id, count) { $(".post-digg-count[data-post-id=" + id + "]").text("推荐(" + count + ")") });
+</script>
+            </div>
+        </div>
+
+        <div id="sideBar">
+            <div id="sideBarMain">
+                <div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+                <div id="calendar"><div id="blog-calendar" style="display:none"></div></div>                
+                <script>loadBlogDefaultCalendar();</script>
+                <div id="leftcontentcontainer">
+                    <!-- begin:SingleColumn -->
+                    <div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+                    <!-- end:  SingleColumn -->
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div id="footer">
+        <!--done-->
+Copyright &copy; 2021 痞子衡
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+    </div>
+</div>
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjslXZlktcRLy5blMQUkXm_U_o3OieumG8CLBuW-dp6VaNp6v1YaCt0muCiLsdaGtVq3rce2JPh54kM8EesOA7rhQdFKEgCjcvCNNxk_sMjk2Cn5VBtyw-k6XKP_zRsNCG8" />
+</body>
+</html>

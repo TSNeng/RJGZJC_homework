@@ -1,0 +1,1011 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>品牌专区 - 博客园</title>
+    <link rel="stylesheet" href="/dist/home-zone/index.css?v=Fz1ty1QnsFydotArt1TNG5jKChqfCCspkoZvnMYTXqw" />
+    <script type="text/javascript">var isLogined=false</script>
+    <script type="text/javascript" src="/brands/shared/libs/jquery/jquery.min.js?v=9_aliU8dGd2tb6OSsuzixeV4y_faTqgFtohetphbbj0"></script>
+    <script src="/scripts/swiper.min.js?v=NiMdnMv0WBAps3M8mcB7WHzlanETt0rnwMCgg67DgCk" type="text/javascript"></script>
+    <script type="text/javascript" src="/dist/home-zone/index.js?v=UYoZ6qrM4LXIHaAOIvwQAyO-lvaJ2iXHsNkelNDxgL4"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="headerpage">
+        
+
+<div id="top_nav" class="navbar">
+    <nav id="nav_main" class="navbar-main">
+        <ul id="nav_left" class="navbar-list navbar-left">
+            <li class="navbar-branding">
+                <a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="https://www.cnblogs.com/images/logo.svg" alt="博客园Logo" height="100%"></a>
+            </li>
+            <li><a href="https://www.cnblogs.com/">首页</a></li>
+            <li><a href="https://news.cnblogs.com/">新闻</a></li>
+            <li><a href="https://q.cnblogs.com/">博问</a></li>
+            <li class="dropdown">
+                <div class="dropdown-button">
+                    <a href="/" class="active">专区</a>
+                </div>
+                <div class="dropdown-menu brands-menu">
+                            <a href="/huawei">华为</a>
+                            <a href="/agora">声网</a>
+                            <a href="/aws">AWS</a>
+                            <a href="/aerospike">Aerospike</a>
+                </div>
+            </li>
+            <li><a href="https://edu.cnblogs.com/">班级</a></li>
+            <li><a href="https://ing.cnblogs.com/">闪存</a></li>
+            <li class="dropdown">
+                <div class="dropdown-button">
+                    <a href="javascript:void(0)">发现</a>
+                    <img src="/images/pulldown-light.svg">
+                </div>
+                <div class="dropdown-menu">
+                    <a href="https://home.cnblogs.com/">园子</a>
+                    <a href="https://group.cnblogs.com/">小组</a>
+                    <a href="https://wz.cnblogs.com/">收藏</a>
+                    <a href="https://job.cnblogs.com/">招聘</a>
+                    <a href="https://zzk.cnblogs.com/">找找看</a>
+                </div>
+            </li>
+        </ul>
+        <ul id="nav_right" class="navbar-list navbar-right">
+            <li id="zzk_search" class="navbar-search">
+                <input id="zzk_search_input" placeholder="搜索" type="text" onkeydown="return zzk_go_enter(event);" tabindex="3">
+                <a id="zzk_search_button" href="javascript:void(0);" onclick="zzk_go()">
+                    <img src="/images/search.svg">
+                </a>
+            </li>
+
+                <li id="login_area"><a href="https://account.cnblogs.com/signup/">注册</a></li>
+                <li><a href="https://account.cnblogs.com/signin/?returnUrl=https://brands.cnblogs.com/">登录</a></li>
+        </ul>
+    </nav>
+    <nav id="nav_mobile"
+         class="navbar-mobile">
+        <ul class="navbar-list">
+            <li class="navbar-branding">
+                <a href="https://www.cnblogs.com/"
+                   title="开发者的网上家园">
+                    <img src="https://www.cnblogs.com/images/logo.svg"
+                         alt="博客园Logo"
+                         height="100%">
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-list">
+            <li class="dropdown">
+                <div class="dropdown-button"
+                     onclick="toggleDropdownMenu('#nav_dropdown_menu_brands')">
+                    <span>专区</span>
+                    <img src="/images/pulldown-light.svg"
+                         height="5">
+                </div>
+                <div class="dropdown-menu brands-menu"
+                     id="nav_dropdown_menu_brands">
+                    <a href="/">首页</a>
+                            <a href="/huawei">华为</a>
+                            <a href="/agora">声网</a>
+                            <a href="/aws">AWS</a>
+                            <a href="/aerospike">Aerospike</a>
+                </div>
+            </li>
+            <li id="zzk_search"
+                class="navbar-search">
+                <input id="zzk_search_input_mobile"
+                       placeholder="搜索"
+                       type="text"
+                       onkeydown="return zzk_go_enter(event);"
+                       tabindex="3">
+                <a id="zzk_search_button"
+                   href="javascript:void(0);"
+                   onclick="zzk_go()">
+                    <img src="/images/search.svg">
+                </a>
+            </li>
+                <li id="login_area"><a href="https://account.cnblogs.com/signup/">注册</a></li>
+                <li><a href="https://account.cnblogs.com/signin/?returnUrl=https://brands.cnblogs.com/">登录</a></li>
+        </ul>
+    </nav>
+</div>
+
+    </div>
+    <div class="bannerpage">
+        <div class="banner-wrapper">
+            <div class="banner">
+                <div class="main">
+                    <div class="introduce">
+                        <h1 class="brand-zone-headline">
+                            <a href="./">博客园品牌专区</a>
+                        </h1>
+                        <p>你的远见，被千万开发者看见</p>
+                        <p>Stay with developers. Build your brand.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        
+<div class="main">
+
+    <div class="flex">
+        <div class="article">
+                <div class="article-item">
+                    <section>
+                        <div class="title">
+                            <h2 style="display: flex; align-items: center;">
+                                <a link-mobile-self
+                                   href="/huawei"
+                                   target="_blank"
+                                   style="display: inline-block;width: 80px;flex-shrink: 0">
+                                    <span style="display: flex; align-items: center; justify-content: center">
+                                        <img src="/home-zone/images/brand-logos/huawei_img.png?v=20200821"
+                                             style="max-height: 36px; max-width: 72px;"
+                                             alt=""/>
+                                    </span>
+                                </a>
+
+                                <a target="_blank"
+                                   href="/huawei/p/558"
+                                   onclick="ga('send', 'event', 'Link', 'click', 'zone-home-article-list')">
+                                    鸿蒙OS起步(一)之照官网练习创建第一页面和跳转的第二页面需要注意的点
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="summary">
+                            <p>其实在这个没什么可记的，主要市按照官网上的照抄就可以了，因为也是初学，所以难免会碰到一些问题。第一.就是要仔细的按照官网上的copy就可以了，需要注意的是在代码中有提示错误的地方，在官网中也有说明可以把错误给忽略了。</p>
+                        </div>
+                        <div class="post-info">
+                            <div class="likes right">
+                                <img src="/home-zone/images/likes.png"
+                                     alt=""/>
+                                <span>2</span>
+                            </div>
+                            <div class="views right">
+                                <img src="/home-zone/images/views.png"
+                                     alt=""/>
+                                <span>5232</span>
+                            </div>
+                            <div class="author right">
+                                <img src="/home-zone/images/avatar.png"
+                                     alt=""
+                                     style="width: 22px"/>
+                                <span>feifei********@**3.com</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </section>
+                    <figure>
+                        <a link-mobile-self
+                           href="/huawei/p/558"
+                           target="_blank">
+                            <img src="https://img2020.cnblogs.com/blog/1596066/202009/1596066-20200926145604320-230451922.png?v=20200821"
+                                 alt=""/>
+                        </a>
+                    </figure>
+                </div>
+                <div class="article-item">
+                    <section>
+                        <div class="title">
+                            <h2 style="display: flex; align-items: center;">
+                                <a link-mobile-self
+                                   href="/aws"
+                                   target="_blank"
+                                   style="display: inline-block;width: 80px;flex-shrink: 0">
+                                    <span style="display: flex; align-items: center; justify-content: center">
+                                        <img src="/home-zone/images/brand-logos/aws_img.png?v=20200821"
+                                             style="max-height: 36px; max-width: 72px;"
+                                             alt=""/>
+                                    </span>
+                                </a>
+
+                                <a target="_blank"
+                                   href="/aws/p/2081"
+                                   onclick="ga('send', 'event', 'Link', 'click', 'zone-home-article-list')">
+                                    上云没错，上错了云，才是错！
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="summary">
+                            <p>疫情更像加速器，加速了企业云化的进程。企业 IT 需要更弹性和稳定的基础架构、更先进并持续更新的技术栈、永远在线的体验和有保障的 SLA。 「上云」是不可逆转的趋势，但是，上云要找老司机，选择科学的方法和正确的步调。 上错了云，就像上贼船，...</p>
+                        </div>
+                        <div class="post-info">
+                            <div class="likes right">
+                                <img src="/home-zone/images/likes.png"
+                                     alt=""/>
+                                <span>2</span>
+                            </div>
+                            <div class="views right">
+                                <img src="/home-zone/images/views.png"
+                                     alt=""/>
+                                <span>818</span>
+                            </div>
+                            <div class="author right">
+                                <img src="/home-zone/images/avatar.png"
+                                     alt=""
+                                     style="width: 22px"/>
+                                <span>小黑羊</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </section>
+                    <figure>
+                        <a link-mobile-self
+                           href="/aws/p/2081"
+                           target="_blank">
+                            <img src="https://img2020.cnblogs.com/blog/1/202102/1-20210224163516159-1710022906.jpg?v=20200821"
+                                 alt=""/>
+                        </a>
+                    </figure>
+                </div>
+                <div class="article-item">
+                    <section>
+                        <div class="title">
+                            <h2 style="display: flex; align-items: center;">
+                                <a link-mobile-self
+                                   href="/aerospike"
+                                   target="_blank"
+                                   style="display: inline-block;width: 80px;flex-shrink: 0">
+                                    <span style="display: flex; align-items: center; justify-content: center">
+                                        <img src="/home-zone/images/brand-logos/aerospike_img.png?v=20200821"
+                                             style="max-height: 36px; max-width: 72px;"
+                                             alt=""/>
+                                    </span>
+                                </a>
+
+                                <a target="_blank"
+                                   href="/aerospike/p/1880"
+                                   onclick="ga('send', 'event', 'Link', 'click', 'zone-home-article-list')">
+                                    为什么要用Aerospike
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="summary">
+                            <p>Aerospike从设计和架构上有何优点，为什么推荐大家用Aerospike呢？我们从产品设计的角度看看Aerospike到底有何优势。</p>
+                        </div>
+                        <div class="post-info">
+                            <div class="likes right">
+                                <img src="/home-zone/images/likes.png"
+                                     alt=""/>
+                                <span>2</span>
+                            </div>
+                            <div class="views right">
+                                <img src="/home-zone/images/views.png"
+                                     alt=""/>
+                                <span>1227</span>
+                            </div>
+                            <div class="author right">
+                                <img src="/home-zone/images/avatar.png"
+                                     alt=""
+                                     style="width: 22px"/>
+                                <span> 李安邦</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </section>
+                    <figure>
+                        <a link-mobile-self
+                           href="/aerospike/p/1880"
+                           target="_blank">
+                            <img src="https://img2020.cnblogs.com/blog/1596066/202012/1596066-20201215180805552-1280868739.png?v=20200821"
+                                 alt=""/>
+                        </a>
+                    </figure>
+                </div>
+                <div class="article-item">
+                    <section>
+                        <div class="title">
+                            <h2 style="display: flex; align-items: center;">
+                                <a link-mobile-self
+                                   href="/huawei"
+                                   target="_blank"
+                                   style="display: inline-block;width: 80px;flex-shrink: 0">
+                                    <span style="display: flex; align-items: center; justify-content: center">
+                                        <img src="/home-zone/images/brand-logos/huawei_img.png?v=20200821"
+                                             style="max-height: 36px; max-width: 72px;"
+                                             alt=""/>
+                                    </span>
+                                </a>
+
+                                <a target="_blank"
+                                   href="/huawei/p/152"
+                                   onclick="ga('send', 'event', 'Link', 'click', 'zone-home-article-list')">
+                                    有了“质量墙”，程序员再也没有秃头的烦恼
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="summary">
+                            <p>程序员到底应该为所写软件的质量担负多大的责任？有人认为程序员应该为产品负责，也有人认为程序员的主要责任是交付速度，项目质量是项目要去考虑的问题。</p>
+                        </div>
+                        <div class="post-info">
+                            <div class="likes right">
+                                <img src="/home-zone/images/likes.png"
+                                     alt=""/>
+                                <span>3</span>
+                            </div>
+                            <div class="views right">
+                                <img src="/home-zone/images/views.png"
+                                     alt=""/>
+                                <span>2041</span>
+                            </div>
+                            <div class="author right">
+                                <img src="/home-zone/images/avatar.png"
+                                     alt=""
+                                     style="width: 22px"/>
+                                <span>小小码农</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </section>
+                    <figure>
+                        <a link-mobile-self
+                           href="/huawei/p/152"
+                           target="_blank">
+                            <img src="/images/huawei/articles/0720/18.png?v=20200821"
+                                 alt=""/>
+                        </a>
+                    </figure>
+                </div>
+                <div class="article-item">
+                    <section>
+                        <div class="title">
+                            <h2 style="display: flex; align-items: center;">
+                                <a link-mobile-self
+                                   href="/aws"
+                                   target="_blank"
+                                   style="display: inline-block;width: 80px;flex-shrink: 0">
+                                    <span style="display: flex; align-items: center; justify-content: center">
+                                        <img src="/home-zone/images/brand-logos/aws_img.png?v=20200821"
+                                             style="max-height: 36px; max-width: 72px;"
+                                             alt=""/>
+                                    </span>
+                                </a>
+
+                                <a target="_blank"
+                                   href="/aws/p/1999"
+                                   onclick="ga('send', 'event', 'Link', 'click', 'zone-home-article-list')">
+                                    在 AWS 上构建云原生机器学习流水线
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="summary">
+                            <p>近两年，机器学习已经渗透到各行各业，各种人工智能和机器学习的应用蓬勃发展，在其背后实际上会有一个完善的机器学习平台和流水线来支撑模型的开发、测试和迭代。在本篇 Blog 中，我们将展现如果通过 AWS 的服务构建云原生的机器学习流水线。</p>
+                        </div>
+                        <div class="post-info">
+                            <div class="likes right">
+                                <img src="/home-zone/images/likes.png"
+                                     alt=""/>
+                                <span>2</span>
+                            </div>
+                            <div class="views right">
+                                <img src="/home-zone/images/views.png"
+                                     alt=""/>
+                                <span>324</span>
+                            </div>
+                            <div class="author right">
+                                <img src="/home-zone/images/avatar.png"
+                                     alt=""
+                                     style="width: 22px"/>
+                                <span>肖红亮</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </section>
+                    <figure>
+                        <a link-mobile-self
+                           href="/aws/p/1999"
+                           target="_blank">
+                            <img src="https://img2020.cnblogs.com/blog/1621547/202101/1621547-20210115152600384-1849651805.png?v=20200821"
+                                 alt=""/>
+                        </a>
+                    </figure>
+                </div>
+                    <div class="brand-posters">
+                        <div class="swiper-container brand-posters-wrapper">
+                            <div class="swiper-wrapper">
+                                    <div class="swiper-slide"
+                                         style="width: 210px; height: 180px">
+                                        <a target="_blank"
+                                           href="https://brands.cnblogs.com/huawei/topic/harmonyos-smart-hardware-tutorial">
+                                            <img src="https://img2020.cnblogs.com/blog/1596066/202012/1596066-20201216175749106-1324745619.png"
+                                                 alt=""/>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide"
+                                         style="width: 210px; height: 180px">
+                                        <a target="_blank"
+                                           href="/agora">
+                                            <img src="/home-zone/images/brand-logos/agora.png"
+                                                 alt=""/>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide"
+                                         style="width: 210px; height: 180px">
+                                        <a target="_blank"
+                                           href="/aerospike">
+                                            <img src="https://img2020.cnblogs.com/blog/1596066/202012/1596066-20201218182600828-1971468157.png"
+                                                 alt=""/>
+                                        </a>
+                                    </div>
+                            </div>
+                            <div class="swiper-pagination-poster swiper-pager-wrapper"></div>
+                            <p class="brand-posters-title">已入驻品牌</p>
+                        </div>
+                    </div>
+                <div class="article-item">
+                    <section>
+                        <div class="title">
+                            <h2 style="display: flex; align-items: center;">
+                                <a link-mobile-self
+                                   href="/aerospike"
+                                   target="_blank"
+                                   style="display: inline-block;width: 80px;flex-shrink: 0">
+                                    <span style="display: flex; align-items: center; justify-content: center">
+                                        <img src="/home-zone/images/brand-logos/aerospike_img.png?v=20200821"
+                                             style="max-height: 36px; max-width: 72px;"
+                                             alt=""/>
+                                    </span>
+                                </a>
+
+                                <a target="_blank"
+                                   href="/aerospike/p/1883"
+                                   onclick="ga('send', 'event', 'Link', 'click', 'zone-home-article-list')">
+                                    使用Aerospike的 Spark 连接器（Spark Connect）
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="summary">
+                            <p>Aerospike是一个高度可扩展的键值数据库，可提供同类产品中最佳的性能。它在实时业务环境中通常部署管理TB到PB数据量。</p>
+                        </div>
+                        <div class="post-info">
+                            <div class="likes right">
+                                <img src="/home-zone/images/likes.png"
+                                     alt=""/>
+                                <span>3</span>
+                            </div>
+                            <div class="views right">
+                                <img src="/home-zone/images/views.png"
+                                     alt=""/>
+                                <span>555</span>
+                            </div>
+                            <div class="author right">
+                                <img src="/home-zone/images/avatar.png"
+                                     alt=""
+                                     style="width: 22px"/>
+                                <span>李安邦</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </section>
+                    <figure>
+                        <a link-mobile-self
+                           href="/aerospike/p/1883"
+                           target="_blank">
+                            <img src="https://img2020.cnblogs.com/blog/1596066/202012/1596066-20201215183247666-1804355939.png?v=20200821"
+                                 alt=""/>
+                        </a>
+                    </figure>
+                </div>
+                <div class="article-item">
+                    <section>
+                        <div class="title">
+                            <h2 style="display: flex; align-items: center;">
+                                <a link-mobile-self
+                                   href="/huawei"
+                                   target="_blank"
+                                   style="display: inline-block;width: 80px;flex-shrink: 0">
+                                    <span style="display: flex; align-items: center; justify-content: center">
+                                        <img src="/home-zone/images/brand-logos/huawei_img.png?v=20200821"
+                                             style="max-height: 36px; max-width: 72px;"
+                                             alt=""/>
+                                    </span>
+                                </a>
+
+                                <a target="_blank"
+                                   href="/huawei/p/552"
+                                   onclick="ga('send', 'event', 'Link', 'click', 'zone-home-article-list')">
+                                    HarmonyOS源码获取大全
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="summary">
+                            <p>本文档将介绍如何获取OpenHarmony源码并说明OpenHarmony的源码目录结构。OpenHarmony的代码以组件的形式开放，开发者可以通过文中其中一种方式获取。</p>
+                        </div>
+                        <div class="post-info">
+                            <div class="likes right">
+                                <img src="/home-zone/images/likes.png"
+                                     alt=""/>
+                                <span>4</span>
+                            </div>
+                            <div class="views right">
+                                <img src="/home-zone/images/views.png"
+                                     alt=""/>
+                                <span>3328</span>
+                            </div>
+                            <div class="author right">
+                                <img src="/home-zone/images/avatar.png"
+                                     alt=""
+                                     style="width: 22px"/>
+                                <span>kelly</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </section>
+                    <figure>
+                        <a link-mobile-self
+                           href="/huawei/p/552"
+                           target="_blank">
+                            <img src="https://img2020.cnblogs.com/blog/1596066/202009/1596066-20200917125654602-980959051.png?v=20200821"
+                                 alt=""/>
+                        </a>
+                    </figure>
+                </div>
+                <div class="article-item">
+                    <section>
+                        <div class="title">
+                            <h2 style="display: flex; align-items: center;">
+                                <a link-mobile-self
+                                   href="/aws"
+                                   target="_blank"
+                                   style="display: inline-block;width: 80px;flex-shrink: 0">
+                                    <span style="display: flex; align-items: center; justify-content: center">
+                                        <img src="/home-zone/images/brand-logos/aws_img.png?v=20200821"
+                                             style="max-height: 36px; max-width: 72px;"
+                                             alt=""/>
+                                    </span>
+                                </a>
+
+                                <a target="_blank"
+                                   href="/aws/p/2059"
+                                   onclick="ga('send', 'event', 'Link', 'click', 'zone-home-article-list')">
+                                    数据库库库库库库库库！
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="summary">
+                            <p>当有人问：数据库分哪几类？我们通常的回答是：关系型的和非关系型的。这个答案没毛病，但是略显简单粗暴。如果深究一下，非关系型数据库还有很多种型。
+有种分类方法，把数据库分成了 8 个大类：你没看错，是数据库库库库库库库库！为什么要分这么细呢？...</p>
+                        </div>
+                        <div class="post-info">
+                            <div class="likes right">
+                                <img src="/home-zone/images/likes.png"
+                                     alt=""/>
+                                <span>29</span>
+                            </div>
+                            <div class="views right">
+                                <img src="/home-zone/images/views.png"
+                                     alt=""/>
+                                <span>1450</span>
+                            </div>
+                            <div class="author right">
+                                <img src="/home-zone/images/avatar.png"
+                                     alt=""
+                                     style="width: 22px"/>
+                                <span>小黑羊</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </section>
+                    <figure>
+                        <a link-mobile-self
+                           href="/aws/p/2059"
+                           target="_blank">
+                            <img src="https://img2020.cnblogs.com/blog/1/202102/1-20210216151928129-1461959944.png?v=20200821"
+                                 alt=""/>
+                        </a>
+                    </figure>
+                </div>
+                <div class="article-item">
+                    <section>
+                        <div class="title">
+                            <h2 style="display: flex; align-items: center;">
+                                <a link-mobile-self
+                                   href="/aerospike"
+                                   target="_blank"
+                                   style="display: inline-block;width: 80px;flex-shrink: 0">
+                                    <span style="display: flex; align-items: center; justify-content: center">
+                                        <img src="/home-zone/images/brand-logos/aerospike_img.png?v=20200821"
+                                             style="max-height: 36px; max-width: 72px;"
+                                             alt=""/>
+                                    </span>
+                                </a>
+
+                                <a target="_blank"
+                                   href="/aerospike/p/1882"
+                                   onclick="ga('send', 'event', 'Link', 'click', 'zone-home-article-list')">
+                                    Aerospike + ScaleFlux 提供的超高性能方案助力同盾超大规模核心数据库系统
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="summary">
+                            <p>目前，同盾平均每日API调用量超过1亿，峰值超2亿，调用总量超1000亿。每日欺诈情报监测风险预警超过100万次，日均拦截IP、手机、设备等相关的欺诈行为超过150万次，每年帮助合作客户保护账户安全及交易安全超过200亿次，守护了万亿资金的...</p>
+                        </div>
+                        <div class="post-info">
+                            <div class="likes right">
+                                <img src="/home-zone/images/likes.png"
+                                     alt=""/>
+                                <span>2</span>
+                            </div>
+                            <div class="views right">
+                                <img src="/home-zone/images/views.png"
+                                     alt=""/>
+                                <span>341</span>
+                            </div>
+                            <div class="author right">
+                                <img src="/home-zone/images/avatar.png"
+                                     alt=""
+                                     style="width: 22px"/>
+                                <span>李安邦</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </section>
+                    <figure>
+                        <a link-mobile-self
+                           href="/aerospike/p/1882"
+                           target="_blank">
+                            <img src="https://img2020.cnblogs.com/blog/1596066/202012/1596066-20201215182323638-1043720815.png?v=20200821"
+                                 alt=""/>
+                        </a>
+                    </figure>
+                </div>
+                <div class="article-item">
+                    <section>
+                        <div class="title">
+                            <h2 style="display: flex; align-items: center;">
+                                <a link-mobile-self
+                                   href="/huawei"
+                                   target="_blank"
+                                   style="display: inline-block;width: 80px;flex-shrink: 0">
+                                    <span style="display: flex; align-items: center; justify-content: center">
+                                        <img src="/home-zone/images/brand-logos/huawei_img.png?v=20200821"
+                                             style="max-height: 36px; max-width: 72px;"
+                                             alt=""/>
+                                    </span>
+                                </a>
+
+                                <a target="_blank"
+                                   href="/huawei/p/592"
+                                   onclick="ga('send', 'event', 'Link', 'click', 'zone-home-article-list')">
+                                    HarmonyOS 润和 HiSpark开发套件 免费领！
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="summary">
+                            <p>让人期盼已久的HarmonyOS 2.0终于在9月10日正式上线啦！这是一件让众多开发者关注的大事件！相信不少开发者都已经迫不及待的想上手实操了，为了满足大家的好奇心，也希望能有更多开发者了解HarmonyOS，本次投票+评论赢Harmon...</p>
+                        </div>
+                        <div class="post-info">
+                            <div class="likes right">
+                                <img src="/home-zone/images/likes.png"
+                                     alt=""/>
+                                <span>6</span>
+                            </div>
+                            <div class="views right">
+                                <img src="/home-zone/images/views.png"
+                                     alt=""/>
+                                <span>927</span>
+                            </div>
+                            <div class="author right">
+                                <img src="/home-zone/images/avatar.png"
+                                     alt=""
+                                     style="width: 22px"/>
+                                <span>我是六水呀</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </section>
+                    <figure>
+                        <a link-mobile-self
+                           href="/huawei/p/592"
+                           target="_blank">
+                            <img src="https://img2020.cnblogs.com/blog/1596066/202010/1596066-20201013103219465-182531403.png?v=20200821"
+                                 alt=""/>
+                        </a>
+                    </figure>
+                </div>
+
+            <div class="paging-block">
+    <ul>
+                        <li class="current">
+                            <a href="/1">1</a>
+                        </li>
+                        <li class="">
+                            <a href="/2">2</a>
+                        </li>
+                    <li>
+                        <a href="javascript:void(0)">...</a>
+                    </li>
+                    <li>
+                        <a href="/63">63</a>
+                    </li>
+            <li>
+                <a href="/2"><img src="/home-zone/images/page_right.svg" /></a>
+            </li>
+        <div class="clear"></div>
+    </ul>
+</div>
+
+        </div>
+
+        <!-- 侧边栏 -->
+        <!-- 侧边栏 -->
+<div class="sidebar">
+    <!-- 新鲜入驻 -->
+    
+<div class="card">
+    <div class="card-theme">
+        <h5>新鲜入驻</h5>
+    </div>
+        <div class="card-content">
+            <div class="new-brand">
+                <a target="_blank"
+                   href="/aerospike">
+                    <img src="/home-zone/images/brand-logos/aerospike_img.png"
+                         style="height: 100%"
+                         alt=""/>
+                </a>
+            </div>
+        </div>
+</div>
+
+    
+<div class="card">
+    <div class="card-theme">
+        <h5>官方博客</h5>
+    </div>
+    <div class="card-content">
+                <div class="brands-blog">
+                    <div class="brands-user-img">
+                        <a target="_blank"
+                           href="https://www.cnblogs.com/developer-huawei/"
+                           onclick="ga('send', 'event', 'Link', 'click', 'sidebar-huawei-official-link')">
+                            <img src="/home-zone/images/brand-logos/huawei_user_img.png"
+                                 style="height: 100%"
+                                 alt=""/>
+                        </a>
+                    </div>
+                    <div class="brands-username">
+                        <p>
+                            <a target="_blank"
+                               href="https://www.cnblogs.com/developer-huawei/"
+                               onclick="ga('send', 'event', 'Link', 'click', 'sidebar-huawei-official-link')">
+                                华为开发者论坛
+                            </a>
+                        </p>
+                        <button id="blog_following_btn_6ca6960a-4554-4ed5-58c9-08d7c32fed31"
+                                style="border: 1px solid #BF3838"
+                                onclick="follow('6ca6960a-4554-4ed5-58c9-08d7c32fed31')">
+                            +&nbsp;关注
+                        </button>
+                        <div class="follow-msg"
+                             id="follow_msg_6ca6960a-4554-4ed5-58c9-08d7c32fed31">
+                        </div>
+                    </div>
+                </div>
+                <div class="brands-blog">
+                    <div class="brands-user-img">
+                        <a target="_blank"
+                           href="https://www.cnblogs.com/powertoolsteam/"
+                           onclick="ga('send', 'event', 'Link', 'click', 'sidebar-grapecity-official-link')">
+                            <img src="/home-zone/images/brand-logos/grapecity_user_img.png"
+                                 style="height: 100%"
+                                 alt=""/>
+                        </a>
+                    </div>
+                    <div class="brands-username">
+                        <p>
+                            <a target="_blank"
+                               href="https://www.cnblogs.com/powertoolsteam/"
+                               onclick="ga('send', 'event', 'Link', 'click', 'sidebar-grapecity-official-link')">
+                                葡萄城技术团队
+                            </a>
+                        </p>
+                        <button id="blog_following_btn_b79ef175-fb74-df11-ba8f-001cf0cd104b"
+                                style="border: 1px solid #44316D"
+                                onclick="follow('b79ef175-fb74-df11-ba8f-001cf0cd104b')">
+                            +&nbsp;关注
+                        </button>
+                        <div class="follow-msg"
+                             id="follow_msg_b79ef175-fb74-df11-ba8f-001cf0cd104b">
+                        </div>
+                    </div>
+                </div>
+    </div>
+</div>
+
+    <!-- 阅读排行 -->
+    
+<div class="card">
+    <div class="card-theme">
+        <a href="?type=most-viewed"
+           class="text-primary">
+            <h5>阅读排行</h5>
+        </a>
+    </div>
+    <div class="card-content">
+        <ul class="hot-article">
+                <li style="border-color: #BF3838">
+                    <a target="_blank"
+                       onclick="ga('send', 'event', 'Link', 'click', 'zone-side-hot-article-list')"
+                       href="/huawei/p/558">
+                        华为：鸿蒙OS起步(一)之照官网练习创建第一页面和跳转的第二页面需要注意的点
+                    </a>
+                </li>
+                <li style="border-color: #e98b20">
+                    <a target="_blank"
+                       onclick="ga('send', 'event', 'Link', 'click', 'zone-side-hot-article-list')"
+                       href="/aws/p/2059">
+                        AWS：数据库库库库库库库库！
+                    </a>
+                </li>
+                <li style="border-color: rgb(221, 51, 51)">
+                    <a target="_blank"
+                       onclick="ga('send', 'event', 'Link', 'click', 'zone-side-hot-article-list')"
+                       href="/aerospike/p/1868">
+                        Aerospike：Aerospike是什么数据库？为什么它远优于其他数据库和缓存技术？
+                    </a>
+                </li>
+                <li style="border-color: #BF3838">
+                    <a target="_blank"
+                       onclick="ga('send', 'event', 'Link', 'click', 'zone-side-hot-article-list')"
+                       href="/huawei/p/301">
+                        华为：“麒麟”折戟，华为全球化的下一张牌是 HMS
+                    </a>
+                </li>
+                <li style="border-color: #e98b20">
+                    <a target="_blank"
+                       onclick="ga('send', 'event', 'Link', 'click', 'zone-side-hot-article-list')"
+                       href="/aws/p/2081">
+                        AWS：上云没错，上错了云，才是错！
+                    </a>
+                </li>
+                <li style="border-color: rgb(221, 51, 51)">
+                    <a target="_blank"
+                       onclick="ga('send', 'event', 'Link', 'click', 'zone-side-hot-article-list')"
+                       href="/aerospike/p/1880">
+                        Aerospike：为什么要用Aerospike
+                    </a>
+                </li>
+        </ul>
+    </div>
+</div>
+
+    <!-- 推荐排行 -->
+    
+<div class="card">
+    <div class="card-theme">
+        <a href="?type=most-recommended" class="text-primary">
+            <h5>推荐排行</h5>
+        </a>
+    </div>
+    <div class="card-content">
+        <ul class="hot-article">
+                <li style="border-color: #BF3838">
+                    <a target="_blank"
+                       href="/huawei/p/215">
+                        华为：手把手教你集成华为动态标签管理器，营销活动数据随需监控
+                    </a>
+                </li>
+                <li style="border-color: #e98b20">
+                    <a target="_blank"
+                       href="/aws/p/2059">
+                        AWS：数据库库库库库库库库！
+                    </a>
+                </li>
+                <li style="border-color: rgb(221, 51, 51)">
+                    <a target="_blank"
+                       href="/aerospike/p/1868">
+                        Aerospike：Aerospike是什么数据库？为什么它远优于其他数据库和缓存技术？
+                    </a>
+                </li>
+                <li style="border-color: #BF3838">
+                    <a target="_blank"
+                       href="/huawei/p/190">
+                        华为：HUAWEI Audio Kit帮你在音频领域打怪升级
+                    </a>
+                </li>
+                <li style="border-color: #e98b20">
+                    <a target="_blank"
+                       href="/aws/p/2034">
+                        AWS： 容器这么傲娇，全靠 K8S 撑腰
+                    </a>
+                </li>
+                <li style="border-color: rgb(221, 51, 51)">
+                    <a target="_blank"
+                       href="/aerospike/p/1870">
+                        Aerospike：Aerospike VS. Redis：案例分享
+                    </a>
+                </li>
+        </ul>
+    </div>
+</div>
+
+
+    <div class="card">
+        <div class="card-theme">
+            <h5>合作联系</h5>
+        </div>
+        <div class="card-content">
+            <div class="contact-info">
+                <img src="/home-zone/images/icon_email.svg"
+                     alt=""/>
+                <span>bd@cnblogs.com</span>
+            </div>
+        </div>
+    </div>
+    
+<div class="sidebar-banner-list">
+        <div class="sidebar-banner">
+            <a href="https://dev.agora.io/"
+               onclick="clickBanner(70)"
+               target="_blank">
+                <img src="https://img2020.cnblogs.com/blog/1596066/202101/1596066-20210106170356276-110546813.png"
+                     alt=""/>
+            </a>
+        </div>
+        <div class="sidebar-banner">
+            <a href="https://developer.huawei.com/consumer/cn/forum/topic/0201543038129280102?fid=18"
+               onclick="clickBanner(144)"
+               target="_blank">
+                <img src="https://img2020.cnblogs.com/blog/2016690/202104/2016690-20210420175858307-343993296.jpg"
+                     alt=""/>
+            </a>
+        </div>
+</div>
+    <!-- 广告位 -->
+</div>
+    </div>
+</div>
+
+    </div>
+    <div class="footerpage">
+        <footer>
+    <div class="main footer-info">
+            <p class="footer-brand-info"><a href="https://brands.cnblogs.com/" target="_blank">博客园品牌专区</a></p>
+        <p>
+            <a href="https://about.cnblogs.com/">关于博客园</a>
+            <a href="https://about.cnblogs.com/contact">联系我们</a>
+            <a href="https://about.cnblogs.com/ad">广告服务</a>
+            <a href="https://about.cnblogs.com/brandzone">专区合作</a>
+            <span>&copy;2004-2021</span>
+            <a href="https://www.cnblogs.com/">博客园</a>
+            <span>保留所有权利</span>
+            <a href="https://beian.miit.gov.cn/">沪ICP备09004260号-1</a>
+        </p>
+    </div>
+</footer>
+
+<script src="https://www.googletagmanager.com/gtag/js?id=UA-48445196-6"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-48445196-6');
+    if(typeof brandName !== 'undefined' && brandName) {
+        ga('set', 'dimension1', brandName);
+    }
+</script>
+
+
+    </div>
+
+</div>
+<script src="https://www.googletagmanager.com/gtag/js?id=UA-48445196-6"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-48445196-6');
+    if(typeof brandName !== 'undefined' && brandName) {
+        ga('set', 'dimension1', brandName);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1441 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>funnyZpC - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    <link id="MainCss" rel="stylesheet" href="/skins/imetro/bundle-imetro.min.css?v=GrIRT_0_o8nIVMcJ3tk4a5qGy_BHZcH0zcKJuZjwNcI" />
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/funnyzpc/custom.css?v=rxy//r&#x2B;/zW86L9x&#x2B;MzGUvv1QyXc=" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/imetro/bundle-imetro-mobile.min.css?v=y3TtHeZMWJqA3RqhdU02N5r_A086WB872wP23r3v7aQ" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/funnyzpc/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/funnyzpc/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/funnyzpc/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 363604;
+        var currentBlogApp = 'funnyzpc';
+        var cb_enable_mathjax = true;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'iMetro';
+        var visitorUserId = '';
+    </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processClass: 'math', processEscapes: true },
+        TeX: {
+        equationNumbers: { autoNumber: ['AMS'], useLabelIds: true },
+        extensions: ['extpfeil.js', 'mediawiki-texvc.js'],
+        Macros: {bm: "\\boldsymbol"}
+        },
+        'HTML-CSS': { linebreaks: { automatic: true } },
+        SVG: { linebreaks: { automatic: true } }
+        });
+    </script>
+    <script src="https://mathjax.cnblogs.com/2_7_5/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;v=20200504"></script>
+    
+</head>
+<body class="has-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/funnyzpc/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/funnyzpc/">funnyZpC</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/funnyzpc/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/funnyZpC">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/funnyzpc/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+
+
+
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2021/05/07.html">2021年5月7日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/14732172.html">
+    <span>
+            <span>[置顶]</span>
+        postgresql高级应用之合并单元格
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：postgresql高级应用之合并单元格 转载请注明出处https://www.cnblogs.com/funnyzpc/p/14732172.html 1.写在前面✍ 继上一篇postgresql高级应用之行转列&amp;amp;汇总求和之后想更进一步做点儿复杂的(圖表暫且不論哈&amp;#128514;)，当然作为報表，出現最多的無        <a href="https://www.cnblogs.com/funnyzpc/p/14732172.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-05-07 20:31
+funnyZpC
+<span data-post-id="14732172" class="post-view-count">阅读(1)</span> 
+<span data-post-id="14732172" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14732172" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14732172" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2021/05/05.html">2021年5月5日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/14732165.html">
+    <span>
+            <span>[置顶]</span>
+        postgresql高级应用之行转列&amp;汇总求和
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：postgresql高级应用之行转列&amp;amp;汇总求和 轉載請注名出處 https://www.cnblogs.com/funnyzpc/p/14732165.html 前言 节前公司业务方需要做一個統計報表，这个报表用于统计当月估计几个明星品的销售情况，而我们的数据是按行存储的就是日期|产品|渠道|销售额        <a href="https://www.cnblogs.com/funnyzpc/p/14732165.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-05-05 19:41
+funnyZpC
+<span data-post-id="14732165" class="post-view-count">阅读(154)</span> 
+<span data-post-id="14732165" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14732165" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14732165" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2021/04/05.html">2021年4月5日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/13913023.html">
+    <span>
+            <span>[置顶]</span>
+        Linux(centos)安装nginx
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：Linux(centos)安装nginx 转载请注明出处https://www.cnblogs.com/funnyzpc/p/13913023.html 注意，本教程安装环境为centos7，使用nginx官网压缩包编译安装(非rpm或apt),本人亲测有效～ chapter One: 卸载系统自带        <a href="https://www.cnblogs.com/funnyzpc/p/13913023.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-05 20:41
+funnyZpC
+<span data-post-id="13913023" class="post-view-count">阅读(43)</span> 
+<span data-post-id="13913023" class="post-comment-count">评论(0)</span> 
+<span data-post-id="13913023" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13913023" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+            <div class="postSeparator"></div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/14554017.html">
+    <span>
+            <span>[置顶]</span>
+        jenkins构建go及java项目
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：jenkins构建go及java项目 转载请注明出处https://www.cnblogs.com/funnyzpc/p/14554017.html 写在前面 jenkins作为java的好基友，经历过单体项目时代-&amp;gt;集群项目时代-&amp;gt;容器集群分布式时代，使用稳定可靠，cpu友好(就泪存有点儿难看),        <a href="https://www.cnblogs.com/funnyzpc/p/14554017.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-05 20:12
+funnyZpC
+<span data-post-id="14554017" class="post-view-count">阅读(316)</span> 
+<span data-post-id="14554017" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14554017" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14554017" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2021/04/04.html">2021年4月4日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/13912869.html">
+    <span>
+            <span>[置顶]</span>
+        Linux(centos)安装jdk
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：Linux安装jdk 这里以centos7系统为例 01.卸载openjdk 由于centos默认安装的是openjdk，所以安装前需要彻底清理下openjdk。 a.查看已安装的java rpm包信息 rpm -qa | grep java [root@**/]# rpm -qa | grep j        <a href="https://www.cnblogs.com/funnyzpc/p/13912869.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-04 22:42
+funnyZpC
+<span data-post-id="13912869" class="post-view-count">阅读(28)</span> 
+<span data-post-id="13912869" class="post-comment-count">评论(0)</span> 
+<span data-post-id="13912869" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13912869" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+            <div class="postSeparator"></div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/14592166.html">
+    <span>
+            <span>[置顶]</span>
+        使用sysbench测试mysql及postgresql(完整版)
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：使用sysbench测试mysql及postgresql(完整版) 转载请注明出处https://www.cnblogs.com/funnyzpc/p/14592166.html 前言 使用sysbench测试数据库十分的麻烦(主要是sysbench安装麻烦)，本人需要测试mysql及postgre        <a href="https://www.cnblogs.com/funnyzpc/p/14592166.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-04 22:28
+funnyZpC
+<span data-post-id="14592166" class="post-view-count">阅读(86)</span> 
+<span data-post-id="14592166" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14592166" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14592166" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2021/01/03.html">2021年1月3日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/14223167.html">
+    <span>
+            <span>[置顶]</span>
+        PostgreSQL使用MySQL外表(mysql_fdw)
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：postgres使用mysql外表 转载请注明出处https://www.cnblogs.com/funnyzpc/p/14223167.html 浅谈 postgres不知不觉已经升到了版本13,记得两年前还是版本10，当然这中间一直期望着哪天能在项目中使用postgresql，现在已实现哈～；         <a href="https://www.cnblogs.com/funnyzpc/p/14223167.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-01-03 18:35
+funnyZpC
+<span data-post-id="14223167" class="post-view-count">阅读(236)</span> 
+<span data-post-id="14223167" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14223167" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14223167" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2021/01/02.html">2021年1月2日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/14222807.html">
+    <span>
+            <span>[置顶]</span>
+        使用node+puppeteer+express搭建截图服务
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：使用node+puppeteer+express搭建截图服务 转载请注明出处https://www.cnblogs.com/funnyzpc/p/14222807.html 写在之前 一开始我们的需求是打开报表的某个页面然后把图截出来，然后调用企业微信发送给业务群 这中间我尝试了多种技术，比如htm        <a href="https://www.cnblogs.com/funnyzpc/p/14222807.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-01-02 15:06
+funnyZpC
+<span data-post-id="14222807" class="post-view-count">阅读(257)</span> 
+<span data-post-id="14222807" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14222807" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14222807" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2020/10/07.html">2020年10月7日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/13777881.html">
+    <span>
+            <span>[置顶]</span>
+        开源后台系统*mee-admin*
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：mee-admin开源后台系统 Preface 这是一个开放的时代，我们不能总是把东西揣在口袋里面自己乐呵。 也正如名言所说的“如果你有两块面包，你当用其中一块去换一朵水仙花” 所以，继上一次把我的两个个人项目开源之后今天我再一次把自有的后台页面也开源出来，以回馈整个开源世界。 开源地址 https        <a href="https://www.cnblogs.com/funnyzpc/p/13777881.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-10-07 16:41
+funnyZpC
+<span data-post-id="13777881" class="post-view-count">阅读(1776)</span> 
+<span data-post-id="13777881" class="post-comment-count">评论(1)</span> 
+<span data-post-id="13777881" class="post-digg-count">推荐(3)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13777881" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2020/10/02.html">2020年10月2日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/13762616.html">
+    <span>
+            <span>[置顶]</span>
+        开源两个spring api项目
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：开源两个spring api项目 转载请注明出处: https://www.cnblogs.com/funnyzpc/p/13762616.html 工作也有五年有余了，中间一直迫于时间或能力没从零开始构建一个完整的项目，实在太过于遗憾。 现在，我决定把这个遗憾弥补上了，尽管这些并不是很完美，尤其是        <a href="https://www.cnblogs.com/funnyzpc/p/13762616.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-10-02 21:25
+funnyZpC
+<span data-post-id="13762616" class="post-view-count">阅读(443)</span> 
+<span data-post-id="13762616" class="post-comment-count">评论(0)</span> 
+<span data-post-id="13762616" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13762616" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2020/09/26.html">2020年9月26日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/13698249.html">
+    <span>
+            <span>[置顶]</span>
+        一道Postgresql递归树题
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：转载请注明出处: https://www.cnblogs.com/funnyzpc/p/13698249.html 也是偶然的一次，群友出了一道题考考大家,当时正值疫情最最严重的三月(借口...)，披着外套，天气也不是很好(借口...)，耐着性子花了5分钟理解了下题， 第一个5分钟...无解，再第二        <a href="https://www.cnblogs.com/funnyzpc/p/13698249.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-09-26 15:56
+funnyZpC
+<span data-post-id="13698249" class="post-view-count">阅读(299)</span> 
+<span data-post-id="13698249" class="post-comment-count">评论(3)</span> 
+<span data-post-id="13698249" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13698249" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2020/08/21.html">2020年8月21日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/13541713.html">
+    <span>
+            <span>[置顶]</span>
+        记一次订单号事故
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：记一次订单号事故 去年年底的时候，我们线上出了一次事故，这个事故的表象是这样的: 系统出现了两个一模一样的订单号，订单的内容却不是不一样的，而且系统在按照 订单号查询的时候一直抛错，也没法正常回调，而且事情发生的不止一次，所以 这次系统升级一定要解决掉。 经手的同事之前也改过几次，不过效果始终不好：        <a href="https://www.cnblogs.com/funnyzpc/p/13541713.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-08-21 16:27
+funnyZpC
+<span data-post-id="13541713" class="post-view-count">阅读(2227)</span> 
+<span data-post-id="13541713" class="post-comment-count">评论(37)</span> 
+<span data-post-id="13541713" class="post-digg-count">推荐(7)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13541713" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2019/10/27.html">2019年10月27日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/11721978.html">
+    <span>
+            <span>[置顶]</span>
+        GO实现简单(命令行)工具:sftp,文檔压解,RDS备份,RDS备份下载
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：GO实现简单(命令行)工具:sftp,文檔压解,RDS备份,RDS备份下载 轉載請註明出處： &quot;https://www.cnblogs.com/funnyzpc/p/11721978.html&quot; 内容提要： + 1.远程连接linux执行sftp文件下载 + 2.window下文件解压缩(tar、g        <a href="https://www.cnblogs.com/funnyzpc/p/11721978.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-10-27 12:53
+funnyZpC
+<span data-post-id="11721978" class="post-view-count">阅读(573)</span> 
+<span data-post-id="11721978" class="post-comment-count">评论(0)</span> 
+<span data-post-id="11721978" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=11721978" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+            <div class="postSeparator"></div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/11746439.html">
+    <span>
+            <span>[置顶]</span>
+        window下设置定时任务及基本配置
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：由于网络上大部分定时任务配置都不够清晰，甚至是错误的，基于此类原因，本人决定亲自出一版定时任务配置教程。
+
+        本章主要介绍在windows下如何新建一个定时任务及中间可能出现的坑...        <a href="https://www.cnblogs.com/funnyzpc/p/11746439.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-10-27 01:41
+funnyZpC
+<span data-post-id="11746439" class="post-view-count">阅读(2155)</span> 
+<span data-post-id="11746439" class="post-comment-count">评论(2)</span> 
+<span data-post-id="11746439" class="post-digg-count">推荐(4)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=11746439" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2019/07/03.html">2019年7月3日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/10801470.html">
+    <span>
+            <span>[置顶]</span>
+        java8 异步api、循环、日期
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：java8 异步api、循环、日期 转载请注明出处： &quot;https://www.cnblogs.com/funnyzpc/p/10801470.html&quot; 异步api 对于多任务耗时的业务场景，一般我们会用到线程异步处理,在以前我们用 Thread 或者 Runnable 来实现异步，这是oracl        <a href="https://www.cnblogs.com/funnyzpc/p/10801470.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-07-03 19:35
+funnyZpC
+<span data-post-id="10801470" class="post-view-count">阅读(1535)</span> 
+<span data-post-id="10801470" class="post-comment-count">评论(0)</span> 
+<span data-post-id="10801470" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=10801470" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2019/07/02.html">2019年7月2日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/11095862.html">
+    <span>
+            <span>[置顶]</span>
+        js api 之 fetch、querySelector、form、atob及btoa
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：js api 之 fetch、querySelector、form、atob及btoa 转载请注明出处: &quot;https://www.cnblogs.com/funnyzpc/p/11095862.html&quot; js api即为JavaScript内置函数，本章就说说几个比较实用的内置函数，内容大致如下        <a href="https://www.cnblogs.com/funnyzpc/p/11095862.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-07-02 20:11
+funnyZpC
+<span data-post-id="11095862" class="post-view-count">阅读(445)</span> 
+<span data-post-id="11095862" class="post-comment-count">评论(0)</span> 
+<span data-post-id="11095862" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=11095862" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2019/06/08.html">2019年6月8日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/10989813.html">
+    <span>
+            <span>[置顶]</span>
+        记一次因证书问题导致请求失败问题SSLHandshakeException
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：记一次因证书问题导致请求失败问题SSLHandshakeException 转载请注明出处： &quot;https://www.cnblogs.com/funnyzpc/p/10989813.html&quot; 最近接一外部接口，接口在本地开发调试及测试都无任何问题(windows下)，而上测试环境后测第一次就直接        <a href="https://www.cnblogs.com/funnyzpc/p/10989813.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-06-08 16:12
+funnyZpC
+<span data-post-id="10989813" class="post-view-count">阅读(3465)</span> 
+<span data-post-id="10989813" class="post-comment-count">评论(0)</span> 
+<span data-post-id="10989813" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=10989813" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+            <div class="postSeparator"></div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/10990703.html">
+    <span>
+            <span>[置顶]</span>
+        20190608_浅谈go&amp;java差异(三)
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：20190608_浅谈go&amp;java差异(三) 转载请注明出处 &quot;https://www.cnblogs.com/funnyzpc/p/10990703.html&quot; 第三节内容概览 + 多线程通讯(线程安全类型 chan) + struct(结构体) 与 对象实体类 + 异常(panic 与 thr        <a href="https://www.cnblogs.com/funnyzpc/p/10990703.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-06-08 14:55
+funnyZpC
+<span data-post-id="10990703" class="post-view-count">阅读(449)</span> 
+<span data-post-id="10990703" class="post-comment-count">评论(0)</span> 
+<span data-post-id="10990703" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=10990703" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2019/05/05.html">2019年5月5日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/10801474.html">
+    <span>
+            <span>[置顶]</span>
+        20190312_浅谈go&amp;java差异(二)
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：转载请注明出处： &quot;https://www.cnblogs.com/funnyzpc/p/10801474.html&quot; 第二节内容概览 + 循环(for、switch) + 多值返回 + defer &amp; finally + init(go) 与默认构造函数(java) + 常量、静态变量(const        <a href="https://www.cnblogs.com/funnyzpc/p/10801474.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-05-05 01:14
+funnyZpC
+<span data-post-id="10801474" class="post-view-count">阅读(589)</span> 
+<span data-post-id="10801474" class="post-comment-count">评论(1)</span> 
+<span data-post-id="10801474" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=10801474" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2019/05/04.html">2019年5月4日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/10801476.html">
+    <span>
+            <span>[置顶]</span>
+        simple go web application &amp; 二维码生成 &amp; 打包部署
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：go语言简易web应用 &amp; 二维码生成及解码 &amp; 打包部署 转载请注明出处: &quot;https://www.cnblogs.com/funnyzpc/p/10801476.html&quot; 前言(闲扯) 简单WEB应用 话说一个简单的WEB应用需要多少行依赖，多少行代码，运行需要多大的package,需要多大        <a href="https://www.cnblogs.com/funnyzpc/p/10801476.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-05-04 06:10
+funnyZpC
+<span data-post-id="10801476" class="post-view-count">阅读(447)</span> 
+<span data-post-id="10801476" class="post-comment-count">评论(0)</span> 
+<span data-post-id="10801476" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=10801476" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2021/05/07.html">2021年5月7日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/14732172.html">
+    <span>
+        postgresql高级应用之合并单元格
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：postgresql高级应用之合并单元格 转载请注明出处https://www.cnblogs.com/funnyzpc/p/14732172.html 1.写在前面✍ 继上一篇postgresql高级应用之行转列&amp;amp;汇总求和之后想更进一步做点儿复杂的(圖表暫且不論哈&amp;#128514;)，当然作为報表，出現最多的無        <a href="https://www.cnblogs.com/funnyzpc/p/14732172.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-05-07 20:31
+funnyZpC
+<span data-post-id="14732172" class="post-view-count">阅读(1)</span> 
+<span data-post-id="14732172" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14732172" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14732172" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2021/05/05.html">2021年5月5日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/14732165.html">
+    <span>
+        postgresql高级应用之行转列&amp;汇总求和
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：postgresql高级应用之行转列&amp;amp;汇总求和 轉載請注名出處 https://www.cnblogs.com/funnyzpc/p/14732165.html 前言 节前公司业务方需要做一個統計報表，这个报表用于统计当月估计几个明星品的销售情况，而我们的数据是按行存储的就是日期|产品|渠道|销售额        <a href="https://www.cnblogs.com/funnyzpc/p/14732165.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-05-05 19:41
+funnyZpC
+<span data-post-id="14732165" class="post-view-count">阅读(154)</span> 
+<span data-post-id="14732165" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14732165" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14732165" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2021/04/05.html">2021年4月5日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/13913023.html">
+    <span>
+        Linux(centos)安装nginx
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：Linux(centos)安装nginx 转载请注明出处https://www.cnblogs.com/funnyzpc/p/13913023.html 注意，本教程安装环境为centos7，使用nginx官网压缩包编译安装(非rpm或apt),本人亲测有效～ chapter One: 卸载系统自带        <a href="https://www.cnblogs.com/funnyzpc/p/13913023.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-05 20:41
+funnyZpC
+<span data-post-id="13913023" class="post-view-count">阅读(43)</span> 
+<span data-post-id="13913023" class="post-comment-count">评论(0)</span> 
+<span data-post-id="13913023" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13913023" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+            <div class="postSeparator"></div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/14554017.html">
+    <span>
+        jenkins构建go及java项目
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：jenkins构建go及java项目 转载请注明出处https://www.cnblogs.com/funnyzpc/p/14554017.html 写在前面 jenkins作为java的好基友，经历过单体项目时代-&amp;gt;集群项目时代-&amp;gt;容器集群分布式时代，使用稳定可靠，cpu友好(就泪存有点儿难看),        <a href="https://www.cnblogs.com/funnyzpc/p/14554017.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-05 20:12
+funnyZpC
+<span data-post-id="14554017" class="post-view-count">阅读(316)</span> 
+<span data-post-id="14554017" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14554017" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14554017" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2021/04/04.html">2021年4月4日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/13912869.html">
+    <span>
+        Linux(centos)安装jdk
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：Linux安装jdk 这里以centos7系统为例 01.卸载openjdk 由于centos默认安装的是openjdk，所以安装前需要彻底清理下openjdk。 a.查看已安装的java rpm包信息 rpm -qa | grep java [root@**/]# rpm -qa | grep j        <a href="https://www.cnblogs.com/funnyzpc/p/13912869.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-04 22:42
+funnyZpC
+<span data-post-id="13912869" class="post-view-count">阅读(28)</span> 
+<span data-post-id="13912869" class="post-comment-count">评论(0)</span> 
+<span data-post-id="13912869" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13912869" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+            <div class="postSeparator"></div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/14592166.html">
+    <span>
+        使用sysbench测试mysql及postgresql(完整版)
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：使用sysbench测试mysql及postgresql(完整版) 转载请注明出处https://www.cnblogs.com/funnyzpc/p/14592166.html 前言 使用sysbench测试数据库十分的麻烦(主要是sysbench安装麻烦)，本人需要测试mysql及postgre        <a href="https://www.cnblogs.com/funnyzpc/p/14592166.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-04-04 22:28
+funnyZpC
+<span data-post-id="14592166" class="post-view-count">阅读(86)</span> 
+<span data-post-id="14592166" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14592166" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14592166" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2021/01/03.html">2021年1月3日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/14223167.html">
+    <span>
+        PostgreSQL使用MySQL外表(mysql_fdw)
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：postgres使用mysql外表 转载请注明出处https://www.cnblogs.com/funnyzpc/p/14223167.html 浅谈 postgres不知不觉已经升到了版本13,记得两年前还是版本10，当然这中间一直期望着哪天能在项目中使用postgresql，现在已实现哈～；         <a href="https://www.cnblogs.com/funnyzpc/p/14223167.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-01-03 18:35
+funnyZpC
+<span data-post-id="14223167" class="post-view-count">阅读(236)</span> 
+<span data-post-id="14223167" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14223167" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14223167" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2021/01/02.html">2021年1月2日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/14222807.html">
+    <span>
+        使用node+puppeteer+express搭建截图服务
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：使用node+puppeteer+express搭建截图服务 转载请注明出处https://www.cnblogs.com/funnyzpc/p/14222807.html 写在之前 一开始我们的需求是打开报表的某个页面然后把图截出来，然后调用企业微信发送给业务群 这中间我尝试了多种技术，比如htm        <a href="https://www.cnblogs.com/funnyzpc/p/14222807.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-01-02 15:06
+funnyZpC
+<span data-post-id="14222807" class="post-view-count">阅读(257)</span> 
+<span data-post-id="14222807" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14222807" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14222807" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2020/10/07.html">2020年10月7日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/13777881.html">
+    <span>
+        开源后台系统*mee-admin*
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：mee-admin开源后台系统 Preface 这是一个开放的时代，我们不能总是把东西揣在口袋里面自己乐呵。 也正如名言所说的“如果你有两块面包，你当用其中一块去换一朵水仙花” 所以，继上一次把我的两个个人项目开源之后今天我再一次把自有的后台页面也开源出来，以回馈整个开源世界。 开源地址 https        <a href="https://www.cnblogs.com/funnyzpc/p/13777881.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-10-07 16:41
+funnyZpC
+<span data-post-id="13777881" class="post-view-count">阅读(1776)</span> 
+<span data-post-id="13777881" class="post-comment-count">评论(1)</span> 
+<span data-post-id="13777881" class="post-digg-count">推荐(3)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13777881" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/funnyzpc/archive/2020/10/02.html">2020年10月2日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/funnyzpc/p/13762616.html">
+    <span>
+        开源两个spring api项目
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：开源两个spring api项目 转载请注明出处: https://www.cnblogs.com/funnyzpc/p/13762616.html 工作也有五年有余了，中间一直迫于时间或能力没从零开始构建一个完整的项目，实在太过于遗憾。 现在，我决定把这个遗憾弥补上了，尽管这些并不是很完美，尤其是        <a href="https://www.cnblogs.com/funnyzpc/p/13762616.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-10-02 21:25
+funnyZpC
+<span data-post-id="13762616" class="post-view-count">阅读(443)</span> 
+<span data-post-id="13762616" class="post-comment-count">评论(0)</span> 
+<span data-post-id="13762616" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13762616" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+
+<div class="topicListFooter">
+    <div id="nav_next_page">
+        
+    <a href="https://www.cnblogs.com/funnyzpc/default.html?page=2">
+        下一页
+    </a>
+
+    </div>    
+</div>
+
+
+
+
+
+
+<script>
+    updatePostStats(
+        $(".post-view-count").map(function () { return this.dataset.postId }).get(),
+        function(id, count) { $(".post-view-count[data-post-id=" + id + "]").text("阅读(" + count + ")") },
+        function(id, count) { $(".post-comment-count[data-post-id=" + id + "]").text("评论(" + count + ")") },
+        function(id, count) { $(".post-digg-count[data-post-id=" + id + "]").text("推荐(" + count + ")") });
+</script>
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 funnyZpC
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjsyCOtI0lWchPU-L5D7k99HuxwAw_R8p9-PfCBVihqLEQACyXeiR5d5YCekb1Z7AHk0np9tmTvkGrRS7M_a_j8uwUaQlmp6lyjEqUORA4zMkbRX5kBEZUcpTiTr6zOg2qM" />
+</body>
+</html>

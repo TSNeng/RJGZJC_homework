@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    <meta name="description" content="大家好，我是小林。 我在博客园输出了两个图解系列，分别是图解网络和图解系统，每个系列都输出了 15W 字 &#x2B; 500 张图，收到了很多小伙伴的认可和支持，也经常小伙伴跑来感激小林，说看了我的图解，拿到" />
+    <meta property="og:description" content="大家好，我是小林。 我在博客园输出了两个图解系列，分别是图解网络和图解系统，每个系列都输出了 15W 字 &#x2B; 500 张图，收到了很多小伙伴的认可和支持，也经常小伙伴跑来感激小林，说看了我的图解，拿到" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>看书的一点小建议！ - 小林coding - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    <link id="MainCss" rel="stylesheet" href="/skins/codinglife/bundle-codinglife.min.css?v=2uJkpdACLVfstRQ7zeCFK19brTwKuDEaNBLgKz9nm3A" />
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/codinglife/bundle-codinglife-mobile.min.css?v=DwDRKMd1bmjnJZ4iQqrTCO9QLlYb6OZaUAzHoHIIihg" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/xiaolincoding/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/xiaolincoding/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/xiaolincoding/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 534487;
+        var currentBlogApp = 'xiaolincoding';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'CodingLife';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2021-05-07 09:30';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    
+    
+    
+</head>
+<body class="has-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/xiaolincoding/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/xiaolincoding/">小林coding</a>
+</h1>
+<h2>公众号：「小林coding」酷爱图解晦涩难懂的计算机基础知识。</h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/xiaolincoding/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E5%B0%8F%E6%9E%97coding">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/xiaolincoding/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class = "postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/xiaolincoding/p/14737764.html">
+    <span>看书的一点小建议！</span>
+    
+
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body blogpost-body-html">
+<div id="output_wrapper_id" class="output_wrapper" style="font-size: 16px; color: rgba(62, 62, 62, 1); line-height: 1.8; word-spacing: 2px; letter-spacing: 2px; font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif">
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">大家好，我是小林。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">我在博客园输出了两个图解系列，分别是<strong style="font-size: inherit; line-height: inherit; margin: 0; padding: 0; font-weight: bold; color: rgba(48, 79, 254, 1)">图解网络</strong>和<strong style="font-size: inherit; line-height: inherit; margin: 0; padding: 0; font-weight: bold; color: rgba(48, 79, 254, 1)">图解系统</strong>，每个系列都输出了 <strong style="font-size: inherit; line-height: inherit; margin: 0; padding: 0; font-weight: bold; color: rgba(48, 79, 254, 1)">15W 字 + 500</strong> 张图，收到了很多小伙伴的认可和支持，也经常小伙伴跑来感激小林，说看了我的图解，拿到了大厂的 Offer。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">这次就跟大家分享下<strong style="font-size: inherit; line-height: inherit; margin: 0; padding: 0; font-weight: bold; color: rgba(48, 79, 254, 1)">我的看书经验和心得</strong>。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">每隔一段时间，都有些读者跑来请教我学习的心得。</p>
+<img src="https://img-blog.csdnimg.cn/20210506093637948.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0ODI3Njc0,size_16,color_FFFFFF,t_70" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; display: block; margin: 0 auto; max-width: 100%"> <img src="https://img-blog.csdnimg.cn/20210506093649268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0ODI3Njc0,size_16,color_FFFFFF,t_70" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; display: block; margin: 0 auto; max-width: 100%"><br>他们的困惑可以归类这几点：
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">&nbsp;</p>
+<ul style="font-size: inherit; color: inherit; line-height: inherit; margin: 0; padding: 0 0 0 32px; list-style-type: disc">
+<li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0 0 0.5em; padding: 0"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0; padding: 0">书看不懂，容易放弃，怎么办？</span></li>
+<li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0 0 0.5em; padding: 0"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0; padding: 0">看书的效率很低，怎么办？</span></li>
+<li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0 0 0.5em; padding: 0"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0; padding: 0">做了很多笔记，依然过会就忘记，怎么办？</span></li>
+
+</ul>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">这些困惑我曾经也经历过，中途也踩过很多坑，浪费了很多的时间，好在及时反思，调整了看书的方法，后面学习的效率立竿见影。</p>
+<h3 id="h" style="color: inherit; line-height: inherit; padding: 0; margin: 1.6em 0; font-weight: bold; border-bottom: 2px solid rgba(65, 105, 225, 1); font-size: 1.3em"><span style="font-size: inherit; line-height: inherit; margin: 0 3px 0 0; display: inline-block; font-weight: normal; background: rgba(65, 105, 225, 1); color: rgba(255, 255, 255, 1); padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px">一、不要直接选择困难模式</span></h3>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">大家应该知道计算机书里有个黑皮系列的书，黑皮系列的书有一个共同的特点就是<strong style="font-size: inherit; line-height: inherit; margin: 0; padding: 0; font-weight: bold; color: rgba(48, 79, 254, 1)">厚重</strong>！</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">我相信不少小伙伴在想要学习计算机基础类知识的时候，就买了这类黑皮书，书到货后，我们满怀信心，举着厚重的黑皮书，下决心要把这些黑皮书一页一页地攻读下来，结果不过几天就被劝退了，然后就只有前几页是有翻阅的痕迹，剩下的几百页都完全是新的，最终这些厚厚的黑皮书就成了<strong style="font-size: inherit; line-height: inherit; margin: 0; padding: 0; font-weight: bold; color: rgba(48, 79, 254, 1)">垫显示器的神器</strong>。</p>
+
+<img src="https://img-blog.csdnimg.cn/2021050609374173.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0ODI3Njc0,size_16,color_FFFFFF,t_70" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; display: block; margin: 0 auto; max-width: 100%">
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">黑皮系列的书确实都是经典书，豆瓣评分都很高，知识点很全面，是好书无疑。但是这类书并不适合新手入门，你想想我们学习中文的时候，你是拿着新华字典学的吗？很显然不是。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">黑皮书就好像游戏里「困难模式」，新人一上来就玩这个模式，根本就体会不到游戏的乐趣了，卸载了游戏那还是小事，如果留下心里阴影，造成不可逆的伤害，这就非常不好了。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">说白了，这些厚的不行的计算机书不适合入门，我们应该先从「简单模式」慢慢过渡，要屠龙，得先从新手村起步。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">就拿我亲身经历举例。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">当初在学习计算机网络的时候，看见大家都说《计算机网络-自顶向下》和《TCP/IP 详解》这两本书好，我立马买了学习，这本也是黑皮系列大厚书，奈何小林当时太菜，根本就砍不动这本书，砍两下，刀钝了，就想睡觉。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">后面又找了一波书，发现《图解 TCP/IP》、 《图解 HTTP》、《网络是怎么连接的》这几本书都不厚，而且搭配了很多图，我又立马买回来学习。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">这几本书读起来不会太困难，不出一个月，我就把这三本书看完了，立马对计算机网络有了个整体且清晰的认识，终于知道了网络七层模型是什么，也知道了两台电脑是如何通过网络进行相互通信的，也知道 HTTP、DNS、TCP、UDP、IP、ICMP、DHCP、ARP 这些常见的协议是用来干嘛的了，成功突破了新手村。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">虽然突破了新手村，但是学的知识还不够深入。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">所以，我后面回来看《计算机网络-自顶向下》和《TCP/IP 详解》这两本厚厚的书，不过这次就不会那么吃力了。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">后面回看这两本书时，我也没有选择从头看到尾，因为有些内容和在新手村看的书的内容重叠了，而且由于在新手村里知道了哪几个协议是常见的，于是就选择了这几个协议的章节进行深入学习，比如：</p>
+<ul style="font-size: inherit; color: inherit; line-height: inherit; margin: 0; padding: 0 0 0 32px; list-style-type: disc">
+<li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0 0 0.5em; padding: 0"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0; padding: 0">我想进一步学习 TCP 协议的特性，于是就跳到《TCP/IP 详解》书里讲 TCP 协议的几个章节，我就从中学到了 TCP 流量控制、超时重传、拥塞控制等等。</span></li>
+<li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0 0 0.5em; padding: 0"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0; padding: 0">我想进一步学习 IP 协议，于是就跳到《计算机网络-自顶向下》书里讲 IP 协议的章节，我就从中学到了 IP 协议更多的细节，IP 包头的各个字段用途、寻址、路由转发的原理等等。</span></li>
+
+</ul>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">看了黑皮书，我也深刻感受到黑皮系列的书确实经典，知识体系很全面，也很细节。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">但是这种大且全的书并不意味着适合入门，新手很容易就在各种细节中迷失，而且书上有些不常用的协议我们是可以选择不看的，如果不知道重点很容易就把时间浪费在这些地方，得不偿失。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">我是在新手村学习里抓到学习计算机网络的方向，也就是把「键入网址，到网页显示，期间发生了什么？」这个问题所涉及到的协议都要掌握，比如 HTTP、DNS、TCP、UDP、IP、ARP、MAC 等等，然后再查黑皮书对应的章节来深入学习对应的协议。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">就这样学成计算机网络后，我在博客园共输出了 <strong style="font-size: inherit; line-height: inherit; margin: 0; padding: 0; font-weight: bold; color: rgba(48, 79, 254, 1)">20 多篇图解网络系列的文章</strong>，总字数高达 15W 字，并且手绘的图共有 500 张，收获了很多读者的认可和支持，不少读者跑来感激我，说我的图解网络在面试中帮助到他们，不少人拿到了阿里、腾讯、字节等大厂的Offer。</p>
+
+<img src="https://img-blog.csdnimg.cn/20210507004605142.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0ODI3Njc0,size_16,color_FFFFFF,t_70" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; display: block; margin: 0 auto; max-width: 100%">
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">为了方便读者们阅读我把图解网络整理成了PDF，大家可以作为面基突击的手册，开源给大家下载：<a style="font-size: inherit; line-height: inherit; margin: 0; padding: 0; text-decoration: none; color: rgba(30, 107, 184, 1); overflow-wrap: break-word" href="https://wwr.lanzous.com/iUqoUovm6wf">点击下载图解网络 PDF</a></p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">不仅仅是计算机网络，我在学习操作系统、计算机组成原理、网络编程等等也是用这套方法，都是先看新手村的书，得知了哪些是重点知识后，再跳到黑皮书里对应该知识的章节进行深入学习。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">当初在学网络编程的时候，看见网上的人都说 UNP（Unix 网络编程）、APUE（Unix 高级环境编程）这两本书是网络编程圣经的书，那么好学的小林，那肯定毫无犹豫买了。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">书到货后，我瞬间就懵逼了，这两本书是我买过最厚的书，这尼玛怎么学？</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">跟着书本的节奏，学了一段的时间，是懂了些 Linux 网络和系统 API 的用法，摸索来摸索去都是各个 API 的细节，始终不知道高并发网络框架是如何实现的。</p>
+
+<img src="https://img-blog.csdnimg.cn/2021050609382836.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0ODI3Njc0,size_16,color_FFFFFF,t_70" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; display: block; margin: 0 auto; max-width: 100%">
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">后面我又重新找了一波关于网络编程的书，找到了这两本：《TCP/IP 网络编程》和《Linux高性能服务器编程》。</p>
+<ul style="font-size: inherit; color: inherit; line-height: inherit; margin: 0; padding: 0 0 0 32px; list-style-type: disc">
+<li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0 0 0.5em; padding: 0"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0; padding: 0">《TCP/IP 网络编程》绝对是新手村级别的书，书里的内容不会有过多的术语，作者都用大白话来表达，配图也很清晰，也有介绍我想知道的网络框架，虽然是比较基础的多进程服务端模型、多线程服务端模型、异步 IO 模型。而且最后一章实现了简单的 HTTP 服务端，让我知道了从代码角度是怎么解析 HTTP 报文的，以及状态机是如何实现和运转的。</span></li>
+<li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0 0 0.5em; padding: 0"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0; padding: 0">《Linux高性能服务器编程》这本书主要是网络框架为主，前几章关于网络基础知识对于掌握了计算机网络知识的同学可以直接跳过的，你看，很多知识是想通的，当我们知道掌握了这块知识后，在学习新一本书的时候，就可以跳过重叠的内容。在这本书我学到了，Reactor、Proactor、信号、定时器、多进程编程、多线程编程、进程池和线程池等。</span></li>
+
+</ul>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">这两本书让我大概知道了如果一个服务端要服务多个客户端时，不是就简单写个 socket 编程就完事，而是还要结合 IO 多路复用 + 多线程的思想，也就是 Reactor 的设计理念，知道了这些事情后，后面我在看很多开源框架的网络模型时候，发现大多数基于 Reactor 的思想来实现的。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">有了网络编程总体的视角后，在需要深入理解 socket api 中各种属性设置（超时、非阻塞 IO、阻塞 IO 等）和异常处理就要回归 APUE 这本书。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">到这里我才知道 UNP 和 APUE 为什么会被称为网络编程圣经级别的书，原因是书里各种细节和异常都写的很全，也很细致，可以应对工作中很多问题。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">但是事实证明，它并不是个入门级的书，所以 UNP 和 APUE 的用途比较像字典，在需要的时候去查阅就好。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">学习算机组成也一样，我先看《程序是怎么样跑起来的》这本书，知道了程序跑起来的大概过程以及涉及到的知识点，然后带着这个问题，从《计算机组成与设计》这本黑皮书找到每一部分的细节，通过进一步学习，知道了程序编译过程，知道了 Intel x86 的指令结构，知道了计算机是如何存储并计算浮点数的，知道了 CPU 执行程序的工作流程，知道了计算机存储结构金字塔模型等等。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">所以，大家在学习的时候，应该避免直接学大而全的书，我们要先从入门级别的书看起，抓住了主线重点知识后，再通过查阅这类大而全的书来进行深入学习。</p>
+<h3 id="h-1" style="color: inherit; line-height: inherit; padding: 0; margin: 1.6em 0; font-weight: bold; border-bottom: 2px solid rgba(65, 105, 225, 1); font-size: 1.3em"><span style="font-size: inherit; line-height: inherit; margin: 0 3px 0 0; display: inline-block; font-weight: normal; background: rgba(65, 105, 225, 1); color: rgba(255, 255, 255, 1); padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px">二、不要只局限学一本书</span></h3>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">我在学习的时候，有个习惯，喜欢找同类型的书一起学，就不会说学操作系统的时候，就只看一本理论书，而是结合 Linux 系统编程和内核分析的书一起看，一层层的深入一个知识点。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">比如，我在学习操作系统的时候，在《现代操作系统》学了「进程与线程」的内容，而这本书介绍的内容比较概念性的，知识点也比较笼统，不够具体。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">然后我就会去学《Unix 高级环境编程》第 7 章「进程环境」、第 8 章「进程控制」、第 11 章「线程」、第 12 章「线程控制」、第 15 章「进程间通信」，这一系列章节看完后，就知道了 Linux 是如果通过创建进程和线程，不只局限于理论了，还学会了应用。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">当然这还不够，我还会去学《深入 Linux 内核架构》第 2 章关于进程和线程的Linux 源码分析，发现 Linux 中进程和线程实际上都是用一个结构体 task_struct 来表示的。让我很惊叹的是， Linux 操作系统对于进程和线程的创建，都是调用 do_fork 函数实现的。</p>
+
+<img src="https://img-blog.csdnimg.cn/20210506093936658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0ODI3Njc0,size_16,color_FFFFFF,t_70" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; display: block; margin: 0 auto; max-width: 100%"><br>只不过传递的参数不同，通过参数的不同来控制是复制父进程的资源（内存、文件描述、信号量等），还是引用父进程的资源，这样会更加深刻知道进程和线程的区别。
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">&nbsp;</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">我学成操作系统后，也写了 <strong style="font-size: inherit; line-height: inherit; margin: 0; padding: 0; font-weight: bold; color: rgba(48, 79, 254, 1)">20 多篇图解操作系统系列文章</strong>，最近花了几天时间整理成<strong style="font-size: inherit; line-height: inherit; margin: 0; padding: 0; font-weight: bold; color: rgba(48, 79, 254, 1)">图解系统 PDF</strong>。</p>
+
+<img src="https://img-blog.csdnimg.cn/20210507004956519.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0ODI3Njc0,size_16,color_FFFFFF,t_70" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; display: block; margin: 0 auto; max-width: 100%">
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">现在也开源给大家下载：<a style="font-size: inherit; line-height: inherit; margin: 0; padding: 0; text-decoration: none; color: rgba(30, 107, 184, 1); overflow-wrap: break-word" href="https://wwr.lanzous.com/i0QxYovm9ri">点击下载图解系统 PDF</a></p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">再比如，我在学习计算机网络的时候，在《图解 TCP/IP》学到了第六章关于 TCP 超时重传、流量控制、拥塞控制等内容，这本书讲的比较浅。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">为了更深入理解 TCP，我就会去看《TCP/IP 详解》第 17 到 24 章，这几章都是详细介绍了 TCP，在这里会学到更全面的 TCP，比如 同时打开或关闭、negle 算法、往返时间 RTT 的计算、还有拥塞控制、快速重传、快速恢复、慢启动这些过程中的拥塞窗口是怎么变化的等等。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">但是我在学《TCP/IP 详解》遇到了点困难，因为书里的案例有些地方看的不清晰，也不容易懂，特别是那些 TCP 抓包图，看到瞎眼。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">后面我找到了本神书：《TCP/IP Guide》，很可惜只有英文的，我只看了这本书讲滑动窗口和流量控制的章节，因为这本书的精华就是这两个，其他的一般般，这两个章节的配图特别多，也很清晰。</p>
+
+<img src="https://img-blog.csdnimg.cn/20210506093949352.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0ODI3Njc0,size_16,color_FFFFFF,t_70" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; display: block; margin: 0 auto; max-width: 100%">
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">我就在这知道了发送窗口和接收窗口的工作过程，也知道了滑动窗口对流量的影响，也知道了操作系统内存紧张的时候，也会影响滑动窗口，以及糊涂窗口综合症等等。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">所以在学习一个知识的时候，大家不一定要把一本书从头看到尾后，才去学另外一本书。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">最好的方式是在一本书看完某个章节的知识点后，马上去学另外一本相对比较深入的书的对应章节的内容，这样一层一层的深入下去，你对这个知识点的掌握就会很深刻了。</p>
+<h3 id="h-2" style="color: inherit; line-height: inherit; padding: 0; margin: 1.6em 0; font-weight: bold; border-bottom: 2px solid rgba(65, 105, 225, 1); font-size: 1.3em"><span style="font-size: inherit; line-height: inherit; margin: 0 3px 0 0; display: inline-block; font-weight: normal; background: rgba(65, 105, 225, 1); color: rgba(255, 255, 255, 1); padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px">三、不要只看不动手</span></h3>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">计算机类的知识都比较庞大，单纯只看很容易就忘记的了，当然即使做了笔记也会忘记。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">就像小林写了很多文章，每篇文章的内容我也不一定都记得住，但是当我回看文章后，知识点很快会被唤醒起来。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">所以记笔记的好处在于后面复习的时候，可以很快就能回想起来。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">记笔记的方式有很多种，手写在笔记本、在书上标注、在 world 文档记录等等，但这些我觉得都不是好的方式。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">我觉得比较好的方式是思维导图，把思维导图当作一课自己的知识树，每深入学一个知识点的时候，就开一个分支去记录，记录的内容最好是用自己的话来描述，而不是复制书上的内容，这样只是单纯的 copy，最好经过自己大脑的思考，用自己的话做个小总结，这样的知识点不容易忘。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">还有很多知识其实可以结合生活中的场景来记忆，这样想忘记都难，比如阻塞 IO、非阻塞 IO、同步 IO 和异步 IO，我之前文章用去饭堂打菜的场景来介绍它们之间的区别。</p>
+
+<img src="https://img-blog.csdnimg.cn/20210506094011903.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0ODI3Njc0,size_16,color_FFFFFF,t_70" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; display: block; margin: 0 auto; max-width: 100%"><br>再比如介绍各种进程调度算法，我之前文章用银行业务办理的场景来介绍。
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">&nbsp;</p>
+
+<img src="https://img-blog.csdnimg.cn/20210506094020389.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0ODI3Njc0,size_16,color_FFFFFF,t_70" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; display: block; margin: 0 auto; max-width: 100%">
+<h3 id="h-3" style="color: inherit; line-height: inherit; padding: 0; margin: 1.6em 0; font-weight: bold; border-bottom: 2px solid rgba(65, 105, 225, 1); font-size: 1.3em"><span style="font-size: inherit; line-height: inherit; margin: 0 3px 0 0; display: inline-block; font-weight: normal; background: rgba(65, 105, 225, 1); color: rgba(255, 255, 255, 1); padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px">四、总结</span></h3>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">最后做个总结，回答开头的问题。</p>
+<blockquote style="line-height: inherit; display: block; padding: 15px 15px 15px 1rem; font-size: 0.9em; margin: 1em 0; color: rgba(0, 0, 0, 1); border-left: 5px solid rgba(100, 149, 237, 1); background: rgba(227, 242, 253, 1); overflow: auto; overflow-wrap: normal; word-break: normal">
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 0">书看不懂，容易放弃，怎么办？</p>
+
+</blockquote>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">不要一开始选择困难模式，也就是不要一开始选择大而全的书，这类书一般不适合入门学习。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">我们先要找新手村级别的书来入门，新手村的书一般很快就看完的，看完后我们大概就知道这类书籍的重点知识，然后再通过查阅这些大而全的书的目录来学习对应章节的内容。</p>
+<blockquote style="line-height: inherit; display: block; padding: 15px 15px 15px 1rem; font-size: 0.9em; margin: 1em 0; color: rgba(0, 0, 0, 1); border-left: 5px solid rgba(100, 149, 237, 1); background: rgba(227, 242, 253, 1); overflow: auto; overflow-wrap: normal; word-break: normal">
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 0">看书的效率很低，怎么办？</p>
+
+</blockquote>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">其实书并不一定要全部从头看完的，而且也不要固执到一直只看一本书。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">最好在学习某个知识点的时候，通过看多本书来一层层的学习这个知识点，这样你学起来的知识点会比较全面，也更加深入。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">按这种方式学，你会发现很多书都被你不经意间看了 7788 的。</p>
+<blockquote style="line-height: inherit; display: block; padding: 15px 15px 15px 1rem; font-size: 0.9em; margin: 1em 0; color: rgba(0, 0, 0, 1); border-left: 5px solid rgba(100, 149, 237, 1); background: rgba(227, 242, 253, 1); overflow: auto; overflow-wrap: normal; word-break: normal">
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 0">做了很多笔记，依然过会就忘记，怎么办？</p>
+
+</blockquote>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">做笔记建议使用思维导图，把思维导图当作一课自己的知识树，每深入学一个知识点的时候，就开一个分支去记录。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 1.7em 0">在记录笔记的时候，尽量少 copy 书上的内容，最好还是经过自己思考后用自己的话输出的笔记，而且可以搭配生活场景来加深记忆点。</p>
+<h3 id="h-4" style="color: inherit; line-height: inherit; padding: 0; margin: 1.6em 0; font-weight: bold; border-bottom: 2px solid rgba(65, 105, 225, 1); font-size: 1.3em"><span style="font-size: inherit; line-height: inherit; margin: 0 3px 0 0; display: inline-block; font-weight: normal; background: rgba(65, 105, 225, 1); color: rgba(255, 255, 255, 1); padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px">五、作者简介</span></h3>
+<blockquote style="line-height: inherit; display: block; padding: 15px 15px 15px 1rem; font-size: 0.9em; margin: 1em 0; color: rgba(0, 0, 0, 1); border-left: 5px solid rgba(100, 149, 237, 1); background: rgba(227, 242, 253, 1); overflow: auto; overflow-wrap: normal; word-break: normal">
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0; margin: 0">作者简介：大家好，我是小林，一个专为大家图解的工具人，微信搜索「<strong style="font-size: inherit; line-height: inherit; margin: 0; padding: 0; font-weight: bold; color: rgba(48, 79, 254, 1)">小林coding</strong>」，关注回复「<strong style="font-size: inherit; line-height: inherit; margin: 0; padding: 0; font-weight: bold; color: rgba(48, 79, 254, 1)">图解</strong>」，获取小林原创的图解网络和图解系统 PDF。</p>
+
+</blockquote>
+</div>
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2021-05-07 09:30</span>&nbsp;
+<a href="https://www.cnblogs.com/xiaolincoding/">小林coding</a>&nbsp;
+阅读(<span id="post_view_count">1993</span>)&nbsp;
+评论(<span id="post_comment_count">10</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14737764" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(14737764);return false;">收藏</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 534487, cb_blogApp = 'xiaolincoding', cb_blogUserGuid = '78b47f55-b4d5-4552-a830-08d7205a5b91';
+    var cb_entryId = 14737764, cb_entryCreatedDate = '2021-05-07 09:30', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_card1"></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 小林coding
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjtxMC3dUbanD2MDeaWty_pI_FFkSdWSI_diqau0ttBXNL_RgCGWhzIH0lzk_7ryix1yYRZfrCrS-_fXcWufXakk3tM1UwBzXGgJ55_XcnTXCToxvOtTo6Ny43Jnr6v59gY" />
+</body>
+</html>
