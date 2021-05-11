@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    <meta name="description" content="##1、概念： SPI(Service Provider Interface)服务提供接口，简单来说就是用来解耦，实现插件的自由插拔，具体实现方案可参考JDK里的ServiceLoader（加载cla" />
+    <meta property="og:description" content="##1、概念： SPI(Service Provider Interface)服务提供接口，简单来说就是用来解耦，实现插件的自由插拔，具体实现方案可参考JDK里的ServiceLoader（加载cla" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Spring SPI 机制总结 - ocean.wen - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    <link id="MainCss" rel="stylesheet" href="/skins/codinglife/bundle-codinglife.min.css?v=2uJkpdACLVfstRQ7zeCFK19brTwKuDEaNBLgKz9nm3A" />
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/codinglife/bundle-codinglife-mobile.min.css?v=DwDRKMd1bmjnJZ4iQqrTCO9QLlYb6OZaUAzHoHIIihg" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/ocean234/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/ocean234/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/ocean234/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 247421;
+        var currentBlogApp = 'ocean234';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'CodingLife';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2021-05-07 08:27';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    
+    
+    
+</head>
+<body class="has-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/ocean234/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/ocean234/">Ocean的博客</a>
+</h1>
+<h2>青春是种梦想，年轻是种态度</h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/ocean234/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/ocean.wen">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/ocean234/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class = "postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/ocean234/p/14721131.html">
+    <span>Spring SPI 机制总结</span>
+    
+
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<h2 id="1、概念：">1、概念：</h2>
+<p>&nbsp;&nbsp;&nbsp; SPI(Service Provider Interface)服务提供接口，简单来说就是用来解耦，实现插件的自由插拔，具体实现方案可参考JDK里的<code>ServiceLoader</code>（加载classpath下所有META-INF/services/目录下的对应给定接口包路径的文件，然后通过反射实例化配置的所有实现类，以此将接口定义和逻辑实现分离）<br>
+&nbsp;&nbsp;&nbsp; Spring在3.0.x的时候就已经引入了spring.handlers，很多博客讲Spring SPI的时候并没有提到spring.handlers，但是通过我自己的分析对比，其实spring.handlers也是一种SPI的实现，只不过它是基于xml的，而且在没有boot的年代，它几乎是所有三方框架跟spring整合的必选机制。<br>
+<img src="https://img2020.cnblogs.com/blog/631355/202104/631355-20210430173536294-1420205145.png" alt="" loading="lazy"><br>
+在3.2.x又新引入了spring.factories，它的实现跟JDK的SPI就基本是相似的了。<br>
+<img src="https://img2020.cnblogs.com/blog/631355/202104/631355-20210430173556467-723444036.jpg" alt="" loading="lazy"><br>
+spring.handlers和spring.factories我都把它归纳为Spring为我们提供的SPI机制，通过这两种机制，我们可以在不修改Spring源码的前提下，非常轻松的做到对Spring框架的扩展开发。</p>
+<h2 id="2、实现：">2、实现：</h2>
+<h3 id="21-先看看springhandlers-spi">2.1 先看看spring.handlers SPI</h3>
+<p>&nbsp;&nbsp;&nbsp; 在Spring里有个接口<code>NamespaceHandlerResolver</code>，只有一个默认的实现类<code>DefaultNamespaceHandlerResolver</code>，而它的作用就是加载classpath下可能分散在各个jar包中的META-INF/spring.handlers文件，resolve方法中关键代码如下：</p>
+<pre><code>//加载所有jar包中的META-INF/spring.handlers文件
+Properties mappings=
+  PropertiesLoaderUtils.loadAllProperties(this.handlerMappingsLocation, this.classLoader);
+
+//把META-INF/spring.handlers中配置的namespaceUri对应实现类实例化
+NamespaceHandler namespaceHandler =
+  (NamespaceHandler) BeanUtils.instantiateClass(handlerClass);
+</code></pre>
+<p>DefaultNamespaceHandlerResolver.resolve()主要被用在BeanDefinitionParserDelegate的parseCustomElement和decorateIfRequired，所以spring.handlers SPI机制主要也是被用在bean的扫描和解析过程中。</p>
+<h3 id="22-再来看springfactories-spi">2.2 再来看spring.factories SPI</h3>
+<pre><code>// 获取某个已定义接口的实现类，跟JDK的ServiceLoader SPI相似度为90%
+List&lt;BeanInfoFactory&gt; beanInfoFactories = SpringFactoriesLoader.loadFactories(BeanInfoFactory.class, classLoader);
+</code></pre>
+<pre><code>// spring.factories文件的格式为：key=value1,value2,value3
+// 从所有jar文件中找到MET-INF/spring.factories文件（注意是：classpath下的所有jar包，所以可插拔、扩展性超强）
+Enumeration&lt;URL&gt; urls = (classLoader != null ? classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :
+	ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));
+List&lt;String&gt; result = new ArrayList&lt;String&gt;();
+while (urls.hasMoreElements()) {
+	URL url = urls.nextElement();
+	Properties properties = PropertiesLoaderUtils.loadProperties(new UrlResource(url));
+	String propertyValue = properties.getProperty(factoryClassName);
+	for (String factoryName : StringUtils.commaDelimitedListToStringArray(propertyValue)) {
+		result.add(factoryName.trim());
+	}
+}
+return result;
+</code></pre>
+<p>更多细节，大家可以参考<code>SpringFactoriesLoader</code>类，Spring自3.2.x引入spring.factories SPI后其实一直没怎么利用起来，只有CachedIntrospectionResults（初始化bean的过程中）用到了，而且在几大核心jar包里，也只有bean包里才有用到。<br>
+真正把spring.factories发扬光大的，是到了Spring Boot，可以看到boot包里配置了非常多的接口实现类。大家跟踪boot的启动类<code>SpringApplication</code>可以发现，有很多地方都调用了getSpringFactoriesInstances()方法，这些就是spring boot开给我们的扩展机会，就像一座宝藏一样，大家可以自己去发掘。<br>
+<img src="https://img2020.cnblogs.com/blog/631355/202104/631355-20210430173610000-151715896.png" alt="" loading="lazy"></p>
+<h2 id="3、应用：">3、应用：</h2>
+<p>&nbsp;&nbsp;&nbsp; 先来看看mybatis和dubbo早期跟Spring整合的实现，他们无一例外都用到了spring.handlers SPI机制，以此来向IOC容器注入自己的Bean。<br>
+<img src="https://img2020.cnblogs.com/blog/631355/202104/631355-20210430174855776-40646266.png" alt="" loading="lazy"><br>
+<img src="https://img2020.cnblogs.com/blog/631355/202104/631355-20210430174548738-118575667.png" alt="" loading="lazy"><br>
+进入boot时代后，spring.factories SPI机制应用得更加广泛，我们可以在容器启动、环境准备、初始化、上下文加载等等环节轻轻松松的对Spring做扩展开发（例如：我们项目中用到spring.factories SPI机制对配置文件中的变量实现动态解密，以及前篇博文中提到的@Replace注解等）。</p>
+<h2 id="4、实践（加载applicationxyz配置文件）：">4、实践（加载application.xyz配置文件）：</h2>
+<p>&nbsp;&nbsp;&nbsp; Spring里有两种常见的配置文件类型：application.properties 和 application.yml，其中yml是近年兴起的，但说实话同事也包括我自己是被它坑过，没有合适的编辑器时很容易把格式写错，导致上线出问题。所以我就在想有没有办法让Spring支持一种新的配置文件格式，既保留yml的简洁优雅，有能够有强制的格式校验，暂时我想到了json格式。<br>
+<img src="https://img2020.cnblogs.com/blog/631355/202105/631355-20210506160723089-1820069965.png" alt="" loading="lazy"></p>
+<pre><code># 这是spring.factories中的配置
+org.springframework.boot.env.PropertySourceLoader=top.hiccup.json.MyJsonPropertySourceLoader
+</code></pre>
+<pre><code>public class MyJsonPropertySourceLoader implements PropertySourceLoader {
+    @Override
+    public String[] getFileExtensions() {
+        return new String[]{"xyz"};
+    }
+    @Override
+    public List&lt;PropertySource&lt;?&gt;&gt; load(String name, Resource resource) throws IOException {
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()));
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line);
+        }
+        // 这里只是做了简单解析，没有做嵌套配置的解析
+        JSONObject json = JSONObject.parseObject(sb.toString());
+        List&lt;PropertySource&lt;?&gt;&gt; propertySources = new ArrayList&lt;&gt;();
+        MapPropertySource mapPropertySource = new MapPropertySource(resource.getFilename(), json);
+        propertySources.add(mapPropertySource);
+        return propertySources;
+    }
+}
+</code></pre>
+<pre><code>        ConfigurableApplicationContext ctx = SpringApplication.run(BootTest.class, args);
+        Custom custom = ctx.getBean(Custom.class);
+        System.out.println(custom.name);
+        System.out.println(custom.age);
+</code></pre>
+<p>具体代码可以参考（<a href="https://github.com/hiccup234/web-advanced/tree/master/configFile%EF%BC%89" target="_blank">https://github.com/hiccup234/web-advanced/tree/master/configFile）</a> ，运行得到结果如下：<br>
+<img src="https://img2020.cnblogs.com/blog/631355/202105/631355-20210506160933433-495155700.png" alt="" loading="lazy"><br>
+可见我们在不修改Spring源码的前提下，轻松通过Spring开放给我们的扩展性实现了对新的配置文件类型的加载和解析。</p>
+<p>这就是Spring SPI的魅力吧。</p>
+
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2021-05-07 20:27</span>&nbsp;
+<a href="https://www.cnblogs.com/ocean234/">ocean.wen</a>&nbsp;
+阅读(<span id="post_view_count">0</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14721131" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(14721131);return false;">收藏</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 247421, cb_blogApp = 'ocean234', cb_blogUserGuid = '150dad79-bed5-e311-8d02-90b11c0b17d6';
+    var cb_entryId = 14721131, cb_entryCreatedDate = '2021-05-07 20:27', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_card1"></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 ocean.wen
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjt-vYNOq3uE3cUbYTYbWhd9j1eGy1y6ExSm-Dnk0TzN311Mfy6vRtmkgRU3HlFvIphz0UJAp1eKcBRy7cqQRzO4TX2CuaL7BVp3xJkCcGRievY0CnUxNiKPa7jKKFGdHVw" />
+</body>
+</html>

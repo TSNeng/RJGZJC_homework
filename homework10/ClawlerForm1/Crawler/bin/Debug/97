@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    <meta name="description" content="Locust是一款Python技术栈的开源的性能测试工具。Locust直译为蝗虫，寓意着它能产生蝗虫般成千上万的并发用户： Locust并不小众，从它Github的Star数量就可见一斑： 截止文章写" />
+    <meta property="og:description" content="Locust是一款Python技术栈的开源的性能测试工具。Locust直译为蝗虫，寓意着它能产生蝗虫般成千上万的并发用户： Locust并不小众，从它Github的Star数量就可见一斑： 截止文章写" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Python技术栈性能测试工具Locust入门 - 自动化代码美学 - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    <link id="MainCss" rel="stylesheet" href="/skins/codinglife/bundle-codinglife.min.css?v=2uJkpdACLVfstRQ7zeCFK19brTwKuDEaNBLgKz9nm3A" />
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/df888/custom.css?v=VQTlJCJeAjxgTF5bxBQjvyZJRhk=" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/codinglife/bundle-codinglife-mobile.min.css?v=DwDRKMd1bmjnJZ4iQqrTCO9QLlYb6OZaUAzHoHIIihg" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/df888/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/df888/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/df888/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 500328;
+        var currentBlogApp = 'df888';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'CodingLife';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2021-05-07 06:33';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    
+    
+    
+</head>
+<body class="no-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc navbar-custom">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/df888/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/df888/">自动化代码美学</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/df888/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+</li>
+<li>
+
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class = "postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/df888/p/14731767.html">
+    <span>Python技术栈性能测试工具Locust入门</span>
+    
+
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<p>Locust是一款Python技术栈的开源的性能测试工具。Locust直译为蝗虫，寓意着它能产生蝗虫般成千上万的并发用户：</p>
+<p><img src="https://img2020.cnblogs.com/blog/1629545/202105/1629545-20210505145512277-2078140595.png" alt="image-20210501150513778" loading="lazy"></p>
+<p>Locust并不小众，从它Github的Star数量就可见一斑：</p>
+<p><img src="https://img2020.cnblogs.com/blog/1629545/202105/1629545-20210505145512570-1369893182.png" alt="image-20210501150222526" loading="lazy"></p>
+<p>截止文章写作时，一共<strong>15951</strong>Star。</p>
+<p>Locust生态良好，它已在多家外企（包括<strong>世界500强</strong>）投入使用：</p>
+<p><img src="https://img2020.cnblogs.com/blog/1629545/202105/1629545-20210505145512884-2066545470.png" alt="image-20210501150925439" loading="lazy"></p>
+<p>如此看来，Locust是非常值得学习和掌握的一款工具。</p>
+<p>Python的魔力在于化繁为简，<strong>基于Python的Locust也能给仍然困惑于性能测试的我们带来启发。</strong></p>
+<h1 id="locust特点">Locust特点</h1>
+<ul>
+<li>以纯Python方式编写用户脚本，提供极大自由度。</li>
+<li>用户脚本可以串行方式编写，Locust会通过轻量级进程/协程产生并发，无需自己做并发编程。</li>
+<li>并发量大，借助于gevent库，Locust能产生成千上万并发请求。</li>
+<li>开销小，Locust用户运行时开销很小。</li>
+<li>良好的Web UI对性能结果实时监测。</li>
+<li>能测任何系统任何协议，只需要写个client即可。</li>
+<li>开放REST API，尽情发挥。</li>
+</ul>
+<h1 id="安装locust">安装Locust</h1>
+<p>需要Python版本<strong>3.6</strong>及以上。</p>
+<p>执行pip命令：</p>
+<pre><code class="language-shell">$ pip install locust
+</code></pre>
+<p>验证安装成功：</p>
+<pre><code class="language-shell">$ locust -V
+</code></pre>
+<blockquote>
+<p>安装时会一并安装依赖库：</p>
+<p>Installing collected packages: Werkzeug, pywin32, zope.event, greenlet, gevent, geventhttpclient, itsdangerous, <strong>flask, Flask-BasicAuth,</strong> ConfigArgParse, pyzmq, psutil, locust</p>
+<p>能看出来flask为Locust提供了Web功能。</p>
+</blockquote>
+<h1 id="快速上手">快速上手</h1>
+<p>使用Locust一般按照以下步骤进行：</p>
+<ol>
+<li>编写Python用户脚本。</li>
+<li>使用<code>locust</code>命令执行性能测试。</li>
+<li>（可选）通过Web界面监测结果。</li>
+</ol>
+<p>示例代码如下，新建locustfile.py文件：</p>
+<pre><code class="language-python">import time
+from locust import HttpUser, task, between
+
+class QuickstartUser(HttpUser):
+    wait_time = between(1, 2.5)
+
+    @task
+    def hello_world(self):
+        self.client.get("/hello")
+        self.client.get("/world")
+
+    @task(3)
+    def view_items(self):
+        for item_id in range(10):
+            self.client.get(f"/item?id={item_id}", name="/item")
+            time.sleep(1)
+
+    def on_start(self):
+        self.client.post("/login", json={"username":"foo", "password":"bar"})
+</code></pre>
+<p>路径切换到locustfile.py文件所在目录，执行命令：</p>
+<pre><code class="language-shell">$ locust
+</code></pre>
+<blockquote>
+<p>也可以通过<code>-f</code>指定某个目录文件：</p>
+<pre><code class="language-shell">$ locust -f locust_files/my_locust_file.py
+</code></pre>
+</blockquote>
+<p>运行后，打开<a href="http://127.0.0.1:8089/" target="_blank">http://127.0.0.1:8089</a>看到Web界面：</p>
+<p><img src="https://img2020.cnblogs.com/blog/1629545/202105/1629545-20210505145513196-757117074.png" alt="_images/webui-splash-screenshot.png" loading="lazy"></p>
+<p>填写信息后，就能开始压测了。Web界面提供了结果统计数据：</p>
+<p><img src="https://img2020.cnblogs.com/blog/1629545/202105/1629545-20210505145513509-1445381722.png" alt="_images/webui-running-statistics.png" loading="lazy"></p>
+<p>和性能指标走势图：</p>
+<p><img src="https://img2020.cnblogs.com/blog/1629545/202105/1629545-20210505145513741-762730722.png" alt="_images/webui-running-charts.png" loading="lazy"></p>
+<h1 id="脚本解析">脚本解析</h1>
+<p>示例脚本解析如下：</p>
+<pre><code class="language-python"># Locust用户脚本就是Python模块
+import time
+from locust import HttpUser, task, between
+
+# 类继承自HttpUser
+class QuickstartUser(HttpUser):
+    # 每个模拟用户等待1~2.5秒
+    wait_time = between(1, 2.5)
+
+    # 被@task装饰的才会并发执行
+    @task
+    def hello_world(self):
+        # client属性是HttpSession实例，用来发送HTTP请求
+        self.client.get("/hello")
+        self.client.get("/world")
+
+    # 每个类只会有一个task被选中执行
+    # 3代表weight权重
+    # 权重越大越容易被选中执行
+    # view_items比hello_wolrd多3倍概率被选中执行
+    @task(3)
+    def view_items(self):
+        for item_id in range(10):
+            # name参数作用是把统计结果按同一名称进行分组
+            # 这里防止URL参数不同会产生10个不同记录不便于观察
+            # 把10个汇总成1个"/item"记录
+            self.client.get(f"/item?id={item_id}", name="/item")
+            time.sleep(1)
+
+    # 每个模拟用户开始运行时都会执行
+    def on_start(self):
+        self.client.post("/login", json={"username":"foo", "password":"bar"})
+</code></pre>
+<h1 id="小结">小结</h1>
+<p>本文先了解了Locust的背景和生态，它是值得学习的，对于Python技术栈来说更加如此。接着介绍了使用pip命令安装Locust，其中发现顺带安装了flask，<strong>Locust的Web功能是flask提供的</strong>。然后给出了一段示例代码，按照步骤上手Locust。最后对示例代码进行了解析，浅尝辄止。locustfile实际上该怎么写呢？</p>
+<blockquote>
+<p>参考资料：</p>
+<p><a href="https://locust.io/" target="_blank">https://locust.io/</a></p>
+<p><a href="https://docs.locust.io/en/stable/" target="_blank">https://docs.locust.io/en/stable/</a></p>
+</blockquote>
+
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2021-05-07 18:33</span>&nbsp;
+<a href="https://www.cnblogs.com/df888/">自动化代码美学</a>&nbsp;
+阅读(<span id="post_view_count">2</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14731767" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(14731767);return false;">收藏</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 500328, cb_blogApp = 'df888', cb_blogUserGuid = '28d4b6f5-8570-4e16-eddd-08d6a695d280';
+    var cb_entryId = 14731767, cb_entryCreatedDate = '2021-05-07 18:33', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_card1"></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 自动化代码美学
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjs8wNGzw_OldextcDx8IhJHJMj9Qyv1am2mEjyEvlExhPQvXirKqlip0vjloRFAtAqP8UMnTA98oPZtEOoIIDPw-99HXTWw447bQ5QMe77iI8yFvQOXfCXHhok1XPGIB6I" />
+</body>
+</html>

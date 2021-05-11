@@ -1,0 +1,1093 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>ITryagain - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/csu-lmw/custom.css?v=K/3T7mdYv3mAj2g/H11&#x2B;yq8DYxw=" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/SimpleMemory/bundle-SimpleMemory-mobile.min.css" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/csu-lmw/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/csu-lmw/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/csu-lmw/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 436037;
+        var currentBlogApp = 'csu-lmw';
+        var cb_enable_mathjax = true;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'SimpleMemory';
+        var visitorUserId = '';
+    </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processClass: 'math', processEscapes: true },
+        TeX: {
+        equationNumbers: { autoNumber: ['AMS'], useLabelIds: true },
+        extensions: ['extpfeil.js', 'mediawiki-texvc.js'],
+        Macros: {bm: "\\boldsymbol"}
+        },
+        'HTML-CSS': { linebreaks: { automatic: true } },
+        SVG: { linebreaks: { automatic: true } }
+        });
+    </script>
+    <script src="https://mathjax.cnblogs.com/2_7_5/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;v=20200504"></script>
+    
+</head>
+<body class="no-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc navbar-custom">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="page_begin_html">
+        <head>
+    
+    <title>Live2D</title>
+    
+    <link href="https://files.cnblogs.com/files/csu-lmw/waifu1.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js" defer></script>
+</head>
+
+
+    </div>
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/csu-lmw/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/csu-lmw/">ITryagain</a>
+</h1>
+<h2>挖下太多坑，填坑路漫漫~~</h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/csu-lmw/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/ITryagain">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/csu-lmw/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+
+
+
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2021/05/07.html">2021年5月7日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/14741906.html">
+    <span>
+        【细说游戏 AI】这个 AI 好厉害，给我也整一个之状态机 AI
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 最近也看了不少关于游戏 AI 的相关文章，对这方面挺感兴趣，就打算尝试实现各种 AI，然后总结，写成一个系列文章，这篇文章将介绍状态机 AI，并给出在 Unity 中的相关实现。 去年 5 月份学校的动画与游戏程序设计这门课程布置了个大作业，用 Unity 做坦克大战（虽说就是照着教程做罢了）        <a href="https://www.cnblogs.com/csu-lmw/p/14741906.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-05-07 18:35
+ITryagain
+<span data-post-id="14741906" class="post-view-count">阅读(44)</span> 
+<span data-post-id="14741906" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14741906" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14741906" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2021/03/25.html">2021年3月25日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/14553168.html">
+    <span>
+        OpenGL 绘制你的 github skyline 模型
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 好久没更新博客了，上一篇文章还是在去年6月份，乍一看居然快要过去一年了，不时还能看到粉丝数和排名在涨，可是却一直没有内容更新，怪不好意思的- -（主要是一直没想好要写些什么，中间也有过一些想法，比如从 Python 的 yield 关键字讲到协程、基于蒙特卡洛方法的 Raytracing、EC        <a href="https://www.cnblogs.com/csu-lmw/p/14553168.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2021-03-25 19:07
+ITryagain
+<span data-post-id="14553168" class="post-view-count">阅读(111)</span> 
+<span data-post-id="14553168" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14553168" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14553168" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2020/06/03.html">2020年6月3日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/13040013.html">
+    <span>
+        写一手漂亮的代码，走向极致的编程 二、代码运行时内存分析
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 上篇文章中介绍了如何对代码性能进行分析优化，这篇文章将介绍如何对代码运行时内存进行分析。 说到内存，就想起之前在搞数据挖掘竞赛的时候，往往要跑很大的数据集，经常就是炸内存。当时的解决办法就是对着任务管理器用 jupyter notebook 分 cell 的跑代码，将需要耗费大量内存的代码块找        <a href="https://www.cnblogs.com/csu-lmw/p/13040013.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-06-03 20:58
+ITryagain
+<span data-post-id="13040013" class="post-view-count">阅读(282)</span> 
+<span data-post-id="13040013" class="post-comment-count">评论(2)</span> 
+<span data-post-id="13040013" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13040013" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2020/06/01.html">2020年6月1日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12975336.html">
+    <span>
+        ucoreos_lab1
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 最近觉得自己之前蛮多基础课学的并不咋滴，便想再补补。前段时间突然看到清华的操作系统实验，于是乎就打算试试，一边学一边做实验，然后通过博客来记录记录。 实验内容 lab1 中包含一个 bootloader 和一个 OS。这个 bootloader 可以切换到 X86 保护模式，能够读磁盘并加载         <a href="https://www.cnblogs.com/csu-lmw/p/12975336.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-06-01 14:37
+ITryagain
+<span data-post-id="12975336" class="post-view-count">阅读(295)</span> 
+<span data-post-id="12975336" class="post-comment-count">评论(0)</span> 
+<span data-post-id="12975336" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12975336" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2020/05/29.html">2020年5月29日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12988803.html">
+    <span>
+        网易互娱 游戏研发 暑期实习面试面经
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 昨天面了网易互娱的游戏研发工程师，回想下似乎问的问题并不多，整体也就 5 个问题，但每个问题展开之后里面的量好像也不少，现在整理一下，顺便解决下面试中没答上来的地方。 面试题 先是自我介绍。。。。。面试官了解到我对 Python 更加熟悉一些，于是问了比较多的 Python 相关的问题。 Py        <a href="https://www.cnblogs.com/csu-lmw/p/12988803.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-05-29 17:55
+ITryagain
+<span data-post-id="12988803" class="post-view-count">阅读(2695)</span> 
+<span data-post-id="12988803" class="post-comment-count">评论(6)</span> 
+<span data-post-id="12988803" class="post-digg-count">推荐(2)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12988803" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2020/05/18.html">2020年5月18日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12910481.html">
+    <span>
+        Ubuntu16.04 flask + nginx + uWSGI 部署
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 又有段时间没写博客了，最近一直在写外包项目，都没啥空余时间。这几天花了不少时间做项目部署，也看了不少教程，这里就记录下整个过程，也方便以后要做类似部署的时候不用再查来查去了。 flask + uWSGI 看到网上的教程都是清一色的使用 virtualenv 来创建虚拟环境，但我更倾向于使用 a        <a href="https://www.cnblogs.com/csu-lmw/p/12910481.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-05-18 14:46
+ITryagain
+<span data-post-id="12910481" class="post-view-count">阅读(305)</span> 
+<span data-post-id="12910481" class="post-comment-count">评论(3)</span> 
+<span data-post-id="12910481" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12910481" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2020/04/25.html">2020年4月25日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12774328.html">
+    <span>
+        写一手漂亮的代码，走向极致的编程 一、代码运行时间分析
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 写一手漂亮的代码，何谓漂亮的代码？对我来说大概有这么几点： 1. 写法符合规范（如：该空格的地方打上空格，该换行的地方换行，名命方式符合规范等等） 2. 简洁且可读性高（能十行代码实现并且让人容易看懂的绝不写十一行，对经常重复出现的代码段落进行封装） 3. 性能高（如：运行时间尽可能短，运行时        <a href="https://www.cnblogs.com/csu-lmw/p/12774328.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-04-25 18:17
+ITryagain
+<span data-post-id="12774328" class="post-view-count">阅读(819)</span> 
+<span data-post-id="12774328" class="post-comment-count">评论(6)</span> 
+<span data-post-id="12774328" class="post-digg-count">推荐(3)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12774328" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2020/04/22.html">2020年4月22日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12757518.html">
+    <span>
+        Unity ML-agents 一、初次尝试
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 曾在高二寒假的时候，跟表哥在外面玩，当时他问我有没有想过以后要做什么，我愣了一下，回答不上来。是的，从没想过以后要做什么，只是一直在完成学校、老师安排的任务，于是那之后半年，我一直在思考，大学要学什么。在大二下期中之后，我觉得自己还是对游戏更感兴趣，便想到以后想做游戏。于是，高考后填志愿，填的        <a href="https://www.cnblogs.com/csu-lmw/p/12757518.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-04-22 23:01
+ITryagain
+<span data-post-id="12757518" class="post-view-count">阅读(1061)</span> 
+<span data-post-id="12757518" class="post-comment-count">评论(5)</span> 
+<span data-post-id="12757518" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12757518" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2020/02/02.html">2020年2月2日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12254174.html">
+    <span>
+        谈谈模型融合之三 —— GBDT
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 本来应该是年后就要写的一篇博客，因为考完试后忙了一段时间课设和实验，然后回家后又在摸鱼，就一直没开动。趁着这段时间只能呆在家里来把这些博客补上。在之前的文章中介绍了 Random Forest 和 AdaBoost，这篇文章将介绍介绍在数据挖掘竞赛中，最常用的算法之一 —— GBDT（Grad        <a href="https://www.cnblogs.com/csu-lmw/p/12254174.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-02-02 22:54
+ITryagain
+<span data-post-id="12254174" class="post-view-count">阅读(394)</span> 
+<span data-post-id="12254174" class="post-comment-count">评论(0)</span> 
+<span data-post-id="12254174" class="post-digg-count">推荐(2)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12254174" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2020/01/22.html">2020年1月22日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12229634.html">
+    <span>
+        把 CPU “玩”起来
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 从开始学习编程之后，就渐渐痴迷于技术，平时遇到购书满减活动时就忍不住买一堆书。前两天闲着无聊，翻开了去年买的《编程之美》，目录里的“让 CPU 占用率听你指挥”吸引力我的眼球。这一年来捣鼓数据挖掘和机器学习，总会关注代码运行效率，偶尔会思考如何提高 CPU、GPU 的利用率。于是马上翻开了这一        <a href="https://www.cnblogs.com/csu-lmw/p/12229634.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-01-22 21:05
+ITryagain
+<span data-post-id="12229634" class="post-view-count">阅读(584)</span> 
+<span data-post-id="12229634" class="post-comment-count">评论(1)</span> 
+<span data-post-id="12229634" class="post-digg-count">推荐(4)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12229634" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2020/01/15.html">2020年1月15日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12196670.html">
+    <span>
+        Win10 极简安装 TensorFlow 2.0 GPU
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 之前写了几篇关于 TensorFlow 1.x GPU 版本安装的博客，但几乎没怎么学习过。之前基本在搞 Machine Learning 和 Data Mining 方面的东西，极少用到 NN，虽然看过几次相关代码，但没怎么看懂过，静态图是有些复杂，对像我这样的菜鸡来说难度有那么点点点点点大        <a href="https://www.cnblogs.com/csu-lmw/p/12196670.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2020-01-15 14:49
+ITryagain
+<span data-post-id="12196670" class="post-view-count">阅读(623)</span> 
+<span data-post-id="12196670" class="post-comment-count">评论(0)</span> 
+<span data-post-id="12196670" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12196670" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2019/12/29.html">2019年12月29日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12115440.html">
+    <span>
+        聚类分析 一、K-Means
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 人们常说“物以类聚，人以群分”，在生物学中也对生物从界门纲目科属种中进行了划分。在统计学中，也有 ，通过把相似的对象通过静态分类的方法分成不同的组别或者更多的子集，从而让同一个子集中的成员都有相似的一些属性，然后对这些子集中的数据进行分析，其关键则在于聚类。这系列文章将来讲讲各种聚类方法，这篇        <a href="https://www.cnblogs.com/csu-lmw/p/12115440.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-12-29 16:52
+ITryagain
+<span data-post-id="12115440" class="post-view-count">阅读(879)</span> 
+<span data-post-id="12115440" class="post-comment-count">评论(2)</span> 
+<span data-post-id="12115440" class="post-digg-count">推荐(2)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12115440" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+            <div class="postSeparator"></div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12113885.html">
+    <span>
+        数据库（Oracle）基本知识点总结
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：视图 + 标准视图 + 普通视图，又称为关系视图 + 内联视图 + 在使用SQL语句编写查询时临时构建的一个嵌入式的视图，又称内嵌视图 + 物化视图 + 存储查询的结果，之前称为快照 创建视图的语法 创建一个只读视图 创建带 with check option 的视图 多表视图 可更新的视图 + 键        <a href="https://www.cnblogs.com/csu-lmw/p/12113885.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-12-29 01:47
+ITryagain
+<span data-post-id="12113885" class="post-view-count">阅读(304)</span> 
+<span data-post-id="12113885" class="post-comment-count">评论(2)</span> 
+<span data-post-id="12113885" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12113885" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2019/12/28.html">2019年12月28日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12110113.html">
+    <span>
+        谈谈模型融合之二 —— 随机森林
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 上篇 &quot;文章&quot; 介绍了 的相关概念以及基于 Boosting的 AdaBoost，这篇文章将介绍基于模型融合的另一种方式 Bagging 的算法，随机森林（Random Forest）。(上篇公式敲的太累了这篇就来个简单的缓解缓解) 随机森林 算法思想 我们先来看看这个算法的名字，可以拆分开为        <a href="https://www.cnblogs.com/csu-lmw/p/12110113.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-12-28 18:33
+ITryagain
+<span data-post-id="12110113" class="post-view-count">阅读(354)</span> 
+<span data-post-id="12110113" class="post-comment-count">评论(0)</span> 
+<span data-post-id="12110113" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12110113" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2019/12/27.html">2019年12月27日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12110009.html">
+    <span>
+        谈谈模型融合之一 —— 集成学习与 AdaBoost
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 前面的文章中介绍了决策树以及其它一些算法，但是，会发现，有时候使用使用这些算法并不能达到特别好的效果。于是乎就有了 （Ensemble Learning），通过构建多个学习器一起结合来完成具体的学习任务。这篇文章将介绍集成学习，以及其中的一种算法 AdaBoost。 集成学习 首先先来介绍下什        <a href="https://www.cnblogs.com/csu-lmw/p/12110009.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-12-27 23:11
+ITryagain
+<span data-post-id="12110009" class="post-view-count">阅读(600)</span> 
+<span data-post-id="12110009" class="post-comment-count">评论(0)</span> 
+<span data-post-id="12110009" class="post-digg-count">推荐(2)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12110009" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2019/12/25.html">2019年12月25日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12099511.html">
+    <span>
+        机器学习中的那些树——决策树（三、CART 树）
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 距 &quot;上篇&quot; 文章已经过了9个月 orz。。趁着期末复习，把博客补一补。。 在前面的文章中介绍了决策树的 ID3，C4.5 算法。我们知道了 ID3 算法是基于各节点的信息增益的大小 $\operatorname{Gain}(D, a)=\operatorname{Ent}(D) \sum_{        <a href="https://www.cnblogs.com/csu-lmw/p/12099511.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-12-25 22:53
+ITryagain
+<span data-post-id="12099511" class="post-view-count">阅读(573)</span> 
+<span data-post-id="12099511" class="post-comment-count">评论(0)</span> 
+<span data-post-id="12099511" class="post-digg-count">推荐(2)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12099511" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2019/12/21.html">2019年12月21日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12078492.html">
+    <span>
+        我的第一次面试 —— 腾讯 AI安全 一面总结
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 在校两年半，没经历过面试的毒打，第一次面试给了腾讯，周二晚上学长帮推的简历周三下午就打电话来问周四晚上有没有空面试。那天下午还在赶着数据库的实验报告，脑子有点转不过来就说了有空，然后仔细一看好像前两天刚抢了节课，正好是周四晚上 orz，算了算了，翘了，周五再去蹭两节，面试重要。 emmmm。。        <a href="https://www.cnblogs.com/csu-lmw/p/12078492.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-12-21 22:33
+ITryagain
+<span data-post-id="12078492" class="post-view-count">阅读(1462)</span> 
+<span data-post-id="12078492" class="post-comment-count">评论(1)</span> 
+<span data-post-id="12078492" class="post-digg-count">推荐(4)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12078492" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2019/12/16.html">2019年12月16日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12051657.html">
+    <span>
+        从零开始openGL——五、光线追踪
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 注：代码已开源在 github 中， https://github.com/disc0ver-csu/computer-graphics/tree/master/codes/lab3-leo6033/Trace 前面介绍了基本图形、模型、曲线的绘制，但是，在好像还没有感受到那种3D游戏里一些能        <a href="https://www.cnblogs.com/csu-lmw/p/12051657.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-12-16 22:16
+ITryagain
+<span data-post-id="12051657" class="post-view-count">阅读(4281)</span> 
+<span data-post-id="12051657" class="post-comment-count">评论(4)</span> 
+<span data-post-id="12051657" class="post-digg-count">推荐(4)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12051657" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+            <div class="postSeparator"></div>
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12048686.html">
+    <span>
+        从零开始openGL——四、纹理贴图与n次B样条曲线
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 在 &quot;上篇&quot; 文章中，介绍了如何加载绘制模型以及鼠标交互的实现，并且遗留了个问题，就是没有模型表面没有纹理，看起来很丑。这篇文章将介绍如何贴纹理，以及曲线的绘制。 纹理贴图 纹理加载 既然是贴图，那首先我们得要有合适的纹理图片，openGL中支持的图片为bmp格式。在这里我还用到了个额外的库g        <a href="https://www.cnblogs.com/csu-lmw/p/12048686.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-12-16 13:37
+ITryagain
+<span data-post-id="12048686" class="post-view-count">阅读(1042)</span> 
+<span data-post-id="12048686" class="post-comment-count">评论(0)</span> 
+<span data-post-id="12048686" class="post-digg-count">推荐(3)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12048686" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+		
+
+
+<div class="day">
+    <div class="dayTitle">
+        <a href="https://www.cnblogs.com/csu-lmw/archive/2019/12/15.html">2019年12月15日</a>
+    </div>
+
+        <div class="postTitle">
+            
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/12006050.html">
+    <span>
+        从零开始openGL——三、模型加载及鼠标交互实现
+    </span>
+    
+
+
+
+</a>
+
+        </div>
+        <div class="postCon">
+
+    <div class="c_b_p_desc">
+摘要：前言 在上篇文章中，介绍了基本图形的绘制。这篇博客中将介绍模型的加载、绘制以及鼠标交互的实现。 模型加载 模型存储 要实现模型的读取、绘制，我们首先需要知道模型是如何存储在文件中的。 通常模型是由网格组成的，且一般为三角网格。原因为： 其它多边形网格可以容易地剖分为三角形 三点共面：保证平面性 可以        <a href="https://www.cnblogs.com/csu-lmw/p/12006050.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+</div>
+        <div class="clear"></div>
+        <div class="postDesc">posted @ 2019-12-15 00:29
+ITryagain
+<span data-post-id="12006050" class="post-view-count">阅读(2399)</span> 
+<span data-post-id="12006050" class="post-comment-count">评论(1)</span> 
+<span data-post-id="12006050" class="post-digg-count">推荐(3)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12006050" rel="nofollow">
+    编辑
+</a>
+</div>
+        <div class="clear"></div>
+</div>
+
+
+
+<div class="topicListFooter">
+    <div id="nav_next_page">
+        
+    <a href="https://www.cnblogs.com/csu-lmw/default.html?page=2">
+        下一页
+    </a>
+
+    </div>    
+</div>
+
+
+
+
+
+
+<script>
+    updatePostStats(
+        $(".post-view-count").map(function () { return this.dataset.postId }).get(),
+        function(id, count) { $(".post-view-count[data-post-id=" + id + "]").text("阅读(" + count + ")") },
+        function(id, count) { $(".post-comment-count[data-post-id=" + id + "]").text("评论(" + count + ")") },
+        function(id, count) { $(".post-digg-count[data-post-id=" + id + "]").text("推荐(" + count + ")") });
+</script>
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 ITryagain
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    <div id="page_end_html">
+        <link rel="stylesheet" type="text/css" href="https://files.cnblogs.com/files/csu-lmw/flat-ui.min.css"/>
+
+<body>
+<link href="https://files.cnblogs.com/files/csu-lmw/waifu1.css" rel="stylesheet" type="text/css">
+	<div class="waifu" id="waifu">
+		<div class="waifu-tips" style="opacity: 1;"></div>
+		<canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+		<div class="waifu-tool">
+			<span class="fui-home"></span>
+			<span class="fui-chat"></span>
+			<span class="fui-eye"></span>
+			<span class="fui-user"></span>
+			<span class="fui-photo"></span>
+			<span class="fui-info-circle"></span>
+			<span class="fui-cross"></span>
+		</div>
+	</div>
+	<script src="https://files.cnblogs.com/files/csu-lmw/live2d1.js"></script>
+	<script src="https://files.cnblogs.com/files/csu-lmw/waifu-tips_.js"></script>
+	<script type="text/javascript">initModel()</script>
+
+<script src="https://files.cnblogs.com/files/csu-lmw/backgrounds-changes.js" type="text/javascript"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<meting-js
+        id="2876746906"
+        lrc-type="0"
+        server="netease"
+        order="random"
+        type="playlist"
+        fixed="true"
+        list-olded="true">
+</meting-js>
+
+<div id="cnzzProtocol"  style="display: none;">
+    <span class="id_cnzz_stat_icon" id='cnzz_stat_icon_1278873152'></span>
+    <script src='https://s19.cnzz.com/z_stat.php?id=1278873152&online=1&show=line' type='text/javascript'></script>
+</div>
+</body>
+
+
+
+    </div>
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjuTD80JdGx2cMC0rDlYke8uP3KnKvk5o4Sejcy7Bs3pRm4HiEWr5WEyiqFaEQEyd0lByiStIhbvheNnvonV70GHQIaQCMzFbAlJ35S6B0yhFf0xVjpk8c-AMeJH1eLHPKE" />
+</body>
+</html>

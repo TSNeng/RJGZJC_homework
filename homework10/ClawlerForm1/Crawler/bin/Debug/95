@@ -1,0 +1,536 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    <meta name="description" content="前言 最近也看了不少关于游戏 AI 的相关文章，对这方面挺感兴趣，就打算尝试实现各种 AI，然后总结，写成一个系列文章，这篇文章将介绍状态机 AI，并给出在 Unity 中的相关实现。 去年 5 月份" />
+    <meta property="og:description" content="前言 最近也看了不少关于游戏 AI 的相关文章，对这方面挺感兴趣，就打算尝试实现各种 AI，然后总结，写成一个系列文章，这篇文章将介绍状态机 AI，并给出在 Unity 中的相关实现。 去年 5 月份" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>【细说游戏 AI】这个 AI 好厉害，给我也整一个之状态机 AI - ITryagain - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/csu-lmw/custom.css?v=K/3T7mdYv3mAj2g/H11&#x2B;yq8DYxw=" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/SimpleMemory/bundle-SimpleMemory-mobile.min.css" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/csu-lmw/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/csu-lmw/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/csu-lmw/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 436037;
+        var currentBlogApp = 'csu-lmw';
+        var cb_enable_mathjax = true;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'SimpleMemory';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2021-05-07 06:35';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processClass: 'math', processEscapes: true },
+        TeX: {
+        equationNumbers: { autoNumber: ['AMS'], useLabelIds: true },
+        extensions: ['extpfeil.js', 'mediawiki-texvc.js'],
+        Macros: {bm: "\\boldsymbol"}
+        },
+        'HTML-CSS': { linebreaks: { automatic: true } },
+        SVG: { linebreaks: { automatic: true } }
+        });
+    </script>
+    <script src="https://mathjax.cnblogs.com/2_7_5/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;v=20200504"></script>
+    
+</head>
+<body class="no-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc navbar-custom">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="page_begin_html">
+        <head>
+    
+    <title>Live2D</title>
+    
+    <link href="https://files.cnblogs.com/files/csu-lmw/waifu1.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js" defer></script>
+</head>
+
+
+    </div>
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/csu-lmw/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/csu-lmw/">ITryagain</a>
+</h1>
+<h2>挖下太多坑，填坑路漫漫~~</h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/csu-lmw/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/ITryagain">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/csu-lmw/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class = "postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/csu-lmw/p/14741906.html">
+    <span>【细说游戏 AI】这个 AI 好厉害，给我也整一个之状态机 AI</span>
+    
+
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<h1 id="前言">前言</h1>
+<p>最近也看了不少关于游戏 AI 的相关文章，对这方面挺感兴趣，就打算尝试实现各种 AI，然后总结，写成一个系列文章，这篇文章将介绍状态机 AI，并给出在 Unity 中的相关实现。<br>
+去年 5 月份学校的动画与游戏程序设计这门课程布置了个大作业，用 Unity 做坦克大战（虽说就是照着教程做罢了），当时就试着用状态机写了 AI。这次跟几个小伙伴参加 CUSGA（第一届中国大学生游戏开发创作大赛），做了个简化版的 RTS 游戏，其中的 AI 也是通过状态机实现的。将在这边文章中做个总结。</p>
+<iframe height="450" width="800" align="middle" src="//player.bilibili.com/player.html?aid=290343776&amp;bvid=BV1kf4y1p7Tc&amp;cid=331380013&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<p><em><strong>注：游戏目前实现的功能还并不是很多，如果看了演示视频，希望能给些相关的改进建议，等这段时间毕设搞完之后就开始继续改进。</strong></em></p>
+<h1 id="有限状态机（fsm）">有限状态机（FSM）</h1>
+<p>这段时间看了不少大佬的分析和文章，了解到状态机大致有有限状态机和分层状态机两种，这里将先介绍有限状态机。</p>
+<h2 id="定义">定义</h2>
+<p>状态机这个概念对大家来说应该并不陌生，比如编译原理中的有穷自动机（FA），字符串算法中的自动机（AC自动机、后缀自动机、回文自动机等）等。</p>
+<p>这里将给出定义：</p>
+<ol>
+<li>包含有限个状态</li>
+<li>可以表示为一张图，节点为状态，边为状态的改变</li>
+</ol>
+<p>其形式大致与 Unity 的 Animation Controller 类似</p>
+<p><img src="https://img2020.cnblogs.com/blog/1413964/202105/1413964-20210504145907297-203856039.png" alt="Unity Animation Controller" loading="lazy"></p>
+<h2 id="实现">实现</h2>
+<p>关于有限状态机 AI 的实现，最简单的当然就是 if... else 或是 switch 判断当前状态，然后执行相应的 action，但是这样的实现会导致当状态和动作空间变大时，代码难以维护。因此，我在实现的时候都是采用的状态模式。</p>
+<p>关于目前在项目中使用的状态机架构，主要是五个类，分别为 Action、State、Decision、Transition、StateController，代码如下：</p>
+<h3 id="action">Action</h3>
+<pre><code class="language-C#">public abstract class Action : ScriptableObject
+{
+    public abstract void Act(StateController controller);
+}
+</code></pre>
+<h3 id="decision">Decision</h3>
+<pre><code class="language-c#">public abstract class Decision : ScriptableObject
+{
+    public abstract bool Decide(StateController controller);
+}
+</code></pre>
+<h3 id="transition">Transition</h3>
+<pre><code class="language-c#">[System.Serializable]
+public class Transifition
+{
+    public Decision decision;
+    public State trueState;
+    public State falseState;
+}
+</code></pre>
+<h3 id="state">State</h3>
+<pre><code class="language-c#">[CreateAssetMenu (menuName = "AI/State")]
+public class State : ScriptableObject
+{
+    public Action[] actions;
+    public Transifition[] transitions;
+
+    public void UpdateState(StateController controller)
+    {
+        DoActions(controller);
+        CheckTransitions(controller);
+    }
+
+    private void DoActions(StateController controller)
+    {
+        for(int i = 0; i &lt; actions.Length; i++)
+        {
+            actions[i].Act(controller);
+        }
+    }
+
+   private void CheckTransitions(StateController controller)
+    {
+        for(int i = 0; i &lt; transitions.Length; i++)
+        {
+            bool decisionSucceeded = transitions[i].decision.Decide(controller);
+
+            State transitionState = decisionSucceeded ? transitions[i].trueState : transitions[i].falseState;
+
+            controller.TransitionToState(transitionState);
+
+        }
+    }
+}
+</code></pre>
+<h3 id="statecontroller">StateController</h3>
+<pre><code class="language-c#">public class StateController : MonoBehaviour
+{
+    public State currentState;
+    public State remainState;
+    /*
+    	其他成员变量
+    */
+
+    private bool aiActive = true;
+
+    private void Awake()
+    {
+        // 自身成员变量设置
+    }
+
+    // 用于 Manager 类来设置 AI
+    public void SetupAI(/* 参数 */)
+    {
+        // 需要设置的东西
+    }
+
+    // 用于状态的改变
+    public void TransitionToState(State nextState)
+    {
+        if(nextState != remainState)
+        {
+            //Debug.Log(transform.gameObject.name + " start" + nextState);
+            currentState = nextState;
+            OnExitState();
+        }
+    }
+
+    // 用于判断进入该状态是否经过 duration 时间
+    public bool CheckifCountDownElapsed(float duration)
+    {
+        stateTimeElapsed += Time.deltaTime;
+        return (stateTimeElapsed &gt;= duration);
+    }
+    
+    public void OnExitState()
+    {
+        stateTimeElapsed = 0;
+    }
+
+    void Update()
+    {
+        if (!aiActive)
+            return;
+        currentState.UpdateState(this);
+    }
+}
+</code></pre>
+<h3 id="使用">使用</h3>
+<p>以上便是这几个类的相关代码，下面来分别讲一讲如何使用</p>
+<ol>
+<li>
+<p>Action 作为抽象类，表示在某一 State 下，AI 将会执行的动作，通过继承的方式实现需要执行的动作，比如要实现 AI 的移动的话</p>
+<pre><code class="language-c#">[CreateAssetMenu(menuName = "AI/Actions/Player/Move")]
+public class MoveAction : Action
+{
+    public State standby;
+
+    public override void Act(StateController controller)
+    {
+        Move(controller);
+    }
+
+    private void Move(StateController controller)
+    {
+        controller.navMeshAgent.SetDestination(controller.targetPoint + controller.RelativePosition);
+        controller.navMeshAgent.isStopped = false;
+
+        if (controller.navMeshAgent.remainingDistance &lt;= controller.navMeshAgent.stoppingDistance &amp;&amp; !controller.navMeshAgent.pathPending)
+        {
+            // 到目标点后，改变状态为 standby
+            controller.navMeshAgent.isStopped = true;
+            controller.TransitionToState(standby);
+        }
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>Decision 也是抽象类，在某一 State 下，AI 通过 Decision 的 Decide 来判断是否满足某一条件，比如下面场景：当 AI 在移动过程中遇到敌人则需要进入战斗状态，那么此时需要实现的 Decision 如下</p>
+<pre><code class="language-c#">[CreateAssetMenu (menuName = "AI/Decisions/Player/Encounter")]
+public class EncounterDecision : Decision
+{
+    // 用于玩家 AI 在前往目的地的过程中做决策
+    public override bool Decide(StateController controller)
+    {
+        bool encounter = Encounter(controller);
+        return encounter;
+    }
+
+    private bool Encounter(StateController controller)
+    {
+        Collider[] objects = Physics.OverlapSphere(controller.transform.position, controller.stats.attackRange * controller.stats.visionRange, 1 &lt;&lt; 9);
+        foreach (Collider c in objects)
+        {
+            // TODO: 设置攻击目标
+            controller.attackObject = c;
+            return true;
+        }
+        return false;
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>Transition 则用于 State 之间的转换，代表了能从当前状态可以转到的状态，其包含了 Decision、true State 和 false State。</p>
+</li>
+<li>
+<p>State 则表示状态，其包含了 Actions 和 Transitions。</p>
+</li>
+<li>
+<p>StateController 则表示当前 AI，所有有关 AI 的属性都可放置在其中，比如在我们做的游戏 Demo 中，StateController 就表示了兵团中的士兵，其包含了 Health、Attack、NavemeshAgent、AnimationController 等属性，我们在游戏中可通过 Manager 相关的类来操作这些 StateController，从而控制 AI 的启动、暂停等。</p>
+</li>
+</ol>
+<p>当实现了相关的类之后，便可在 Unity 中通过创建资源的方式来创建 State、Decision 和 Action，然后拼成我们需要的资源。</p>
+<p><img src="https://img2020.cnblogs.com/blog/1413964/202105/1413964-20210507165918715-999902560.png" alt="" loading="lazy"></p>
+<h1 id="小节">小节</h1>
+<p>本打算五一期间就把这篇文章写出来的，但是中间出去玩了两天，然后又咸鱼了几天，就拖到了现在。中间也在一直思考几个问题：</p>
+<ol>
+<li>要如何将现在实现的这个状态机改进成分层状态机，目前暂时还想不到，感觉这个分层的设计可能需要结合实际场景（<strong>希望大佬们能够提供一些思路 orz</strong>）</li>
+<li>如何在当前状态机框架中更好地实现动画的表现，我目前是在实现 Action 的时候通过 Animation Controller 的状态，以及执行时间来改变当前的动画，但总感觉不是很好。（主要最近在知乎上看到林爷的<a href="https://www.zhihu.com/question/21090429/answer/44109092" target="_blank">文章</a>之后感觉可以设计一个专门控制动画的类）</li>
+</ol>
+<p>继续整毕设去了 orz，想想还有一个月多一点就要毕业了，好快- -</p>
+
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2021-05-07 18:35</span>&nbsp;
+<a href="https://www.cnblogs.com/csu-lmw/">ITryagain</a>&nbsp;
+阅读(<span id="post_view_count">44</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14741906" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(14741906);return false;">收藏</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 436037, cb_blogApp = 'csu-lmw', cb_blogUserGuid = '10d7ba48-e71f-4c5b-b60f-08d5c68e6275';
+    var cb_entryId = 14741906, cb_entryCreatedDate = '2021-05-07 18:35', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_card1"></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 ITryagain
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    <div id="page_end_html">
+        <link rel="stylesheet" type="text/css" href="https://files.cnblogs.com/files/csu-lmw/flat-ui.min.css"/>
+
+<body>
+<link href="https://files.cnblogs.com/files/csu-lmw/waifu1.css" rel="stylesheet" type="text/css">
+	<div class="waifu" id="waifu">
+		<div class="waifu-tips" style="opacity: 1;"></div>
+		<canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+		<div class="waifu-tool">
+			<span class="fui-home"></span>
+			<span class="fui-chat"></span>
+			<span class="fui-eye"></span>
+			<span class="fui-user"></span>
+			<span class="fui-photo"></span>
+			<span class="fui-info-circle"></span>
+			<span class="fui-cross"></span>
+		</div>
+	</div>
+	<script src="https://files.cnblogs.com/files/csu-lmw/live2d1.js"></script>
+	<script src="https://files.cnblogs.com/files/csu-lmw/waifu-tips_.js"></script>
+	<script type="text/javascript">initModel()</script>
+
+<script src="https://files.cnblogs.com/files/csu-lmw/backgrounds-changes.js" type="text/javascript"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<meting-js
+        id="2876746906"
+        lrc-type="0"
+        server="netease"
+        order="random"
+        type="playlist"
+        fixed="true"
+        list-olded="true">
+</meting-js>
+
+<div id="cnzzProtocol"  style="display: none;">
+    <span class="id_cnzz_stat_icon" id='cnzz_stat_icon_1278873152'></span>
+    <script src='https://s19.cnzz.com/z_stat.php?id=1278873152&online=1&show=line' type='text/javascript'></script>
+</div>
+</body>
+
+
+
+    </div>
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjsUuvqW6x5z4UCtCRaiCKIVlBmRQTkTe9kJaFkWOxhyEgLVF4TOx4gTGdUMtdJHwYMkmzGQHQIgcpzAKCIlIaDIk7RZ6zdJtwknZHjT9Lt0F15aTIXlWjOvcdt5U92QV_Q" />
+</body>
+</html>

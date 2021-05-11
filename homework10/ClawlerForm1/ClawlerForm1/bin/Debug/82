@@ -1,0 +1,1157 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    
+    
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>雨点的名字 - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    <link id="MainCss" rel="stylesheet" href="/skins/sea/bundle-sea.min.css?v=oF2SvRIFQNTLcLgn66nPy-bOeZ-5NDS8tPrc0Kt42ys" />
+    <link type="text/css" rel="stylesheet" href="https://www.cnblogs.com/qdhxhz/custom.css?v=Bolzv6XSKMsp3nHS960tjJVuNq0=" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/sea/bundle-sea-mobile.min.css?v=t5pWHm7Zavhfg65859uF8OmEaotpCjyYSbKN5RbMv6E" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/qdhxhz/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/qdhxhz/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/qdhxhz/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 326226;
+        var currentBlogApp = 'qdhxhz';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'sea';
+        var visitorUserId = '';
+    </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    
+    
+    
+</head>
+<body class="no-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc navbar-custom">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="page_begin_html">
+        <a href="https://github.com/dunwu" class="github-corner"></a><style>.github-corner:hover .octo-arm { }</style>
+
+
+
+<link rel="stylesheet" href="https://files.cnblogs.com/files/jingmoxukong/cnblog.min.css">
+<style>
+#sideBarTab h2{
+height:100px;
+padding:0;
+}
+ h2 {
+    background: #2B6695;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5);
+    color: #FFFFFF;
+    font-family:"微软雅黑", "宋体", "黑体", Arial;
+    font-size: 18px;
+    font-weight: bold;
+    height: 25px;
+    line-height: 25px;
+    margin: 18px 0 !important;
+    padding: 8px 0 5px 5px;
+    text-shadow: 2px 2px 3px #222222;
+}
+h3 {
+    background: #5B9600;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5);
+    color: #FFFFFF;
+    font-family:"微软雅黑", "宋体", "黑体", Arial;
+    font-size: 13px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 20px;
+    margin: 12px 0 !important;
+    padding: 5px 0 5px 10px;
+    text-shadow: 2px 2px 3px #222222;
+}
+
+/*生成博客目录的CSS*/
+#uprightsideBar{
+    font-size:12px;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align:left;
+    position:fixed;/*将div的位置固定到距离top:50px，right:0px的位置，这样div就会处在最右边的位置，距离顶部50px*/
+    top:50px;
+    right:0px;
+    width: auto;
+    height: auto; 
+}
+#sideBarTab{
+    float:left;
+    width:30px; 
+    border:1px solid #e5e5e5;
+    border-right:none;
+    text-align:center;
+    background:#ffffff;
+}
+
+#sideBarContents{
+    float:left;
+    overflow:auto; 
+    overflow-x:hidden;!important;
+    width:200px;
+    min-height:108px;
+    max-height:460px;
+    border:1px solid #e5e5e5;
+    border-right:none; 
+    background:#ffffff;
+}
+#sideBarContents dl{
+    margin:0;
+    padding:0;
+}
+
+#sideBarContents dt{
+    margin-top:5px;
+    margin-left:5px;
+}
+
+#sideBarContents dd, dt {
+    cursor: pointer;
+}
+
+#sideBarContents dd:hover, dt:hover {
+    color:#A7995A;
+}
+#sideBarContents dd{
+    margin-left:20px;
+}
+</style>
+    </div>
+    <!--done-->
+<div id="header">
+	
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/qdhxhz/">雨点的名字</a>
+<br>
+		
+	</div>
+</div>
+
+
+</div>
+
+<div id="mytopmenu">
+	
+		<div id="mylinks">
+
+ &nbsp;
+
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/qdhxhz/">
+首页</a>
+ &nbsp;
+
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+ &nbsp;
+
+ &nbsp;
+
+
+&nbsp;
+
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+
+
+</div>
+		<DIV id="mystats"><div id="blog_stats_place_holder"><script>loadBlogStats();</script></div></DIV>
+	
+</div>
+<div id="centercontent">
+	
+
+
+
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2021/05/07.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2021年5月7日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/14705388.html">
+    <span>
+        Spring Cloud Alibaba(7)---docker-compose搭建nacos1.4.0集群
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：#docker-compose搭建nacos1.4.0集群 有关Nacos之前写过四篇文章。 Spring Cloud Alibaba(3) Nacos概述 Spring Cloud Alibaba(4) Nacos(注册中心） Spring Cloud Alibaba(5) Nacos(配置中心）        <a href="https://www.cnblogs.com/qdhxhz/p/14705388.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2021-05-07 21:56
+雨点的名字
+<span data-post-id="14705388" class="post-view-count">阅读(0)</span> 
+<span data-post-id="14705388" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14705388" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14705388" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2021/04/27.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2021年4月27日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/14701077.html">
+    <span>
+        Spring Cloud Alibaba(6)---Nacos持久化Mysql8.0版本
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：Nacos持久化Mysql8.0版本 有关Nacos之前写过三篇文章。 Spring Cloud Alibaba(3) Nacos概述 Spring Cloud Alibaba(4) Nacos(注册中心） Spring Cloud Alibaba(5) Nacos(配置中心） ## 一、背景 我们        <a href="https://www.cnblogs.com/qdhxhz/p/14701077.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2021-04-27 23:05
+雨点的名字
+<span data-post-id="14701077" class="post-view-count">阅读(210)</span> 
+<span data-post-id="14701077" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14701077" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14701077" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2021/04/25.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2021年4月25日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/14658922.html">
+    <span>
+        Spring Cloud Alibaba(5)---Nacos(配置中心）
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：#Nacos(配置中心） 有关Spring Cloud Alibaba之前写过四篇文章，这篇也是在上面项目的基础上进行开发。 Spring Cloud Alibaba(1) 入门篇 Spring Cloud Alibaba(2) RestTemplate微服务项目 Spring Cloud Alib        <a href="https://www.cnblogs.com/qdhxhz/p/14658922.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2021-04-25 22:41
+雨点的名字
+<span data-post-id="14658922" class="post-view-count">阅读(314)</span> 
+<span data-post-id="14658922" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14658922" class="post-digg-count">推荐(2)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14658922" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2021/04/22.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2021年4月22日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/14650407.html">
+    <span>
+        Spring Cloud Alibaba(4)---Nacos(注册中心）
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：#Nacos(注册中心） 有关Spring Cloud Alibaba之前写过三篇文章。 Spring Cloud Alibaba(1) 入门篇 Spring Cloud Alibaba(2) RestTemplate微服务项目 Spring Cloud Alibaba(3) Nacos概述 有关注        <a href="https://www.cnblogs.com/qdhxhz/p/14650407.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2021-04-22 22:34
+雨点的名字
+<span data-post-id="14650407" class="post-view-count">阅读(344)</span> 
+<span data-post-id="14650407" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14650407" class="post-digg-count">推荐(1)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14650407" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2021/04/19.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2021年4月19日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/14659586.html">
+    <span>
+        Spring Cloud Alibaba(3)---Nacos概述
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：#Spring Cloud Alibaba(3) nacos概述 上一篇博客讲了有关 SpringCloudAlibaba的概述，这篇开始讲SpringCloudAlibaba组件之一 Nacos。 上一篇博客地址：SpringCloudAlibaba的概述 一、概述 1、背景 去了解nacos是因        <a href="https://www.cnblogs.com/qdhxhz/p/14659586.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2021-04-19 22:39
+雨点的名字
+<span data-post-id="14659586" class="post-view-count">阅读(103)</span> 
+<span data-post-id="14659586" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14659586" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14659586" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2021/04/14.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2021年4月14日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/14647250.html">
+    <span>
+        Spring Cloud Alibaba(2)---RestTemplate微服务项目
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：#RestTemplate微服务项目 前言 因为要运用 Spring Cloud Alibaba 开源组件到分布式项目中，所以这里先搭建一个不通过 Spring Cloud只通过 RestTemplate 来让SpringBoot和Mybatis进行模块之间 通讯，之后会在此基础上再添加Spring        <a href="https://www.cnblogs.com/qdhxhz/p/14647250.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2021-04-14 20:38
+雨点的名字
+<span data-post-id="14647250" class="post-view-count">阅读(124)</span> 
+<span data-post-id="14647250" class="post-comment-count">评论(2)</span> 
+<span data-post-id="14647250" class="post-digg-count">推荐(2)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14647250" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2021/04/08.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2021年4月8日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/14563991.html">
+    <span>
+        Spring Cloud Alibaba(1)---入门篇
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：Spring Cloud Alibaba入门篇 有关微服务的一些概念的东西我这里就不再阐述了，因为之前在写Spring Cloud系列的时候都有详细写过。 具体地址: Spring Cloud系列博客 这个系列开始来讲Spring Cloud Alibaba，第一步先从概述说起。 ## 一、概述 1        <a href="https://www.cnblogs.com/qdhxhz/p/14563991.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2021-04-08 20:27
+雨点的名字
+<span data-post-id="14563991" class="post-view-count">阅读(774)</span> 
+<span data-post-id="14563991" class="post-comment-count">评论(1)</span> 
+<span data-post-id="14563991" class="post-digg-count">推荐(2)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14563991" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2020/12/24.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2020年12月24日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/14111320.html">
+    <span>
+        VueJs(15)--- Webstorm+Chrome 调试Vue项目
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：Webstorm+Chrome 调试Vue项目 前言 在项目开发中,Debug模式是非常有必要的，后端对于IDEA工具而言Debug模式非常方便,但前端WebStorm而言如果启用Debug模式是需要单独去配置一些东西, 所以这里整理自己搭建成功的过程分享出来。可能不同的Webstorm版本会导致效        <a href="https://www.cnblogs.com/qdhxhz/p/14111320.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2020-12-24 22:37
+雨点的名字
+<span data-post-id="14111320" class="post-view-count">阅读(618)</span> 
+<span data-post-id="14111320" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14111320" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14111320" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2020/12/08.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2020年12月8日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/14044692.html">
+    <span>
+        MySQL（14）---Docker搭建MySQL主从复制(一主一从)
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：Docker搭建MySQL主从复制(一主一从) 上一篇博客写了MYSQL主从复制原理 : MySQL（13） MYSQL主从复制原理 这篇我们来写 Docker搭建MYSQL主从复制（一主一从） ## 一、Docker安装MYSQL 说明 系统为阿里云服务器，操作系统为CentOS7.6。MYSQL        <a href="https://www.cnblogs.com/qdhxhz/p/14044692.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2020-12-08 22:53
+雨点的名字
+<span data-post-id="14044692" class="post-view-count">阅读(558)</span> 
+<span data-post-id="14044692" class="post-comment-count">评论(0)</span> 
+<span data-post-id="14044692" class="post-digg-count">推荐(3)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14044692" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2020/12/04.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2020年12月4日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/14021773.html">
+    <span>
+        MySQL（13）---MYSQL主从复制原理
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：MYSQL主从复制原理 最近在做项目的时候，因为部署了 MYSQL主从复制 所以在这里记录下整个过程。这里一共会分两篇博客来写: 1、Mysql主从复制原理 2、docker部署Mysql主从复制实战 这篇只写MYSQL主从复制原理。 一、概述 1、什么是主从复制? 概念 主从复制是用来建立一个和         <a href="https://www.cnblogs.com/qdhxhz/p/14021773.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2020-12-04 02:00
+雨点的名字
+<span data-post-id="14021773" class="post-view-count">阅读(610)</span> 
+<span data-post-id="14021773" class="post-comment-count">评论(1)</span> 
+<span data-post-id="14021773" class="post-digg-count">推荐(5)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14021773" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2020/09/17.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2020年9月17日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/13684458.html">
+    <span>
+        SpringBoot(20）---断言(Assert)
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：# SpringBoot(20） 断言(Assert) 我们在写单元测试的时候,除了接口直接抛异常而导致该单元测试失败外，还有种是业务上的错误也代表着该单元测试失败。好比我们在测试接口的时候， 该接口返回是1代表成功，如果是0那就代表是失败的，这个时候可以考虑使用断言。 一、原理 我们知道，我们可以        <a href="https://www.cnblogs.com/qdhxhz/p/13684458.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2020-09-17 12:42
+雨点的名字
+<span data-post-id="13684458" class="post-view-count">阅读(2223)</span> 
+<span data-post-id="13684458" class="post-comment-count">评论(1)</span> 
+<span data-post-id="13684458" class="post-digg-count">推荐(5)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13684458" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2020/09/07.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2020年9月7日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/13629882.html">
+    <span>
+        来博客园已过3年半了
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：写三年多博客的感想 ## 一、前言 时间过的好快,写博客已经有3年零7个月多了。还很清醒的记得，有一天我的好朋友说他在博客园开通了博客后,强烈的向我推荐了博客园,主要是博客园整体排版看去很舒服， 就这样开始了我的博客之旅。 在写博客之前,也一直保持着做笔记，很认真的一行一行代码写在自己的本子上,后来        <a href="https://www.cnblogs.com/qdhxhz/p/13629882.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2020-09-07 23:33
+雨点的名字
+<span data-post-id="13629882" class="post-view-count">阅读(1824)</span> 
+<span data-post-id="13629882" class="post-comment-count">评论(52)</span> 
+<span data-post-id="13629882" class="post-digg-count">推荐(22)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13629882" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2020/08/25.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2020年8月25日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/13449285.html">
+    <span>
+        SpringBoot(19）---SpringBoot整合Apollo
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：SpringBoot(19） SpringBoot整合Apollo 有关Apollo之前已经写了两篇文章： 1、【Apollo】(1) Apollo入门介绍篇 2、【Apollo】(2) Apollo架构设计 这篇文章分为两部分： 1、跟着官网步骤，快速搭建apollo环境。 2、SpringBoo        <a href="https://www.cnblogs.com/qdhxhz/p/13449285.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2020-08-25 23:26
+雨点的名字
+<span data-post-id="13449285" class="post-view-count">阅读(1287)</span> 
+<span data-post-id="13449285" class="post-comment-count">评论(0)</span> 
+<span data-post-id="13449285" class="post-digg-count">推荐(3)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13449285" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2020/08/17.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2020年8月17日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/13394182.html">
+    <span>
+        【Apollo】(2)--- Apollo架构设计
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：Apollo架构设计 上一篇博客有讲到：【Apollo】(1) Apollo入门介绍篇 这篇来写Apollo的核心架构设计 一、整体架构 Apollo整体架构图，已由作者宋顺已经给出: 这幅图所描述的已经很清楚了。下面来具体解释下上面这张图。 1、四个主要模块和核心功能 ConfigService         <a href="https://www.cnblogs.com/qdhxhz/p/13394182.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2020-08-17 22:08
+雨点的名字
+<span data-post-id="13394182" class="post-view-count">阅读(928)</span> 
+<span data-post-id="13394182" class="post-comment-count">评论(0)</span> 
+<span data-post-id="13394182" class="post-digg-count">推荐(0)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13394182" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+		
+
+
+<div class="day">
+	<div class="dayTitle">
+        <a href="https://www.cnblogs.com/qdhxhz/archive/2020/08/10.html">
+            <img src="/skins/sea/images/title_post.gif" border="0" align="absmiddle" />
+        </a>
+		&nbsp;
+		2020年8月10日		  
+	</div>
+
+	
+			<div class="postTitle">
+				
+
+<a class="postTitle2 vertical-middle" href="https://www.cnblogs.com/qdhxhz/p/13388054.html">
+    <span>
+        【Apollo】(1)--- Apollo入门介绍篇
+    </span>
+    
+
+
+
+</a>
+
+			</div>
+			
+
+    <div class="c_b_p_desc">
+摘要：Apollo入门介绍篇 Apollo有一点很好，就是它是由国内携程团队开发，而且文档写的很全,代码也完全开源。如果去了解它也可以直接去看它的官方文档。 一、配置中心概念 1、背景 在实际开发中都会与配置打交道,举个简单例子,我们开发项目肯定会连接数据库,mysql也好oracle也好。那么我们 本地        <a href="https://www.cnblogs.com/qdhxhz/p/13388054.html" class="c_b_p_desc_readmore">阅读全文</a>
+    </div>
+
+			<div class="postDesc">posted @ 2020-08-10 23:02
+雨点的名字
+<span data-post-id="13388054" class="post-view-count">阅读(1611)</span> 
+<span data-post-id="13388054" class="post-comment-count">评论(0)</span> 
+<span data-post-id="13388054" class="post-digg-count">推荐(3)</span> 
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=13388054" rel="nofollow">
+    编辑
+</a>
+</div>
+
+</div>
+
+
+
+<div class="topicListFooter">
+    <div id="nav_next_page">
+        
+    <a href="https://www.cnblogs.com/qdhxhz/default.html?page=2">
+        下一页
+    </a>
+
+    </div>    
+</div>
+
+
+
+
+
+
+<script>
+    updatePostStats(
+        $(".post-view-count").map(function () { return this.dataset.postId }).get(),
+        function(id, count) { $(".post-view-count[data-post-id=" + id + "]").text("阅读(" + count + ")") },
+        function(id, count) { $(".post-comment-count[data-post-id=" + id + "]").text("评论(" + count + ")") },
+        function(id, count) { $(".post-digg-count[data-post-id=" + id + "]").text("推荐(" + count + ")") });
+</script>
+</div>
+<div id="leftcontent">
+	
+		<DIV id="leftcontentcontainer">
+			
+<div id="sidebar_c3"></div>
+			<div id="calendar"><div id="blog-calendar" style="display:none"></div></div>                
+                    <script>loadBlogDefaultCalendar();</script><br>
+			<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script></DIV>
+	
+</div>
+<!--done-->
+<div class="footer">
+	Powered by: <a href="http://www.cnblogs.com">博客园</a>
+	Copyright &copy; 2021 雨点的名字
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+</div>
+
+
+
+
+
+
+    <div id="page_end_html">
+        <script type="text/javascript">
+/*
+    功能：生成博客目录的JS工具
+    测试：IE8，火狐，google测试通过
+*/
+var BlogDirectory = {
+    /*
+        获取元素位置，距浏览器左边界的距离（left）和距浏览器上边界的距离（top）
+    */
+    getElementPosition:function (ele) {        
+        var topPosition = 0;
+        var leftPosition = 0;
+        while (ele){              
+            topPosition += ele.offsetTop;
+            leftPosition += ele.offsetLeft;        
+            ele = ele.offsetParent;     
+        }  
+        return {top:topPosition, left:leftPosition}; 
+    },
+
+    /*
+    获取滚动条当前位置
+    */
+    getScrollBarPosition:function () {
+        var scrollBarPosition = document.body.scrollTop || document.documentElement.scrollTop;
+        return  scrollBarPosition;
+    },
+    
+    /*
+    移动滚动条，finalPos 为目的位置，internal 为移动速度
+    */
+    moveScrollBar:function(finalpos, interval) {
+
+        //若不支持此方法，则退出
+        if(!window.scrollTo) {
+            return false;
+        }
+
+        //窗体滚动时，禁用鼠标滚轮
+        window.onmousewheel = function(){
+            return false;
+        };
+          
+        //清除计时
+        if (document.body.movement) { 
+            clearTimeout(document.body.movement); 
+        } 
+
+        var currentpos =BlogDirectory.getScrollBarPosition();//获取滚动条当前位置
+
+        var dist = 0; 
+        if (currentpos == finalpos) {//到达预定位置，则解禁鼠标滚轮，并退出
+            window.onmousewheel = function(){
+                return true;
+            }
+            return true; 
+        } 
+        if (currentpos < finalpos) {//未到达，则计算下一步所要移动的距离
+            dist = Math.ceil((finalpos - currentpos)/10); 
+            currentpos += dist; 
+        } 
+        if (currentpos > finalpos) { 
+            dist = Math.ceil((currentpos - finalpos)/10); 
+            currentpos -= dist; 
+        }
+        
+        var scrTop = BlogDirectory.getScrollBarPosition();//获取滚动条当前位置
+        window.scrollTo(0, currentpos);//移动窗口
+        if(BlogDirectory.getScrollBarPosition() == scrTop)//若已到底部，则解禁鼠标滚轮，并退出
+        {
+            window.onmousewheel = function(){
+                return true;
+            }
+            return true;
+        }
+        
+        //进行下一步移动
+        var repeat = "BlogDirectory.moveScrollBar(" + finalpos + "," + interval + ")"; 
+        document.body.movement = setTimeout(repeat, interval); 
+    },
+    
+    htmlDecode:function (text){
+        var temp = document.createElement("div");
+        temp.innerHTML = text;
+        var output = temp.innerText || temp.textContent;
+        temp = null;
+        return output;
+    },
+
+    /*
+    创建博客目录，
+    id表示包含博文正文的 div 容器的 id，
+    mt 和 st 分别表示主标题和次级标题的标签名称（如 H2、H3，大写或小写都可以！），
+    interval 表示移动的速度
+    */
+    createBlogDirectory:function (id, mt, st, interval){
+         //获取博文正文div容器
+        var elem = document.getElementById(id);
+        if(!elem) return false;
+        //获取div中所有元素结点
+        var nodes = elem.getElementsByTagName("*");
+        //创建博客目录的div容器
+        var divSideBar = document.createElement('DIV');
+        divSideBar.className = 'uprightsideBar';
+        divSideBar.setAttribute('id', 'uprightsideBar');
+        var divSideBarTab = document.createElement('DIV');
+        divSideBarTab.setAttribute('id', 'sideBarTab');
+        divSideBar.appendChild(divSideBarTab);
+        var h2 = document.createElement('H2');
+        divSideBarTab.appendChild(h2);
+        var txt = document.createTextNode('目录导航');
+        h2.appendChild(txt);
+        var divSideBarContents = document.createElement('DIV');
+        divSideBarContents.style.display = 'none';
+        divSideBarContents.setAttribute('id', 'sideBarContents');
+        divSideBar.appendChild(divSideBarContents);
+        //创建自定义列表
+        var dlist = document.createElement("dl");
+        divSideBarContents.appendChild(dlist);
+        var num = 0;//统计找到的mt和st
+        mt = mt.toUpperCase();//转化成大写
+        st = st.toUpperCase();//转化成大写
+        //遍历所有元素结点
+        for(var i=0; i<nodes.length; i++)
+        {
+            if(nodes[i].nodeName == mt|| nodes[i].nodeName == st)    
+            {
+                //获取标题文本
+                var nodetext = nodes[i].innerHTML.replace(/<\/?[^>]+>/g,"");//innerHTML里面的内容可能有HTML标签，所以用正则表达式去除HTML的标签
+                nodetext = nodetext.replace(/ /ig, "");//替换掉所有的 
+                nodetext = BlogDirectory.htmlDecode(nodetext);
+                //插入锚        
+                nodes[i].setAttribute("id", "blogTitle" + num);
+                var item;
+                switch(nodes[i].nodeName)
+                {
+                    case mt:    //若为主标题 
+                        item = document.createElement("dt");
+                        break;
+                    case st:    //若为子标题
+                        item = document.createElement("dd");
+                        break;
+                }
+                
+                //创建锚链接
+                var itemtext = document.createTextNode(nodetext);
+                item.appendChild(itemtext);
+                item.setAttribute("name", num);
+                item.onclick = function(){        //添加鼠标点击触发函数
+                    var pos = BlogDirectory.getElementPosition(document.getElementById("blogTitle" + this.getAttribute("name")));
+                    if(!BlogDirectory.moveScrollBar(pos.top, interval)) return false;
+                };            
+                
+                //将自定义表项加入自定义列表中
+                dlist.appendChild(item);
+                num++;
+            }
+        }
+        
+        if(num == 0) return false; 
+        /*鼠标进入时的事件处理*/
+        divSideBarTab.onmouseenter = function(){
+            divSideBarContents.style.display = 'block';
+        }
+        /*鼠标离开时的事件处理*/
+        divSideBar.onmouseleave = function() {
+            divSideBarContents.style.display = 'none';
+        }
+
+        document.body.appendChild(divSideBar);
+    }
+    
+};
+
+window.onload=function(){
+    /*页面加载完成之后生成博客目录*/
+    BlogDirectory.createBlogDirectory("cnblogs_post_body","h2","h4",20);
+}
+</script>
+    </div>
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjuoonK1O6ITZk4yuLprIQbdtOJ6KOnt7SMvs4yTCwtXIkEdpz2pB7nSFlr4B3mHk-2lRBUmB1lsI4u5lFe95j8mQCjVTwyV9yZTs6DcQBN6QAZ1ihEbLXNlMHnwLn0WuZk" />
+</body>
+</html>

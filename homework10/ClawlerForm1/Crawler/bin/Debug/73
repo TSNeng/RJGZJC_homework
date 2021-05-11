@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin-when-crossorigin" />
+    <meta name="description" content="引言 经过前面几篇文章阅读，已经掌握开发一款小组件的基本技能了，接下来开始掌握一些相对高级一点的技能。本文创建一个可配置小组件，通过修改时间类型，让Text空间显示不同格式的时间。 本文大纲 添加动态" />
+    <meta property="og:description" content="引言 经过前面几篇文章阅读，已经掌握开发一款小组件的基本技能了，接下来开始掌握一些相对高级一点的技能。本文创建一个可配置小组件，通过修改时间类型，让Text空间显示不同格式的时间。 本文大纲 添加动态" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>IOS Widget（4-1）：创建可配置小组件（静态配置数据） - popfisher - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    <link id="MainCss" rel="stylesheet" href="/skins/codinglife/bundle-codinglife.min.css?v=2uJkpdACLVfstRQ7zeCFK19brTwKuDEaNBLgKz9nm3A" />
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/codinglife/bundle-codinglife-mobile.min.css?v=DwDRKMd1bmjnJZ4iQqrTCO9QLlYb6OZaUAzHoHIIihg" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/popfisher/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/popfisher/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/popfisher/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 249347;
+        var currentBlogApp = 'popfisher';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'CodingLife';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2021-05-07 10:14';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    
+    
+    
+</head>
+<body class="has-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/popfisher/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/popfisher/">popfisher</a>
+</h1>
+<h2>hello world！技术重在点滴积累！</h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/popfisher/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/popfisher">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/popfisher/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class = "postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/popfisher/p/14742886.html">
+    <span>IOS Widget（4-1）：创建可配置小组件（静态配置数据）</span>
+    
+
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<h2 id="引言">引言</h2>
+<p>  经过前面几篇文章阅读，已经掌握开发一款小组件的基本技能了，接下来开始掌握一些相对高级一点的技能。本文创建一个可配置小组件，通过修改时间类型，让Text空间显示不同格式的时间。</p>
+<h2 id="本文大纲">本文大纲</h2>
+<ul>
+<li>添加动态配置 Custom Intent Definition</li>
+<li>可配置小组件框架代码解析</li>
+<li>修改 .intentdefinition 文件实现修改时间类型</li>
+<li>代码读取配置信息，实现动态布局</li>
+</ul>
+<h2 id="添加动态配置">添加动态配置</h2>
+<p>方式1：新建组件的时候勾选 “Include Configuration Intent” 复选框。<br>
+<img src="https://img2020.cnblogs.com/blog/823551/202105/823551-20210507220315337-1604180316.png" alt="" loading="lazy"><br>
+方式2：在您的Xcode项目中，选择“File”&gt;“New File”，然后选择“SiriKit Intent Definition File”。单击”Next“，并在出现提示时保存文件。Xcode在项目中会生成一个新的.intentdefinition 文件。<br>
+<img src="https://img2020.cnblogs.com/blog/823551/202105/823551-20210507220336003-852895478.png" alt="" loading="lazy"><br>
+<img src="https://img2020.cnblogs.com/blog/823551/202105/823551-20210507220403421-1739835744.png" alt="" loading="lazy"></p>
+<h2 id="可配置小组件框架代码解析">可配置小组件框架代码解析</h2>
+<p>  如果默认用方式1 创建组件，代码如下，如果通过方式2，请参考下面的代码对应修改即可，注释中已经标明与普通小组件代码的不同点。</p>
+<pre><code>//
+//&nbsp; WidgetConfigIntent.swift
+//&nbsp; WidgetConfigIntent
+//
+
+import WidgetKit
+import SwiftUI
+import Intents
+
+struct Provider: IntentTimelineProvider {
+&nbsp; &nbsp; func placeholder(in context: Context) -&gt; SimpleEntry {
+&nbsp; &nbsp; &nbsp; &nbsp; // 不同点3：传递默认参数
+&nbsp; &nbsp; &nbsp; &nbsp; SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+&nbsp; &nbsp; }
+
+&nbsp; &nbsp; // 不同点4：比使用StaticConfiguration时多了一个配置参数
+&nbsp; &nbsp; func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -&gt; ()) {
+&nbsp; &nbsp; &nbsp; &nbsp; let entry = SimpleEntry(date: Date(), configuration: configuration)
+&nbsp; &nbsp; &nbsp; &nbsp; completion(entry)
+&nbsp; &nbsp; }
+
+&nbsp; &nbsp; // 不同点5：比使用StaticConfiguration时多了一个配置参数
+&nbsp; &nbsp; func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline&lt;Entry&gt;) -&gt; ()) {
+&nbsp; &nbsp; &nbsp; &nbsp; var entries: [SimpleEntry] = []
+
+&nbsp; &nbsp; &nbsp; &nbsp; // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+&nbsp; &nbsp; &nbsp; &nbsp; let currentDate = Date()
+&nbsp; &nbsp; &nbsp; &nbsp; for hourOffset in 0 ..&lt; 5 {
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; let entry = SimpleEntry(date: entryDate, configuration: configuration)
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; entries.append(entry)
+&nbsp; &nbsp; &nbsp; &nbsp; }
+
+&nbsp; &nbsp; &nbsp; &nbsp; let timeline = Timeline(entries: entries, policy: .atEnd)
+&nbsp; &nbsp; &nbsp; &nbsp; completion(timeline)
+&nbsp; &nbsp; }
+}
+
+struct SimpleEntry: TimelineEntry {
+&nbsp; &nbsp; let date: Date
+&nbsp; &nbsp; // 不同点2： 多了一个配置参数，小组件编辑界面设置参数会通过这个传递进来
+&nbsp; &nbsp; let configuration: ConfigurationIntent
+}
+
+struct WidgetConfigIntentEntryView : View {
+&nbsp; &nbsp; var entry: Provider.Entry
+
+&nbsp; &nbsp; var body: some View {
+&nbsp; &nbsp; &nbsp; &nbsp; Text(entry.date, style: .time)
+&nbsp; &nbsp; }
+}
+
+// 小组件入口
+@main
+struct WidgetConfigIntent: Widget {
+&nbsp; &nbsp; let kind: String = "WidgetConfigIntent"
+
+&nbsp; &nbsp; var body: some WidgetConfiguration {
+&nbsp; &nbsp; &nbsp; &nbsp; //不同点1： 这里使用 IntentConfiguration， 对比 StaticConfiguration
+        //这里还多了一个参数 intent: ConfigurationIntent.self
+&nbsp; &nbsp; &nbsp; &nbsp; IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WidgetConfigIntentEntryView(entry: entry)
+&nbsp; &nbsp; &nbsp; &nbsp; }
+&nbsp; &nbsp; &nbsp; &nbsp; .configurationDisplayName("可配置小组件")
+&nbsp; &nbsp; &nbsp; &nbsp; .description("选择不同的时间类型")
+&nbsp; &nbsp; }
+}
+// 调试预览
+struct WidgetConfigIntent_Previews: PreviewProvider {
+&nbsp; &nbsp; static var previews: some View {
+&nbsp; &nbsp; &nbsp; &nbsp; WidgetConfigIntentEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .previewContext(WidgetPreviewContext(family: .systemSmall))
+&nbsp; &nbsp; }
+}
+</code></pre>
+<h2 id="修改-intentdefinition-文件实现修改时间类型">修改 .intentdefinition 文件实现修改时间类型</h2>
+<ol>
+<li>修改配置名称为TimeTypeConfiguration<br>
+<img src="https://img2020.cnblogs.com/blog/823551/202105/823551-20210507220445350-512508053.png" alt="" loading="lazy"></li>
+<li>添加参数类型TimeTypeEnum，这里先用枚举类型<br>
+<img src="https://img2020.cnblogs.com/blog/823551/202105/823551-20210507220512597-1238980170.png" alt="" loading="lazy"></li>
+</ol>
+<p><img src="https://img2020.cnblogs.com/blog/823551/202105/823551-20210507220533680-496850440.png" alt="" loading="lazy"></p>
+<ol start="3">
+<li>添加参数timeType参数，类型指定为TimeTypeEnum<br>
+<img src="https://img2020.cnblogs.com/blog/823551/202105/823551-20210507220549238-2002987474.png" alt="" loading="lazy"></li>
+</ol>
+<p><img src="https://img2020.cnblogs.com/blog/823551/202105/823551-20210507220603147-104976255.png" alt="" loading="lazy"></p>
+<h2 id="代码读取配置信息，实现动态布局">代码读取配置信息，实现动态布局</h2>
+<p>  现在编译应该不通过，需要修改一下WidgetConfigIntent.swift中的代码</p>
+<ol>
+<li>把代码中 ConfigurationIntent 替换为 TimeTypeConfigurationIntent（希望到这里你能领悟到点什么）<br>
+运行代码，在桌面添加组件，长按组件 &gt; 编辑小组件可以看到如下图所示（目前点了还没有什么效果）<br>
+<img src="https://img2020.cnblogs.com/blog/823551/202105/823551-20210507220649749-1044369979.png" alt="" loading="lazy"><br>
+代码中获取配置信息，动态改变布局。接下来再编辑小组件，切换时间time/date时界面会发生响应的变化</li>
+</ol>
+<pre><code>struct WidgetConfigIntentEntryView : View {
+&nbsp; &nbsp; var entry: Provider.Entry
+
+&nbsp; &nbsp; var body: some View {
+&nbsp; &nbsp; &nbsp; &nbsp; // 根据配置信息动态改变布局
+&nbsp; &nbsp; &nbsp; &nbsp; if (entry.configuration.timeType == TimeTypeEnum.time) {
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Text(entry.date, style: .time)
+&nbsp; &nbsp; &nbsp; &nbsp; } else {
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Text(entry.date, style: .date)
+&nbsp; &nbsp; &nbsp; &nbsp; }
+&nbsp; &nbsp; }
+}
+</code></pre>
+<h2 id="结语">结语</h2>
+<p>  本文讲解了实现一个简单的可配置小组件，不过数据都是静态配置，下一节讲解动态修改配置数据，这个在实际开发中也是比较重要的环节。</p>
+
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2021-05-07 22:14</span>&nbsp;
+<a href="https://www.cnblogs.com/popfisher/">popfisher</a>&nbsp;
+阅读(<span id="post_view_count">0</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14742886" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(14742886);return false;">收藏</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 249347, cb_blogApp = 'popfisher', cb_blogUserGuid = '739d96b0-c573-e511-9fc1-ac853d9f53cc';
+    var cb_entryId = 14742886, cb_entryCreatedDate = '2021-05-07 22:14', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_card1"></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 popfisher
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjub6mK18vRA1g2H9dJeQNPT9CFFYnyzAu1LQRSUIPKPcIayvBdcJN4ppZx5V5ecqS1y1uSWmVycL_9PiqSoJxZ9l0KWLPIZxXkoIt8PpRoKOimHP1Ee-cUZp16cZISrfO8" />
+</body>
+</html>

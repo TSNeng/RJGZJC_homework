@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="never" />
+    <meta name="description" content="关键字 基本数据类型 进制 进制：进制是一种计数方法，我们生活中最常使用的是十进制数，也就是逢十进一，而在计算机中数据存储的方式采用的是二进制数，也就是逢二进一，常见的进制还有八进制和十六进制。 1." />
+    <meta property="og:description" content="关键字 基本数据类型 进制 进制：进制是一种计数方法，我们生活中最常使用的是十进制数，也就是逢十进一，而在计算机中数据存储的方式采用的是二进制数，也就是逢二进一，常见的进制还有八进制和十六进制。 1." />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>这样进行进制转换更快更清晰哦！ - 平兄聊Java - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="//common.cnblogs.com/favicon.svg" type="image/svg+xml" />
+    
+    <link rel="stylesheet" href="/css/blog-common.min.css?v=zS6-e1bxywlu3kpHvpr1J6MySwya3ztFtEnS7RYQ0Fk" />
+    <link id="MainCss" rel="stylesheet" href="/skins/coffee/bundle-coffee.min.css?v=BgguPR_JbmA1HKLJOLqLtHq5pt8a1UlO6ibCA_xgwdI" />
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/coffee/bundle-coffee-mobile.min.css?v=gcYNuAuJkNMICFERxhZCtKHGitYmBYNTxm9W97H2O2g" />
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/codepeace/rss" />
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/codepeace/rsd.xml" />
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/codepeace/wlwmanifest.xml" />
+    <script>
+        var currentBlogId = 623604;
+        var currentBlogApp = 'codepeace';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'coffee';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2021-05-07 08:21';
+        </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="/js/blog-common.min.js?v=2Mic1VLeHXarpdzASbXqFMIMVLEBiWXNO5yiTHUcmhw"></script>
+    
+    
+    
+</head>
+<body class="has-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="/images/logo.svg?v=R9M0WmLAIPVydmdzE2keuvnjl-bPR7_35oHqtiBzGsM" alt="博客园Logo" /></a></li>
+                <li><a href="/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-sitehome')">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-news')">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-q')">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-brands')">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-ing')">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga('send', 'event', 'Link', 'click', 'skin-navbar-edu')">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3" />
+                        <button type="submit" id="zzk_search_button">
+                            <img src="/images/aggsite/search.svg" alt="搜索" />
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔">
+                        <img id="new_post_icon" class="navbar-icon" src="/images/aggsite/newpost.svg" alt="写随笔" />
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客">
+                        <img id="myblog_icon" class="navbar-icon" src="/images/aggsite/myblog.svg" alt="我的博客" />
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息">
+                        <img id="msg_icon" class="navbar-icon" src="/images/aggsite/message.svg?v=J0WS2P2iPgaIVgXxcAhliw4AFZIpaTWxtdoNAv9eiCA" alt="短消息" />
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="/images/aggsite/avatar-default.svg" alt="用户头像" />
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="/images/lite-mode-check.svg" class="hide" /><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a href="https://www.cnblogs.com/codepeace/"><img id="blogLogo" src="/skins/custom/images/logo.gif" alt="返回主页" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/codepeace/">CodePeace</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="navigator">
+			
+<ul id="navList">
+	<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+	<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/codepeace/">
+首页</a>
+</li>
+	<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+	<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E5%B9%B3%E5%85%84%E8%81%8AJava">
+联系</a></li>
+	<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+	<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/codepeace/rss/">
+订阅</a>
+	
+<a id="blog_nav_rss_image" href="https://www.cnblogs.com/codepeace/rss/">
+    <img src="/skins/coffee/images/xml.gif" alt="订阅" />
+</a></li>
+</ul>
+
+
+
+			<div class="blogStats">
+				
+				<div id="blog_stats_place_holder"><script>loadBlogStats();</script></div>
+				
+			</div><!--end: blogStats -->
+		</div><!--end: navigator 博客导航栏 -->
+		<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class = "postTitle">
+			
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/codepeace/p/14742494.html">
+    <span>这样进行进制转换更快更清晰哦！</span>
+    
+
+
+
+</a>
+
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			    <div id="cnblogs_post_description" style="display: none">
+        <img src="https://images.cnblogs.com/cnblogs_com/codepeace/1827388/o_21050712141211.png" class="desc_img">
+    </div>
+<div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620305702747-1.png" alt="" loading="lazy"></p>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620305715123-2.png" alt="" loading="lazy"></p>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620305726421-3.png" alt="" loading="lazy"></p>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620305757391-4.png" alt="" loading="lazy"></p>
+<hr>
+<h1 id="关键字">关键字</h1>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620306310548-5.png" alt="" loading="lazy"></p>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620306233991-%E5%85%B3%E9%94%AE%E5%AD%97.jpg" alt="" loading="lazy"></p>
+<hr>
+<h1 id="基本数据类型">基本数据类型</h1>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620306381479-6.png" alt="" loading="lazy"></p>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620306420675-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png" alt="" loading="lazy"></p>
+<hr>
+<h2 id="进制">进制</h2>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620306464483-7.png" alt="" loading="lazy"></p>
+<p><strong>进制</strong>：进制是一种计数方法，我们生活中最常使用的是十进制数，也就是逢十进一，而在计算机中数据存储的方式采用的是二进制数，也就是逢二进一，常见的进制还有八进制和十六进制。</p>
+<h3 id="1进制的转换">1.进制的转换</h3>
+<p>进制之间的转换，最常使用到的是十进制转换为其他进制，其他进制转换为十进制，而十进制也可以作为中介，用作于其他进制间的转换，现在我们以最常用的十进制转二进制和二进制转十进制为例进行讲解，其他进制转换也雷同：</p>
+<p><strong>（1）十进制转二进制</strong></p>
+<ul>
+<li>
+<p>十进制数：35</p>
+</li>
+<li>
+<p>方法：将十进制数连续除以2（几进制就除以几），记录每次除以2后的余数，最后将余数倒过来写，如不足8位在最右侧补上0，这就是最终的二进制数。<br>
+<img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620306507731-%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6.jpg" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>因为二进制习惯用8的次方数进行表示，所以需要补0，最终十进制35的二进制数就是0010 0011。</p>
+</li>
+</ul>
+<hr>
+<p><strong>（2）二进制转十进制数</strong></p>
+<ul>
+<li>二进制数：1000 1010</li>
+<li>方法：从右往左的给二进制的每一位从<strong>0</strong>开始标上<strong>序号</strong>，将每一位的值乘以2（几进制就乘以几）的<strong>序号</strong>次方，并将每一位算出的结果加起来得到的数就是该二进制数的十进制表示。<br>
+<img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620306532643-%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8D%81%E8%BF%9B%E5%88%B6.jpg" alt="" loading="lazy"></li>
+</ul>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620306555605-8.png" alt="" loading="lazy"></p>
+<hr>
+<h3 id="2-java代码实现进制转换">2. java代码实现进制转换</h3>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620308672364-8.2.png" alt="" loading="lazy"></p>
+<p><strong>（1）十进制转二进制</strong></p>
+<pre><code class="language-java">public static void TentoTwo(long n) {
+		long res = 0;
+		int i = 1;
+		while(n&gt;0) {
+			 res += n % 2 * i; 
+			 n /= 2;
+			 i *= 10;
+		}
+		System.out.println(res);
+}
+</code></pre>
+<p><strong>（2） 二进制转十进制数</strong></p>
+<pre><code class="language-java">//二进制转十进制数
+public static void TwotoTen(long n) {
+		long res = 0;
+		int i =0;
+		while(n&gt;0) {
+			res += n%10 * mi(2,i);
+			n /= 10;
+			i++;
+		}
+		System.out.println(res);
+	}
+//实现某数的幂次方，a的b次方
+public static int mi(int a, int b) {
+		if(b == 0 ) {
+			return 1;  
+		}else if(b == 1) {
+			return a;
+		}else {
+   int c = a;
+			for(int i = 1; i&lt;b; i++) {
+				a *= c;
+			}
+		}
+		return a;
+}
+</code></pre>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620306575790-9.png" alt="" loading="lazy"></p>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620306617715-10.png" alt="" loading="lazy"></p>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-5-6/1620306636570-11.png" alt="" loading="lazy"></p>
+<hr>
+<p><img src="https://gitee.com/xiaocaipeace/picture/raw/master/2021-4-13/1618297239050-end.jpg" alt="" loading="lazy"></p>
+<p>更多精彩内容敬请关注微信公众号：【平兄聊Java】</p>
+
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+    <div id="blog_post_info"></div>
+    <div class="clear"></div>
+    <div id="post_next_prev"></div>
+</div>
+		</div>
+		<div class="postDesc">posted @ 
+<span id="post-date">2021-05-07 20:21</span>&nbsp;
+<a href="https://www.cnblogs.com/codepeace/">平兄聊Java</a>&nbsp;
+阅读(<span id="post_view_count">1</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=14742494" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(14742494);return false;">收藏</a></div>
+	</div>
+	
+	
+</div><!--end: topics 文章、评论容器-->
+<script src="https://common.cnblogs.com/highlight/10.3.1/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 623604, cb_blogApp = 'codepeace', cb_blogUserGuid = '9c558aa8-0652-49fc-e7e8-08d83ba18402';
+    var cb_entryId = 14742494, cb_entryCreatedDate = '2021-05-07 20:21', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+    <div id="comment_form_container"></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+        <div id='div-gpt-ad-1592365906576-0' style='width: 300px; height: 250px;'></div>
+    </div>
+    <div id="under_post_card1"></div>
+    <div id="cnblogs_c2" class="under-post-card">
+        <div id='div-gpt-ad-1592366332455-0' style='width: 468px; height: 60px;'></div>
+    </div>
+    <div id="under_post_card2"></div>
+    <div id="HistoryToday" class="under-post-card"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem">
+            <script>loadBlogNews();</script>
+</div>
+<div id="sidebar_c3"></div>
+			<div id="calendar"><div id="blog-calendar" style="display:none"></div><script>loadBlogDefaultCalendar();</script></div>
+			
+			<DIV id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div>
+                    <script>loadBlogSideColumn();</script>
+			</DIV>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright &copy; 2021 平兄聊Java
+<br /><span id="poweredby">Powered by .NET 5.0 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8L-rpLgFVEJMgssCVvNUAjvZ-G-54LwXhbd9g9fHKE7umMPKzF3PSw3DPN7W_tChlUtgvXhOTwqGCTi7bgfBYYCOFKXiqxUuPCeKkvZlYWEfc4cT94Qhv3JH8kYLGLlhEasDrVEjPMmNzGByaJjo1is" />
+</body>
+</html>

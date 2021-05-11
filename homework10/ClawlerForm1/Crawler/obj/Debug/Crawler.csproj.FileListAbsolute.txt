@@ -1,0 +1,14 @@
+D:\code\C#\RJGZJC_homework\homework9(2)\ClawlerForm1\Crawler\obj\Debug\Crawler.csprojAssemblyReference.cache
+D:\code\C#\RJGZJC_homework\homework9(2)\ClawlerForm1\Crawler\obj\Debug\Crawler.csproj.CoreCompileInputs.cache
+D:\code\C#\RJGZJC_homework\homework9(2)\ClawlerForm1\Crawler\bin\Debug\Crawler.exe.config
+D:\code\C#\RJGZJC_homework\homework9(2)\ClawlerForm1\Crawler\bin\Debug\Crawler.exe
+D:\code\C#\RJGZJC_homework\homework9(2)\ClawlerForm1\Crawler\bin\Debug\Crawler.pdb
+D:\code\C#\RJGZJC_homework\homework9(2)\ClawlerForm1\Crawler\obj\Debug\Crawler.exe
+D:\code\C#\RJGZJC_homework\homework9(2)\ClawlerForm1\Crawler\obj\Debug\Crawler.pdb
+D:\code\C#\RJGZJC_homework\homework9\ClawlerForm1\Crawler\obj\Debug\Crawler.csprojAssemblyReference.cache
+D:\code\C#\RJGZJC_homework\homework9\ClawlerForm1\Crawler\obj\Debug\Crawler.csproj.CoreCompileInputs.cache
+D:\code\C#\RJGZJC_homework\homework9\ClawlerForm1\Crawler\obj\Debug\Crawler.exe
+D:\code\C#\RJGZJC_homework\homework9\ClawlerForm1\Crawler\obj\Debug\Crawler.pdb
+D:\code\C#\RJGZJC_homework\homework9\ClawlerForm1\Crawler\bin\Debug\Crawler.exe.config
+D:\code\C#\RJGZJC_homework\homework9\ClawlerForm1\Crawler\bin\Debug\Crawler.exe
+D:\code\C#\RJGZJC_homework\homework9\ClawlerForm1\Crawler\bin\Debug\Crawler.pdb
